@@ -50,7 +50,9 @@ for pdf in pdfs:
         interpretador= PDFPageInterpreter(gerenciador, conversor)
         for pagina in PDFPage.create_pages(documento):
             interpretador.process_page(pagina)
-        linhas= buffer.getvalue().splitlines()
+        preLinhas = re.split("REFERENCES",buffer.getvalue())
+        linhas= preLinhas[0].splitlines()
+        #print(linhas)
         separadas= []
         separadas.extend(re.split("\s|,|;|\.|\(|\)|\xe2\x80\x94",linha) for linha in linhas)
         i= 1
@@ -67,10 +69,10 @@ for pdf in pdfs:
             i= i+1
         #separadas= word_tokenize(buffer.getvalue())
         atual= [y for x in separadas for y in x]
-        #print(atual)
+        print(atual)
         artigos.append([palavra.lower() for palavra in atual if palavra.isalpha()])
         artigosFull.append(atual)
-        #print(artigos)
+        print(artigos)
         break
 tudoRelevante= [y for x in artigos for y in x if not y in stopwords and len(y)>2]
 tudo= [y for x in artigosFull for y in x]
