@@ -16,6 +16,7 @@ from pdfminer.pdfinterp import PDFPageInterpreter, PDFResourceManager
 from pdfminer.pdfpage import PDFPage, PDFTextExtractionNotAllowed
 #import pdfminer
 from pdfminer.pdfparser import PDFParser
+import re
 
 #import ply.lex as lex
 #import ply.yacc as yacc
@@ -23,7 +24,8 @@ from pdfminer.pdfparser import PDFParser
 
 #import PyPDF2
 
-#nltk.download()
+#import nltk
+#nltk.download('stopwords')
 
 path= os.path.realpath(__file__)[:-12] + "Artigos\\"
 pdfs= [arq for arq in glob.glob(path + "*.pdf")]
@@ -50,14 +52,13 @@ for pdf in pdfs:
             interpretador.process_page(pagina)
         linhas= buffer.getvalue().splitlines()
         separadas= []
-        separadas.extend(linha.split() for linha in linhas)
+        separadas.extend(re.split("\s|,|;|\.|\(|\)|\xe2\x80\x94",linha) for linha in linhas)
         i= 1
         separadas= [linhaSeparada for linhaSeparada in separadas if len(linhaSeparada) > 0]
         
         #Juntando palavras quebradas pela mudança de linha
         for linhaSeparada in separadas:
-            if len(linhaSeparada) > 0:
-                #print(linhaSeparada)
+            if len(linhaSeparada) > 0 and len(linhaSeparada[-1]) > 0:
                 if linhaSeparada[-1][-1] == "-":
                     temp= linhaSeparada[-1][:-1]
                     linhaSeparada.remove(linhaSeparada[-1])
@@ -74,7 +75,7 @@ for pdf in pdfs:
 tudoRelevante= [y for x in artigos for y in x if not y in stopwords and len(y)>2]
 tudo= [y for x in artigosFull for y in x]
 frequenciaRelevante= FreqDist(tudoRelevante)
-#print(frequenciaRelevante.most_common(10))
+print(frequenciaRelevante.most_common(10))
 
 for artigo in artigosFull:
     indice= 0
@@ -84,7 +85,7 @@ for artigo in artigosFull:
         indice= tudo.index("REFERENCES")
         teste= artigo[indice:]
         #Não está funcionando esta parte
-        print(teste[teste.index("“"):teste.index("”") + 1])
+        #print(teste[teste.index("“"):teste.index("”") + 1])
     elif listaTemp.count("REFERENCES") > 1:
         for i in range(listaTemp.count("REFERENCES") - 1):
             listaTemp= listaTemp[listaTemp.index("REFERENCES")+1 : ]
