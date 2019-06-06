@@ -27,8 +27,77 @@ import re
 #import nltk
 #nltk.download('stopwords')
 
+#erro citação com et all aquivo 120 erro, citação online, nome de Majdandzic lendo errado, 120 com lixo
+#linhasP tem a divisão das referencias
+def retiraRef(preLinhas):
+    linhasP = re.sub("\n", " " ,preLinhas)
+    linhasP = re.split(r"\[\d*\]", linhasP)
+    linhasP= [linha for linha in linhasP if len(linha) > 5]
+    linhas = []
+    linhas.extend(re.split("\xe2\x80\x9c|\xe2\x80\x9d",linha) for linha in linhasP)
+    autor = []
+    titulo = []
+
+    for linha in linhas:
+        #print(linha)
+        if len(linha)>1:
+            #ta adicionando um virgula no final não arrume com slipt
+            titulo.append(linha[1])
+            aux = []
+            aux.extend(re.split("\,|and|et al.",linha[0]))
+            autores=[]
+            for aux2 in aux:
+                if len(aux2) > 1:
+                    autores.append(aux2)
+            autor.append(autores)
+            #print(autores)
+        else:
+            aux = []
+            aux.extend(re.split("\,",linha[0]))
+            if re.search("and", aux[0]) is not None:
+                aux2 = []
+                aux2.extend(re.split("\.",aux[1]))
+                titulo.append(aux2[0])
+
+                aux2 = []
+                aux2.extend(re.split("and",aux[0]))
+                autor.append(aux2)
+                #print(aux2)
+            else:
+                i=0
+                aux3 = []
+                for aux2 in aux:
+                    i=i+1
+                    if len(aux2) > 20:
+                        auxT = []
+                        auxT.extend(re.split("\.",aux[1]))
+                        titulo.append(auxT[0])
+
+                        aux3 = []
+                        aux3.append(aux[0])
+                        autor.append(aux3)
+                        break
+                    
+                    if re.search(r"^ and (.*)", aux2) is not None:
+                        auxT = []
+                        auxT.extend(re.split("\.",aux[i]))
+                        titulo.append(auxT[0])
+                        
+                        aux4 = []
+                        aux4.extend(re.split("and",aux2))
+                        aux3.append(aux4[1])
+                        autor.append(aux3)
+                        break
+                    else:
+                        aux3.append(aux2)
+                        
+                    
+    print(autor)
+    print(titulo)
+        
+
 path= os.path.realpath(__file__)[:-12] + "Artigos\\"
-pdfs= [arq for arq in glob.glob(path + "*.pdf")]
+pdfs= [arq for arq in glob.glob(path + "120.pdf")]
 artigos= []
 artigosFull= []
 referencias= []
@@ -52,7 +121,7 @@ for pdf in pdfs:
             interpretador.process_page(pagina)
         preLinhas = re.split("REFERENCES",buffer.getvalue())
         linhas= preLinhas[0].splitlines()
-        #print(linhas)
+        retiraRef(preLinhas[1])
         separadas= []
         separadas.extend(re.split("\s|,|;|\.|\(|\)|\xe2\x80\x94",linha) for linha in linhas)
         i= 1
@@ -69,31 +138,12 @@ for pdf in pdfs:
             i= i+1
         #separadas= word_tokenize(buffer.getvalue())
         atual= [y for x in separadas for y in x]
-        print(atual)
+        #print(atual)
         artigos.append([palavra.lower() for palavra in atual if palavra.isalpha()])
         artigosFull.append(atual)
-        print(artigos)
+        #print(artigos)
         break
 tudoRelevante= [y for x in artigos for y in x if not y in stopwords and len(y)>2]
 tudo= [y for x in artigosFull for y in x]
 frequenciaRelevante= FreqDist(tudoRelevante)
 print(frequenciaRelevante.most_common(10))
-
-for artigo in artigosFull:
-    indice= 0
-    listaTemp= artigo[:]
-    print(listaTemp.count("REFERENCES"))
-    if listaTemp.count("REFERENCES") == 1:
-        indice= tudo.index("REFERENCES")
-        teste= artigo[indice:]
-        #Não está funcionando esta parte
-        #print(teste[teste.index("“"):teste.index("”") + 1])
-    elif listaTemp.count("REFERENCES") > 1:
-        for i in range(listaTemp.count("REFERENCES") - 1):
-            listaTemp= listaTemp[listaTemp.index("REFERENCES")+1 : ]
-        indice= listaTemp.index("REFERENCES")
-        print(artigo[indice:])
-        exit()
-#frequenciaFull= FreqDist(y for x in artigosFull for y in x)
-
-#print(len([y for x in artigos for y in x if y.lower() not in stopwords]) / len([y for x in artigos for y in  x])) #0.546361893147
