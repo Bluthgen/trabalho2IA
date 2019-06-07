@@ -18,10 +18,24 @@ import re
 #import nltk
 #nltk.download('stopwords')
 
-#erro citação com et all aquivo 120 erro, citação online, nome de Majdandzic lendo errado, 120 com lixo, 13 citação 22(, no nome) erro e 26(online)
+def limpaT(linha):
+    if [0]==" ":
+        return linha.replace(linha[0],"")
+    if linha[-1]==" " or linha[-1]=="'" or linha[-1]==",":
+        return linha.replace(linha[-1],"")
+    
+def limpaA(autor):
+    if autor[0]==" ":
+        return autor.replace(autor[0],"")
+    if autor[-1]==" " or autor[-1]=="'" or autor[-1]==",":
+        return autor.replace(autor[-1],"")
+
+#erro citação com et all aquivo 120 erro, citação online, nome de Majdandzic lendo errado, 120 com lixo, 13 citação 22(, no nome), titulo sujo com " "
 #linhasP tem a divisão das referencias
 def retiraRef(preLinhas):
     linhasP = re.sub("\n", " " ,preLinhas)
+    linhasP = re.sub(r". \(\d*\).", "," ,preLinhas)
+    print(linhasP)
     linhasP = re.split(r"\[\d*\]", linhasP)
     linhasP= [linha for linha in linhasP if len(linha) > 5]
     linhas = []
@@ -33,62 +47,80 @@ def retiraRef(preLinhas):
         #print(linha)
         if len(linha)>1:
             #ta adicionando um virgula no final não arrume com slipt
+            linha[1] = limpaT(linha[1])
             titulo.append(linha[1])
             aux = []
             aux.extend(re.split("\,|and|et al.",linha[0]))
             autores=[]
             for aux2 in aux:
                 if len(aux2) > 1:
+                    aux2 = limpaA(aux2)
                     autores.append(aux2)
             autor.append(autores)
             #print(autores)
+            #print(linha[1])
         else:
             aux = []
             aux.extend(re.split("\,",linha[0]))
             if re.search("and", aux[0]) is not None:
                 aux2 = []
-                aux2.extend(re.split("\.",aux[1]))
-                titulo.append(aux2[0])
+                aux2.extend(re.split("and",aux[0]))
+                aux2[0] = limpaA(aux2[0])
+                aux2[1] = limpaA(aux2[1])
+                autor.append(aux2)
+                print(aux2)
 
                 aux2 = []
-                aux2.extend(re.split("and",aux[0]))
-                autor.append(aux2)
-                #print(aux2)
+                aux2.extend(re.split("\.",aux[1]))
+                #aux2[0] = limpaT(aux2[0])
+                titulo.append(aux2[0])
+                print(aux2[0])
             else:
                 i=0
                 aux3 = []
                 for aux2 in aux:
                     i=i+1
-                    if len(aux2) > 20:
-                        auxT = []
-                        auxT.extend(re.split("\.",aux[1]))
-                        titulo.append(auxT[0])
-
-                        aux3 = []
-                        aux3.append(aux[0])
-                        autor.append(aux3)
-                        break
-                    
                     if re.search(r"^ and (.*)", aux2) is not None:
                         auxT = []
                         auxT.extend(re.split("\.",aux[i]))
+                        #auxT[0] = limpaT(auxT[0])
                         titulo.append(auxT[0])
                         
                         aux4 = []
                         aux4.extend(re.split("and",aux2))
+                        aux4[0] = limpaA(aux4[0])
+                        aux4[1] = limpaA(aux4[1])
                         aux3.append(aux4[1])
                         autor.append(aux3)
+
+                        print(aux3)
+                        print(auxT[0])
+                        break
+                    if len(aux2) > 20:
+                        auxT = []
+                        auxT.extend(re.split("\.",aux[1]))
+                        #auxT[0] = limpaT(auxT[0])
+                        titulo.append(auxT[0])
+
+                        aux[0] = limpaA(aux[0])
+                        aux3 = []
+                        aux3.append(aux[0])
+                        autor.append(aux3)
+
+                        print(aux3)
+                        print(auxT[0])
                         break
                     else:
+                        aux2 = limpaA(aux2)
                         aux3.append(aux2)
                         
                     
-    print(autor)
-    print(titulo)
+    #print(autor)
+    #print(titulo)
         
 
 path= os.path.realpath(__file__)[:-12] + "Artigos\\"
-pdfs= [arq for arq in glob.glob(path + "17.pdf")]
+pdfs= [arq for arq in glob.glob(path + "13.pdf")]
 artigos= []
 artigosFull= []
 referencias= []
