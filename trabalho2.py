@@ -18,43 +18,77 @@ import re
 #import nltk
 #nltk.download('stopwords')
 
-def limpaT(linha):
-    if [0]==" ":
-        return linha.replace(linha[0],"")
-    if linha[-1]==" " or linha[-1]=="'" or linha[-1]==",":
-        return linha.replace(linha[-1],"")
-    
-def limpaA(autor):
-    if autor[0]==" ":
-        return autor.replace(autor[0],"")
-    if autor[-1]==" " or autor[-1]=="'" or autor[-1]==",":
-        return autor.replace(autor[-1],"")
+#erro citação com et all aquivo 120 erro, 120 com lixo
 
-#erro citação com et all aquivo 120 erro, citação online, nome de Majdandzic lendo errado, 120 com lixo, 13 citação 22(, no nome), titulo sujo com " "
-#linhasP tem a divisão das referencias
+#titulo e autor sujo nao arrumar com split ,' espaço
+#50 algumas referencias tem a palavra [online] acho melhor arrumar quando acabar tudo
+
+#erros
+#13 referencia 22 virgula no titulo
+#20 referencia 30 com ponto
+#21 referencia 3 e 7 virgula no titulo
+#22 referencia 13 titulo e autor errado, não mude isso para tratar pois da outro erro len(aux2) > 20
+#29 referencia 13 titulo com ponto
+#29 referencia 36 virgula no titulo
+#29 varias referencias o titulo é pego como o nome da sigla, mas as vezes não
+#48 referencia 7 virgula no titulo
+#49 referencia 38 () não lidos no titulo
+#49 referencia 41 e 42 idiota inverteu os campos de titulo e autor
+#Parei de ver erros que não se destacao 
+#98 referencia 98 titulo com virgula
+#118 mexi na verificação do And não sei se ferrou algo
+
 def retiraRef(preLinhas):
-    linhasP = re.sub("\n", " " ,preLinhas)
-    linhasP = re.sub(r". \(\d*\).", "," ,preLinhas)
-    print(linhasP)
-    linhasP = re.split(r"\[\d*\]", linhasP)
-    linhasP= [linha for linha in linhasP if len(linha) > 5]
+    linhasP = re.sub(r"\. \(.*\d*\)." and r"\(.*\d*\).", "," ,preLinhas)
+    linhasP = re.split("\n|\r", linhasP)
+    
+    linhassP = []
+    i=0
+    firstTime=0
+    jaAdd=0
+    posb=0
+    linhasP = [linha for linha in linhasP if len(linha) > 0]
+    #print(linhasP)
+    #print(linhasP)
+    for linhass in linhasP:
+        i=i+1
+        if len(linhass)>0 and linhass[0] == "[" and re.search(r"\d", linhass[1]):
+            if firstTime==0:
+                posb=i
+                firstTime=1
+            else:
+                if posb == (i-1):
+                    if jaAdd==0:
+                        linhassP.append(re.sub(r"\[\d*\]","", linhasP[posb-1]))
+                    jaAdd=0
+                    #print(linhasP[posb-1])
+                    posb=i
+                else:
+                    new = ""
+                    for k in range(posb, i):
+                        new = new + " " + linhasP[k-1]
+                    linhassP.append(re.sub(r"\[\d*\]","", new))
+                    #print(new)
+                    jaAdd=0
+                    posb=i
+    if linhasP[posb-1] != linhasP[-1]:
+        linhassP.append(re.sub(r"\[\d*\]","", linhasP[posb-1]))
+    linhasP= [linha for linha in linhassP]
     linhas = []
     linhas.extend(re.split("\"",linha) for linha in linhasP)
+    #print(linhas)
     autor = []
     titulo = []
 
     for linha in linhas:
         #print(linha)
         if len(linha)>1:
-            #ta adicionando um virgula no final não arrume com slipt
-            linha[1] = limpaT(linha[1])
             titulo.append(linha[1])
             aux = []
-            aux.extend(re.split("\,|and|et al.",linha[0]))
+            aux.extend(re.split("\,| and|et al.",linha[0]))
             autores=[]
             for aux2 in aux:
                 if len(aux2) > 1:
-                    aux2 = limpaA(aux2)
                     autores.append(aux2)
             autor.append(autores)
             #print(autores)
@@ -62,65 +96,89 @@ def retiraRef(preLinhas):
         else:
             aux = []
             aux.extend(re.split("\,",linha[0]))
-            if re.search("and", aux[0]) is not None:
+            if re.search(r"^ and (.*)", aux[0]) is not None:
                 aux2 = []
                 aux2.extend(re.split("and",aux[0]))
-                aux2[0] = limpaA(aux2[0])
-                aux2[1] = limpaA(aux2[1])
                 autor.append(aux2)
                 print(aux2)
 
-                aux2 = []
-                aux2.extend(re.split("\.",aux[1]))
-                #aux2[0] = limpaT(aux2[0])
-                titulo.append(aux2[0])
-                print(aux2[0])
+                if re.search(r"^[Online]. Available: ", str(aux)):
+                    aux[1] = re.sub(r"\[Online]. Available:","", str(aux[1]))
+                    titulo.append(aux[1])
+                    print(aux[1])
+                else:
+                    aux2 = []
+                    i=1
+                    if re.search("^ Eds", str(aux[i])):
+                       i=i+1
+                    aux2.extend(re.split("\.",aux[i]))
+                    titulo.append(aux2[0])
+                    print(aux2[0])
             else:
                 i=0
                 aux3 = []
                 for aux2 in aux:
                     i=i+1
-                    if re.search(r"^ and (.*)", aux2) is not None:
-                        auxT = []
-                        auxT.extend(re.split("\.",aux[i]))
-                        #auxT[0] = limpaT(auxT[0])
-                        titulo.append(auxT[0])
-                        
+                    if re.search(r"^ and (.*)", aux2):
                         aux4 = []
                         aux4.extend(re.split("and",aux2))
-                        aux4[0] = limpaA(aux4[0])
-                        aux4[1] = limpaA(aux4[1])
                         aux3.append(aux4[1])
                         autor.append(aux3)
-
+                        print(aux3)
+                        
+                        if re.search(r"\[Online]. Available: ", str(aux2)) is not None:
+                            titulo.append([])
+                            print("[]")
+                        else:
+                            auxT = []
+                            if re.search("^ Eds.", aux2):
+                                i=i+1
+                            auxT.extend(re.split("\.",aux[i]))
+                            titulo.append(auxT[0])
+                            print(auxT[0])
+                        break
+                    elif re.search(r"^ Eds.", aux2) is not None:
+                        if re.search(r"\[Online]. Available: ", str(aux)) is not None:
+                            titulo.append([])
+                            print("[]")
+                        else:
+                            auxT = []
+                            auxT.extend(re.split("\.",aux[i]))
+                            titulo.append(auxT[0])
+                        autor.append(aux3)
                         print(aux3)
                         print(auxT[0])
                         break
+                        
                     if len(aux2) > 20:
-                        auxT = []
-                        auxT.extend(re.split("\.",aux[1]))
-                        #auxT[0] = limpaT(auxT[0])
-                        titulo.append(auxT[0])
-
-                        aux[0] = limpaA(aux[0])
+                        #linha mudada do et al que citei
+                        aux[0]=re.sub(r"et al.","", aux[0])
                         aux3 = []
                         aux3.append(aux[0])
                         autor.append(aux3)
-
                         print(aux3)
-                        print(auxT[0])
+
+                        if re.search(r"^[Online]. Available: ", str(aux[1])) is not None:
+                            titulo.append([])
+                            print("[]")
+                        else:
+                            auxT = []
+                            auxT.extend(re.split("\.",aux[1]))
+                            titulo.append(auxT[0])
+                            print(auxT[0])
+
+                        
                         break
                     else:
-                        aux2 = limpaA(aux2)
                         aux3.append(aux2)
                         
                     
-    #print(autor)
-    #print(titulo)
+    print(autor)
+    print(titulo)
         
 
 path= os.path.realpath(__file__)[:-12] + "Artigos\\"
-pdfs= [arq for arq in glob.glob(path + "13.pdf")]
+pdfs= [arq for arq in glob.glob(path + "50.pdf")]
 artigos= []
 artigosFull= []
 referencias= []
