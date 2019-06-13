@@ -1,0 +1,2229 @@
+460
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+Multiobjective Investment Policy for a Nonlinear Stochastic Financial System: A Fuzzy Approach
+Chien-Feng Wu, Bor-Sen Chen, Life Fellow, IEEE, and Weihai Zhang, Senior Member, IEEE
+
+Abstract--The financial market always suffers from continuous and discontinuous (jump) changes and can be regarded as a nonlinear stochastic jump diffusion system. Most investors expect their investment policies to be not only higher benefits but also lower risk as a multiobjective optimization problem (MOP). In this study, a multiobjective H2 /H fuzzy investment is proposed for nonlinear stochastic jump diffusion financial systems to achieve the desired target with minimum investment cost and risk in Pareto optimal sense, simultaneously. The TakagiГSugeno (TГS) fuzzy model is used to approximate the nonlinear stochastic jump diffusion financial system to simplify the multiobjective H2 /H investment policy design procedure. By the help of the TГS fuzzy model, the multiobjective H2 /H fuzzy investment policy problem of nonlinear stochastic financial system can be transformed to a linear-matrix-inequality-constrained (LMI-constrained) MOP to avoid solving the annoying HamiltonГJacobi inequalities. Because the LMI-constrained MOP is not easy to directly calculate its Pareto optimal solutions, an indirect method is proposed to solve this MOP for the multiobjective H2 /H fuzzy investment policy design of nonlinear stochastic jump diffusion financial systems. An LMI-constrained multiobjective evolution algorithm (LMI-constrained MOEA) is also developed to efficiently solve the Pareto optimal solutions of the LMI-constrained MOP for the multiobjective H2 /H fuzzy investment policy design of nonlinear stochastic jump diffusion financial systems. When the Pareto optimal regulation solutions are solved by the proposed LMI-constrained MOEA, investors can select one investment policy to achieve their desired target with minimum investment cost and risk according to his/her own preference.
+Index Terms--Linear-matrix-inequality (LMI)-constrained multiobjective evolution algorithm (MOEA), multiobjective H2 /H fuzzy investment policy, nonlinear stochastic jump diffusion system, Pareto optimality, stochastic financial system, TakagiГSugeno (TГS) fuzzy model.
+I. INTRODUCTION
+I N the fields of finance, stocks, and social economics, because of the interaction between nonlinear factors, all kinds of
+economic problems become more and more complicated today.
+Different types of mathematical model for the financial systems
+have been widely studied. In recent years, researchers focus
+on the system dynamical model to describe the real economic
+Manuscript received July 30, 2015; revised October 20, 2015 and January 25, 2016; accepted April 20, 2016. Date of publication June 1, 2016; date of current version March 29, 2017.
+C.-F. Wu and B.-S. Chen are with the Department of Electrical Engineering, National Tsing Hua University, Hsinchu 30013, Taiwan (e-mail: nthucfw@gmail.com; bschen@ee.nthu.edu.tw).
+W. Zhang is with the College of Electrical Engineering and Automation, Shandong University of Science and Technology, Qingdao 266510, China (e-mail: w_hzhang@163.com).
+Color versions of one or more of the figures in this paper are available online at http://ieeexplore.ieee.org.
+Digital Object Identifier 10.1109/TFUZZ.2016.2574926
+
+and financial systems [1]Г[5]. However, in practical cases, the financial dynamic system is a nonlinear stochastic system and may suffer from continuous and discontinuous parametric fluctuations due to national and international situation change, oil price change, the surplus between investment and savings, the variable of interest rate, false economy policy, etc. Thus, using a nonlinear stochastic dynamical model to describe a real financial system would be more appealing [6]Г[9]. The stochastic parametric fluctuations can be decomposed as continuous state-dependent fluctuations and discontinuous (jump) statedependent fluctuations. Both of them will influence the stability of the stochastic financial dynamical system. Moreover, the external investment disturbance due to the unpredictable investment-environmental changes or a worldwide event, such as war, natural disaster, fatal epidemic disease, etc., can also affect the fluctuations of financial system. Thus, in this study, a nonlinear stochastic jump diffusion system with internal random fluctuation and external disturbance is employed to describe a nonlinear stochastic financial system.
+Managers and investors always expect their investment policies to be with not only higher return on investment (ROI) but also lower risk. Because the ROI and lower investment risks normally conflict with each other, investment policy can be regarded as a multiobjective optimization problem (MOP). Thus, the multiobjective investment policies appear naturally and are also widely applied in financial systems [10]. For a financial system, the multiobjective H2/H investment policy design for the nonlinear stochastic jump diffusion financial system can be seen as how to search a management policy to maximize ROI (H2 management policy) and minimize investment risk (H management policy), simultaneously.
+Robust regulation control is to design a state feedback controller to ensure that the trajectories of the controlled system gradually converge to some desired trajectories (target) despite intrinsic noise and extrinsic disturbance [11], [19], [24], [25], [33]. It is particularly appropriate to be employed in financial system. The most two important topics of robust optimal regulation control are how to minimize the regulation error to achieve the desired target despite intrinsic fluctuation and how to increase the system robustness to reject the effect due to environmental disturbance. The optimal H2 management policy is proposed to minimize the regulation error to achieve the desired reference target despite intrinsic fluctuation [13]Г[15]. The robust H management policy is introduced to reduce the effects of external disturbances on the regulation performance. For a financial system, the H2 optimal regulation control can be regarded as how to design an investment policy to ensure
+
+1063-6706 Е 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
+
+WU et al.: MULTIOBJECTIVE INVESTMENT POLICY FOR A NONLINEAR STOCHASTIC FINANCIAL SYSTEM: A FUZZY APPROACH
+
+461
+
+that the financial system can gradually converge to the expectant trajectories of managers or investors and minimize the investment cost, i.e., a higher ROI policy. On the other hand, the robust H regulation control for a financial system can be seen as how to design a manageable policy to minimize the investment risk due to intrinsic continuous and discontinuous random fluctuations and external disturbance. However, both of optimal H2 and robust H management policy need to solve a difficult Hamilton-Jacobi inequality (HJI) (a second-order nonlinear partial differential equation) to achieve a desired steady state (target) of nonlinear stochastic financial system. To overcome this difficult problem, i.e., solving HJI, the TakagiГSugeno (TГS) fuzzy model is employed to simplify the multiobjective H2 /H investment policy problem of nonlinear stochastic financial systems in this study.
+Recently, the TГS fuzzy model has been widely used to efficiently approximate nonlinear systems [17]Г[20], and a TГS fuzzy controller has also been successfully applied to the stabilization control design for nonlinear system. To avoid solving the annoying HJIs, the TГS fuzzy model is employed to approximate the nonlinear stochastic jump diffusion financial system by interpolating several local linear stochastic jump diffusion financial systems at different operation points. When a nonlinear stochastic jump diffusion financial system was represented by an interpolation of a set of linear stochastic jump diffusion financial systems, a TГS fuzzy model-based regulation method can also be developed to achieve the multiobjective H2 /H investment policy. Thus, the HJIs can be replaced by a set of linear matrix inequalities (LMIs). These LMIs can be efficiently solved by a convex optimization method to complete the multiobjective H2 /H fuzzy investment policy design. Therefore, the multiobjective H2 /H investment policy problem of the nonlinear stochastic jump diffusion financial system becomes to how to solve an LMI-constrained MOP.
+Although a number of multiobjective evolutionary algorithms (MOEAs) have been discussed for their ability to efficiently search the Pareto optimal solutions of MOP in a single run [27]Г [30], [32], [41], most of them focus on the multiobjective problem with algebraic functional systems or algebraic constraints. Few of these studies discuss the system dynamical constrained MOP for the nonlinear stochastic financial system, in which robust stability must be guaranteed beforehand. More effort is still needed to apply the MOEA to solve the MOP for multiobjective H2/H investment policy of nonlinear stochastic financial systems. Based on the TГS fuzzy model, the multiobjective H2 /H investment policy problem of the nonlinear stochastic jump diffusion financial system can be transformed to an LMI-constrained MOP. In general, there exists no unique solution for LMI-constrained MOP. The multiple solutions of MOP are called Pareto optimal solutions. To efficiently solve the multiobjective H2 /H investment policy problem of the nonlinear financial system, an indirect method is introduced to help us approach the Pareto optimal solutions at the Pareto front of the LMI-constrained MOP by gradually decreasing the upper bound of H2 and H performance indices, i.e., nondominating searching scheme is employed to find Pareto front for Pareto optimal solutions of management policy without violating the stability of nonlinear stochastic system, simultaneously.
+
+The proposed LMI-constrained MOEA combines the LMI
+
+technique with MOEA together to solve the LMI-constrained
+
+MOP for multiobjective H2 /H investment policy of non-
+
+linear stochastic jump diffusion financial systems. The LMI-
+
+constrained MOEA search algorithm via a number of genetic
+
+operation, e.g., selection, mutation, and crossover, is proposed
+
+with the help of LMI toolbox in MATLAB to efficiently search
+
+for Pareto front of Pareto optimal solutions and its corresponding
+
+fuzzy regulation gains {Ki} from the LMI constraints to meet
+
+the robust stability and multiobjective H2/H policy optimiza-
+
+tion of nonlinear stochastic jump diffusion financial systems,
+
+simultaneously. As long as the Pareto front can be obtained, the
+
+multiobjective H2/H investment policy problem for a non-
+
+linear stochastic jump diffusion financial system can also be
+
+solved, and the manager(or investor) can select a mutual benefit
+
+policy according to his/her own preference.
+
+Notation:
+
+AT : the transpose of matrix A; A  0 (A > 0): symmet-
+
+ric positive semidefinite (symmetric positive definite) matrix A;
+
+InОn : n-dimentional identity matrix; x 2 : the Euclidean norm for the given vector x  Rn ; C2 : the class of functions V (x)
+
+twice continuously differential with respect to x; fx: the gra-
+
+dient column vector of nx -dimensional twice continuously dif-
+
+ferentiable
+
+function
+
+f
+
+(x)
+
+(i.e.,
+
+ f (x) x
+
+);
+
+fxx:
+
+the
+
+Hessian
+
+matrix
+
+with elements of second partial derivatives of nx -dimensional
+
+twice
+
+continuously
+
+differentiable
+
+function
+
+f
+
+(x),
+
+(i.e.
+
+,
+
+
+
+2 f (x)  x2
+
+);
+
+L2F (R+ , Rny ): the space of nonanticipative stochastic processes
+
+y(t)  Rl with respect to an increasing -algebras Ft(t  0)
+
+satisfying y (t) L2 (R+ ;Rn y )
+
+E
+
+ 0
+
+yT
+
+(t)y(t)dt
+
+1
+2;
+
+y (t)
+
+L2 (R+ ;Rn y ,Q )
+
+E
+
+ 0
+
+yT
+
+(t)Qy(t)dt
+
+1
+2 ; B () is the Borel
+
+algebra generated by ; E: the expectation operator; » (M ): the
+
+maximum eigenvalue of real-value matrix M ; : the empty set.
+
+II. PRELIMINARIES
+
+In [1] and [5], a financial dynamical model is given to illustrate
+
+the interaction between interesting rate, x, investment demand,
+
+y, and the price index, z of a financial system as follows:
+
+  x (t) = z(t) + (y(t) - a) x(t)
+
+
+
+y(t) z(t)
+
+= =
+
+1 - by(t) - (x(t))2 -x(t) - cz(t)
+
+(1)
+
+where the parameters a  0 is the saving amount, b  0 is the per-investment cost, and c  0 is the elasticity of demands of commercials. In the nonlinear financial model (1), the interest rate x(t) can be influenced by the surplus between investment and saving as well as adjustments of the prices. The investment demand y(t) is proportional to the rate of investment and inversely proportional to the cost of investment and the interest rate. The price index z(t) depends on the difference between supply and demand in the market, and it is also influenced by the inflation rate.
+However, in practice, most financial systems are stochastic systems, and the dynamical model in (1) may suffer from parametric fluctuations due to the surplus between investment and savings, oil price, or government policy changes. To mimic the real financial system, the dynamical model in (1) should be modified by continuous and discontinuous intrinsic random
+
+462
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+Thus, the stochastic nonlinear autonomous controlled system for the financial system in (2) can be written as follows (see system diagram in Fig. 1):
+
+Fig. 1. System diagram for the multiobjective investment policy problem of
+the nonlinear financial system. The nonlinear stochastic system in (3) is to be controlled to achieve the desired steady state xd by the multiobjective H2 /H regulator. In order to achieve the desired steady state xd , the original nonlinear stochastic financial system in (3) is shifted to xd so that the regulation problem to xd becomes a stabilization problem of the nonlinear stochastic system in (5). When the shifted stochastic financial system in (5) is completely approximated
+by the TГS fuzzy model, the multiobjective H2 /H investment policy problem in (18) can be regarded as an LMI-constrained MOP in (20) by employing the
+proposed indirect method in Lemma 2. Since the LMI-constrained MOP in (20)
+is difficult to solve by directly calculating, we proposed the LMI-constrained
+MOEA to efficiently solve the LMI-constrained MOP in (20). Thus, the multiob-
+jective H2 /H investment policy problem for a nonlinear stochastic financial system can be efficiently solved by commercial software MATLAB.
+
+fluctuations and environmental disturbance. In the following, the
+
+Wiener process (i.e., Brownian motion) and the marked Poisson
+
+process are introduced to model the continuous and discontin-
+
+uous random fluctuations in real financial system (see Fig. 1).
+
+More precisely speaking, a financial market, which refers to the
+
+buy and sell behavior, can be described as a stochastic dynamical
+
+financial system. Thus, the stochastic dynamical system can be
+
+employed to describe the price changes of the objects of trans-
+
+action (like stocks, bonds, futures, and oil ) or economic index
+
+changes (investment rate, price index, and investment demand)
+
+[36], [38]. One of the most famous stochastic financial systems
+
+is the stochastic stock price system [36].
+
+Let (, F , Ft , P) be a filtration probability space with F = {Ft : t  0}. F is generated by the following two mutually independent stochastic processes: 1) One-dimensional standard
+
+Wiener process W (t); and 2) the marked Poisson processes
+
+N (t; k ), for k = 1, 2, .., m, and the filtration Ft is also generated by -algebra of W (s) and -algebra of marked Poisson
+
+processes N (s; k ), where k = 1, 2, .., m, for s < t.
+
+The nonlinear stochastic jump diffusion financial system with
+
+continuous and discontinuous random fluctuations in (1) can be
+
+described as follows:
+
+
+
+
+
+dx(t) = (z(t) + (y(t) - a) x(t)) dt + 1 (x(t), y(t), z(t))
+
+О dW +
+
+m k=1
+
+1
+
+(x(t),
+
+y(t),
+
+z(t),
+
+k
+
+)
+
+dN
+
+(t;
+
+k
+
+)
+
+dy(t) = 1 - by(t) - (x(t))2 dt + 2 (x(t), y(t), z(t))
+
+
+
+О dW +
+
+m k=1
+
+2
+
+dz(t) = (-x(t) -
+
++
+
+m k=1
+
+3
+
+(x(t),
+
+(x(t), y(t), z(t), k ) dN (t; k ) cz(t)) dt + 3 (x(t), y(t), z(t)) y(t), z(t), k ) dN (t; k ) .
+
+dW
+
+(2)
+
+dx(t) = (fo (x(t)) + Bu(t) + v(t)) dt + o (x(t)) dW
+
+m
+
++ o (x(t), k ) dN (t; k )
+
+(3)
+
+k=1
+
+with
+
+x(t) = [x(t), y(t), z(t)]T , u(t) = [u1 (t), u2 (t), u3 (t)]T
+
+v(t) = [v1 (t), v2 (t), v3 (t)]T
+
+f1 (x (t)) = (z(t) + (y(t) - a) x(t)) f2 (x(t)) = 1 - by(t) - (x(t))2
+
+f3 (x (t)) = (-x(t) - cz(t))
+
+fo (x(t)) = [f1 (x(t)), f2 (x(t)), f3 (x(t))]T
+
+o (x(t)) = [1 (x (t)), 2 (x (t)), 3 (x (t))]T
+
+o (x(t), k ) = [1 (x(t), k ), 2 (x(t), k ) , 3 (x(t), k )]T
+
+where fo : R3  R3 , o : R3  R3 , and o : R3 О   R3
+
+are nonlinear Borel measurable continuous functions, which
+
+are satisfied with Lipschitz continuity. B is a 3 О 3 realvalue constant matrix. The ca`dla`g process x(t)  R3 is the
+
+state vector; the initial state vector x(0) = x0; the input vector u(t)  LF2 (R+ ; R3 ) is the admissible regulation effort (i.e., investment policy) with respect to {Ft }t0 ; v(t)  L2F (R+ ; R3 ) is regarded as an unknown finite energy stochastic external dis-
+
+turbance and denotes the external disturbance caused by the in-
+
+ternational situation like war or natural disaster. Since 1-D stan-
+
+dard Wiener process W(t) is a continuous but nondifferentiable
+
+stochastic process, the term o (x(t))dW (t) can be regarded as
+
+a continuous state-dependent internal random fluctuation, i.e.,
+
+the financial system random fluctuation dependent on the cur-
+
+rent magnitude of investment rate, price index, and investment demand; the term  = {1 , 2 , ..., m }  R1 is the mark space
+of Poisson random processes and denotes the set of all minding
+
+financial emergencial incidents, which will cause discontinuous
+
+changes of the system in (3); the mark k denotes a financial
+
+emergencial incident in the discussed financial system such as
+
+financial tsunami, company merger, hot money inflow or the
+
+collapse of bank; and the term o (x (t), k ) denotes a suddenly
+
+violent change (the magnitude jump) at investment rate, price in-
+
+dex, and investment demand of the stochastic financial system in
+
+(3) when the financial emergencial incident happens. Thus, the
+
+summation term
+
+m k=1
+
+o
+
+(x(t),
+
+k
+
+)
+
+dN
+
+(t;
+
+k )
+
+denotes
+
+all
+
+the
+
+possible nonlinear stochastic discontinuous changes of the sys-
+
+tem in (3) at the time instant t, whose jump amplitudes depend
+
+on the corresponding jump coefficient functional o (x(t), k ).
+
+It is necessary to note that in this paper, we assume all the emer-
+
+gencial incidents are mutually exclusive event (i.e., when the
+
+jump occurs at time instant t, there is only one mark k to be
+
+assigned). In this study, we use 3-D nonlinear financial system
+
+(1) to illustrate the financial multiobjective design. However, the
+
+financial stochastic system in (2) or (3) can be extended to any
+
+WU et al.: MULTIOBJECTIVE INVESTMENT POLICY FOR A NONLINEAR STOCHASTIC FINANCIAL SYSTEM: A FUZZY APPROACH
+
+463
+
+n-dimensional nonlinear stochastic financial system. At this sit-
+
+uation, x (t) = (x1 (t) , x2 (t) , ..., xn (t))  Rn . At this case, we have fo : Rn  Rn , o : Rn  Rn , o : Rn О   Rn and Bo  RnОp when u(t)  L2F (R+ ; Rp ).
+Some important properties of Poisson jump process are given
+
+as follows [7]:
+
+1) E {dN (t; k )} = k dt where the finite scalar number k > 0 is the Poisson jump intensity for mark k .
+2) E {[dN (t; k )] dt} = 0, for all k. 3) E {[dN (t; k )] dW} = 0, for all k. 4) E {[dN (t; k1 )] [dN (t; k2 )]} = 0, for all k1 = k2 . 5) E {[dN (t; k1 )] [dN (t; k2 )]} = k1 dt, for all k1 = k2 . In fact, managers or investors always expect that the dynamic
+
+behaviors of the invested financial system are satisfied with their
+
+expectation. Thus, the multiobjective optimal control theories
+
+are particularly suited for the multiobjective investment policy
+
+problem of financial systems.
+
+From the system diagram in Fig. 1, the regulation
+
+purpose of stochastic financial system in (3) is to de-
+
+sign regulation effort u(t) so that 1) the intrinsic ran-
+
+dom continuous and discontinuous fluctuations o (x(t)) dW
+
+and
+
+m k=1
+
+o
+
+(x(t), k )dN
+
+(t; k )
+
+could
+
+be
+
+tolerated
+
+by
+
+the
+
+stochastic financial system; 2) the effect of external disturbance
+
+v (t) on the regulation performance of financial system should
+
+be as small as possible, i.e., with a less risk; and 3) the desired
+
+target xd could be finally achieved with a low cost. In order to regulate x(t) to the desired steady state (target)
+
+xd , for the convenience of control design, the origin of nonlinear stochastic financial system in (3) should be shifted to xd
+
+at first. In such a situation, if the shifted nonlinear stochastic
+
+financial system is robustly stabilized at the origin, then the ro-
+
+bust regulation of x (t) to the desired state(target) xd will be
+
+equivalently achieved. This will simplify the regulation control
+
+design procedure of the stochastic nonlinear financial system.
+
+Let us denote
+
+x~(t) = x(t) - xd .
+
+(4)
+
+Then, we get the following shifted nonlinear stochastic financial system in (3) as follows:
+
+dx~(t) = (f (x~(t)) + Bu(t) + v(t)) dt +  (x~(t)) dW
+
+m
+
++  (x~(t), k ) dN (t; k )
+
+(5)
+
+k=1
+
+where f (x~(t)) = fo (x~(t) + xd ) ,  (x~(t)) = o (x~(t) + xd ), and  (x~(t), k ) = o (x~(t) + xd , k ).
+Thus, the origin x~(t) = 0 of the nonlinear stochastic financial system in (5) is at the desired steady state (target) xd of the original nonlinear stochastic financial system in (3), i.e., the
+investment policy problem of regulating nonlinear stochastic financial system in (3) to the desired xd is transformed to the stabilization problem of the shifted nonlinear stochastic finan-
+cial system in (5). In order to achieve the desired state xd with less regulation
+effort u(t) in spite of continuous and discontinuous random fluctuation, the H2 control performance J2 (u(t)) index for
+
+the nonlinear stochastic jump diffusion system in (5) without consideration of v(t) is defined as follows:
+
+J2 (u(t)) =
+
+x~(t)
+
++ 2
+L2F (R+ ;R3 ,Q 1 )
+
+u(t)
+
+2 L2F (R+ ;R3 ,R 1 )
+
+(6)
+
+where Q1 > 0 and R1 > 0 are weighting matrices to tradeoff between regulation error x~ (t) and investment effort u(t).
+To avoid the investment risk from the external disturbance, the H control performance index J(u (t)) of the nonlinear stochastic financial system in (5) is defined as follows:
+
+J(u(t)) =
+
+sup
+
+v(t)  LF2 (R+ , R3 ),
+
+v = 0, x0 = 0
+
+x~(t)
+
++ 2
+LF2 (R+ ;R3 ,Q 2 )
+
+u(t)
+
+2 LF2 (R+ ;R3 ,R 2 )
+
+v(t)
+
+2 L2F (R+ ;R3 )
+
+if x~(0) = x~0 = 0
+
+(7)
+
+where Q2 > 0, R2 > 0, i.e., the worst-case effect from the exogenous disturbance v(t)  LF2 (R+ ; R3 ) to the regulation errors x~(t) and regulation effort u (t) from the average energy point of view. The H performance index J(u(t)) in (7) can be considered as the worst-case investment risk from external
+disturbance. Since the external disturbance is unpredictable, the
+worst-case effect of external disturbance is considered in the
+investment risk.
+In this study, from the system diagram of nonlinear stochas-
+tic financial system in Fig. 1, we want to design a multiobjective H2 /H robust investment policy for system state x (t) to achieve a desired state xd from the perspective of minimum H2 regulation error with minimum investment effort u (t) in (6) and minimum H investment risk in (7) under intrinsic fluctuations and external disturbance. A more detailed design procedure of the multiobjective H2/H robust investment policy u (t) to simultaneously minimize J2 (u (t)) in (6) and J (u (t)) in (7) will be discussed in the following.
+Remark 1: If the initial condition x~ (0) = x~0 = 0 , then the H performance index J(u(t)) should be rewritten as
+
+J(u(t)) =
+
+sup
+
+v(t)  L2F (R+ , R3 ),
+
+v = 0, x0 = 0
+
+x~(t)
+
++ 2
+LF2 (R + ;R3 ,Q 2 )
+
+u(t)
+
+2 LF2 (R +
+
+;R3 ,R 2 )
+
+-
+
+E
+
+{V
+
+(x0 )}
+
+v(t)
+
+2 LF2 (R+ ;R3 )
+
+(8)
+
+where V (и)  C2 R3 and V (и)  0, i.e., the effect of initial
+condition x~0 should be deleted in order to obtain the real effect of v(t) on the controlled output.
+Lemma 1 (see [7]): Let V : R3  R, V (и)  C2 R3 and
+V (и)  0. For the nonlinear stochastic jump diffusion system
+
+464
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+in (5), the Ito^ГLe┤vy formula of V (x~ (t)) is given as follows:
+
+dV (x~ (t)) = Vx~T f (x~ (t)) + Vx~T Bu (t) + Vx~T v (t)
+
++
+
+1 2
+
+T
+
+(x~ (t)) Vx~x~ 
+
+(x~ (t))
+
+dt + Vx~T  (x~(t)) dW (t)
+
+m
++ {V (x~(t) + (x~(t),k )) - V (x~(t))} dN (t; k ) . (9)
+k=1
+
+III. MULTIOBJECTIVE H2 /H INVESTMENT POLICY DESIGN FOR NONLINEAR STOCHASTIC FINANCIAL JUMP SYSTEM VIA
+FUZZY INTERPOLATION METHOD
+In general, construction of the multiobjective H2 /H regulation control for nonlinear stochastic system needs to solve an HJI-constrained MOP, which is difficult to be solved analytically or numerically. To overcome this difficult problem, the TГS fuzzy interpolation method is employed here to approximate the nonlinear stochastic jump diffusion financial system in (5). The TГS fuzzy dynamical model is proposed to approximate the nonlinear stochastic system in (5) by interpolating several local linearized stochastic jump diffusion financial systems around some operation points [17]Г[20], [34], [39], [40]. This TГS fuzzified model is described by a group of IFГTHEN rules and is used to simplify the multiobjective H2 /H investment policy design problem of the nonlinear stochastic jump diffusion financial system. The ith rule of this TГS fuzzy model for the nonlinear stochastic jump diffusion financial system in (5) is described by
+
+System Rule :
+
+for i = 1, 2, . . . l
+
+if z1 is Gi1 and и и и and zg is Gig
+
+then
+
+dx~(t) = [Aix~(t) + Bu(t) + v(t)] dt + Cix~(t)dW (t)
+
+m
+
++ Ei(k )x~ (t) dN (t; k )
+
+(10)
+
+k=1
+
+where l is the number of fuzzy rules, Gij is the fuzzy set, the matrices Ai, B, Ci  R3О3 are constant matrices, Ei(k ) is a constant matrix for k = 1, 2, ..., m, and z1 и и и zg are premise variables.
+The overall fuzzy system in (10) can be inferred as
+follows [18]:
+
+l
+dx~(t) = hi (z) {[Aix~(t) + Bu(t) + v(t)] dt
+i=1
+m
++ Cix~(t)dW (t) + Ei(k )x~ (t) dN (t; k )}
+k=1
+(11)
+
+where
+
+z
+
+=
+
+[z
+
+T 1
+
+,
+
+zT2
+
+ии
+
+и
+
+, zTg
+
+]T
+
+g
+i(z) =  Gij (zj )  0, hi(z) =
+j=1
+
+i (z)
+
+l i=1
+
+i (z)
+
+
+
+0
+
+(12)
+
+and Gij (zj ) is the membership grade of zj in Gij . From the definitions given above, we have
+
+l
+
+hi(z) = 1.
+
+(13)
+
+i=1
+
+The physical meaning of fuzzy model in (11) is that the following l locally linearized financial systems
+
+dx~(t) = [Aix~(t) + Bu(t) + v(t)] dt + Cix~(t)dW (t)
+m
++ Ei(k )x~ (t) dN (t; k ) , for 1  i  l
+k=1
+(14)
+
+at different operation points (different fuzzy set Gij ) are interpolated smoothly via the fuzzy certainty function hi(z) to approximate the original nonlinear stochastic jump diffusion
+financial system in (5). Similarly, the multiobjective H2/H investment policy
+u (t) = K(x~ (t)) for the nonlinear stochastic jump diffusion financial system could be approximated by the following fuzzy
+investment policy:
+
+Investment Policy i :
+
+for i = 1, 2, . . . l
+
+if z1 is Gi1 and и и и and zg is Gig , then u (t) = Kix~(t). (15)
+
+The overall multiobjective H2 /H investment policy u (t) for the nonlinear stochastic jump diffusion financial system can be represented by
+
+l
+
+u (t) = hi(z)Kix~ (t)
+
+(16)
+
+i=1
+
+where hi(z) is designed as (11); Ki is the regulation gain for the ith fuzzy linearized system for i = 1, 2, . . . l.
+The fuzzy parameters Ai, Ci, and Ei(k ) of l local linear financial systems in (11) can be easily identified by system identification toolbox in MATLAB. If adequate number of fuzzy rules is used in the TГS fuzzy system in (11), then the fuzzy approximation error could be considered as one kind of parametric fluctuations, and the proposed robust H2 /H multiobjective investment policy can efficiently override these parametric fluctuations due to fuzzy approximation. Therefore, the multiobjective H2 /H investment policy problem can be regarded as how to design fuzzy investment policy u(t) in (16) so that the TГS stochastic financial system in (11) could achieve the multiobjective H2 /H investment policy in (6) and (7).
+A higher benefit investment behavior always couples with higher risk and higher capital cost. The optimal H2 regulation
+
+WU et al.: MULTIOBJECTIVE INVESTMENT POLICY FOR A NONLINEAR STOCHASTIC FINANCIAL SYSTEM: A FUZZY APPROACH
+
+465
+
+in (6) expects the energy of regulation error x~ (t) and admissible investment policy u (t) as lower as possible, i.e., use a minimum capital to earn a desired benefit. However, for the robust H regulation design, a better (less) H performance index is always coupled with a higher capital cost to reject intrinsic continuous
+and discontinuous fluctuation as well as external disturbance to achieve the desired target xd with a less risk. It is clear that the optimal H2 regulation design and robust H regulation design are mutually conflicted. Thus, designing a controller (investment policy) to optimize the H2 performance index J2 (u(t)) and the H performance index J(u (t)) is indeed a MOP of financial regulation systems. The definition of the multiobjec-
+tive H2 /H investment policy for the nonlinear stochastic jump diffusion financial system is given as
+Definition 1: The multiobjective H2 /H investment policy of a given nonlinear stochastic Poisson jump diffusion financial system (11) is to design an admissible investment policy u(t) in (16), which could make the H2 and H performance indices minimum in the Pareto optimal sense, simultaneously, i.e.
+
+min (J2 (u(t)), J(u(t)))
+u(t)U
+
+s.t. (11)
+
+(17)
+
+Lemma 3 (see [22]): For any two real matrices A, B with appropriate dimension, we have
+
+AT
+
+B
+
++
+
+BT
+
+A
+
+
+
+2 AT
+
+A
+
++
+
+1 2
+
+BT
+
+B
+
+where  is any nonzero real number.
+
+Lemma 4 (see [18]): For any matrix Mi with appropriate di-
+
+mension and the scheduling functions hi(z) with 0  hi(z) 
+
+1, for i  N+ , 1  i  m, P > 0, and
+
+m i=1
+
+hi
+
+(z)
+
+=
+
+1,
+
+we have
+
+
+
+T
+
+l
+
+ hj (z)Mj  P
+
+j=1
+
+l
+hi (z)Mi
+i=1
+
+l
+ hi (z)MiT P Mi.
+i=1
+
+Then, the following theorems will provide the sufficient condition for the fuzzy investment policy u(t) in (16) to solve the multiobjective H2 /H investment policy problem for nonlinear stochastic jump financial system in (5). In the following,
+according to two kinds of Poisson noise in stochastic financial systems, i.e., marked Poisson process N (t; k ) and marked compensation Poisson processes N^ (t; k ), the multiobjective H2/H investment policy problem will be solved separately in the following.
+
+where U is the set of all the admissible investment policy for the given nonlinear stochastic jump diffusion financial system; the objective functional J2(u (t)) and J(u (t)) are defined in (6) and (7), respectively; the vector of the objective functionals (J2 (u (t)), J(u (t))) is called objective vector of u (t).
+Lemma 2 (see [35]): Suppose  and  are the upper bounds
+of the H2 and H performance indices, respectively, i.e., J2(u (t))  , and J(u (t))  . The MOP in (17) is equivalent to the MOP given in the following:
+
+A. Multiobjective H2 /H Investment Policy Problem for the Nonlinear Stochastic Jump Diffusion Financial System Driven by the Marked Poisson Process N (t; k )
+Theorem 1: If the following LMIs-constrained MOP can be solved:
+
+min
+
+(, )
+
+{P ,,K 1 ,K 2 ...,K l }
+
+s.t. the following LMIs, for all i, j = 1, 2, ..., l, (19)
+
+min (, )
+u(t)U
+
+s.t. J2 (u (t))   and J(u (t))  .
+
+(18)
+
+Proof: The proof of this lemma is straightforward. One only needs to prove that both inequalities contained in the multiobjective problem in (18) become equal for Pareto optimal solutions. We will show this by contradiction. Given a 3-tuple Pareto optimal solution (u(t), , ) of MOP in (18), we assume that
+
+P   [T r (Rx~0 )]-1 I
+
+ 
+
+2ij
+
+W -Q1-1
+
+YjT 0 -R1-1
+
+W CiT 0 0
+-W
+
+(20)
+
+either one of the inequality in (18) remains a strict inequality
+
+at the Pareto optimal solution. Without loss of generality, suppose that J2(u(t)) < . As the result, there exists 1 such that
+
+W EiT (1 )
+
+...
+
+W EiT
+
+ (m )
+
+1 <  and J2 (u(t)) = 1 . Now, for the same u(t), the solution (, ) dominates the Pareto optimal solution (, ), leading to a contradiction. This implies that both inequality constraints in MOP (18) indeed become equality for Pareto optimal solutions. The optimization problem in (18) is, hence, equivalent to the MOP described in (17).
+In this study, Lemma 2 provides an indirect method to solve the multiobjective H2 /H investment policy problem of non-
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+-1-1 W
+
+0
+
+...
+
+0 0 ... 0
+0
+
+  0
+
+(21)
+
+linear stochastic jump diffusion financial system.
+
+--m1 W
+
+466
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+ ij 
+
+W -Q2-1
+
+YjT
+0 -R2-1
+
+W CiT 0
+0 -W
+
+hold, we have
+
+J2 (u (t)) = E
+
+
+x~T (t)Q1 x~(t) + uT (t)R1 u(t) dt
+0
+
+ E {V (x~0 ))}  .
+
+By applying Lemma 4, we obtain the following inequalities:
+
+W EiT (1 )
+
+...
+
+W EiT
+
+ (m )
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+--1 1 W
+
+0
+
+...
+
+0 0 ... 0
+0
+
+  0
+
+(22)
+
+-m-1 W
+
+where W = P -1 , Yj = Kj W , 2ij = Ai W + W ATi + BYj +
+
+YjT BT +
+
+m k=1
+
+k [W EiT
+
+(k )
+
++
+
+Ei
+
+(k ) W ],
+
+ ij = Ai W +
+
+W AiT
+
++ BYj
+
++ YjT BT
+
++
+
+1 
+
+I
+
++
+
+m k=1
+
+k [W EiT
+
+(k )
+
++
+
+Ei (k ) W ], then the multiobjective H2 /H investment policy
+
+problem for the fuzzy stochastic jump financial systems in (5)
+
+l
+
+2x~T P f (x(t)) = hi (z)x~T (t) AiT P + P Ai x~(t)
+
+(25)
+
+i=1
+
+l
+2x~(t)T P Bu (t) = hj (z)x~T (t) P BKj + (P BKj )T x~(t)
+j=1
+
+(26)
+
+l
+T (x~(t))Vx~x~ (x(t))(x~(t))  hi (z)x~T (t)CiT P Ci x~(t)
+i=1
+(27)
+
+and
+
+can be solved. Proof: Let V (x~(t)) = x~T (t)P x~(t) be the Lyapunov func-
+
+V (x~(t) + (x~(t),k )) - V (x~(t)) = [x~(t) + (x~(t),k )]T
+
+tion for the nonlinear stochastic jump financial system in (5),
+
+where P = P T > 0 is a positive-definite matrix.
+
+We derive the sufficient condition for J2 (u (t))   of the
+
+MOP in (18) first. Add and subtract the term dV (x~(t)) to the in-
+
+tegrand of E
+
+ 0
+
+(x~(t)T
+
+Q1
+
+x~(t)
+
++
+
+uT
+
+(t)R2
+
+u(t))dt
+
+. By the
+
+fact of lim V (x~ (t)) > 0 and Lemma 1, we have
+t
+
+l
+ОP [x~(t) + (x~(t),k )] - x~T (t)P x~(t)  hi(z)x~T (t)
+i=1
+О EiT (k ) P Ei (k ) + EiT (k ) P + [P Ei (k )] x~(t).
+(28)
+
+J2 (u(t)) = E
+
+
+(x~(t)T Q1 x~(t) + uT (t)R1 u(t))dt
+0
+
+It is clear that
+
+ E {V (x~0 )} + E
+
+
+[(x~(t)T Q1 x~(t) + uT (t)R1 u(t))dt
+
+E {V (x~0 )}  » (P ) E T r x~0T x~0
+
+0
+
+= » (P ) T r (Rx~0 )   (29)
+
++dV (x~)]} = E {V (x~0 )} + E
+
+
+(x~(t)T Q1 x~(t) + uT (t)
+
+and P   [T r (Rx~0 )]-1 I which is (20). Thus, the HJBI in (23) can be replaced by
+
+0
+
+ОR1 u(t) + 2x~(t)T P f (x~ (t)) + 2x~(t)T P Bu (t) + T (x~ (t))
+m
+ОP  (x~ (t)) + k {V (x~(t) + (x~(t),k ))
+k=1
+-V (x~(t))})dt} .
+
+If both the following HamiltonГJacobiГBellman inequality (HJBI)
+
+x~(t)T Q1 x~(t) + uT (t)R1 u(t) + 2x~(t)T P f (x~ (t))
+
+m
++2x~(t)T P Bu (t) + T (x~ (t)) P  (x~ (t)) + k
+k=1
+
+О{V (x~(t) + (x~(t), k ) - V (x~(t))}  0
+
+(23)
+
+x~T (t)Q1 x~(t) + uT (t)R1 u(t) + 2x~(t)T P f (x~ (t))
+m
++2x~(t)T P Bu (t) +  (x~ (t))T P  (x~ (t)) + k
+k=1
+
+ll
+{V (x~(t) + (x~(t),k ) - V (x~(t))} 
+i=1 j=1
+
+hi (z)hj (z)x~T (t)(Q1 + KjT R1 Kj + ATi P + P Ai
+m
++P BKj + (P BKj )T + CiT P Ci + k [EiT (k )
+k=1
+
+ОP Ei (k ) + EiT (k ) P + P Ei (k )])x~(t).
+
+(30)
+
+and initial mean inequality E {V (x~0 )}  
+
+Now, We derive the sufficient condition for J   of the MOP (24) in (18).
+
+WU et al.: MULTIOBJECTIVE INVESTMENT POLICY FOR A NONLINEAR STOCHASTIC FINANCIAL SYSTEM: A FUZZY APPROACH
+
+467
+
+By using Lemmas 3 and 4, we get
+
+From inequalities in (30) and (32), if the following two algebraic Riccati like inequalities are satisfied:
+
+
+
+E
+
+x~T (t)Q2 x~(t) + uT (t)R2 u(t) dt
+
+0
+
+
+
+E
+
+x~T (t)Q2 x~(t) + uT (t)R2 u(t) dt + dV (x~)
+
+0
+
++ E {V (x~0 )} = E
+
+
+{(x»T (t) Q~2 x»T dt + uT (t)R2 u(t)
+0
+
++ 2x~T (t)P f (x~ (t)) + 2x~T (t)P Bu (t) + 2x~T (t)P v (t)
+
+m
++ T (x~ (t)) P  (x~ (t)) + k [V (x~(t) + (x~(t),k ))
+k=1
+
+- V (x~(t))])dt} + E {V (x~0 )}  E {V (x~0 )}
+
+
+
++E
+
+[x~T (t)Q2 x~(t) + uT (t)R2 u(t) + 2x~T (t)P
+
+0
+
+Оf (x~ (t)) + 2x~T (t)P Bu (t) + 1 x~T (t)P P x~ (t) 
+
++ T (x~ (t)) P  (x~ (t)) + vT (t) v (t)]dt
+
+m
++ k {V (x~(t) + (x~(t),k )) - V (x~(t))})dt .
+k=1
+
+If the following HamiltonГJacobiГIsaacs inequality is satisfied:
+
+x~T (t)Q2 x~(t) + uT (t)R2 u(t) + 2x~T (t)P f (x~ (t))
+
++ 2x~T (t)P Bu (t) + 1 x~T (t)P P x~ (t) + T (x~ (t)) 
+
+m
+О P  (x~ (t)) + k {V (x~(t) + (x~(t), k ))
+k=1
+
+- V (x~(t))}  0
+
+(31)
+
+then J(u (t))   for all possible v (t)  LF2 (R+ ; R3 ). By introducing the TГS fuzzy model, we obtain the
+following inequality:
+
+Q1 + KjT R1 Kj + ATi P + P Ai + P BKj + (P BKj )T
+
+m
++ CiT P Ci + k EiT (k ) P Ei (k ) + EiT (k ) P
+k=1
+
++P Ei (k )]  0
+
+(33)
+
+Q2 + KjT R2 Kj + ATi P + P Ai + P BKj + (P BKj )T
+
++
+
+CiT
+
+P Ci
+
++
+
+1 
+
+PP
+
++
+
+m
+
+k
+
+EiT (k ) P Ei (k )
+
+k=1
+
++ EiT (k ) P + P Ei (k )  0
+
+(34)
+
+then we have J2 (u (t))   and J(u (t))  , respectively. Let W = P -1 and Yj = Kj W ; then, the inequalities
+in (33) and (34) are equivalent to the following two inequalities, respectively:
+
+W Q1 W + YjT R1 Yj + W ATi + Ai W + BYj + (BYj )T
+
+m
++ W CiT W -1 Ci W + k [W EiT (k ) W -1 Ei (k ) W
+k=1
+
++ W EiT (k ) + Ei (k ) W ]  0
+
+(35)
+
+W Q2 W + YjT R2 Yj + W AiT + Ai W + BYj + (BYj )T
+
++ W CiT
+
+W -1 Ci W
+
++
+
+1 I
+
+
++
+
+m
+
+k [W EiT (k ) W -1
+
+k=1
+
+ОEi (k ) W + W EiT (k ) + Ei (k ) W ]  0.
+
+(36)
+
+By Schur complement [22], the quadratic inequalities are equivalent to the LMIs in (21) and (22).
+Definition 2 (see [21]): The nonlinear stochastic jump diffusion financial system in (5) or (11) is said to be exponentially mean square stable, if for some positive constants A > 0 and m > 0, the following inequality holds:
+
+E
+
+x~ (t)
+
+2 2
+
+ A exp (-mt) .
+
+x~T (t)Q2 x~(t) + uT (t)R2 u(t) + 2x~(t)T P f (x~ (t)) (t) + 2x~(t)T P Bu + 1 x~T (t)P P x~ (t) + T (x~ (t)) P  (x~ (t))
+
+
+m
+
+l
+
++ k {V (x~(t) + (x~(t))) - V (x~(t))}  hi(z)
+
+k=1
+
+i,j=1
+
+hj (z)x~T (t)(Q2 + KjT R1 Kj + AiT P + P Ai + P BKj
+
++ (P BKj )T
+
++
+
+CiT
+
+P Ci
+
++
+
+1 
+
+PP
+
++
+
+m
+
+k [EiT (k )
+
+k=1
+
+О P Ei (k ) + EiT (k ) P + P Ei (k )])x~(t).
+
+(32)
+
+Theorem 2: For the nonlinear stochastic jump diffusion financial system in (5) or (11), if the external noise v(t) = 0, and u(t) is a feasible solution of the MOP in (19), then u(t) stabi-
+lizes the nonlinear stochastic Poisson jump diffusion financial
+system in (5) or (11) exponentially in the mean square sense, i.e., x(t)  xd (t) exponentially in the mean square sense.
+Proof: Since the given Lyapunov function V (x~(t)) = x~T (t)P x~(t) is satisfied with the following two inequalities:
+
+m1
+
+x~(t)
+
+2 2
+
+V
+
+(x~(t))  m2
+
+x~(t)
+
+2 2
+
+(37)
+
+where m1 > 0 and m2 > 0, by the Ito^ГLe┤vy formula of V (x~(t)) in (9) and the fact that u(t) is a feasible solution of the LMI-
+
+468
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+constrained MOP in (19), we obtain
+
+dE {V (x~(t))} = E {dV (x~(t))} = E{(2x~T (t)P f (x~(t))
+
+m
++ 2x~T (t)P Bu(t) + T (x~(t))P (x~(t)) + k
+k=1
+[V (x~(t) + (x~(t),k )) - V (x~(t))])dt}
+
+E
+
+-x~T (t)Q1 x~(t)
+
+dt  E
+
+-m3
+
+x~(t)
+
+2 2
+
+dt
+
+ -m3 E {V (x~(t))} dt < 0
+
+(38)
+
+m2
+
+where m3 is the smallest eigenvalue value of positive-definite matrix Q1 > 0.
+By using inequalities in (38), we get
+
+d E {V (x~(t))}  -m3 E {V (x~(t))}
+
+(39)
+
+dt
+
+m2
+
+which implies the following two inequalities:
+
+E x~(t) 2  E V (x~(t))  E V (x~0 ) exp -m3 t .
+
+m1
+
+m1
+
+m2
+
+(40)
+
+It is obvious that
+
+lim E
+t -
+
+x~(t)
+
+2 2
+
+=0
+
+and we obtain lim x~(t) = 0 exponentially in the mean
+
+square sense.
+
+t
+
+in (42), the Ito^ГLe┤vy formula of V (x~ (t)) is given as follows:
+
+dV (x~ (t)) = [Vx~T f (x~ (t)) + Vx~T Bu (t) + Vx~T v (t)
+
++ 1  (x~ (t))T 2
+
+Vx~x~  (x~ (t)) +
+
+m
+
+k {V (x~(t) + (x~(t),k ))
+
+k=1
+
+-V (x~(t)) - Vx~T  (x~(t), k )}]dt + Vx~T  (x~(t)) dW (t)
+m
++ k {V (x~(t) + (x~(t),k )) - V (x~(t))}dN^ (t; k ) . (44)
+k=1
+
+Thus, the sufficient condition for the fuzzy investment policy u(t) in (16) to solve the multiobjective H2 /H investment policy problem for the nonlinear stochastic jump diffusion financial system in (42) is given by the following theorem.
+Theorem 3: If the following LMI-constrained MOP can be solved:
+
+min
+
+(, )
+
+{P ,,K 1 ,K 2 ...,K l }
+
+s.t. the following LMIs, for all i, j = 1, 2, ..., l (45)
+
+P   [T r (Rx~0 )]-1 I
+
+(46)
+
+ 
+
+^ 2ij
+
+W -Q-1 1
+
+YjT
+0 -R1-1
+
+W CiT 0
+0 -W
+
+B. Multiobjective H2/H Investment Policy Problem for the Nonlinear Stochastic Jump Diffusion Financial System Driven by Marked Compensation Poisson Processes N^ (t; k )
+Moreover, in some situations, the nonlinear stochastic jump diffusion financial systems are driven by compensation Poisson processes [7]:
+N^ (t, k ) N (t; k ) - k t, for k = 1, 2, ..., m. (41)
+Thus, the stochastic nonlinear autonomous controlled system for the financial system in (5) can be replaced as follows:
+dx~(t) = (f (x~(t)) + Bu(t) + v(t)) dt
+m
++  (x~(t)) dW +  (x~(t), k ) dN^ (t; k ) . (42)
+k=1
+The overall fuzzy system in (10) should be modified as
+l
+dx~(t) = hi(z){[Aix~(t) + Bu(t) + v(t)] dt
+i=1 m
++ Cix~(t)dW (t) + Ei(k )x~ (t) dN^ (t; k )}. (43)
+k=1
+The Ito^ГLe┤vy formula for the nonlinear stochastic jump diffusion financial system driven by compensation Poisson process dN^ (t, k ) is given as
+Lemma 5 (see [6]): Let V : R3  R, V (и)  C2 R3 and V (и)  0. For the nonlinear stochastic jump diffusion system
+
+W EiT (1 )
+
+...
+
+W EiT
+
+ (m )
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+--1 1 W
+
+0
+
+...
+
+0 0 ... 0
+0
+
+  0
+
+(47)
+
+--m1 W
+
+ 
+
+^ ij
+
+W -Q-2 1
+
+YjT
+0 -R2-1
+
+W CiT 0
+0 -W
+
+W EiT (1 )
+
+...
+
+W EiT
+
+ (m )
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+--1 1 W
+
+0
+
+...
+
+0 0 ... 0
+0
+
+  0
+
+(48)
+
+--m1 W
+
+where W = P -1 , Yj = Kj W , ^ i2j = Ai W + W AiT + BYj +
+
+YjT BT , ^ ij
+
+=
+
+Ai W
+
++ W AiT
+
++ BYj
+
++ YjT BT
+
++
+
+1 
+
+I
+
+,
+
+then
+
+the
+
+WU et al.: MULTIOBJECTIVE INVESTMENT POLICY FOR A NONLINEAR STOCHASTIC FINANCIAL SYSTEM: A FUZZY APPROACH
+
+469
+
+multiobjective H2/H investment policy problem for the fuzzy stochastic jump diffusion financial systems in (42) can be solved.
+Proof: This proof is similar to Theorem 1. By applying Lemma 5, the HJIs in (23) and (31) will be replaced as
+
+x~(t)T Q1 x~(t) + uT (t)R1 u(t) + 2x~(t)T P f (x~ (t))
+m
++ 2x~(t)T P Bu (t) +  (x~ (t))T P  (x~ (t)) + k {V (x~(t)
+k=1
+
++ (x~(t),k ) - V (x~(t)) - Vx~T  (x~ (t) , k )}  0
+
+(49)
+
+Remark 3: Theorem 3 is similar to Theorem 1, ex-
+
+cept marked Poisson process N (t; k ) being replaced by marked compensation Poisson processes N^ (t; k ) and some modifications in ^ 2ij and ^ ij , i.e., the term
+
+m k=1
+
+k
+
+W EiT (k ) + Ei (k ) W
+
+is eliminated from ^ 2ij and
+
+^ ij in Theorem 3.
+
+Remark 4: The existence and uniqueness conditions for the
+
+stochastic differential equation in (42) are, respectively, given
+
+as follows [6]:
+
+The existence condition is
+
+and
+x~T (t)Q2 x~(t) + uT (t)R2 u(t) + 2x~T (t)P f (x~ (t)) + 2x~T (t)P Bu + 1 x~T (t)P P x~ (t) + T (x~ (t))
+
+m
+О P  (x~ (t)) + k {V (x~(t) + (x~(t)))
+k=1
+
+for all x~ (t)  R3
+f (x~(t)) 2 +  (x~(t)) 2 + u (x~(t)) 2
+m
++ i  (x~(t), k ) 2  K1 1 + x~ (t) 2
+k=1
+where K1 < . The uniqueness condition is
+
+- V (x~(t)) - Vx~T  (x~ (t), k )}  0
+
+(50)
+
+for all x~, y~  R3
+
+respectively.
+
+f (x~(t)) - f (y~(t)) 2 +  (x~(t)) -  (y~(t)) 2
+
+Based on above analyses in (49) and (50), the inequalities in (35) and (36) are replaced by
+
++ u (x~(t)) - u (y~(t)) 2
+
+W Q1 W + YjT R1 Yj + W AiT + Ai W + BYj + (BYj )T + W
+
+m
++ i  (x~(t), k ) -  (y~, k ) 2
+
+m
+О CiT W -1 Ci W + k [W EiT (k ) W -1 Ei (k ) W ]  0
+k=1
+
+k=1
+ K2 x~ (t) - y~ (t) 2
+
+(51) where K2 < .
+
+and
+
+IV. MULTIOBJECTIVE H2 /H INVESTMENT POLICY OF THE
+
+W Q1 W + YjT R1 Yj + W AiT + Ai W + BYj + (BYj )T + W
+
+NONLINEAR STOCHASTIC FINANCIAL SYSTEM DESIGN VIA LMI-CONSTRAINED MOEA ALGORITHM
+
+О
+
+W CiT
+
+-1 Ci W
+
++
+
+1 
+
+I
+
++
+
+m
+
+k [W EiT (k ) W -1 Ei (k ) W ]
+
+k=1
+
+The MOEA is a stochastic search method by simulating the natural selection in natural evolution. It is also particularly
+
+0
+
+(52)
+
+suitable for solving the multiobjective investment optimization problem of nonlinear stochastic financial systems due to
+
+respectively.
+
+its population-based nature, permitting a set of Pareto optimal
+
+By Schur complement [22], the quadratic inequalities are solutions to be obtained in a single run. For a multiobjective
+
+equivalent to the LMIs in (46)Г(48).
+
+H2/H investment policy problem of nonlinear stochastic jump
+
+Remark 2: In this study, we use the 3-D nonlinear stochas- diffusion financial system, the MOP in Theorems 1 and 3 with
+
+tic financial system to illustrate the proposed multiobjective LMI constraints to guarantee the robust stability of nonlinear
+
+H2/H investment theories. However, the proposed theories stochastic financial system of (5) or (11) under continuous and
+
+can be extended to the n-dimensional nonlinear stochastic finan- discontinuous parametric fluctuations and external disturbance.
+
+cial system, i.e., the system state x(t) of the nonlinear stochas- It is not easy to solve the MOP in Theorem 1 or Theorem 3,
+
+tic financial system in (5) can be of arbitrary n-dimension. At directly. In this section, an LMI-constrained MOEA searching
+
+this situation (n-dimentional nonlinear stochastic financial sys- algorithm is developed to help us solve the MOP in Theorem 1
+
+tem), the nonlinear functions are defined as f :Rn  Rn ,  : or Theorem 3, iteratively. Before further discussion, some im-
+
+Rn  Rn , and  : Rn О   Rn , which are nonlinear Borel portant definitions of Pareto optimality of an LMI-constrained
+
+measurable continuous functions. Moreover, these constant ma- MOP for nonlinear stochastic financial system are given
+
+trices Ai, Ci, and Ei (k ) for the TГS fuzzy model in (11) as follows:
+
+and (43) should be RnОn matrices and B  RnОp where u
+
+Definition 3 (see [29] and [31]): Consider the LMI-
+
+(t)  RnОp . Once the n-dimensional nonlinear stochastic fi- constrained MOP in (19). A feasible objective vector (1 , 1 )
+
+nancial system can be approximated by the TГS fuzzy model, is said to dominate another feasible objective vector (2 , 2 )
+
+the proposed LMI-constrained MOEA can efficiently solve the if and only if 1  2 and 1  2 for at least one inequality
+
+multiobjective H2 /H investment policy problem, too.
+
+being a strict inequality.
+
+470
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+Definition 4 (see [29] and [31]): Let (P 1 , K11 , ..., Kl1 ) and (P 2 , K12 , ..., Kl2 ) be the feasible solution corresponding to the objective value (1 , 1 ) and (2 , 2 ) subject to the LMIs in (20)Г(22) for all i, j = 1, ..., l, respectively. P 1 , K11 , .., Kl1 is said to dominate P 2 , K12 , .., Kl2 if 1 2 and 1  2 for at least one inequality being a strict inequality.
+
+Definition 5 (see [29] and [31]): A
+
+solution
+
+(P , K1, .., Kl) with objective value (, ) is said to
+
+be a Pareto optimal solution of (19), if there does not exist
+
+another feasible solution (P, K1, .., Kl) with objective value (, ), such that (, ) dominates (, ).
+
+Definition 6 (see [29] and [31]): For the LMI-constrained
+
+MOP of nonlinear stochastic financial system in (19), the Pareto
+
+front
+
+PF
+
+is
+
+defined 
+
+as
+
+
+
+(, )|(P , K1, .., optimal solution and
+
+Kl) (,
+
+is a )
+
+Pareto is generated
+
+PF
+
+=
+
+
+
+by (P , K1, .., Kl) subject to the (20), (21)
+and (22), for all i, j = 1, ..., l.
+
+LMIs
+
+in
+
+The LMI-constrained MOP for the nonlinear stochastic financial system is concerned with evolution algorithm (EA). For the proposed LMI-constrained MOEA, the EA operates on a number of encoding feasible objective vectors called population so that for a feasible objective vector (k , k ), it should be encoded into a chromosome Ck . A feasible chromosome Ck is defined as a coded feasible objective vector. The chromosome of EA for the LMI-constrained MOEA employs the real-valued representation to avoid long binary string and large searching space in EA for the multiobjective H2 /H investment policy of the nonlinear stochastic jump diffusion financial system. In general, EA takes population to be the algorithm input and return the chromosomes with fitness performance to be the next population. The LMI-constraints in (20)Г(22) to guarantee robust stability of financial system and the two upper bounds  and  are just like the environments in natural evolution. Only the adaptive chromosomes survive. For guaranteeing that all of these chromosomes can be decoded as the feasible objective vectors for the MOP in (19), each chromosome Ck should be examined by the existence of a feasible solution P k , K1k , .., Klk in LMIs in (20)Г(22) with the LMI toolbox in MATLAB after mating operation. If some chromosomes are not feasible, these chromosomes need to be canceled from the candidate chromosomes. It is worth to mention that LMI constraints in (20)Г(22) impose more restrictions on the searching of the feasible chromosomes than the conventional MOEA approach. Besides, using the LMI toolbox in MATLAB could help efficiently examine whether these chromosomes satisfy the LMIs in (20)Г(22), which accelerates the selection speed of the initial populations via the initialization scheme.
+Design procedure of multiobjective H2 /H investment policy of nonlinear stochastic financial systems: Step 1: Select the searching range (0 , 0 ) О (», ») for the
+feasible objective vector (, ) and set the iteration number N» , the population number Np , the crossover ration Nc , and the mutation ratio Nm in the LMIconstrained MOEA.
+
+Step 2: Select Np feasible chromosomes from the feasible
+
+chromosome set randomly to be the initial population
+
+P1 . Step 3: Set iteration index Ni = 1. Step 4: Operate the EA with the crossover ratio Nc , the mu-
+tation ratio Nm , and generate 2Np number feasible
+
+chromosomes by examining whether their correspond-
+
+ing objective vectors are feasible objective vectors for
+
+the LMIs in (20)Г(22).
+
+Step 5: Set the iteration index Ni = Ni + 1 and select Np chromosomes from the 2Np feasible chromosomes in
+
+Step 4 through nondominated sorting method to be the
+
+Step 6:
+
+population PNi . Repeat Steps 4 and
+
+5
+
+until
+
+the
+
+iteration
+
+number
+
+N»
+
+is
+
+reached. If the iteration number N» is satisfied, then we
+
+set PNi = PF . Step 7: Select a "preferable" feasible objective individual
+,   PF according to designer own preference.
+Once the "preferable" feasible objective individual is
+
+selected, the corresponding Pareto optimal solution
+
+ = W , K1, K2 . . . , Kl
+
+is obtained. By using , the proposed multiob-
+
+jective H2 /H fuzzy investment policy u(t) =
+
+l i=1
+
+hi (z)
+
+Kix~(t)
+
+with Ki = YiW -1 in (16)
+
+can be constructed and the multiobjective H2 /H investment policy problem in (5) or (11) can be solved with J2 =  and J = , simultaneously. Note that the system diagram of the multiobjective H2 /H investment policy problem is given in Fig. 1, and the system
+
+diagram of the proposed LMI-constrained MOEA is given in
+
+Fig. 2, used in the design procedure.
+
+Remark 5: The computational complexity of the pro-
+
+posed LMI-constrained MOEA algorithm is approximately
+
+O n (n + 1) lNp2 N» , including O
+
+n(n+1)l 2
+
+for solving the
+
+LMIs, and O 2Np2 N» for the MOEA, where n is the dimension of system state x (t), N» is the iteration number of the MOEA, l
+
+is the number of local linear models of the nonlinear stochastic
+
+financial system in (11), and Np is the population number of the LMI-constrained MOEA.
+
+V. SIMULATION RESULTS
+To illustrate the design procedure and to confirm the performance of the proposed optimal investment policy for nonlinear stochastic jump diffusion financial system, we introduce a nonlinear stochastic jump diffusion financial system to mimic an emerging market in (2). In general, an emerging market always suffer from continuous and discontinuous intrinsic random fluctuations due to national and international situation change, oil price change, the surplus between investment and saving, the variable of interest rate, etc. The external investment disturbance is caused by the unpredictable investment changes or worldwide events such as war, nature disaster, fatal epidemic, etc.
+
+WU et al.: MULTIOBJECTIVE INVESTMENT POLICY FOR A NONLINEAR STOCHASTIC FINANCIAL SYSTEM: A FUZZY APPROACH
+
+471
+
+Fig. 3. Trajectories of the interest rate x(t), the investment demand y(t), and the price index z(t) for the nonlinear stochastic jump diffusion system in (2), i.e., the system dynamic behaviors for nonlinear stochastic jump diffusion financial system in (3) without introducing investment policy u (t).
+
+  -0.1z(t), if i = 5
+
+3
+
+(x(t), y(t), z(t), i)
+
+=
+
+
+
+0.1z(t), 0, else.
+
+if
+
+i
+
+=
+
+6
+
+Suppose the initial states are given as
+
+x~0 = (0.37, -3.06, 0.71) .
+
+The external investment disturbance is assumed to be
+
+Fig. 2. Flowchart of the proposed LMI-constrained MOEA.
+
+v (t) = [0.01 sin (2t) , -0.02 sin (2t) , -0.01 sin (2t)] .
+
+The related parameters and intrinsic continuous and discontinuous fluctuation are, respectively, given as follows:
+
+a = 1.5, b = 0.2, c = 0.25
+
+ = {1 , 2 , ..., 6 } i = 0.3, for i = 1, 2, 3, 4 i = 0.2, for i = 5, 6
+1 (x(t), y(t), z(t)) = 0.03 О [z(t) + (y(t) - a) x(t)]
+2 (x(t), y(t), z(t)) = 0.01 О 1 - by(t) - (x(t))2
+
+3 (x(t), y(t), z(t)) = 0.02 О [-x(t) - cz(t)]
+
+B = I3О3
+
+  0.3x(t), if i = 1
+
+1
+
+(x(t), y(t), z(t), i)
+
+=
+
+
+
+-0.3x(t), 0, else
+
+if
+
+i
+
+=
+
+2
+
+  0.05y(t), if i = 3
+
+2
+
+(x(t), y(t), z(t), i)
+
+=
+
+
+
+-0.05y(t), 0, else
+
+if
+
+i
+
+=
+
+4
+
+Fig. 3 is used to describe the dynamical behaviors of the nonlinear stochastic jump diffusion financial system in (2) with much fluctuations in real situation. It is seen that the three states x(t), y(t), and z(t) of the nonlinear stochastic financial system fluctuate with random jumps. Therefore, the multiobjective H2/H investment policy of the MOP in (17) is employed by the government to design an investment policy to regulate the stochastic financial system to achieve the following desired steady state:
+
+xd = (0.1, 4.5, - 0.2)
+
+(53)
+
+i.e., the government of emerging market expects its financial
+system to be regulated to achieve a desired financial steady state with interest rate 0.1, investment demand 4.5, and price index -0.2 to coordinate inflation rate, supply and demand in the emerging market to stimulate the recovery of emerging market
+under continuous and discontinuous random fluctuation.
+In this example, we assume the vector of premise variables z = [x1 (t), x2 (t)]T = [z1 (t), z2 (t)]T in (11) and (16) is available in the regulation design. Since there are eight fuzzy sets associated with premise variable z1(t) and eight fuzzy sets associated with premise variable z2(t), totally there are 64 fuzzy IFГTHEN rules, in the TГS fuzzy financial system. The operation
+
+472
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+Fig. 4. Pareto front for Pareto optimal solutions of the MOP in (19) can be obtained by the proposed LMI-constrained MOEA. Three marked Pareto optimal solutions are more preferable multiobjective H2 /H investment policy with their simulations in Figs. 3 and 5, respectively.
+
+Fig. 5. Interest rate trajectories x (t) of the three chosen Pareto solutions.
+
+TABLE I PARETO OBJECTIVE VECTORS OF THE THREE CHOSEN INDIVIDUALS IN MEAN
+SENSE
+
+Pareto solution 1
+
+Pareto solution 2
+
+Pareto solution 3
+
+(49.7177, 0.5055) (21.5353, 0.5380) (11.3162, 0.7667)
+
+point of the TГS fuzzy model and their linearized local linear stochastic models are shown in the Appendix. Suppose the weighting matrices in the multiobjective H2 /H investment policy in (17) is used to regulate the stochastic financial system with the following weighting matrices:
+Q1 = I3О3 , R1 = I3О3 , Q2 = I3О3 , R2 = 0.5I3О3 .
+
+Fig. 6. Investment demand trajectories y (t) of the three chosen Pareto solutions.
+
+Based on the proposed design procedure of the multiobjective H2 /H optimal investment policy, the MOEA algorithm is employed to solve the MOP in (19). In the MOEA algorithm, the searching region  is set as  = [0 70] О [0.4 1.2], the maximum number of individuals Np = 80, iteration number Ni = 100, crossover rate Nc = 0.8, and mutation ratio Nm = 0.2.
+Once the iteration number N» = 100 is achieved, the Pareto front PF for the Pareto optimal solutions of the MOP for the investment policy of the nonlinear stochastic jump diffusion financial system of the emerging market in (5) or (11) can be obtained as shown in Fig. 4.
+In order to illustrate how to select the preferable solution of the investment policy, we choose three Pareto optimal solutions from the Pareto front for comparison, whose Pareto objective vectors are given in Table I. Moreover, in Figs. 5Г7, the simulation results of the nonlinear stochastic jump diffusion financial system for the emerging market are given to illustrate the performance of the multiobjective H2/H optimal fuzzy investment policy of the three chosen Pareto optimal solutions for the nonlinear stochastic jump diffusion financial system in (5) or (11). The corresponding P matrices in (20) of the three chosen Pareto solutions are also given in Table II. In Figs. 5Г 7, the Pareto optimal solution 1 has the best J performance
+
+Fig. 7. Price index trajectories z (t) of the three chosen Pareto solutions.
+index of the three chosen Pareto optimal solutions so that the trajectory of Pareto optimal solution 1 has the minimum perturbation but has the maximum J2 performance index. However, for the Pareto optimal solution 3, it has the minimum J2 performance index, but its trajectory has the maximum perturbation of the three because it has the maximum J performance index. It is easy to observe that Pareto solution 2 is the preferable regulation solution of the three chosen Pareto solutions because the
+
+WU et al.: MULTIOBJECTIVE INVESTMENT POLICY FOR A NONLINEAR STOCHASTIC FINANCIAL SYSTEM: A FUZZY APPROACH
+
+473
+
+TABLE II POSITIVE-DEFINITE MATRIX OF THE THREE CHOSEN PARETO OPTIMAL
+SOLUTIONS IN FIG. 2
+
+Pareto solution 1
+
+
+
+
+
+68.54 1.56 10.49
+
+Psolution1 =  1.56 2.28 1.99 
+
+10.49 1.99 24.13
+
+Pareto solution 2
+
+
+
+
+
+31.44 0.18 -0.77
+
+Psolution2 =  0.18 1.65 0.71 
+
+-0.77 0.71 10.35
+
+Pareto solution 3 
+10.57 -0.21 Psolution3 =  -0.21 1.03
+-1.94 0.41
+
+ -1.94 0.41  4.79
+
+Pareto solution 2 is a compromise solution for J2 and J in the multiobjective investment policy problem of nonlinear stochastic jump diffusion financial system. However, these three Pareto optimal solutions have satisfactory regulation results to achieve their desired steady states of the financial system in spite of intrinsic continuous and discontinuous random fluctuation and external disturbance, respectively.
+
+APPENDIX The eight operation points of x1 are given at x11 = -1.50, x21 = -1.11, x13 = -0.72, x41 = -0.33 x15 = 0.07, x16 = 0.46, x17 = 0.85, x81 = 1.24 and the eight operation points of x2 are given at x21 = -3.30, x22 = -3.10, x23 = -2.90, x42 = -2.70 x25 = -2.50, x62 = -2.30, x27 = -2.10, x82 = -1.90. The qth rule of this TГS fuzzy model for the nonlinear stochastic jump diffusion financial system in (5) is described as
+
+System Rule q = 8 (j - 1) + i, for i, j = 1, ..., 8
+
+if z1 is xi1 and z2 is x2j then dx~(t) = [Aq x~(t) + Bu(t) + v(t)] dt
+m
++ Cq x~(t)dW (t) + Eq (k )x~ (t) dN (t; k ) (54)
+k=1
+
+where
+
+
+
+
+
+
+
+
+
+Aq
+
+=
+
+
+
+M1q M2q
+
+xd M3q
+
+1 0  ,
+
+Cq
+
+=
+
+
+
+0.3M1q 0.1M2q
+
+0.3xd 0.1M3q
+
+0.3 0 
+
+M4q 0 -c
+
+0.2M4q
+
+0
+
+-0.2c
+
+VI. CONCLUSION
+This study has investigated the multiobjective H2 /H investment policy for nonlinear stochastic jump diffusion financial systems via the TГS fuzzy model interpolation method. Unlike the most multiobjective problems only focusing on algebraic systems by the indirect method in Lemma 2, the proposed multiobjective H2 /H investment policy could solve the optimal robustness and regulation problems of a nonlinear stochastic jump diffusion financial system to achieve a desired target with a less risk and a less regulation investment effort, simultaneously. To avoid solving nonlinear system dynamic-constrained MOP, the TГS fuzzy model interpolation method is employed such that the nonlinear system dynamic constraints can be replaced by two sets of LMI constraints. If there exist some feasible solutions for the LMI constraints in (20)Г(22), the LMI-constrained MOP could be solved easier by the proposed LMI-constrained MOEA algorithm. Thus, the multiobjective H2/H investment policy for nonlinear stochastic jump diffusion financial systems can be solved efficiently by the help of the commercial software MATLAB via LMI toolbox. When the Pareto front is obtained for Pareto optimal solutions of the MOP in (19), the manager can select a preferable fuzzy investment policy from the set of Pareto optimal fuzzy investment policy according to his/her own preference and finish the multiobjective H2 /H investment policy design of the nonlinear stochastic financial system. Finally, an example is given to confirm the satisfactory performance of the proposed multiobjective H2 /H investment policy design for nonlinear stochastic jump diffusion financial systems through the computer simulation.
+
+M1q
+
+=
+
+-a + xj2
+
++
+
+yd
+
++
+
+1 xi1
+
+,
+
+M2q
+
+=
+
+-xi1
+
+- 2xd
+
+M3q
+
+=
+
+-b +
+
+2 x2j
+
+,
+
+M4q
+
+=
+
+-1 -
+
+3 x1i
+
+,
+
+1
+
+=
+
+zd
+
++ xd yd
+
+- axd
+
+2 = 1 - byd - (xd )2 , 3 = xd + czd
+
+Eq (1 ) = diag([0.21, 0, 0]), Eq (2 ) = diag([-0.3, 0, 0])
+
+Eq (3 ) = diag([0, 0.05, 0]), Eq (4 ) = diag([0, -0.05, 0])
+
+Eq (5 ) = diag([0, 0, -0.1]), Eq (6 ) = diag([0, 0, 0.15]).
+
+REFERENCES
+[1] J. H. Ma and Y. S. Chen, "Study for the bifurcation topological structure and the global complicated character of a kind of nonlinear finance system (I)," Appl. Math. Mech., vol. 22, no. 11, pp. 1240Г1251, 2001.
+[2] J. H. Ma and Y. S. Chen, "Study for the bifurcation topological structure and the global complicated character of a kind of nonlinear finance system (II)," Appl. Math. Mech., vol. 22, no. 11, pp. 1240Г1251, 2001.
+[3] S. H. Strogatz, Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering. Reading, MA, USA: Addison-Wesley, 1994.
+[4] H. W. Lorenz, Nonlinear Economic Dynamics and Chaotic Motion. New York, NY, USA: Springer, 1993.
+[5] W. C. Chen, "Nonlinear dynamics and chaos in a fractional-order financial system," Chaos, Solitons Fractals, vol. 36, no. 5, pp. 1305Г1314, 2008.
+[6] B. пksendal and A. Sulem, Applied Stochastic Control of Jump Diffusions, 2nd ed. Berlin, Germany: Springer, 2007.
+[7] F. Hanson, Applied Stochastic Processes and Control for Jump-Diffusions: Modeling, Analysis and Computation, 2nd ed. Philadelphia, PA, USA: SIAM, 2007.
+[8] N. C. Framstad, B. пksendal, and A. Sulem, "Optimal consumption and portfolio in a jump diffusion market with proportional transaction costs," J. Math. Econ., vol. 35, pp. 233Г257, Apr. 2001.
+[9] R. Cont and P. Tankov, Financial Modelling with Jump Processes. Boca Raton, FL, USA: CRC Press, 2004.
+
+474
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+[10] I. Pan, S. Das, and S. Das, "Multi-objective active control policy design for commensurate and incommensurate fractional order chaotic financial systems," Appl. Math. Model., vol. 39, no. 2, pp. 500Г514, 2015.
+[11] B. S. Chen, C. S. Tseng, and H. J. Uang, "Robustness design of nonlinear dynamic systems via fuzzy linear control," IEEE Trans. Fuzzy Syst., vol. 7, no. 5, pp. 571Г585, Oct. 1999.
+[12] C. S. Tseng, B. S. Chen, and H. J. Uang, "Fuzzy tracking control design for nonlinear dynamic systems via T-S fuzzy model," IEEE Trans. Fuzzy Syst., vol. 9, no. 3, pp. 381Г392, Jun. 2001.
+[13] F. L. Lewis, L. Xie, and D. Popa, Optimal and Robust Estimation: With an Introduction to Stochastic Control Theory. Boca Raton, FL, USA: CRC Press, 2008.
+[14] D. P. Bertsekas and S. E. Shreve, Stochastic Optimal Control: The Discrete Time Case, vol. 139. New York, NY, USA: Academic, 1978.
+[15] R. F. Stengel, Stochastic Optimal Control: Theory and Application. Hoboken, NJ, USA: Wiley, 1986.
+[16] R. L. Haupt and S. E. Haupt, Practical Genetic Algorithms, 2nd ed. New York, NY, USA: Wiley, 2004.
+[17] S. H. Zak, System and Control. New York, NY, USA: Oxford Univ. Press, 2003
+[18] K. Tanaka and H. O. Wang, Fuzzy Control Systems Design and Analysis: A Linear Matrix Inequality Approach. New York, NY, USA: Wiley, 2001.
+[19] H. C. Sung, D. W. Kim, J. B. Park, and Y. H. Joo, "Robust digital control of fuzzy systems with parametric uncertainties: LMI-based digital redesign approach," Fuzzy Sets Sys., vol. 161, pp. 919Г933, 2010.
+[20] C. S. Tseng and C. K. Hwang, "Fuzzy observer-based fuzzy control design for nonlinear systems with persistent bounded disturbances," Fuzzy Sets Syst., vol. 158, no. 2, pp. 164Г179, Jan. 2007.
+[21] R. Khasminskii and G. N. Milstein, Stochastic Stability of Differential Equations, 2nd ed. Berlin, Germany: Springer, 2011.
+[22] S. Boyd, L. El Ghaoui, E. Feron, and V. Balakrishnan, Linear Matrix Inequalities in System and Control Theory. Philadelphia, PA, USA: SIAM, 1994.
+[23] B. S. Chen and W. Zhang, "Stochastic H2 /H control with state dependent noise," IEEE Trans. Automat. Control, vol. 49, no. 1, pp. 45Г57, Jan. 2004.
+[24] D. Hinrichsen and A. Pritchard, "Stochastic H," SIAM J. Control Optim., vol. 36, pp. 1504Г1538, 1998
+[25] X. Lin and R. Zhang, "H control for stochastic systems with Poisson jumps," J. Syst. Sci. Complexity, vol. 24, no. 4, pp. 683Г700, 2011.
+[26] G. Chen, G. Chen, and S. H. Hsu, Linear Stochastic Control Systems. Boca Raton, FL, USA: CRC Press, 1995.
+[27] G. P. Liu, J. B. Yang, and J. F. Whidborne, Multiobjective Optimisation & Control. Hertfordshire, U.K.: RSP Ltd, 2002
+[28] L. Rachmawati and D. Srinivasan,"Multiobjective evolutionary algorithm with controllable focus on the knees of the Pareto front," IEEE Trans. Evol. Comput., vol. 13, no. 4, pp. 810Г824, Aug. 2009.
+[29] K. Deb, Multi-Objective Optimization Using Evolutionary Algorithms, 1st ed. Chichester, U.K.: Wiley, 2001.
+[30] K. Deb, A. Pratap, S. Agarwal, and T. Meyarivan, "A fast and elitist multiobjective genetic algorithm: NSGA-II," IEEE Trans. Evol. Comput., vol. 6, no. 2, pp. 182Г197, Apr. 2002.
+[31] A. Abraham, L. C. Jain, and R. Goldberg, Evolutionary Multiobjective Optimization: Theoretical Advances and Applications. New York, NY, USA: Springer, 2005.
+[32] E. Branke, K. Deb, H. Dierolf, and M. Osswald, "Finding knees in multi-objective optimization," Parallel Problem Solving Nature, vol. 3242, pp. 722Г731, 2004.
+[33] W. H. Zhang and G. Feng, "Nonlinear stochastic H2 /H control with (x, u, v)-dependent noise: Infinite horizon case," IEEE Trans. Autom. Control, vol. 53, no. 5, pp. 1323Г1328, Jun. 2008.
+[34] B. S. Chen, C. S. Tseng, and H. J. Uang, "Mixed H2 /H fuzzy output feedback control for nonlinear dynamic systems: An LMI approach," IEEE Trans. Fuzzy Syst., vol. 8, no. 3, pp. 249Г265, Jun. 2000.
+[35] B. S. Chen, H. C. Lee, and C. F. Wu, "Pareto optimal filter design for nonlinear stochastic fuzzy systems via multiobjective optimization," IEEE Trans. Fuzzy Syst., vol. 23, no. 2, pp. 387Г399, Apr. 2015.
+[36] A. Gulisashvili, Analytically Tractable Stochastic Stock Price Models. New York, NY, USA: Springer, 2012.
+[37] E. M. Stein and J. C. Stein, "Stock price distributions with stochastic volatility: An analytic approach," Rev. Financial Stud., 4.4, pp. 727Г752, 1991.
+[38] J. Stoyanov, "Stochastic Financial Models," J. Roy. Statist. Soc.: Ser. A (Statist. Soc.) vol. 174, no. 2, pp. 510Г511, 2011.
+
+[39] H. Zhang, H. Yan, F. Yang, and Q. Chen, "Quantized control design for impulsive fuzzy networked systems," IEEE Trans. Fuzzy Syst., vol. 19, no. 6, pp. 1153Г1162, Dec. 2011.
+[40] H. K. Lam, "LMI-based stability analysis for fuzzy-model-based control systems using artificial TГS fuzzy model," IEEE Trans. Fuzzy Syst., vol. 19, no. 3, pp. 505Г513, Jun. 2011.
+[41] D. Hasan, N. Guеzel, and M. Sivri, "A fuzzy set-based approach to multi-objective multi-item solid transportation problem under uncertainty," Int. J. Fuzzy Syst., pp. 1Г14, 2015. [Online]. Available: http://link.springer.com/article/10.1007/s40815-015-0081-9
+Chien-Feng Wu received the B.S. degree in electrical engineering and the M.S. degree in electrical engineering from Chung Hua University, Hsinchu, Taiwan, in 2006 and 2008, respectively. He is currently working toward the Ph.D. degree in electrical engineering with the Laboratory of Control and Systems Biolog, Department of Electrical Engineering, National Tsing Hua University, Hsinchu.
+His current research interests include robust control, fuzzy control, multiobjective optimization, and nonlinear stochastic systems.
+Bor-Sen Chen (F'01ГLF'14) received the B.S. degree from the Tatung Institute of Technology, Taipei, Taiwan, the M.S. degree from National Central University, Chungli, Taiwan, and the Ph.D. degree from the University of Southern California, Los Angeles, CA, USA, in 1970, 1973, and 1982, respectively.
+He was a Lecturer, Associate Professor, and Professor with the Tatung Institute of Technology from 1973 to 1987. He is currently a Professor of electrical engineering and computer science with National Tsing Hua University, Hsinchu, Taiwan. His current research interests include control engineering, signal processing, and systems biology. Dr. Chen has received the Distinguished Research Award from the National Science Council of Taiwan four times. He is a Research Fellow of the National Science Council of Taiwan and holds the Excellent Scholar Chair in engineering. He has also received the Automatic Control Medal from the Automatic Control Society of Taiwan in 2001. He is an Associate Editor of the IEEE TRANSACTIONS ON FUZZY SYSTEMS from 2001 to 2006 and Editor of the Asian Journal of Control. He is a Member of the Editorial Advisory Board of Fuzzy Sets and Systems and the International Journal of Control, Automation and Systems. He was the Editor in Chief of the International Journal of Fuzzy Systems from 2005 to 2008.
+Weihai Zhang (M'10ГSM'16) received the M.S. degree from Hangzhou University, Hangzhou, China, and the Ph.D. degree from Zhejiang University, Hangzhou, in 1994 and 1998, respectively.
+He is currently a Professor with the Shandong University of Science and Technology, Qingdao, China, and a Taishan Scholar of Shandong Province. He has published more than 100 journal papers. His research interests include linear and nonlinear stochastic optimal control, robust H control and estimation, stochastic stability, and stabilization. Dr. Zhang is an Associate Editor of the Asian Journal of Control and an Associate Editor of the Conference Editorial Board of the IEEE Control Systems Society. His representative paper "SIAM J. Control and Optimization, vol. 44, no. 6, pp. 1973Г1991, 2006" has been selected as a featured fast-moving front paper by Thomson Reuters Science Watch, and has been selected as the most cited paper in the research area of Mathematics by Essential Science Indicator from Thomson Reuters.
+
+
+

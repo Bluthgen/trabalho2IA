@@ -1,0 +1,960 @@
+1040
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+Estimating Tipping Points in Feedback-Driven Financial Networks
+Zvonko Kostanjcar, Member, IEEE, Stjepan Begusic´, Harry Eugene Stanley, and Boris Podobnik
+
+Abstract--Much research has been conducted arguing that tipping points at which complex systems experience phase transitions are difficult to identify. To test the existence of tipping points in financial markets, based on the alternating offer strategic model we propose a network of bargaining agents who mutually either cooperate or compete, where the feedback mechanism between trading and price dynamics is driven by an external "hidden" variable R that quantifies the degree of market overpricing. Due to the feedback mechanism, R fluctuates and oscillates over time, and thus periods when the market is underpriced and overpriced occur repeatedly. As the market becomes overpriced, bubbles are created that ultimately burst as the market reaches a crash tipping point Rc. The market starts recovering from the crash as a recovery tipping point Rr is reached. The probability that the index will drop in the next year exhibits a strong hysteresis behavior very much alike critical transitions in other complex systems. The probability distribution function of R has a bimodal shape characteristic of small systems near the tipping point. By examining the S&P500 index we illustrate the applicability of the model and demonstrate that the financial data exhibit tipping points that agree with the model. We report a cointegration between the returns of the S&P 500 index and its intrinsic value.
+Index Terms--Complex systems, cooperative game theory, feedback, networks, market crash, tipping point.
+I. INTRODUCTION
+A LTHOUGH a lot of network science research has focused on how network collapse occurs when certain internal parameters approach their tipping points [1], there is a broad class of real-world complex networks in which the dynamics are driven by "hidden" external variables [2]­[4] in the form of feedback mechanisms [5], [6]. The tipping points at which these networks collapse have not yet been adequately understood [7]­[13].
+Manuscript received September 28, 2015; revised March 06, 2016 and June 24, 2016; accepted July 15, 2016. Date of publication July 19, 2016; date of current version August 12, 2016. This work was supported in part by the Croatian Science Foundation under the project 5349. The work of B. Podobnik was supported in part by the University of Rijeka. The work of H. E. Stanley was supported by National Science Foundation under Grants CMMI 1125290 and PHY 1505000. The guest editor coordinating the review of this manuscript and approving it for publication was Dr. Danilo Mandic.
+Z. Kostanjcar and S. Begusic´ are with the Faculty of Electrical Engineering and Computing, University of Zagreb, Zagreb 10 000, Croatia (e-mail: zvonko.kostanjcar@fer.hr; Stjepan.Begusic@hotmail.com).
+H. E. Stanley is with the Center for Polymer Studies and Department of Physics, Boston University, Boston, MA 02215 USA (e-mail: hes@bu.edu).
+B. Podobnik is with the Faculty of Civil Engineering, University of Rijeka, Rijeka 51 000, Croatia, also with the Center for Polymer Studies and Department of Physics, Boston University, Boston, MA 02215 USA, and also with the Zagreb School of Economics and Management, Zagreb 10 000, Croatia (e-mail: bp@phy.hr).
+Color versions of one or more of the figures in this paper are available online at http://ieeexplore.ieee.org.
+Digital Object Identifier 10.1109/JSTSP.2016.2593099
+
+In a buyer/seller financial network the trading dynamics are strongly affected by trader perceptions that the market is overpriced or underpriced. In a landlord/renter network a hidden variable is the ratio between the average apartment price and the average renter income. In a university/student network a hidden variable is the ratio between the average tuition and the average family income. In each of these examples, increasing the ratio increases the probability of network collapse, and our goal is to quantify the ratio that causes networks to collapse. Here we focus on financial trading markets where the trading decisions made by the market players are influenced by their expectations about the future. With the passing of time they learn whether their expectations about future market behavior were accurate. Overly-optimistic predictions in particular are very time-limited and are often followed by adjustments in the market price so abrupt that they cause the market to collapse.
+Extensive research developments exist on the topic of collapses in real-world networks such as ecological, social and economic systems [1], [2]. Scheffer et al. [7] report evidence of hysteretic behavior in ecological systems around their tipping points, and later suggest generic early-warning signals, such as critical slowing down, that precede catastrophic shifts [10], [14]. The core concepts in microscopic modelling of ecological systems [11] include mechanisms of cascading failures, herd behavior and contagion [15], [16], and are crucial to a number of other real-world networked systems [8].
+Ideas of herd behavior and contagion and their application in agent-based models are in the foundations of explaining critical events in financial markets [17]­[19]. Lux [20] explains the emergence of bubbles as an infection process among traders which leads to equilibrium prices deviating from fundamental values. Eventually, Lux and Marchesi [21], [22] challenge the "efficient market hypothesis" and present a model of interacting agents switching between "fundamentalist" and "noisy trader" strategies, based on the fundamental price as the input. Although their fundamental prices have Gaussian relative changes, the interaction of agents generates power-law scaling properties and temporal dependence in volatility. The Cont­Bouchaud model [23] accounts for heavy tails in stock market returns through agent interaction which induces herd behavior. They illustrate the fact that a market model without such agent interaction would give rise to normally distributed aggregate fluctuations, whereas agent interaction accounts for known stylized facts on market returns.
+Sornette [24] identifies risk-driven and price-driven approaches to modelling financial bubbles and crashes--in the risk-driven model the crash hazard comes from herding which drives the bubble price, whereas in the price-driven model the price itself creates the crash hazard through feedback
+
+1932-4553 Š 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
+
+KOSTANJC AR et al.: ESTIMATING TIPPING POINTS IN FEEDBACK-DRIVEN FINANCIAL NETWORKS
+
+1041
+
+mechanisms. Abreu and Brunnermeier [25] present a model where market bubbles emerge, persist and burst due to synchronization of agent strategies. They argue that rational arbitrageurs are aware that the market will eventually collapse, but before it happens they want to "ride the bubble" and generate high returns. They indicate that a bubble bursts when the fraction of speculative traders leaving the market exceeds some threshold, which is the tipping point in their model.
+Recently, studies applying concepts of herding and imitation in both market crashes as well as rebounds report evidence of similar mechanics in these phenomena [26]­[28]. Furthermore, analytical studies of agent-based market models provide new opportunities for parametrization directly from market data, making such models applicable in a number of risk management scenarios [29]. A particularly important problem is the analysis of market drawdowns (so called "Dragon-kings" or "Black swans") [24], [30], which novel studies attempt to account for [31] since understanding them is of special value in risk management [32].
+According to Johnston and Djuric´ [33], with the advances of signal processing, we can afford to study risk management with high complexity models based on computational methods that include nonlinearities and many hidden unknowns. So, from a signal processing perspective, we are presented with the challenge of designing an appropriate model, as unconditional approaches will have an inherent misspecification. Schweitzer et al. [34] identify network structures, heterogenous agents and systemic feedbacks as some of the most important challenges in modelling economic networks. In addition, a significant issue in explaining critical phenomena is the lack of empirical data--there are few occurrences of such phenomena (bubbles and crashes) for which historic data are available, which makes identifying systemic risk factors difficult but nevertheless crucial.
+Here we introduce a combined approach, employing opinion clustering, competition/cooperation and feedback mechanisms, with the fundamental price (identified as the intrinsic value in our model) as the input. We propose a network of bargaining agents [35]­[39] along with the competition and cooperation mechanisms between them [40]­[43]. This paper presents a computational model which, with an intrinsic value input, generates market prices--unlike generic computational models (such as neural networks), the proposed model is built specifically to illustrate market dynamics. We demonstrate how the degree of market overpricing through a feedback mechanism between trading and price dynamics induces further market overpricing, market bubbles, and ultimately market collapse [25], [44]­[47]. Beyond analyzing the crash tipping points, we also inspect the points at which the network model rebounds and the markets start recovering. We find that a well-known US financial index, the S&P 500 index, exhibits a hysteresis behavior, as well as market-collapse tipping points and recovery tipping points that confirm the predictions of our network model. We report that the model, with only the change in the S&P 500 intrinsic value as input, consistently generates prices which exhibit appropriate heavy-tailed drawdown and drawup distributions. Furthermore, we justify the applicability of the model by
+
+Fig. 1. Competition, cooperation, and feedback mechanism between trading process and price dynamics in a coupled network model. Inflow of information determines intrinsic price, a genuine, fundamental information about an asset. The ratio between market price and intrinsic price affects the trading dynamics which in turn change the trading pattern.
+demonstrating the possibility of deriving early-warning indicators and drawing predictions of future market performances for the S&P 500 index.
+II. COMPLEX NETWORK MARKET MODEL
+A. Initial Networks
+Because most human activity is limited by the finite availability of resources, individuals are compelled to bargain over the division of those resources [35], [43]. Bargaining has been at the core of trade from the earliest recorded human history when, prior to the introduction of currency, goods and services were bartered. Today bargaining is ubiquitous and ranges from haggling for food items in certain cultures to negotiations between large international business firms [3], [47]. The bottom line in every market is the outcome of the bargaining process, e.g., market price. Although standard axiomatic bargaining theory idealizes the bargaining problem by assuming that individuals are highly rational as they negotiate their desires for various resources, panic and irrational behavior [44] do occur in real-world complex systems including political networks and financial markets. This irrational behavior strongly affects the bargaining process, affects entire complex network systems, and causes bubbles and crashes. Irrespective of market trading rules, players use strategic reasoning and the information available to them when proposing initial bargaining prices [29], [35], [43], [48]­[51]. For example, someone selling an apartment needs to know the prices being listed by other sellers of similar apartments in the same neighborhood before they can list an initial bargaining price for their own apartment. The seller takes into account that this initial price will probably be challenged by potential buyers and that bargaining in competition with other apartment sellers in the neighbor will ensue.
+We propose a coupled network model composed of equally sized demand (buyer) and supply (seller) networks, where agents represented as network nodes, cooperate with agents on the opposite side of the market [43], but compete with agents on the same side of the market, as depicted in Fig. 1. Both demand
+
+1042
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+relatively stable intrinsic price, the dynamics of which will be explained below, the market price is volatile. To generate bubbles and crashes and the feedback mechanism between the trading and price processes, we use network parameters that are time-dependent, not constant, i.e.,
+
+ps (t)
+
+=
+
+1
+
+-
+
+e-
+
+S (t) S I (t)
+
+,
+
+pd (t)
+
+=
+
+1
+
+-
+
+e-
+
+S I (t) S (t)
+
+(3)
+
+Fig. 2. Above (left and right): Clustered chain networks of competing agents for N = 10, with p = 0 (chain) and p = 1 (fully connected graph). Below: Clustered chain network of competing agents for N = 50 and p = 0.3. The first two are the trivial cases of the network model, and the last case is representative of the networks in our model, since the values of p are non-trivial and vary as defined in equation (3).
+
+(buyer) and supply (seller) networks are initialized with a single node, and new nodes together with their prices are added one by one until each network has N nodes. At any given time step and for each demand and supply network the new node is added as follows.
+1) With a constant probability p, a new node vi is added to the already existing network structure: 1) node vi randomly links a node vj , where each j  [1, i - 1] has equal probability 1/(i - 1) and node vi is then connected to each neighbor of vj , 2) node vi sets its market (traded) price Si as the arithmetic mean of all its neighbors' prices
+
+1
+
+Si = ni
+
+Sk
+k
+
+(1)
+
+where k runs over all of vi's neighbors and the size of vi's neighborhood is ni = nj + 1. 2) With a probability 1 - p a new node vi connects to node e in the current network, which has the highest/lowest price
+Se in the buyer/seller network, and sets its market price Si as a percentage increase/decrease  from Se
+
+Si = Se ˇ (1 + ).
+
+(2)
+
+For the limit case p = 0, all the nodes form a chain. In the opposite limit case p = 1, each new node connects to a node from the existing cluster and all its neighbors, forming a complete graph. These trivial cases together with the case p = 0.3 are shown in Fig. 2.
+
+B. Bargaining Process
+Once both demand and supply networks are generated, the trading between buyers and sellers is initiated. Trading and price dynamics are driven by the inflow of information about an asset, which determines the intrinsic price SI . In contrast to this
+
+where S(t) is the last traded price at time t. Here  is a
+
+parameter controlling overall network clustering. We define this
+
+ratio R
+
+=
+
+S (t) SI (t)
+
+between the market price S
+
+and and the intrinsic
+
+value SI as the Market-to-Intrinsic ratio.
+
+Note that Eq. (3) implies that when the market price S(t)
+
+greatly exceeds the intrinsic value SI (t), ps  1, the competi-
+
+tion between supply agents increases, their strategies begin to
+
+converge, and their trading prices become increasingly similar
+
+(generating the current market price). As a consequence, sup-
+
+ply agents become increasingly insecure about their bargaining
+
+position. In addition, ps  1 implies pd  0, which intensi-
+
+fies the market situation because the demand agents now have
+
+more strategic options and face less competition. This combina-
+
+tion of increasing confidence levels in the demand network and
+
+decreasing confidence levels in the supply network increases
+
+the probability that there will be an abrupt price crash. This
+
+is in agreement with Scheinkman and Xiong who report that
+
+overconfidence generates disagreements among agents regard-
+
+ing asset fundamentals which then causes a significant bubble
+
+component in asset prices [52].
+
+Demand and supply agents bargain with each other to reach
+
+agreements and execute trades. Here we present a bargaining
+
+framework based on the alternating offer strategic model pro-
+
+posed by Rubinstein [36], [43]. Agents are randomly selected,
+
+alternating between the demand and supply networks, to make
+
+moves. A move is either accepting the best current price offered
+
+by the other side or proposing a new price. Each time a trade
+
+is executed, the trading agents are removed from their networks
+
+and a new one is added in both demand and supply network,
+
+thus keeping the number of agents N constant (since the net-
+
+work dynamics determine which and how many agents will be
+
+able to trade, this is not a critical assumption).
+
+Agents joining the network follow the proposed network al-
+
+gorithm but are not allowed to connect to the first cluster (the
+
+neighborhood of the first node). This is due to the fact that these
+
+traders have just bought/sold the asset and believe the price is
+
+going to rise/fall, and thus would not go back into their former
+
+position immediately. After each trade, there is a probability
+
+ that the last node from each network will reconnect into the
+
+existing network structure following the proposed algorithm,
+
+giving the more "fundamental" long-term investors the possi-
+
+bility of changing their position. The utility gained by agent
+
+i from trading at price S is quantified by a monotonic utility
+
+function ui(S) (see Appendix A). Before making a move, agent i evaluates the possible outcome at two steps  = {0, 1} using
+
+a random utility function Ui(S,  )
+
+Ui(S, 0) = ui(S)
+
+(4)
+
+KOSTANJC AR et al.: ESTIMATING TIPPING POINTS IN FEEDBACK-DRIVEN FINANCIAL NETWORKS
+
+1043
+
+Ui(S , 1) =
+
+ui(S ), 0,
+
+with probability i with probability 1 - i
+
+(5)
+
+where i  [0, 1] quantifies "agent confidence," the probability calculated by agent i that his/her offer (price S ) will be accepted in the next step at  = 1. The expected utility of immediately accepting offer S (at  = 0) is deterministic and equal to the agent's utility function of price S, as noted in Eq. (4). The expected utility of proposing a new price S can be calculated from Eq. (5) as
+
+E[Ui(S , 1)] = ui(S )i.
+
+(6)
+
+Agent i accepts the current offer at  = 0 if the expected utility at  = 0 is larger than the expected utility at  = 1.
+Agent i evaluates his/her confidence level i based on his/her position in the network, taking into account any available information about trends in the intrinsic price value. Demand and supply agents evaluate their confidence based on the probabilities
+
+i(s)
+
+=
+
+1+
+
+n
+
+( i
+
+s
+
+)
+
+n
+
+(d 0
+
+)
+
+1 ˇ e- r I (t)
+
+j(d)
+
+=
+
+1+
+
+1
+
+ˇ e n
+
+( j
+
+d
+
+)
+
+n
+
+(s 0
+
+)
+
+rI (t)
+
+(7)
+
+where ni(s) and nj(d) are the neighborhood sizes of supply agent i and demand agent j, n(0s), and n(0d) is the neighborhood size of the supply and demand agents (the best offers), and rI (t) is the
+proportional change in the intrinsic value. Here  is a parameter
+controlling how much a change in the intrinsic value impacts
+the market price. When the intrinsic value is approximately
+constant then the agents evaluate their confidence based on their
+position in the network only. For supply agent i note that the more competing supply agents n(is) rely on similar information and have synchronized trading strategies, and the smaller the number of demand agents n(0d), the lower the value of i(s). More details regarding utility functions ui(S), new proposed prices S , and agent confidence i are given in Appendix A. Note that the competition-cooperation mechanism in trading dynamics in
+which agents within the same group compete differs from the
+mechanisms that drive the evolution of cooperation in which
+agents within the same group cooperate.
+
+Fig. 3. Price dynamics. (a) The S&P 500 prices, earnings, and cash flows, monthly recorded. (b) The S&P 500 index, and the intrinsic value of the S&P 500 index. Both charts are adjusted for inflation. (c) Different time series of model prices together with the intrinsic value of the S&P 500 index from January 1920 to March 2015, and the (market) S&P 500 price index.
+its discounted future free cash flows (FCFs) [57]
+
+III. QUANTIFYING THE DEGREE OF MARKET OVERPRICING
+In our modelling we were led by the conjecture that market bubbles are caused by complex cooperation-competition bargaining dynamics and that market collapse occurs when the ratio between market price and intrinsic price--close to the Tobin q ratio and its expansions [53], [54]--reaches a critical (tipping) point. To calculate this ratio, which quantifies the degree of market overpricing, we must first estimate the intrinsic value of the market. Our model for determining the intrinsic value is based on the widely used free cash flow model (FCFM) [55], [56], in which the stock of a company is worth the sum of all of
+
+
+SI (t) =
+j=1
+
+F CFt+j
+
+j k=1
+
+(1
+
++
+
+W
+
+AC Ct + k
+
+)
+
+(8)
+
+and the discount rate is the future weighted average cost of
+capital (WACC). Using information about past realizations of FCF and WACC and Eq. (8) we determine the intrinsic value SI at some past time t - T . The SI value is approximate because for the t - T time period we know only those FCF and WACC values from t - T up to time t and thus the FCF and WACC values for times longer than t must be estimated. Thus the further
+back we go (t T ), the better will be the past price estimate
+
+1044
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+Fig. 4. Early-warning indicators through the 1990­2015 period. (a) The scaled variance of model price as an early-warning indicator. As the market is getting overpriced, the variance of fluctuations is increasing. (b) Average clustering coefficients of the supply and demand networks demonstrate the dynamics of supply and demand agent opinion clustering.
+at t - T . Because our goal is to estimate the current intrinsic value, we use past SI values we estimate the current intrinsic value and assume that the growth in cash flows is constant and exponential. For a detailed discussion, see Appendix B. Our model model has two stages, a volatile growth phase that lasts T years followed by a stable "steady state" growth phase. We first examine the steady state growth phase where the ultimate question to be answered is: what are the dynamics that control cash flow?
+To this end, Fig. 3(a) shows the time series of Shiller's monthly recorded S&P price, S&P earnings, and S&P cash flows, which represent the behavior of the total US economy for the last 95 years [58]. Note that although the US economy has radically changed over the last century, with traditional industry being replaced by advanced technology, both earning levels and cash flows have on average increased exponentially and the exponential growth rates are approximately constant. This result indicates that the earning dynamics in the US economy during the last two decades have been similar to those during the first two decades of the 20th century. According to Abreu and Brunnermeier [25] bubbles are sometimes caused when less sophisticated, overly optimistic traders believe that some new technological innovation will guarentee permanently higher growth rates. Fig. 3(b) also shows the S&P 500 index
+
+Fig. 5. The Market-to-Intrinsic ratio for the S&P 500 index. (a) Historical values, compared with the scaled Shiller's P/E (green), the latter obtained by dividing with 20 for clarity reasons. (b) Histogram of the ratio (in blue) resembles a bimodal functional form, characteristic for nonlinear phenomena of small systems near the tipping point. The red vertical line indicates today's value of the ratio, and the fitted Gaussian mixture model, scaled for visibility, with two components at 1 = 0.8 and 2 = 1.3 is shown in green. The 2 statistical test of the null hypothesis that the Gaussian mixture accounts for the data gives a 2 statistic of 65.17, and the limit for 95% certainty is 81.38 ­ therefore, the null hypothesis stands at a significance level of 0.05.
+SM over the last 95 years together with the intrinsic value of the S&P 500 index, SI , obtained using Shiller's S&P 500 data from January 1920 until March 2015 [58].
+Recalling that in our model trader confidence [44] is quantified by the ratio between between market price and intrinsic value, Fig. 3(c) shows several realizations of the model market price. These outputs represent all model outputs for this intrinsic price input and no other realizations were discarded. When the market becomes unsustainably overpriced a speculative bubble is created [44] which in turn makes the agents increasingly uncertain about current and future trading prices. This accumulated collective uncertainty among agents we quantify as the variance of model price, and Fig. 4(a) shows that the variance is at its highest levels just before a market crash when market price greatly exceeds intrinsic value. We also show the average clustering coefficients (calculated as the mean of local clustering coefficients of all vertices, as proposed by [59]) for the supply and demand networks, shown in Fig. 4(b), which demonstrate opinion clustering and global confidence levels in the networks. Moreover, the clustering coefficients cross paths
+
+KOSTANJC AR et al.: ESTIMATING TIPPING POINTS IN FEEDBACK-DRIVEN FINANCIAL NETWORKS
+
+1045
+
+as the market became underpriced in the 2008. crisis. The results reported in Fig. 4(a)­(b) are in agreement with a complex system phenomenon called critical slowing down [11] characterized by the increase in the variance as the system approaches criticality, which is, in our case, market collapse.
+To test how the market and intrinsic prices are related in the long run, Fig. 5(a) shows the ratio between the market S&P 500 index and the intrinsic value of the S&P 500 index. Although the intrinsic value of the S&P 500 is not calculated by fitting the market index, the average value of the ratio is close to one (1.04), which is a result that contrasts with the results of a theoretical model that assumes rational agents who do not know the beliefs of other agents and the market price is larger than the intrinsic value [45]. Fig. 5(a) further validates our intrinsic price since we find that the peaks of the market-to-intrinsic ratio follow the peaks of the Shiller P/E indicator widely used to estimate the degree of market overpricing. These correspond to the timings of known major financial crashes and crises in the last century, marked in the figure. This fact affirms that our SI represents a reasonable estimation of the intrinsic value of the S&P 500 index. Fig. 5(a) further reveals that the periods when the market is underpriced and overpriced occur repeatedly, which agrees, when speaking of companies, with the suggestion that expectations for a company should not be too high or too low [60]. If a company promises investors blue-sky expected outcomes that are not realized, not only will the share price drop when the market realizes that the company cannot deliver, but it may take years for the company to regain credibility. To paraphrase Abraham Lincoln, by overestimating the market you can fool some of the people all of the time, but all of the people only some of the time. The final punishment of the market comes in the ensuing period when the market is underpriced.
+We confirm the intriguing possibility that two distinct underpriced and overpriced modes are present in the financial complex system. Fig. 5(b) shows the probability of the ratio between market price and intrinsic value for the S&P 500 index. We apply a statistical mixture model to reveal the presence of a substructure in the ratio and show that the probability distribution function of the ratio fits the Gaussian mixture model, which resembles the bimodal shape characteristic for small nonlinear systems near a tipping point [61]. Note that we can locate this substructure of the financial system with the underpriced and overpriced modes because we have a model that can estimate the intrinsic price.
+Fig. 5(a) suggests that over a long period of time the market price and the intrinsic value should follow each other. We quantify this assumption by investigating the long-term relationship [62] between the S&P 500 index, SM (t), and the intrinsic value of the S&P 500 index, SI (t), i.e. the S&P 500 Market-to-Intrinsic ratio. Motivated by the finding of Campbell and Shiller that dividends and the present discounted value of expected future dividends cointegrate [62], we next employ the Engle­Granger cointegration test [63], [64] and report the cointegration relationship
+
+log(SM (t)) - log(SI (t)) = 0
+
+(9)
+
+between two series at a 5% confidence level (see Table II). The test is based on a Phillips­Perron Zt unit root test of
+
+TABLE I PHILLIPS­PERRON Zt UNIT ROOT TESTS OF S&P 500 INTRINSIC VALUE AND
+S&P 500 INDEX PRICE; LAG LENGTH WAS SET TO 8 ACCORDING TO THE STOCK­WATSON METHOD; 5% SIGNIFICANCE CRITICAL VALUE EQUALS -8.025
+
+Test statistics (intrinsic value) Test statistics (index price)
+
+Levels 0.2645
+First differences -20.063
+
+0.387 -919.714
+
+TABLE II ENGLE­GRANGER COINTEGRATION TEST BASED ON PP UNIT ROOT TEST OF REGRESSION RESIDUALS BETWEEN S&P 500 INTRINSIC VALUE AND S&P 500
+INDEX PRICE; LAG LENGTH WAS SET TO 8 ACCORDING TO THE STOCK­WATSON METHOD
+
+Test Statistic Critical values Significance levels
+
+-16.642
+
+-20.5032 -14.034 -11.213
+
+1% 5% 10%
+
+regression residuals, with 8 lags included in the Newey­West
+
+estimator of the long-run variance (the lag parameter was set to
+
+8
+
+in
+
+accordance
+
+with
+
+the
+
+Stock­Watson
+
+method
+
+[64]
+
+0.75N
+
+1 3
+
+in which N is the number of observations). Details about the
+
+test are provided in Appendix B and in Table II. Intrinsic value
+
+and index price may deviate from each other in the short run,
+
+but in the long run the intrinsic value catches up to the market
+
+realizations. As a consequence of the cointegration, the longer
+
+the market is overvalued, the longer we may expect the market
+
+to stay in the undervalued mode.
+
+IV. TIPPING POINTS
+We hypothesize that financial crashes occur when a single parameter--the ratio R between market price and intrinsic price--reaches a crash tipping point Rc , and that the recovery begins as it reaches a recovery tipping point Rr . This extends the idea of herding-induced equilibrium prices deviating from fundamental values by Lux and Marchesi [21], and includes the interpretation by Abreu and Brunnermeier [25] that bubbles burst when agent synchronization reaches a tipping point. Moreover, we include crash as well as recovery tipping points in our analysis. The tipping points are not deterministic, but rather stochastic variables. In models in which a node's activity is dependent upon the activity of neighboring nodes, quantified by thresholds as in the Watts model [15], we define thresholds to be fixed numbers and the result are well-defined critical points [27], [28]. However, if we assume that the thresholds are stochastic variables, the critical points will also be stochastic variables. Here we propose a procedure for estimating tipping points Rc and Rr in both the network model and U.S. financial market data. We first apply a variation on Hodrick-Prescott filtering proposed in [65] (referred to as 1 trend filtering) on the log-prices. The method minimizes the sum of squared errors of
+
+1046
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+the estimated trend ( 2 norm) and penalizes trend variations by a sum of absolute values ( 1 regularization [66])
+
+z = argmin
+
+1 2
+
+S-z
+
+2 2
+
++
+
+
+
+Dz 1
+
+(10)
+
+where z = (z(1), . . . , z(n))  Rn is the estimated trend vec-
+
+tor, S = (S(1), . . . , S(n))  Rn are either network model
+
+prices or S&P 500 prices,  is the smoothing parameter and
+
+D  R(n-2)×n is the second-order difference matrix:
+
+
+
+
+
+1 -2 1
+
+
+
+1 -2 1 ... 1 -2 1
+
+ .
+
+(11)
+
+1 -2 1
+
+The resulting trend estimate z is a piecewise linear approximation of the original data S, with sparse slope changes. According to Kim et al. [65], the changes of the estimated trend can be interpreted as abrupt changes or events in the underlying dynamics of the time series--here we identify them as the system's tipping points. To estimate the tipping points we define the set of time points which correspond to the changes of the estimated trend from positive to negative as the crash tipping times tc . Likewise, points at which the estimated trend changes from negative to positive are defined as the recovery tipping times tr
+
+tc = {t : z (t - 1)  0, z (t + 1) < 0}
+
+(12)
+
+tr = {t : z (t - 1)  0, z (t + 1) > 0} . (13)
+
+The values of R we consider for the estimation of the crash tipping points and recovery tipping points are therefore {R(t) : t  tc } for crash tipping points and {R(t) : t  tr } for recovery tipping points.
+Fig. 6(a) demonstrates the estimated financial trends and the identified crash and recovery tipping moments in the S&P 500 log-prices, with the smoothing parameter  = 10 chosen to identify major financial trends (and consequently--crashes) in the considered period (1920­2015). Fig. 6(b) shows the values of the Market-to-Intrinsic ratio of the S&P 500 with highlighted tipping points identified from the log-prices. The tipping points vary between different realizations--as one would expect for tipping points in the social sciences, and we report the mean values of the identified crash and recovery tipping points, together with their respective standard deviations. The S&P 500 market crashes as it reaches the crash tipping point 1.64 ą 0.41, and rebounds as it reaches the subsequent recovery tipping point 0.72 ą 0.32. Our network model outputs (none of the model outputs were discarded) follow the exact same pattern with the values of its tipping points being 1.66 ą 0.22, and 0.85 ą 0.28. Evidently, the network model generates trajectories which not only exhibit crashes and rebounds at appropriate moments in time [as demonstrated earlier in Fig. 3(c)], but also at corresponding values of the variable R.
+To further inspect the properties of the market and the network model, we take on the approach proposed by Sornette [24] and look into the distribution of drawdowns. A drawdown is defined as a persistent decrease in the price over consecutive
+
+Fig. 6. (a) S&P 500 log-prices from 1920 to 2015, with 1 trend estimates and the identified tipping points. (b) S&P 500 Market-to-Intrinsic ratio and the estimated tipping points.
+days--and is thus the cumulative loss from the last maximum to the next minimum of the price [24]. Similarly, a drawup is a persistent increase in the price over consecutive days and is the cumulative gain from the last minimum to the next maximum of the price. Johansen and Sornette [24], [30] find that the drawdown distribution of the Dow Jones Industrial Average index prices exhibits heavy tails, which is not the case when the same price series is "shuffled". This means that drawdowns reveal the subtle time-dependences, and that major financial crashes are in fact outliers in the standard assumption of independent successive price variations [24]. Our network model accounts for these intricate properties and in Fig. 7 we demonstrate the correspondence between the distribution of drawdowns and drawups of the S&P 500 index and the model for all the generated model outputs. The heavy tails in the model-generated prices are due to the emergence of herding modelled by opinion clusters in our model, which can explain the occurrences of so-called "black swans" (large drawdowns of huge impact)--in other words, major market crashes.
+In addition, we introduce a procedure to investigate the systemic behavior around tipping points of the network model and U.S. financial market data. In order to facilitate this, we must first identify the model output and the parameter space within which we search for the tipping points. For the model we
+
+KOSTANJC AR et al.: ESTIMATING TIPPING POINTS IN FEEDBACK-DRIVEN FINANCIAL NETWORKS
+
+1047
+
+Fig. 7. Normalized natural logarithm of the cumulative distribution of drawdowns and of the complementary cumulative distribution of drawups for the S&P 500 index and all of the model generated output prices.
+
+Fig. 9. Forecasting power. (a) Different time series of model price (in blue), with the the S&P 500 price index (in green) for the estimated intrinsic values (in red). (b) Cumulative distribution of potential loss L, P (L < x) (in red), with cumulative distribution of potential gain G, P (G > x) (in blue) in period from April 2015 to December 2016.
+
+Fig. 8. Hysteresis and critical points of financial networks. (a) Model: Probability that the price will drop during [t, t + N t], where N = 12 and t = 1 month, versus the Market-to-Intrinsic price ratio, R, shows a hysteresis behavior. Approaching a tipping point, the probability of price decline exhibits an abrupt change. (b) S&P 500: Probability that the price will drop during [t, t + N t] versus R.
+define the network output at time t as the fraction of future times within the time interval [t + N t] which has a lower price than the current, where t is the time step and N is an integer. We generate a large number of simulations for the last two major financial crises (Dot-com bubble in 2000 and the financial crisis of 2008), and at any t for each price time series Si,t we record the Market-to-Intrinsic price ratio Ri,t and the probability Ii,t ,
+
+which indicates what fraction of the future prices are lower than the current (i.e. S(t + kt) < S(t), 1  k  N ). Combining all pairs (Ri,t , Ii,t ), Fig. 8(a) shows that the probability of a future price decline versus the ratio R exhibits a hysteresis behavior. The hysteresis is revealed by analyzing the network model when it moves from its underpriced to its overpriced phase and vice versa.
+Fig. 8(a) shows that the hysteresis obtained for the network model agrees with the hysteresis shown Fig. 8(b) for the U.S. financial market, represented by the S&P 500. The hysteresis shown in Fig. 8(a) was obtained using a large number of numerical simulations, and the hysteresis in Fig. 8(b) was obtained by analyzing the S&P 500 during the 2000 dot-com crash and the 2007 recession. At any t for the S&P 500--precisely the price time series Si,t --we record the ratio Rt of the S&P 500 and the probability Ii,t indicating what fraction of the future prices are lower than the current Si,t during t + N t. Collecting all of the pairs (Rt , Ii,t ), we calculate for a given R the probability that the price will decline during the time interval [t + N t]. We find that the tipping point at which the S&P 500 crashes strongly resembles the tipping point we obtain by our model shown in Fig. 8(a).
+
+1048
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+Because theories with predictive power are highly valued in science and in finance in particular [67], [68], we calculate future intrinsic values of the S&P 500 by assuming that market earnings and WACC in the future will follow the historical trends. Specifically we use autoregressive models to make predictions of earnings and WACC trends.
+We further generate a large number of the network realizations, resulting in modeled prices shown in Fig. 9(a), and then we count the modeled prices according to their relative change with respect to the maximum or minimum value (which ever occurs earlier) in period from April 2015 to December 2016. Fig. 9(a) shows the cumulative frequencies for the cases with the negative change, i.e. loss (in red) and cumulative frequencies with the positive change, i.e. gain (in blue). Fig. 9(b) reveals that the probability of S&P 500 declining from its peak for more than 10% is approximately 80%. The same Figure further reveals that there is only 20% chance that the S&P 500 index will grow more than 10% from its minimal value in the same time period. This calculations assumes that the earning trends and WACC obtained from the historical data will continue to hold, at least in the near future, and Fig. 3 shows that this assumption is reasonably correct.
+V. CONCLUSION
+In this paper we introduce a model based on a network of bargaining agents who mutually either compete or cooperate. This model assumes that agents compete when they use similar strategies. Due to the feedback mechanism, driven by the Market-to-Intrinsic ratio R, the network model produces market prices which oscillate around the input (intrinsic values) and exhibit bubbles and crashes. Moreover, due to the stochastic nature of the model, the same input (intrinsic values) can generate different outputs (market prices), which we can use to analyze tipping points, drawdowns and trader confidence.
+To test the model, we calculated the intrinsic values of the S&P 500 market index, using the FCFM. The estimated intrinsic values were shown to be cointegrated with the market prices in the last 95 year period (1920­2015), and the estimated Marketto-Intrinsic ratio R for the S&P 500 market oscillates around 1, on the long run. These results affirm our modelling approach and support the use of the estimated intrinsic values as the input to our network model.
+The results show that crashes occur in the network model when the ratio R between the model generated market prices and the input intrinsic values reaches a crash tipping point, and the recovery begins as the ratio reaches a recovery tipping point. This is in line with the results from the S&P 500 market index, which is shown to exhibit this exact bahavior at similar tipping points. Moreover, we demonstrate that the network model produces heavy-tailed drawdowns, as seen in real-world markets-- the comparison with S&P 500 drawdowns further confirms the value of the results. In addition, based on a range of estimates for the future intrinsic values, we generate a number of predictions for the future behavior or the market prices and demonstrate the forecasting power of the model by calculating the the cumu-
+
+lative distribution of potential gain and loss for the following period (until December 2016).
+These findings show that the proposed modelling approach provides a novel perception about the mechanisms behind tipping points in market--both crash and recovery. With further insight into agent trading behavior and the effects of different parameter settings, future research will be able to apply our model to the analysis of other important market phenomena (such as bid-ask spread dynamics).
+
+APPENDIX A COMPLEX BARGAINING
+Assume two agents ("players") are involved in the sale of a book. Player 1 is selling the book and values it at $60, and player 2 wants to buy the book and values it at $30. The two players are the only agents involved in the transaction, both are rational, and both want the transaction to occur (neither will withdraw). Because there are no other agents who might be competitors and influence the transaction, the two players rationally meet halfway and agree on a price of $45. We can make the situation more complex by adding the assumption that there is a probability 1 -  = 0.8 that either player will quit the bargaining process before an agreement is reached. In this case each player's anxiety that the other will back out of the transaction gives them greater motivation to reach an agreement. As a result, two equilibrium prices, $35 and $55, emerge. The seller is assured of $35 without risk but must weigh that against getting $55 with a confidence of  = 0.8. The seller will accept any price above $35 but will not offer a price below $55. These described bargaining scenarios are rudimentary, and for a more detailed discussion see Nash [35], Rubinstein [36] and a number of other contributors[43], [49], [50].
+The agent utility functions are linear functions of the offered price that monotonically increase for supply agents and monotonically decrease for buyer agents, i.e.,
+
+ui(s) (S) =
+
+S - Si(nsi)t Si(s) - Si(ndi)t
+
+,
+
+uj(d) (S) =
+
+Si(nsi)t - S si(nsi)t - Sj(d)
+
+(14)
+
+where Si(nsi)t and Si(ndi)t are the initial bargaining prices of the supply and demand agents (the best supply and demand offers), respectively. These are reset when a trade occurs and are fixed between trades.
+Agents evaluate the utility of accepting S, the offer in the current step, using
+
+Ui(s)(S, 0) = ui(s)(S) , Uj(d) (S, 0) = uj(d) (S). (15)
+
+When evaluating whether to accept an offer in the next bargaining step, an agent must assess the probability that another trading agent will intervene and steal the trading opportunity. For all supply and demand agents, the probability that this "breakdown scenario" (b) will occur is u(is)(b) = u(jd)(b) = 0.
+
+KOSTANJC AR et al.: ESTIMATING TIPPING POINTS IN FEEDBACK-DRIVEN FINANCIAL NETWORKS
+
+1049
+
+The utility of accepting offer S in the next bargaining step is given by
+
+E[Ui(s) (S, 1)] = u(is) (S)(is) + u(is) (b) 1 - (is)
+
+= ui(s) (x)(is) E[Uj(d) (S, 1)] = u(jd) (S)(jd) + uj(d) (b) 1 - j(d)
+
+= uj(d) (S)(jd) .
+
+(16)
+
+Here i(s) and j(d) are the evaluated probabilities (the "agent confidences") of the supply agent i and demand agent j, re-
+
+spectively, poised to trade (or not trade) in the next step. The agents use their neighborhoods to evaluate their confidence following the expression (7). Since external information affects
+
+one side positively and the other negatively, supply and demand
+
+agents interpret this information reciprocally. In effect, the intrinsic value return rI (t) tilts the overall confidence evaluations
+
+of agents and renders one side more confident and the other less,
+
+and is calculated as
+
+rI (t)
+
+=
+
+SI (t) - SI (t - SI (t - 1)
+
+1) .
+
+(17)
+
+The network parameters used in this study are:  = 0.2,  = 0.3 and  = 90. These values were empirically chosen to produce reasonable model outputs.
+We use a version of the monotonic concession protocol to simulate agent price movement during the bargaining process [48]. Agents from the supply and demand sides alternate in making their moves. A move can either be accepting the current offer from the other side or proposing a new price. If the offer is accepted and a trade in completed the trading agents are removed from their networks and the agreed-upon price becomes the trading price. An agent accepts the current offer if the expected advantage of accepting it is greater than or equal to the expected advantage of risking that a more attractive price will be agreed upon in the next step. This condition can be expressed using equations (15) and (16) for supply and demand agents
+
+E Ui(s) S0(d) , 0  E Ui(s) Si(s) ˇ 1 + i(s) , 1
+
+E Uj(d) S0(s) , 0
+
+ E Uj(d) Sj(d) ˇ 1 + d(j) , 1 . (18)
+
+If the condition is not met, the agent proposes a new price, Si(s)  Si(s) ˇ 1 + i(s) . The multiplicative concession steps i(s) for supply and demand agents are defined
+
+i(s) = (s) 1 - (is) , j(d) = (d) 1 - (jd)
+
+(19)
+
+where (s)  0 and (d)  0 are fixed concession step constants for the supply and demand networks, respectively. This means that the magnitude of concession steps made by agents will be determined by the level of agent confidence. Less confident agents offer a larger concession step. After a trade occurs and the trading agents are removed from their networks, a new agent is added to each network, which preserves the orders of both
+
+networks. The new nodes are added according to the protocol
+described above, with the probability p defined in Eq. (3). The parameter values used are pc = 0.2, (d) = -(s) = 0.005. The supply and demand networks each have 500 agents and each are
+initialized with a single node with the initial price equal to the initial intrinsic value. The network steps are (s) = 0.01 and (d) = -0.01 for supply and demand networks, respectively.
+
+APPENDIX B INTRINSIC PRICE ESTIMATION
+The FCFM is one of the most respected methods for determining the intrinsic value of a company. The model assumes that a company's stock is equal to the sum of all of its future FCFs, discounted back to their present value using the future WACC as the discount rate [see Eq. (8)]. FCF is the cash flow generated by the core operations of the business after deducting investments in new capital, and WACC is the rate of return that investors expect to earn from investing in the company. Because investors do not know future values of FCF and WACC, they use estimates based on their own experience, knowledge, and available information. To avoid false precision errors, investors often split their forecast into two periods, (i) a detailed fiveyear forecast that develops complete balance sheets and income statements with as many links to real variables as possible, and (ii) a simplified forecast for the remaining years. The stock is then traded at a price
+
+T
+S(0) =
+j=1
+
+j k=1
+
+F CFjE (1 + W ACCkE
+
+)
+
++
+
+C VTE
+
+T k=1
+
+(1
+
++
+
+W
+
+AC CkE
+
+)
+
+(20)
+
+where F CFjE is the estimated FCF at the step j, W ACCkE the estimated WACC at time step k, and CVTE the estimated continuing value at time step T [60]. Because the correct FCF
+
+and WACC are known for the previous five years--time period
+
+T --an estimation of a company's intrinsic value at the beginning
+
+of that five-year time period, SI (-T ), made today will be more
+
+accurate than one made five years ago
+
+0
+SI (-T ) =
+j =-T +1
+
+F CFj
+
+j k =-T
+
++1
+
+(1
+
++
+
+W
+
+AC Ck
+
+)
+
+(21)
+
+
++
+j=1
+
+0 k =-T +1
+
+F CFjE (1 + W ACCk )
+
+j k=1
+
+. (1 + W ACCkE )
+
+Although estimates of FCF and WACC must extend to the indeterminate future, because of the discount effect these estimates will have a decreasing impact on the price. For the sake of simplicity, we assume (i) that the future FCF will grow at a constant growth rate g, and (ii) that the future WACC will be constant. Therefore (21) becomes
+
+0
+SI (-T ) =
+j =-T +1
+
+F CFj
+
+j k =-T
+
++1
+
+(1
+
++
+
+W
+
+AC Ck
+
+)
+
+(22)
+
++
+
+F CF1
+
+0 k =-T
+
++1
+
+(1
+
++
+
+W
+
+AC Ck
+
+)(W
+
+AC C
+
+-
+
+g)
+
+1050
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+where F CF1 is the expected FCF one time step in the future (e.g., one year from now), and WACC the expected long-term WACC. The goal is to estimate the current intrinsic value of the company now, not its value five years ago. Because over a long period of time the growth rate of the company earnings will be similar to its stock prices, we can estimate the current intrinsic value of the company using
+
+SI (0) = (1 + g)T SI (-T )
+
+(23)
+
+where g is the constant growth rate of earnings. Fig. 3(a) shows that this assumption is reasonable, and Fig. 3(b) shows the intrinsic values with and without the forward correction from Eq. (23). Based on the ratio between these two time series, we define the 90% confidence interval, also shown in Fig. 3(b).
+Because data for FCF and WACC are usually unavailable, when we implement and test the model we replace these variables with quantities supplied in financial databases. FCF is, in the first approximation,
+
+FCF = E - NI
+
+(24)
+
+where E is firm earnings and NI net investments--the increase in invested capital from one year to the next, i.e., the portion of earnings the firm reinvests. The investment rate (IR), the portion of earnings invested back into the business, is
+
+IR = NI .
+
+(25)
+
+E
+
+The return on invested capital (ROIC) is usually defined as the return a company earns on each dollar invested in the business [60]. This is approximately
+
+E
+
+ROIC =
+
+.
+
+(26)
+
+Invested Capital
+
+Growth (g) is usually defined as the rate at which the company's earnings grows each year [60].
+Note that FCF = E(1- IR) and from [60]: g = ROIC ˇ IR. Finally,
+
+FCF = E
+
+1
+
+-
+
+g ROIC
+
+.
+
+(27)
+
+In FCFM the discount rate is the WACC. In its simplest form, the WACC is the market-based weighted average of the after-tax cost of debt and cost of equity,
+
+WACC
+
+=
+
+D (1 - D+E
+
+Tm )kd
+
++
+
+E D + E ke
+
+(28)
+
+where D/(D + E) is the debt-to-value target level, E/(D + E) the equity-to-value target level, kd the cost of debt, Tm the marginal tax rate, and ke the cost of equity [60].
+We use data on the S&P 500 from January 1900 to March 2015 supplied by Robert Shiller when we implement our model. These include data on real (inflation adjusted) earnings, real prices, real long-term interest rates, and S&P500 historical averages (inflation adjusted). The median debt-to-equity ratio for the S&P500 is 19.7%, the median return on invested capital 7%, and the median growth rate of earnings g = 1.7%. We use the long-term interest rate as a proxy for the after-tax cost of debt, and the S&P 500 earning yield as a proxy for the cost of equity.
+
+Because the time period is T = 5 years, at each time step the
+
+intrinsic value for the five previous years is determined, and
+
+(23) is employed to determine the intrinsic value at the current
+
+time step.
+
+We next use the Engle-Granger cointegration test to investi-
+
+gate the long-term relationship [62] between S&P500 intrinsic
+
+values and S&P500 index prices. Prior to testing for cointegra-
+
+tion, we ensure that both series have the same order of inte-
+
+gration. To determine the order of integration, we employ the
+
+Phillips-Perron Zt (PP) unit root test of the null hypothesis that
+
+indicates whether the variable has a unit root against a station-
+
+ary alternative. Table I shows the results of PP unit root tests
+
+for both levels and the first differences of log-price series. The
+
+results imply that both series contain a unit root in levels and
+
+thus should be first differentiated to achieve stationarity. We
+
+conclude that both series are integrated at the first order, I(1),
+
+at a 5% confidence level. To determine whether there is cointe-
+
+gration between the S&P500 intrinsic log-value and the index
+
+log-price, we employ the Engle­Granger test [63], [64], which
+
+is based on a PP unit root test of regression residuals, with
+
+8 lags included in the Newey­West estimator of the long-run
+
+variance (the lag parameter was set to 8 in accordance with the
+
+Stock­Watson
+
+method
+
+[64]
+
+0.75N
+
+1 3
+
+,
+
+where
+
+N
+
+is
+
+the
+
+number
+
+of observations). Table II shows that the cointegration between
+
+the two series is at a 5% confidence level. Note that intrinsic
+
+value and index price can deviate slightly from each other in
+
+the short term, but that market forces, government policies, and
+
+investor behavior bring them back to a equilibrium in which
+
+market realizations and our market expectations converge.
+
+Because theories with predictive power are highly valued in
+
+science we calculate future intrinsic values of the S&P 500 by
+
+assuming that market earnings and WACC in the future will
+
+follow the historical trends. Specifically we use AR(5) model
+
+with constant term to make prediction of earnings trend and
+
+AR(2) model with constant term to make prediction of WACC
+
+trend. Historical earnings and WACC are used for estimation
+
+of the models and Akaike information criterion is used for
+
+lag order selection in both cases. The fitted models are used
+
+in simulation of many possible estimates of the future intrin-
+
+sic values. We then use these estimates to predict the future
+
+market performance.
+
+ACKNOWLEDGMENT
+The authors would like to thank J. Cvitanic for useful suggestions, and the reviewers for helpful comments.
+
+REFERENCES
+[1] R. Albert and A.-L. Baraba´si, "Statistical mechanics of complex networks," Rev. Mod. Phys., vol. 74, pp. 47­97, 2002.
+[2] D. Brockmann and D. Helbing, "The hidden geometry of complex, network-driven contagion phenomena," Science, vol. 342, pp. 1337­42, 2013.
+[3] S. B. Rosenthal, C. R. Twomey, A. T. Hartnett, H. S. Wu, and I. D. Couzin, "Revealing the hidden networks of interaction in mobile animal groups allows prediction of complex behavioral contagion," Proc. Nat. Acad. Sci., vol. 112, pp. 4690­4695, 2015.
+[4] M. Bogun~a´, D. Krioukov, and K. C. Claffy, "Navigability of complex networks," Nature Phys., vol. 5, pp. 74­80, 2008.
+
+KOSTANJC AR et al.: ESTIMATING TIPPING POINTS IN FEEDBACK-DRIVEN FINANCIAL NETWORKS
+
+1051
+
+[5] I. Dobson, B. A. Carreras, V. E. Lynch, and D. E. Newman, "Complex systems analysis of series of blackouts: Cascading failure, critical points, and self-organization," Chaos, vol. 17, 2007 Art. no. 026103.
+[6] P.-A. Noe¨l, C. D. Brummitt, and R. M. DSouza, "Controlling selforganizing dynamics on networks using models that self-organize," Phys. Rev. Lett., vol. 111, 2013, Art. no. 078701.
+[7] M. Scheffer, S. Carpenter, J. A. Foley, C. Folke, and B. Walker, "Catastrophic shifts in ecosystems," Nature, vol. 413, pp. 591­596, 2001.
+[8] R. M. May, S. A. Levin, and G. Sugihara, "Complex systems: Ecology for bankers," Nature, vol. 451, pp. 893­895, 2008.
+[9] J. M. Drake and B. D. Griffen, "Early warning signals of extinction in deteriorating environments," Nature, vol. 467, pp. 456­459, 2010.
+[10] M. Scheffer, "Complex systems: Foreseeing tipping points," Nature, vol. 467, pp. 411­412, 2010.
+[11] M. Scheffer et al., "Anticipating critical transitions," Science, vol. 338, pp. 344­348, 2012.
+[12] C. Boettiger and A. Hastings, " Tipping points: From patterns to predictions," Nature, vol. 493, pp. 157­158, 2013.
+[13] T. S. Lontzek, Y. Cai, K. L. Judd, and T. M. Lenton, " Stochastic integrated assessment of climate tipping points indicates the need for strict climate policy," Nature Climate Change, vol. 5, pp. 441­444, 2015.
+[14] M. Scheffer et al., "Early-warning signals for critical transitions," Nature, vol. 461, pp. 53­59, 2009.
+[15] D. J. Watts, "A simple model of global cascades on random networks," Proc. Nat. Acad. Sci., vol. 99, pp. 5766­5771, 2002.
+[16] P. Crucitti, V. Latora, and M. Marchiori, "Model for cascading failures in complex networks," Phys. Rev. E, vol. 69, 2004, Art. no. 045104.
+[17] D. S. Scharfstein and J. C. Stein, "Herd behavior and investment," Amer. Econ. Rev., vol. 80, pp. 465­479, 1990.
+[18] E. Samanidou, E. Zschischang, D. Stauffer, and T. Lux, "Agent-based models of financial markets," Rep. Progress Phys., vol. 70, pp. 409­450, 2007.
+[19] D. Sornette, Why Stock Markets Crash: Critical Events in Complex Financial Systems. Princeton, NJ, USA: Princeton Univ. Press, 2009.
+[20] T. Lux, "Herd behaviour, bubbles and crashes," Econ. J., vol. 105, pp. 881­96, 1995.
+[21] T. Lux and M. Marchesi, "Scaling and criticality in a stochastic multi-agent model of a financial market," Nature, vol. 397, pp. 498­500, 1999.
+[22] T. Lux and M. Marchesi, "Volatility clustering in financial markets: A microsimulation of interacting agents," Int. J. Theor. Appl. Finance, vol. 3, pp. 675­702, 2000.
+[23] R. Cont and J. P. Bouchaud, "Herd behavior and aggregate fluctuations in financial markets," Macroecon. Dyn., vol. 4, pp. 170­196, 2000.
+[24] D. Sornette, "Critical market crashes," Phys. Rep., vol. 378, pp. 1­98, 2003.
+[25] D. Abreu and M. K. Brunnermeier, "Bubbles and crashes," Econometrica, vol. 71, pp. 173­204, 2003.
+[26] W. Yan, R. Woodard, and D. Sornette, "Diagnosis and prediction of tipping points in financial markets: Crashes and rebounds," Phys. Procedia, vol. 3, pp. 1641­1657, 2010.
+[27] A. Majdandzic, B. Podobnik, S. V. Buldyrev, D. Y. Kenett, S. Havlin, and H. Eugene Stanley, "Spontaneous recovery in dynamical networks," Nature Phys., vol. 10, pp. 34­38, 2013.
+[28] B. Podobnik, T. Lipic, D. Horvatic, A. Majdandzic, S. R. Bishop, and H. E. Stanley, "Predicting the lifetime of dynamic networks experiencing persistent random attacks," Sci. Rep., vol. 5, 2015, Art. no. 14286.
+[29] L. Feng, B. Li, B. Podobnik, T. Preis, and H. E. Stanley, "Linking agentbased models and stochastic models of financial markets," Proc. Nat. Acad. Sci. United States Amer., vol. 109, pp. 8388­8393, 2012.
+[30] A. Johansen, "Characterization of large price variations in financial markets," Phys. A: Stat. Mech. Appl., vol. 324, pp. 157­166, 2003.
+[31] D. Sornette, "Dragon-kings, black swans, and the prediction of crises," Int. J. Terraspace Sci. Eng., vol. 2, pp. 1­18, 2009.
+[32] H. Zhang, T. Leung, and O. Hadjiliadis, "Stochastic modeling and fair valuation of drawdown insurance," Insurance: Math. Econ., vol. 53, pp. 840­850, 2013.
+[33] D. Johnston and P. Djuric´, "The science behind risk management," IEEE Signal Process. Mag., vol. 28, no. 5, pp. 26­36, Sep. 2011.
+[34] F. Schweitzer, G. Fagiolo, D. Sornette, F. Vega-Redondo, A. Vespignani, and D. R. White, "Economic networks: The new challenges," Science, vol. 325, pp. 422­425, 2009.
+[35] J. F. Nash, "The bargaining problem," Econometrica, vol. 18, pp. 155­162, 1950.
+
+[36] A. Rubinstein, "Perfect equilibrium in a bargaining model," Econometrica, vol. 50, pp. 97­109, 1982.
+[37] D. Gale, "Bargaining and competition part I: Characterization," Econometrica, vol. 54, 1986, Art. no. 785.
+[38] D. Gale, "Limit theorems for markets with sequential bargaining," J. Econ. Theory, vol. 43, pp. 20­54, 1987.
+[39] M. Manea, "Bargaining in stationary networks," Amer. Econ. Rev., vol. 101, pp. 2042­2080, 2011.
+[40] S. A. West, I. Pen, and A. S. Griffin, "Cooperation and competition between relatives," Science, vol. 296, pp. 72­75, 2002.
+[41] J. Aguirre, D. Papo, and J. M. Buldu´, "Successful strategies for competing networks," Nature Phys., vol. 9, pp. 230­234, 2013.
+[42] S. A. Levin, "Public goods in relation to competition, cooperation, and spite," Proc. Nat. Acad. Sci. United States Amer., vol. 111, pp. 10 838­10 845, 2014.
+[43] K. Binmore, A. Rubinstein, and A. Wolinsky, "The NASH bargaining solution in economic modelling," RAND J. Econ., vol. 17, pp. 176­188, 1986.
+[44] R. J. Shiller, Irrational Exuberance. Princeton, NJ, USA: Princeton Univ. Press, 2000.
+[45] F. Allen, S. Morris, and A. Postlewaite, "Finite bubbles with short sale constraints and asymmetric information," J. Econ. Theory, vol. 61, pp. 206­229, 1993.
+[46] J. B. De Long, A. Shleifer, L. H. Summers, and R. J. Waldmann, "Noise trader risk in financial markets," J. Political Economy, vol. 98, pp. 703­738, 1990.
+[47] H. L. Vogel, Financial Market Bubbles and Crashes. Cambridge, U.K.: Cambridge Univ. Press, 2009.
+[48] J. S. Rosenschein and G. Zlotkin, Rules of Encounter: Designing Conventions for Automated Negotiation Among Computers. Cambridge, MA, USA: MIT Press, 1994.
+[49] J. von Neumann and O. Morgenstern, Theory of Games and Economic Behavior. Princeton, NJ, USA: Princeton Univ. Press, 1944.
+[50] M. Elliott, B. Golub, and M. O. Jackson, "Financial networks and contagion," Amer. Econ. Rev., vol. 104, pp. 3115­3153, 2014.
+[51] S. Maslov, "Simple model of a limit order-driven market," Phys. A: Stat. Mech. Appl., vol. 278, pp. 571­578, 2000.
+[52] J. Scheinkman and W. Xiong, "Overconfidence and speculative bubbles," J. Political Economy, vol. 111, pp. 1183­1220, 2003.
+[53] W. C. Brainard and J. Tobin, "Pitfalls in financial model-building," Cowles Foundation Discussion Papers, 1968.
+[54] O. Blanchard, C. Rhee, and L. Summers, " The stock market, profit, and investment," Quart. J. Econ., vol. 108, pp. 115­136, 1993.
+[55] M. J. Gordon, "Dividends, earnings, and stock prices," Rev. Econ. Statist., vol. 41, pp. 99­105, 1959.
+[56] Z. Bodie, A. Kane, and A. J. Marcus, Essentials of Investments. New York, NY, USA: McGraw Hill, 2003.
+[57] J. Y. Campbell and R. J. Shiller, "Stock prices, earnings, and expected dividends," J. Finance, vol. 43, pp. 661­676, 1988.
+[58] R. J. Shiller, [Online]. Available: http://www.econ.yale.edu/ shiller/data.htm.
+[59] D. J. Watts and S. H. Strogatz, "Collective dynamics of `small-world' networks," Nature, vol. 393, pp. 440­442, 1998.
+[60] T. Koller, M. Goedhart, and D. Wessels, Valuation: Measuring and Managing the Value of Companies. Hoboken, NJ, USA: Wiley, 2005.
+[61] F. Ding, N. V. Dokholyan, S. V. Buldyrev, H. E. Stanley, and E. I. Shakhnovich, "Direct molecular dynamics observation of protein folding transition state ensemble," Biophys. J., vol. 83, pp. 3525­3532, 2002.
+[62] J. Y. Campbell and R. J. Shiller, "Cointegration and tests of present value models," J. Political Economy, vol. 95, pp. 1062­1088, 1987.
+[63] R. F. Engle and C. W. J. Granger, "Co-integration and error correction: Representation, estimation, and testing," Econometrica, vol. 55, pp. 251­276, 1987.
+[64] J. D. Hamilton, Time Series Analysis. Princeton, NJ, USA: Princeton Univ. Press, 1994.
+[65] S.-J. Kim, K. Koh, S. Boyd, and D. Gorinevsky, "L1 trend filtering," SIAM Rev., vol. 51, pp. 339­360, 2009.
+[66] S.-J. Kim, K. Koh, M. Lustig, S. Boyd, and D. Gorinevsky, "An interiorpoint method for large-scale 1 -regularized least squares," IEEE J. Sel. Topics Signal Process., vol. 1, no. 4, pp. 606­617, Dec. 2007.
+[67] E. F. Fama and K. R. French, "The cross-section of expected stock returns," J. Finance, vol. 47, pp. 427­465, 1992.
+[68] P. Balduzzi, "Transaction costs and predictability: Some utility cost calculations," J. Financial Econ., vol. 52, pp. 47­78, 1999.
+
+1052
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+Zvonko Kostanjcar received the Dipl.Eng. degree in electrical and computer engineering and in financial mathematics and the Ph.D. degree, in 2010, both from the University of Zagreb, Zagreb, Croatia. He is currently an Assistant Professor with the University of Zagreb, also the President of the IEEE Signal Processing Society, Croatia Chapter. His research interests include development of the stochastic models, statistical methods and machine learning algorithms for data analysis, risk measurement, and asset allocation. He received the Roberto Giannini Teaching Award from the Faculty of Electrical Engineering and Computing, University of Zagreb.
+
+Harry Eugene Stanley received the Ph.D. degree from Harvard University, Cambridge, MA, USA, in 1967 (T.A. Kaplan & Nobelist J.H. Van Vleck). In 1979, he became a University Professor, and in 2011, a William Fairfield Warren Distinguished Professor with Boston University. He is a Professor of physics, chemistry, biomedical engineering, and physiology. He is also the Director of the Center for Polymer Studies. He is a Member of the National Academy of Sciences. His research interests include statistical physics, complex systems, and economics.
+
+Stjepan Begusic´ received the B.S. and M.S. degrees in information and communication technology with specialization in information processing from the University of Zagreb, Zagreb, Croatia, in 2012 and 2014, respectively, where he is currently working toward the Ph.D. degree in the Department of Electronic Systems and Information Processing, Faculty of Electrical Engineering and Computing. His research interests include signal processing and computational methods for finance, risk analysis, and asset allocation.
+
+Boris Podobnik received the B.S.E., M.S., and Ph.D. degrees in physics from the University of Zagreb, Zagreb, Crotia. In 2014, he became a Professor with the University of Rijeka. He is also a Professor with Zagreb School of Economics and Management. His research interests include theories regarding data analysis, complex systems, and economics.
+
+
+

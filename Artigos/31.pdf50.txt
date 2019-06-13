@@ -1,0 +1,406 @@
+38
+
+IEEE TRANSACTIONS ON EVOLUTIONARY COMPUTATION, VOL. 20, NO. 1, FEBRUARY 2016
+
+A Genetic Bankrupt Ratio Analysis Tool Using a Genetic Algorithm to Identify Influencing Financial Ratios
+Travis Miranda Lakshmi, Aruldoss Martin, and Venkatasamy Prasanna Venkatesan
+
+Abstract--Financial ratios are key constituents of bankruptcy models. The bankruptcy prediction accuracy substantially improves when a limited number of ratios are used. From the literature, it has been found that human expertise has been applied to select financial ratios for bankruptcy models. Different experts tend to have different opinions and hence the bankruptcy prediction results depend upon their competency levels in that domain. Accordingly, there is a need for finding a systematic method or a tool to identify the influencing ratios. This paper develops a genetic bankrupt ratio analysis tool using a genetic algorithm to identify influencing ratios from different bankruptcy models and their influences in a quantitative form. The accuracy of values of influencing ratios is validated by comparing original threshold value of the bankruptcy models. The performance of influencing ratios has been compared with other feature selection techniques and the Altman model is considered to explain the effect of the influencing ratios.
+Index Terms--Bankruptcy models, bankruptcy prediction accuracy, genetic algorithm, influencing ratios, quantitative bankruptcy prediction, ratio analysis tool.
+I. INTRODUCTION
+S OFT computing techniques are applied successfully in the financial domain because of their tolerance for imprecision, uncertainty, and partial truth to achieve tractability, robustness, and a low solution cost [1]­[3]. It is efficiently applied for bankruptcy prediction [4]­[7], currency crises [8], budgetary allocations [9], credit rating [10], assessing bank efficiency [11], stock market [12], and many more areas.
+In financial decisions, bankruptcy prediction is the most important issue that judges whether the business failure may happen or not [7], [13], [14]. Hence, bankruptcy prediction has been regarded as a critical issue and it is studied extensively in the accounting and finance literature [15], [16]. Many bankruptcy prediction models have been developed and each
+Manuscript received July 4, 2013; revised December 16, 2013, March 20, 2014, June 8, 2014, and November 30, 2014; accepted March 21, 2015. Date of publication April 17, 2015; date of current version January 27, 2016.
+T. M. Lakshmi is with the Research and Development Centre, Bharathiar University, Coimbatore 641 046, India.
+A. Martin is with the Department of Master of Computer Applications, Sri Manakula Vinayagar Engineering College, Puducherry 605107, India (e-mail: jayamartin@yahoo.com).
+V. P. Venkatesan is with the Department of Banking Technology, Pondicherry University, Puducherry 605014, India.
+Color versions of one or more of the figures in this paper are available online at http://ieeexplore.ieee.org.
+Digital Object Identifier 10.1109/TEVC.2015.2424313
+
+of these models has a focal point that addresses the issues related to bankruptcy prediction. The focal points addressed in various models are finding the accuracy, the role of variables (financial variables and nonfinancial variables), identifying the types of failure, events that may affect the financial situation of a firm (nonpayment of a debt, reduction of dividend payments), and models on final bankruptcy resolution (liquidation, reorganization, and takeover). Bankruptcy prediction models have selected financial ratios from the previous literature or either using univariate statistical tests or data mining techniques [17]. The ratios used in the prediction, form the key constituents of these models [18]­[20] and they reflect the characteristics of stability, profitability, growth, activity, and cash flow of a business [22]. However, only limited bankruptcy prediction models have attempted to assess the contribution of financial ratios which affects the performance of a model [23]­[26].
+On the other hand, it was found that nearly 200 scientific papers dealing with corporate failure prediction were published in the last 50 years. More than 500 different ratios were used in these models [17]. Despite the stability of the model performance, the prediction accuracy of bankruptcy substantially increases only when specific numbers of financial ratios are applied [27], [29], [30].
+From the literature, it is evident that the ratios are selected based on their competency levels in the field. The selected financial ratios are key constituents to obtain the accurate bankruptcy prediction results. Hence, a systematic method is required to identify the effective financial ratios for accurate bankruptcy prediction.
+The rest of this paper has been organized as follows. Section II describes the literature study. Section III describes the details of bankruptcy models used in this paper. Section IV describes the research proposal. Section V describes the design principles of the tool. Section VI states the experimentation details and Section VII discusses experimentation results. Section VIII discusses the accuracy level of influencing ratios. Section IX describes the performance on influencing ratios and Section X concludes this paper.
+II. LITERATURE REVIEW
+The various techniques and methods which are adopted to select the financial ratios for bankruptcy prediction models,
+
+1089-778X c 2015 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications_standards/publications/rights/index.html for more information.
+
+LAKSHMI et al.: GBRAT USING A GENETIC ALGORITHM TO IDENTIFY INFLUENCING FINANCIAL RATIOS
+
+39
+
+TABLE I BANKRUPTCY PREDICTION MODELS WITH
+SELECTED AND APPLIED RATIOS
+
+TABLE II VARIOUS METHODS FOR FINANCIAL RATIO SELECTION
+
+the number of financial ratios identified and selected by these models are described in Table I.
+From Table I, it is evident that in bankruptcy models, limited number of ratios are selected from the identified ratios. This financial ratio selection for bankruptcy prediction can be classified under different methods. The ratio selection techniques for bankruptcy models which are described in Table I can be grouped into one of the four methods [17] which are described in Table II. The foundations, financial ratio selection techniques, along with the limitations, are also described in Table II.
+The methods listed in Table II help to select the ratios for bankruptcy prediction models. From Tables I and II, one can find selected works in finding the influencing ratios implicitly along with their methods. Most financial problems use hybrids of artificial neural networks with other soft computing techniques for decision making due to its high learning ability [3]. Genetic algorithm has been applied
+
+successfully to detect financial fraud [24] and it is applied successfully both in quantitative [25], [32]­[36] and qualitative bankruptcy prediction [19], [22]. The hybrid of genetic algorithm and neural network has shown the lowest misclassification cost among other models [21], [31]. The genetic programming [4], [29], [38], [39] based credit scoring result was able to differentiate good and bad credits [10]. Further, the ensembles of soft computing techniques have efficiently assessed the performance of a banking system [11]. The temporal stock patterns are detected effectively in the stock market for efficient trading using neural networks with genetic algorithms [12]. Fuzzy analytic hierarchy process was applied to solve a bank loan decision problem to find a suitable degree of fuzziness for preference rankings in budget allocation for a business [9].
+In this paper, we attempt to design and develop a genetic bankrupt ratio analysis tool (GBRAT) using real-genetic algorithm (RGA) [6] to find the influencing ratios. This genetic tool analyses the nonlinear relationship among financial ratios of bankruptcy models and classifies the ratios into influencing and noninfluencing ratios.
+III. BANKRUPTCY MODELS CONSIDERED FOR GBRAT
+An influencing ratio is a ratio which plays a key role to obtain bankruptcy prediction accuracy among other financial ratios. Predominating bankruptcy models have been applied by various firms to predict bankruptcy and the same have been chosen in this paper to identify the influencing ratios using GBRAT. The bankruptcy models with accuracy levels of more than 80% are selected and ranked and from which, the top five bankruptcy models are chosen for ratio analysis. The selected models are Altman [55], Deakin [56], Edmister [57], Springate [58], and Fulmer et al. [13]. In Table III, the details of the chosen bankruptcy models are described.
+All ratios fall under their specific ranges as specified by [15]. Table III describes the selected bankruptcy models and their details, along with the specific range of each of the ratios applied in the respective bankruptcy models.
+
+40
+
+IEEE TRANSACTIONS ON EVOLUTIONARY COMPUTATION, VOL. 20, NO. 1, FEBRUARY 2016
+
+TABLE III SELECTED BANKRUPTCY MODELS WITH THEIR DETAILS
+
+of the other ratios fixed. The threshold value which is generated by each offspring is called generated threshold value. The finance ratios in the bankruptcy equation are assumed as parents. By changing the characteristics of the parents within its selection range, maximum number of offspring is generated with threshold values for each selected bankruptcy model. The difference between the original threshold value and the generated threshold value should be within the precision. This tool identifies those ratios which fall within the precision as the most influencing ratios. This real-genetic process is applied to all bankruptcy models and the most influencing ratios are identified. The next section describes the design and working principles of GBRAT.
+
+For example, the parameter details of Deakin model, with its specified range, are described as follows. Net income (NI), cash ratio (CR), and current liabilities (CL) should be greater than 1, total assets (TA) should be less than 1, current assets (CA) should be greater than 2, and sales ratio (SR) should be in positive range. The Deakin bankruptcy model has 96% of accuracy in bankruptcy prediction. Deakin has chosen six ratios out of the originally chosen 14 ratios. Other bankruptcy models are also listed with their features in Table III. The next section describes the research proposal.
+IV. RESEARCH PROPOSAL
+This paper pays attention to the design of GBRAT by using the principles of RGA. From the literature, it has been found that genetic algorithm has not been applied to identify the influencing financial features from the bankruptcy models. Hence, in this paper, we made an attempt to develop a tool using genetic algorithm to identify the influencing financial features. As GBRAT is designed using RGA, the offspring are generated directly by substituting the values of ratios in the bankruptcy equation. It studies and identifies the most influencing ratios from predominating bankruptcy models. GBRAT uses bankruptcy model name, prediction accuracy, applied ratios, and specified ranges of ratios as parameters. The details of all these parameters are described in Table III for the chosen five bankruptcy models. The tool identifies the influencing ratios by analyzing each ratio's impact on the prediction model by considering one (mutation) or more (crossover) ratios to be active under its specific range [15], while fixing the values of the other ratios. The fixed value is maintained throughout the experiment until each parent completes the required trials.
+Each bankruptcy model has a bankruptcy prediction equation. A bankruptcy model's cut-off value is assumed to be the original threshold value. GBRAT generates the threshold value for each ratio of the prediction model's equation by applying a value within its range for one ratio while keeping the values
+
+V. DESIGN OF GENETIC BANKRUPT RATIO ANALYSIS TOOL
+Over the past 25 years, genetic algorithm is widely applied to domains where precise models are impractical with varying resolutions and structures. They can search for nonlinear solution spaces without requiring gradient information or a prior knowledge about model characteristics [32]. It is applied in various analysis models to identify the effective parameters [36].
+The RGA is one kind of simple genetic algorithm and it directly codes the parameters of the problem space into chromosomes without performing coding and encoding [6], [39]. This genetic process is used to analyze the nonlinear relationship among financial variables of a bankruptcy model and to find the most influencing ratios. The genetic operators such as mutation and crossover have been applied for offspring generation. The impact of generated offspring is validated with other parents and from this process, most influencing parents are identified. While generating offspring for a parent, (for example X1) the values of the other parents who are part of this bankruptcy model are kept fixed.
+In the real-genetic process, the formation of offspring is straight forward. The ratios (X) of the bankruptcy model with its value and constants (c) are applied directly in the formation of offspring which is represented in (1). A bankruptcy equation consists of financial ratios (X) with their constants (c), yielding a threshold value called . Each bankruptcy model has a bankrupt value, which is considered as the original threshold value . For example, in Altman model the bankrupt value is 2.675 which is considered as  in this genetic process. Each financial ratio X from the selected bankruptcy model is considered a parent and it consists of financial variables namely A and B. The range of each financial variable is defined between m and n, where m is the starting range and n is the ending range.
+In the mutation process, according to the parent X, the financial variables and their ranges m and n are selected which is represented in (2). The value of a ratio between its range is considered as a characteristic of a parent. For example, consider the parent X1, the starting value of each financial variable is selected between its selection range m and n in the process of forming the first offspring. While generating the second offspring from parent X1, the next value of the ratio within
+
+LAKSHMI et al.: GBRAT USING A GENETIC ALGORITHM TO IDENTIFY INFLUENCING FINANCIAL RATIOS
+
+41
+
+its range is selected and this process is repeated until the maximum number of offspring is generated. In this process, each offspring is generated with threshold value  from (2).
+The offspring, which are generated using mutation and crossover, are selected and discarded using the fitness function f (x) represented in (4). The generated threshold value  of each offspring is compared with the original threshold value . The difference between  and  should be in between the precision of (ą1). The precision (ą1) indicates the maximum difference between the original threshold value  and the generated threshold value . Those offspring which stand within the precision from (4) are assumed to be the members of the set P and other offspring are discarded. The parents of the selected offspring from set P are considered to be the most influencing ratios. The above said process is repeated for other parents X available in the bankruptcy model to find the most influencing ratios.
+In this genetic process, simple pair crossover (a type of crossover) is applied. In the process of crossover, the characteristics of two parents are taken. For example, financial variables with their values within m and n from parents X1 and X2 are taken and offspring  is generated from (3) using the same steps. This process is applied for all the parents with simple pair. The working model of GBRAT is described by the pseudo code explained in the next section.
+
+whereas the values of the other parents are kept fixed (this value is maintained until the completion of the respective trial conducted for each parent) between m and n and this process is repeated until all the parents have undergone mutation
+
+ = [c1X1(Am...n/Bm...n)]
+
++ [c2X2(Am...n/Bm...n)]
+
++ [c3X3(Am...n/Bm...n)] + ˇ ˇ ˇ
+
++ [cNXN(Am...n/Bm...n)]
+
+(2)
+
+where, X1, . . . , XN ­ parents of bankruptcy equation, A and B ­ financial variables of parent X, m ­ starting selection range, n ­ ending selection range. Crossover: In the process of crossover, characteristics of two parents are taken and offspring are formed using simple pair until all the parents have undergone crossover
+
+ = c1X1 Am..n/Bm..n + c2X2 Am..n/Bm..n
+
++ c3X3 Am..n/Bm..n + ˇ ˇ ˇ
+
++ cNXN Am..n/Bm..n .
+
+(3)
+
+A. Pseudo Code for Genetic Bankrupt Ratio Analysis Tool
+The GBRAT is designed using RGA. The following pseudocode explains the working model of real-genetic process.
+
+Step 7:
+
+Selection and Discarding of Offspring: The offspring which is generated using mutation and crossover is selected or discarded using the fitness function f(x)
+
+Step 1: Step 2: Step 3: Step 4: Step 5:
+Step 6:
+
+Search space ­ the top five bankruptcy models with accuracy levels of more than 80% are chosen for genetic operation. Each financial ratio has its specific range between m and n (m ­ starting selection range, n ­ ending selection range). The value of a ratio is taken between its specific range. Each bankruptcy model has a bankrupt value, which is considered as the original threshold value "." Each financial ratio X in the bankruptcy model is considered as a parent. In this genetic process, a bankruptcy equation is a collection of parents (X1, X2, X3, . . . , XN). Formation of bankruptcy equation
+ = c1X1 + c2X2 + c3X3 + ˇ ˇ ˇ + cNXN (1)
+where,  ­ original threshold value of the respective bankruptcy model, c1, c2, c3, . . . , cN ­ constants applied for each ratio from the bankruptcy equation offspring are generated and each offspring is generated with threshold value called as . Offspring Generation: Operators Applied ­ Mutation and Crossover Mutation: In a bankruptcy equation, one of the parents (X1, X2, X3, . . . , XN) is mutated between m and n
+
+Fitness function: f (x) =  -  <= (ą1) (4)
+where, x ­ generated offspring, (ą1) ­ precision range. Step 8: P is a selected offspring set and x1, x2, x3, . . . , xn are the members of the set P when precision range of x stands between (ą1). Step 9: The parent (X) of the selected offspring (x) present in the set P is considered as most influencing ratio. Step 10: Repeat this process until all the parents have undergone mutation and crossover.
+The pseudo code explains the working principle of the genetic process. In this process, selection range and precision are defined on the basis of relative error with selection range. Selection range of an offspring  is defined between m and n. It makes the generated offspring fall within the range of m and n. The precision for offspring is defined between ą1. It minimizes the error rate of offspring selection and discard. The next section explains the experimentation details of the genetic process.
+VI. EXPERIMENTATION DETAILS
+GBRAT is coded using Java to conduct the experiments. It takes bankruptcy model, prediction accuracy, applied ratios, and their specified range as parameters to identify the influencing ratios.
+
+42
+
+IEEE TRANSACTIONS ON EVOLUTIONARY COMPUTATION, VOL. 20, NO. 1, FEBRUARY 2016
+
+In mutation operation, one of the ratios is mutated within its specific range while the values of the other ratios are kept fixed as represented in (2). For example, Altman bankruptcy model has five ratios, in which the ratio X1 is mutated within its specific range for 1000 trials and remaining four ratios are kept with fixed value. All the ratios X1 to X5 with their respective values have been substituted in Altman equation (5). Offspring is generated for each trial with the threshold value  from (5).
+According to the ranges of financial ratios and the combination among ranges, a number of offspring are generated. For example, consider the financial ratio working capital (WC), its ratio range is (1.0 > WC < 2.0). While generating offspring the value lies between its limit (1.0, 1.10, 1.11, 1.12, 1.13, 1.14, . . . , 1.20, 1.30, 1.40, . . . , 2.0). When we apply mutation with different combinations of this range, it generates more offspring. To limit it, we have generated 1000 offspring for each ratio. Each model has 1000 trials for each ratio. According to the number of parents, a number of trials are applied. In the process of mutation, those parents who are not mutated remain with their initial values between their specific ranges.
+The algorithm compares the precision from (4) of this generated threshold () value with the original threshold value (). The offspring within the precision is selected by GBRAT as the influencing ratio. The same mutation process is experimented for the next ratio and this genetic process is repeated until the selection of all parents of the bankruptcy model by the mutation operator. In this genetic process, simple pair crossover is applied. In the process of crossover, the characteristics of two parents are taken. For example, financial ratios with their m and n from parents X1 and X2 are taken and offspring are generated from (3) using the steps indicated in the pseudo code. This process is applied for all the parents with simple pair.
+Similarly, the GBRAT completes 1000 trials for each ratio in the respective bankruptcy models. For Deakin model, the total number of trials performed is 5000 whereas Springate model has 4000 trials, Edmister model has 7000 trials, and Fulmer model has 9000 trials. The results of these experiments conducted using GBRAT will be discussed in the next section.
+VII. RESULTS AND DISCUSSION
+Five different bankruptcy models have been considered for the analysis and identification of the most influencing ratios using GBRAT. Mutation and crossover operators have been applied on each selected model and the results are discussed in the following sections.
+A. Analysis of Altman Bankruptcy Model Ratios
+The bankruptcy equation of Altman bankruptcy model is
+Z = 0.012X1 + 0.014X2 + 0.033X3 + 0.006X4 + 0.999X5
+(5)
+where X1 = WC/TA, X2 = retained earnings/TA, X3 = earnings before interest and taxes/TA, X4 = market value of equity/book value of total liabilities, X5 = sales/TA, Z = Altman bankrupt value.
+
+The performance of any business is assessed based on the value of Z. That is, when the value of Z is less than 2.675, Altman prediction would lead to bankruptcy, otherwise it assures the better performance of business. The process of mutation using GBRAT for Altman model is explained below.
+1) Process of Mutation and Offspring Generation: Mutation is a process of creating offspring by changing the characteristics within a parent. By mutating each parent X in the Altman bankruptcy equation, maximum number of offspring are generated with threshold values (1, 2, 3, . . . , n). The ratio X1, WC to TA, is considered as a parent. Let 1 (2.675) be the threshold value of this bankruptcy model.
+The WC and TA are assigned initial values within their specified ranges as described in Table III. The remaining ratios X2, X3, X4, and X5 are assigned fixed values within their specified ranges. During mutation one of the parents is mutated and the other parents are not changed. The parents who are not mutated have been assigned fixed values within the specific ranges of their financial ratios. These values are maintained throughout the experiment until the completion of all the trials conducted for the mutated parent. Now GBRAT generates offspring with threshold value 1 by substituting X1,X2, X3, X4, and X5 in (5). The generated threshold value 1 is compared with the original threshold value 1. Table IV describes the generated offspring with their threshold values.
+In Table IV, different colors are used to differentiate the mutated parents and their offspring from the other parents. From iteration 848 to 918, the offspring TA and WC of X1 is mutated which is indicated by lighter red. The result of parent X1 after mutation is indicated by darker orange. Likewise, from iteration 748 to 841, parent X2 is mutated which is indicated by olive green. The output of X2 after mutation is indicated by darker orange. Similarly different colors are used to denote the mutated parent and its offspring. While performing mutation on parent X4, the value of X4 is changed whereas the values of the other parents X1, X2, X3, and X5 are not changed, which are indicated by light blue color.
+In the real-genetic mutation process, 1000 offspring are generated with threshold value for each parent. The following section explains the identification of influencing ratios from the generated offspring (refer to Table IV).
+2) Identification of Influencing Ratios: When we change the characteristics of X1 (WC to TA), the offspring 848 reaches a threshold value of 2.92 with TA = 0.40, WC = 1.30, retained earnings = 1.10, earnings before interest and taxes = 1.10, market value of equity = 1.10, book value of total liabilities = 1.10, and sales = 1.10. The difference between this threshold value and that of Altman bankruptcy model stands within the specified precision (ą1). As such, the ratio X1 is considered as the influencing ratio. In Table IV, the ratio X1 (WC and TA) is mutated while the values of the remaining ratios X2, X3, X4, and X5 are not changed. The parents who are not mutated are assigned fixed values within the specific ranges of the ratios and these values will be maintained until the completion all the trials conducted for X1.
+
+LAKSHMI et al.: GBRAT USING A GENETIC ALGORITHM TO IDENTIFY INFLUENCING FINANCIAL RATIOS
+
+43
+
+TABLE IV OFFSPRING GENERATION USING MUTATION FOR ALTMAN
+
+Fig. 1. Genetic ratio analysis for Altman model (mutation).
+
+During the experimentation, in iteration 904 (904) and 905 (905), the values of the ratios X2, X3, and X5 change as well. The reason is that X1 consists of the term TA, which also appears in X2, X3, and X5. Hence, a change in X1 will also affect the other ratios which contain TA as part of the
+financial variable.
+Similarly, when parent X2 (retained earnings to TA) is mutated within the specific range of the ratio, offspring 749 is generated with a threshold value of 2.34. The generated offspring 749 which stands within the precision considered an influencing ratio. During the experimentation, in iteration
+749 and its iterations, all ratios, except X4, are changed. The reason is that except X4, all other parents have TA as part of their ratio.
+
+Likewise, when mutation is performed on X4, the values of all other parents do not change. This is because, the parent X4 consists of terms such as "market value of equity" to "book value of total liabilities" which are not part of any parent. A similar study has been carried out for the remaining ratios and found that X1, X2, X3, and X5 are influencing ratios whereas X4 is not an influencing ratio as its offspring do not fall within the precision.
+3) Ratio Analysis Graph for Altman Model: Amongst 1000 offspring, a randomly selected 15 offspring have been considered and the relation between the reference value 1 and the experimental value  of each offspring is represented in the graph shown in Fig. 1. The differences between 1 and  for the 15 offspring are shown in Fig. 1. Those offspring which stands within the precision become the members of set P and are considered to be the most influencing ratios.
+The graph indicates that most of the generated offspring's threshold values match the original threshold values for parents X1, X2, X3, and X5. Accordingly, precision for  and  of parents X1, X2, X3, and X5 are within the error rate. In this experimentation, for X4, the precision of the generated offspring is not within the error rate and it is discarded by GBRAT. The experimental results indicate that the financial ratios X1, X2, X3, and X5 have higher influence than X4 in the Altman bankruptcy model.
+4) Impact of the Larger Constant in Formation and Rejection of Offspring: In this model, each ratio is associated with a constant and when compared to other ratios, X5 has a larger constant. A small mutation from X5's original value will easily give a big deviation of  from the value of , which makes it a noninfluencing ratio. We have made careful analysis to understand the impact of larger constants on mutation results to identify the influencing ratio. The mutation results of X5 have been described in Table V.
+The precision range is checked for generated offspring from (5) using the fitness function. The offspring which are generated during iterations 1148, 1149, 1150, 1151, and 1158 fall under the precision range (6). Hence, these offspring are selected and the financial ratio X5 has been considered
+
+44
+
+IEEE TRANSACTIONS ON EVOLUTIONARY COMPUTATION, VOL. 20, NO. 1, FEBRUARY 2016
+
+TABLE V IMPACT OF LARGER CONSTANT IN MUTATION PROCESS
+
+Fig. 2. Genetic ratio analysis for Altman model (crossover).
+
+TABLE VI OFFSPRING GENERATION USING CROSSOVER FOR ALTMAN MODEL
+
+offspring have been considered. The relation between the reference value 1 and the experimental value  of each offspring is represented as a graph in Fig. 2.
+Fig. 2 shows a higher difference between the original threshold value and the generated threshold value (not falling within the precision range) for each offspring. Hence, the crossover operation has not contributed to identifying any influencing ratio using GBRAT.
+
+B. Analysis of Deakin Bankruptcy Model Ratios The bankruptcy equation of Deakin model is given by
+
+I = -1.369 + 13.855X1 + 0.060X2 - 0.601X3 + 0.396X4 + 0.194X5 (6)
+
+as an influencing financial ratio. Other than these offspring, all are discarded according to (4). The experimental results indicate that despite the higher constant, X5 is able to produce offspring within the precision range.
+5) Process of Crossover and Offspring Generation: The crossover is an operation performed to generate offspring by taking characteristics from the parents X1 and X2 using simple pair and specifying values within the ranges for X3, X4, and X5. The generated offspring with their threshold values have been listed in Table VI.
+The threshold value of the offspring  is compared with the original threshold value 1 in (4). The precision of each offspring generated for parents of Altman model is more than the error rate. In this crossover operation, GBRAT has not selected any offspring as a member of the set P and therefore it has not considered any ratio as influencing ratio. Amongst 1000 offspring of the ratios X1 and X2, a randomly selected ten
+
+where X1 = NI/TA, X2 = CA/TA, X3 = cash/TA, X4 = CA/CL, X5 = sales/CA, I = overall index (Deakin bankrupt value).
+For any given business, the value of the bankruptcy predic-
+tion variable I of the Deakin model should be greater than or
+equal to 1.5. Otherwise, it indicates that the business is likely
+to bankrupt.
+1) Process of Mutation and Identification of Influencing
+Ratios: In this model, mutation is applied to the ratio X1 where its financial variables are NI to TA. A random value is
+assigned to X1 within its specific range for initial population. Let 2 (1.5) be the threshold value of this bankruptcy model. In Table VII, the offspring with their generated threshold values  are shown.
+The generated offspring 2388 has a threshold value of 3.05 (refer to Table VII) and it is compared with the original threshold value 2. This offspring is discarded as the difference is more than the precision. On the other hand, while apply-
+ing GBRAT to parent X3(cash to TA), the generated offspring 2390 has a threshold value of 1.71. The difference between 2 and 2390 is -0.28 which is within the precision and hence selected as a member of the set P. A similar study has been
+carried out for the remaining ratios and found that X3 is the only influencing ratio and other ratios X1, X2, X4, and X5 are noninfluencing ratios.
+2) Ratio Analysis Graph for Deakin Model: The thresh-
+old values of the generated offspring for parent X3 in Deakin
+
+LAKSHMI et al.: GBRAT USING A GENETIC ALGORITHM TO IDENTIFY INFLUENCING FINANCIAL RATIOS
+
+45
+
+TABLE VII OFFSPRING GENERATION USING MUTATION PROCESS FOR DEAKIN
+
+TABLE VIII OFFSPRING GENERATION USING CROSSOVER PROCESS FOR DEAKIN
+
+TABLE IX OFFSPRING GENERATION USING MUTATION PROCESS FOR SPRINGATE
+
+Fig. 3. Genetic ratio analysis for Deakin model.
+model are compared with  and the differences are represented in the graph in Fig. 3.
+From Fig. 3, it is observed that only limited offspring have reached the precision of the original threshold value 2.
+3) Process of Crossover and Offspring Generation: The offspring with their generated threshold values are listed in Table VIII when crossover is operated using GBRAT for Deakin model.
+In this model, GBRAT also discarded all offspring generated using crossover as there is a higher deviation in the generated threshold values.
+
+C. Analysis of Springate Bankruptcy Model Ratios The bankruptcy equation of the Springate model is
+
+Fig. 4. Genetic ratio analysis for Springate model.
+
+Z = 1.03A + 3.07B + 0.66C + 0.4D
+
+(7)
+
+where A-WC/TA, B-net profit before interest and taxes/TA, C-net profit before taxes/CL, D-sales/TA, and Z-Springate bankrupt value.
+For any given business, the value of the bankruptcy prediction variable Z of the Springate model should be greater than or equal to 0.865. A value lower than 0.865, indicates that the
+
+business is likely to bankrupt. The genetic operators such as mutation and crossover have been applied to the ratios A, B, C, and D of the Springate model and the offspring with threshold values  have been generated. The threshold values of the generated offspring have been listed in Table IX for mutation process. From the comparison of threshold values, the ratio A alone has been identified as an influencing ratio and the other
+
+46
+
+IEEE TRANSACTIONS ON EVOLUTIONARY COMPUTATION, VOL. 20, NO. 1, FEBRUARY 2016
+
+TABLE X OFFSPRING GENERATION USING MUTATION PROCESS FOR EDMISTER
+
+TABLE XI OFFSPRING GENERATION USING MUTATION PROCESS FOR FULMER
+
+Fig. 5. Genetic ratio analysis for Edmister model.
+
+ratios have been discarded. The differences between the original and experimental threshold values are shown in Fig. 4 for Springate model.
+D. Analysis of Edmister Bankruptcy Model Ratios
+Edmister developed a seven variable, zero one linear regression equation, which gives the bankruptcy value of the Edmister model as
+Z = 0.951 - 0.523X1 - 0.293X2 - 0.482X3 + 0.277X4 - 0.452X5 - 0.352X6 - 0.924X7 (8)
+where X1 = annual funds to CL, X2 = equity to sales, X3 = net WC to sales, divided by RMA average ratio (average ratios for firms), X4 = CL to equity, divided by RMA average ratio, X5 = inventory to sales, divided by RMA average ratio, X6 = quick ratio divided by the trend in RMA quick ratio, X7 = quick ratio divided by RMA quick ratio, and Z = Edmister variable.
+In this model, the minimum threshold value of an offspring should be 0.530. A threshold value lower than 0.530, indicates that the business is likely to bankrupt. The methodology used in the previous models has been applied to all the ratios and it is found that X1, X2, and X4 are influencing ratios and X3, X5, X6, and X7 are noninfluencing ratios in the mutation process. The threshold values of different offspring for the ratios X1, X2, and X4 are given in Table X.
+
+Fig. 6. Genetic ratio analysis for Fulmer model.
+In the mutation process, the ratios X1, X2, and X4, which have more offspring reaching within the precision range, are shown in Fig. 5.
+
+E. Analysis of Fulmer Bankruptcy Model Ratios The Fulmer bankruptcy model takes the form
+
+H = 5.528(V1) + 0.212(V2) + 0.073(V3) + 1.270(V4)
+
+- 0.120(V5) + 2.335(V6) + 0.575(V7) + 1.083(V8)
+
++ 0.894(V9) - 6.075
+
+(9)
+
+where V1 = retained earning/TA, V2 = sales/TA, V3 = EBT/equity, V4 = cash flow/total debt, V5 = debt/TA, V6 = CL/TA, V7 = log tangible TA, V8 = WC/total debt, V9 = EBIT/interest, and H = Fulmer bankrupt variable.
+For any given business, the original threshold value 5 of Fulmer model is 0. A threshold value lower than the original
+threshold value indicates that the business is likely to fail.
+Table XI lists the offspring generated in the genetic mutation
+ratio analysis. In this process, the offspring 459 generated for the ratio V5
+tends to stand within the precision of 5 and the results are shown in Fig. 6. Hence, the ratio V5 is considered to be the influencing ratio whereas the offspring generated for the other ratios of this model do not have any impact on 5 and are discarded by GBRAT. Fig. 6 shows that most of the offspring for
+
+LAKSHMI et al.: GBRAT USING A GENETIC ALGORITHM TO IDENTIFY INFLUENCING FINANCIAL RATIOS
+
+47
+
+TABLE XII INFLUENCING RATIOS OF BANKRUPTCY MODELS
+
+TABLE XIII INFLUENCING RATIO ACCURACY LEVEL COMPARISON
+
+parent V5 have reached within the precision and they belong to the set P.
+As we have considered in Altman and Deakin models, the crossover operation has been employed to the remaining three models Springate, Edmister, and Fulmer. In this genetic process, offspring which are generated using crossover do not fall within the precision range given in (4). The crossover is performed between two completely different ratios, such as between WC/TA and market value of equity/book value of total liabilities. Parents with different characteristics are involved in the crossover. Hence, the resultant offspring do not fall within the precision range and do not have any effect in identifying influencing ratios. In all these five bankruptcy models, the effect of crossover is minimal and it is not able to help the GBRAT to find the influencing ratios. The next section discusses the results of the experiments conducted using GBRAT to identify the influencing ratios in the models considered for the study.
+VIII. ACCURACY LEVELS OF INFLUENCING RATIOS
+When we change the characteristics of a parent X (through mutation) in the analysis of the most influencing ratios using GBRAT, the resultant threshold value of the generated offspring  has impact on the original threshold value  of the respective bankruptcy model. Accordingly, the parent of the offspring which falls within the precision is considered to be influencing ratio in the models which are studied to identify the influencing ratios. In this GBRAT experiment, the mutation process has a greater impact in identifying the influencing ratios. The influencing ratios obtained using GBRAT for all the five models in this paper are given in Table XII.
+From Altman model given in (5), one can find the performance of a business using only the most influencing ratios X1, X2 X3, and X5. Deakin model given in (6) is suggested for those who want to assess the financial status of a business with cash and TA (X3) which is the only most influencing ratio in this model. From Table XII, Springate model represented in (7) is the best model to measure the business financial crisis using WC and TA. The most influencing ratios of Edmister model given in (8) are X1, X2, and X4 which can be used to find the financial stability of a business. It is also observed that V5 is the only most influencing ratio in Fulmer model given in (9) to predict the bankruptcy of a business.
+
+Fig. 7. Influencing ratios accuracy level.
+It is observed that the TA is a key financial variable in designing a bankruptcy model as it is an influencing ratio in all the models. Similarly, Deakin, Springate, and Fulmer model have only one influencing ratio whereas the other models have more than two. Hence, these models can be used to reduce computational time and complexity. Amongst the five models considered for the study, Altman, Deakin, Springate, and Fulmer models are designed based on TA whereas the Edmister model is influenced by CL.
+The results of influencing ratios are validated by comparing the original threshold values of bankruptcy models with the average impacted threshold values. In Table XIII, the original threshold values  and the average impacted threshold values  for each bankruptcy model have been compared and their accuracy levels are listed out.
+From Table XIII, it is found that accuracy levels of more than 83% are maintained in all the models. In particular, the Altman, Springate, and Fulmer models have accuracy levels higher than 95%. Moreover, in Altman model, all influencing ratios, except X5, maintain accuracy levels of more than 95%. Deakin and Edmister models have accuracy levels higher than 85%. The diagrammatic representation of the high coincidence levels of most influencing ratios is given in Fig. 7.
+In its present form, GBRAT has computed the "average impacted threshold value" from the offspring that falls within the precision. The influencing ratio accuracy level comparison results have been described in Table XIII. The average impacted threshold value can be computed in different ways
+
+48
+
+IEEE TRANSACTIONS ON EVOLUTIONARY COMPUTATION, VOL. 20, NO. 1, FEBRUARY 2016
+
+TABLE XIV TOP FIVE OFFSPRING OF ALTMAN AND THEIR
+ACCURACY LEVEL COMPARISON
+
+TABLE XV EXPERIMENTATION DETAILS ON FINDING PREDICTION
+ACCURACY WITH CBR
+
+to find the accuracy between  and . It helps to find the robustness of the selected influencing ratio of a particular bankruptcy model. To carry out this computation, both selected and discarded offspring can be taken in different combinations. For example, consider Altman model, in which the top five rated offspring are taken with their precision to find the accuracy between  and  described in Table XIV.
+From the experimentation results (refer to Table XIV), it is found that the accuracy levels of X1, X2, and X3 are high when it is compared to X5. One of the reasons found for the difference between X5 and the other influencing ratios is that the larger constant associated with X5 has influenced the generation of offspring within the precision. Similarly, the selection and discarding of offspring of different parents of various bankruptcy models are influenced by different factors. Some of the factors are as follows:
+1) the kinds of ratios taken for bankruptcy analysis; 2) the combination of ratios (for e.g., X1 = WC/TA and
+X2 = retained earnings/TA); 3) the impact of one ratio with respect to another ratio; 4) the constant associated with each of the ratios. This paper has identified the above said factors and more factors can be identified in its extended version. The impact of the above said factors and the robustness of the influencing ratios can be analyzed with different combinations of offspring. Some of the combinations are listed as follows: 1) offspring that fall within the precision alone--presently
+carried out in GBRAT; 2) combination of offspring (both selected and discarded); 3) discarded offspring alone; 4) selected offspring with different combinations (when
+50 offspring are selected for analysis, when 100 offspring are selected, when 500 offspring are selected for the analysis with different kinds of combinations); 5) the particular moment (between the ratio range: 1.0, 1.1, 1.2, 1.3, . . . , 2.0) in which a larger number of offspring are generated. In order to check the robustness of the influencing ratios, the above said combinations of the offspring should be generated. This will require extensive analysis which will be carried out in the extended version of GBRAT. The next section validates the performance of influencing ratios.
+IX. PERFORMANCE OF INFLUENCING FINANCIAL FEATURES
+To analyze the performance of influencing ratios, a comparative study has been conducted to find the bankruptcy prediction accuracy using influencing ratios with other feature selection techniques. In addition to this analysis, this section
+
+also analyses the effect of the influencing financial features in the bankruptcy models. For this analysis, Altman model is considered to explain the effect of the influencing financial features.
+X. COMPARATIVE ANALYSIS ON BANKRUPTCY PREDICTION ACCURACY USING INFLUENCING
+FINANCIAL FEATURES
+To analyze the performance of influencing financial features, they have been applied to predict bankruptcy. The prediction accuracy obtained using financial features has been compared with those obtained using other feature selection techniques. To obtain bankruptcy prediction accuracy, case-based reasoning (CBR) has been selected. It is a machine learning technique which solves a new problem based on the past experiences. It is more efficient since it provides prediction along with explanation. The CBR prediction performance depends on the feature selection technique and the case retrieval algorithm. In this experiment, GBRAT has been considered as feature selection technique and the k-nearest neighbor algorithm has been selected for case retrieval. The experimentation details about finding the bankruptcy prediction accuracy using the influencing features identified by GBRAT with CBR are described in Table XV.
+Protégé (3.4.7) with myCBR (plug-in) is selected as the CBR tool and data sets are taken from Prowess database from 1997 to 2008 to conduct the experiment. Each case has been represented using influencing features in CBR and simple CBR has been considered for the experiment. The bankruptcy prediction accuracy obtained with influencing features using CBR has been compared with the bankruptcy prediction accuracy obtained using other feature selection techniques. The details about various feature selection methods, identified features, and selected features of these methods are described in Table XVI.
+The bankruptcy prediction accuracy results obtained using CBR with different feature selection techniques have been depicted in Fig. 8. Genetic algorithm with CBR has selected 15 financial features and it gives a prediction accuracy of 86.73% whereas decision trees have selected 15 financial features which give a prediction accuracy of 87.20%. GBRAT has selected eight financial features and it gives a prediction
+
+LAKSHMI et al.: GBRAT USING A GENETIC ALGORITHM TO IDENTIFY INFLUENCING FINANCIAL RATIOS
+
+49
+
+TABLE XVI DETAILS OF FEATURE SELECTION METHODS APPLIED IN CBR
+
+TABLE XVII Z-SCORE VALUES OF ALTMAN MODEL FOR RECOVERED BANKS
+
+Fig. 8. CBR and feature selection techniques.
+accuracy of 89.75% which is higher than those obtained by the other feature selection techniques applied in simple CBR.
+This CBR-bankruptcy prediction method has used influencing ratios as input variables. The prediction accuracy of this method is better than previous methods and it has selected relatively limited features (eight) compared to other methods.
+XI. EFFECT OF THE INFLUENCING FINANCIAL FEATURES
+The ratios which are identified as influencing ratios from each bankruptcy model should be verified and justified that they are really influencing ratios. For this verification process, Altman bankruptcy model's most influencing ratios are taken as a test case. Altman model is applied in successful banks and recovered (merged) banks of India between the period 1997­2008 to verify the impact of the most influencing ratios.
+In this analysis, it is observed that the financial variable X4 has a lower value compared to the other financial variables such as X1, X2, X3, and X5. Moreover, the same variable X4 does not have influence on the threshold value () when the analysis was made using GBRAT. During the period 1997­2008, these banks are very successful though X4 has less value. Accordingly, it indicates that X4 is not the most
+
+influencing ratio in Altman bankruptcy model. The same verification process is also applied to the recovered banks and the same is reported in Table XVII.
+In this verification, X4 also does not have considerable value when compared to the other financial variables as illustrated in Table XVII. During the period 1997­2008, these recovered banks are almost in bankrupt status. Thus, the experimentation results indicate that in the Altman bankruptcy model, the financial variables X1, X2, X3, and X5 are most influencing ratios. Therefore, GBRAT can be used by any one working with bankruptcy models to find the most influencing ratios.
+In GBRAT, it is obvious to call the whole vector (X1, X2, X3, and X4) as parent when N = 4. The genetic operators such as mutation (X1, X2, X3, and X4) and crossover (X1, X2, X3, and X4) (Y1, Y2, Y3, and Y4) can be applied to this parent to find the influencing ratios. In crossover, offspring are formed using simple pair. In the process of mutation, if we change the values of (X2, . . . , XN), the value x for X1 may not lead to the precision range, so x is not considered as an influencing ratio. When we assume the whole vector (X1, X2, X3, and X4) as parent, the parent X1 is changed and then the other ratios (X2, . . . , XN) are also changed. In its present form, GBRAT has given impressive results in mutation and these results suggested more confidence to choose this methodology. Hence, we have applied this methodology to bankruptcy models and influencing ratios are identified according to the experimental results. In extension of the present work, this methodology is modified to consider the whole vector as a parent to identify the influencing ratios.
+XII. CONCLUSION
+The GBRAT has been developed to find the influencing ratios for bankruptcy models. The tool has been applied to five different models and the most influencing ratios are identified by generating sizeable number of offspring for each ratio of the models considered for the study. The two genetic operators such as mutation and crossover have been applied to generate the offspring. In the process of mutation, we are mutating one parent at a time. Similarly, while performing mutation to the next parent, the previously mutated parent and the other parents are not mutated. Crossover is performed on two different parents having nonlinear relationship with simple pair.
+
+50
+
+IEEE TRANSACTIONS ON EVOLUTIONARY COMPUTATION, VOL. 20, NO. 1, FEBRUARY 2016
+
+It has been observed that the influencing ratios can be obtained in all the models using only the mutation process. The influencing ratios obtained using GBRAT in all the models were validated with the original threshold values of the respective bankruptcy models. The performance of the influencing ratios are validated with CBR. The bankruptcy prediction accuracy of the influencing ratios are higher than those of the other feature selection techniques which are applied in CBR. In order to analyze the effect of influencing ratios, Altman model is considered and it has been validated with successful and recovered banks. In this analysis, the performance of business has been decided by influencing ratios despite the performance of noninfluencing ratio. Accordingly, one can confidently use the proposed genetic algorithm to find the influencing ratios for other bankruptcy models.
+REFERENCES
+[1] M. D. Fethi and F. Pasiouras, "Assessing bank efficiency and performance with operational research and artificial intelligence techniques: A survey," Eur. J. Oper. Res., vol. 204, no. 2, pp. 189­198, 2010.
+[2] H. Huang, M. Pasquier, and C. Quek, "Financial market trading system with a hierarchical coevolutionary fuzzy predictive model," IEEE Trans. Evol. Comput., vol. 13, no. 1, pp. 56­70, Feb. 2009.
+[3] A. Mochón, D. Quintana, Y. Sáez, and P. Isasi, "Soft computing techniques applied to finance," Appl. Intell., vol. 29, no. 2, pp. 111­115, 2007.
+[4] A. Tsakonas, G. Dounias, M. Doumpos, and C. Zopounidis, "Bankruptcy prediction with neural logic networks by means of grammar-guided genetic programming," Expert Syst. Appl., vol. 30, no. 3, pp. 449­461, 2006.
+[5] W.-S. Chen and Y.-K. Du, "Using neural networks and data mining techniques for the financial distress prediction model," Expert Syst. Appl., vol. 36, no. 2, pp. 4075­4086, 2009.
+[6] C.-H. Wu, G.-H. Tzeng, Y.-J. Goo, and W.-C. Fang, "A realvalued genetic algorithm to optimize the parameters of support vector machine for predicting bankruptcy," Expert Syst. Appl., vol. 32, no. 2, pp. 397­408, 2007.
+[7] H.-L. Chen et al., "A novel bankruptcy prediction model based on an adaptive fuzzy k-nearest neighbour method," Knowl.-Based Syst., vol. 24, no. 8, pp. 1348­1359, 2011.
+[8] C. Lin, H. Khan, R. Chang, and Y. Wang, "A new approach to modelling early warning systems for currency crises: Can a machine-learning fuzzy expert system predict the currency crises effectively?" J. Int. Money Financ., vol. 27, no. 7, pp. 1098­1121, 2008.
+[9] Y.-C. Tang, "An approach to budget allocation for an aerospace company--Fuzzy analytic hierarchy process and artificial neural network," Neurocomputing, vol. 72, nos. 16­18, pp. 3477­3489, 2009.
+[10] H. A. Abdou, "Genetic programming for credit scoring: The case of Egyptian public sector banks," Expert Syst. Appl., vol. 36, no. 9, pp. 11402­11417, 2009.
+[11] V. Ravi, H. Kurniawan, P. N. K. Thai, and P. R. Kumar, "Soft computing system for bank performance prediction," Appl. Soft Comput., vol. 8, no. 1, pp. 305­315, 2008.
+[12] H.-J. Kim and K.-S. Shin, "A hybrid approach based on neural networks and genetic algorithms for detecting temporal patterns in stock markets," Appl. Soft Comput., vol. 7, no. 2, pp. 569­576, 2007.
+[13] J. G. Fulmer, J. E. Moon, T. A. Gavin, and M. J. Erwin, "A bankruptcy classification model for small firms," J. Commer. Bank Lend., vol. 24, no. 2, pp. 25­37, 1984.
+[14] W.-Y. Lin, Y.-H. Hu, and C.-F. Tsai, "Machine learning in financial crisis prediction: A survey," IEEE Trans. Syst., Man, Cybern. C, Appl. Rev., vol. 42, no. 4, pp. 421­436, Jul. 2012.
+[15] J. C. Van Horne, Financial Management Policy, 12th ed. Prentice-Hall, Upper Saddle River, NJ, USA, 2001.
+[16] G. Zhang, M. Y. Hu, B. E. Patuwo, and D. C. Indro, "Artificial neural networks in bankruptcy prediction: General framework and crossvalidation analysis," Eur. J. Oper. Res., vol. 116, no. 1, pp. 16­32, 1999.
+
+[17] P. du Jardin, "Predicting bankruptcy using neural networks and other classification methods: The influence of variable selection techniques on model accuracy," Neurocomputing, vol. 73, nos. 10­12, pp. 2047­2060, 2010.
+[18] P. R. Kumar and V. Ravi, "Bankruptcy prediction in banks and firms via statistical and intelligent techniques--A review," Eur. J. Oper. Res., vol. 180, no. 1, pp. 1­28, 2007.
+[19] A. Martin, T. M. Lakshmi, and V. P. Venkatesan, "An analysis on qualitative bankruptcy prediction rules using ant-miner," Int. J. Intell. Syst. Appl., vol. 6, no. 1, pp. 36­44, Dec. 2013.
+[20] A. Martin, M. Manjula, and V. P. Venkatesan, "A business intelligence model to predict bankruptcy using financial domain ontology with association rule mining algorithm," Int. J. Comput. Sci., vol. 8, no. 3, pp. 211­218, 2011.
+[21] M. Anandarajan, P. Lee, and A. Anandarajan, "Bankruptcy prediction of financially stressed firms: An examination of the predictive accuracy of artificial neural networks," Intell. Syst. Account. Financ. Manage., vol. 10, no. 2, pp. 69­81, 2001.
+[22] X. Xu and Y. Wang, "Financial failure prediction using efficiency as a predictor," Expert Syst. Appl., vol. 36, no. 1, pp. 366­373, 2009.
+[23] S. Cho, H. Hong, and B.-C. Ha, "A hybrid approach based on the combination of variable selection using decision trees and case-based reasoning using the Mahalanobis distance: For bankruptcy prediction," Expert Syst. Appl., vol. 37, no. 4, pp. 3482­3488, 2010.
+[24] B. Hoogs, T. Kiehl, C. Lacomb, and D. Senturk, "A genetic algorithm approach to detecting temporal patterns indicative of financial statement fraud," Intell. Syst. Account. Financ. Manage., vol. 15, nos. 1­2, pp. 41­56, 2007.
+[25] S.-H. Mina, J. Leeb, and I. Hanb, "Hybrid genetic algorithms and support vector machines for bankruptcy prediction," Expert Syst. Appl., vol. 31, no. 3, pp. 652­660, 2006.
+[26] Z. Huimin, A. P. Sinha, and W. Ge, "Effects of feature construction on classification performance: An empirical study in bank failure prediction," Expert Syst. Appl., vol. 36, no. 2, pp. 2633­2644, 2009.
+[27] A. F. Atiya, "Bankruptcy prediction for credit risk using neural networks: A survey and new results," IEEE Trans. Neural Netw., vol. 12, no. 4, pp. 929­935, Jul. 2001.
+[28] V. K. Koumousis and C. P. Katsaras, "A saw-tooth genetic algorithm combining the effects of variable population size and reinitialization to enhance performance," IEEE Trans. Evol. Comput., vol. 10, no. 1, pp. 19­28, Feb. 2006.
+[29] T. E. McKee and T. Lensberg, "Genetic programming and rough sets: A hybrid approach to bankruptcy classification," Eur. J. Oper. Res., vol. 138, no. 2, pp. 436­451, 2002.
+[30] M.-J. Kim and D.-K. Kang, "Ensemble with neural networks for bankruptcy prediction," Expert Syst. Appl., vol. 37, no. 4, pp. 3373­3379, 2010.
+[31] H.-J. Chen, S. Y. Huang, and C.-S. Lin, "Alternative diagnosis of corporate bankruptcy: A neuro fuzzy approach," Expert Syst. Appl., vol. 36, no. 4, pp. 7710­7720, 2009.
+[32] H. Ahn and K.-J. Kim, "Bankruptcy prediction modeling with hybrid case-based reasoning and genetic algorithms approach," Appl. Soft Comput., vol. 9, no. 2, pp. 599­607, 2009.
+[33] K.-S. Shin and Y.-J. Lee, "A genetic algorithm application in bankruptcy prediction modelling," Expert Syst. Appl., vol. 23, no. 3, pp. 321­328, 2002.
+[34] A. Martin, V. Gayathri, G. Saranya, P. Gayathri, and V. P. Venkatesan, "A hybrid model for bankruptcy prediction using genetic algorithm, fuzzy c-means and MARS," Int. J. Soft Comput., vol. 2, no. 1, pp. 12­24, 2011.
+[35] A. Martin, T. M. Lakshmi, and V. P. Venkatesan, "To find most impact financial features on bankruptcy models using genetic algorithm," in Proc. Int. Conf. Adv. Eng. Technol., Nagapattinam, India, 2011, pp. 174­179.
+[36] N. Chen, B. Ribeiro, A. S. Vieira, J. Duarte, and J. C. Neves, "A genetic algorithm-based approach to cost-sensitive bankruptcy prediction," Expert Syst. Appl., vol. 38, no. 10, pp. 12939­12945, 2011.
+[37] A. Martin, R. Uthra, A. Kavitha, B. Divya, and V. P. Venkatesan, "A business intelligence model for predicting bankruptcy using CBR with essential features," Int. J. Inf. Technol. Eng., vol. 3, no. 1­2, pp. 91­97, 2012.
+[38] P. Ravisankar, V. Ravi, and I. Bose, "Failure prediction of dotcom companies using neural network­genetic programming hybrids," Inf. Sci., vol. 180, no. 8, pp. 1257­1267, 2010.
+[39] P. G. Espejo, S. Ventura, and F. Herrera, "A survey on the application of genetic programming to classification," IEEE Trans. Syst., Man, Cybern. C, Appl. Rev., vol. 40, no. 2, pp. 121­144, Mar. 2010.
+
+LAKSHMI et al.: GBRAT USING A GENETIC ALGORITHM TO IDENTIFY INFLUENCING FINANCIAL RATIOS
+
+51
+
+[40] H. Li, J. Sun, and B.-L. Sun, "Financial distress prediction based on OR-CBR in the principle of k-nearest neighbours," Expert Syst. Appl., vol. 36, no. 1, pp. 643­659, 2009.
+[41] H. Li, H.-B. Huang, J. Sun, and C. Lin, "On sensitivity of case-based reasoning to optimal feature subsets in business failure prediction," Expert Syst. Appl., vol. 37, no. 7, pp. 4811­4821, 2010.
+[42] H. Li and J. Sun, "Case-based reasoning ensemble for business failure prediction: A computational approach from multiple case representations," Expert Syst. Appl., vol. 39, no. 3, pp. 3298­3310, 2012.
+[43] Z. Yang, W. You, and G. Ji, "Using partial least squares and support vector machines for bankruptcy prediction," Expert Syst. Appl., vol. 38, no. 7, pp. 8336­8342, 2011.
+[44] U. Shetty, T. P. M. Pakkala, and T. Mallikarjunappa, "A modified directional distance formulation of DEA to assess bankruptcy: An application to IT/ITES companies in India," Expert Syst. Appl., vol. 39, no. 2, pp. 1988­1997, 2012.
+[45] H. Li and J. Sun, "Principal component case-based reasoning ensemble for business failure prediction," Inf. Manage., vol. 48, no. 6, pp. 220­227, 2011.
+[46] Y.-C. Hu and C.-J. Chen, "A PROMETHEE-based classification method using concordance and discordance relations and its application to bankruptcy prediction," Inf. Sci., vol. 181, no. 22, pp. 4959­4968, 2011.
+[47] H. Li and J. Sun, "Empirical research of hybridizing principal component analysis with multivariate discriminant analysis and logistic regression for business failure prediction," Expert Syst. Appl., vol. 38, no. 5, pp. 6244­6253, 2011.
+[48] Z. Xiao, X. L. Yang, Y. Pang, and X. Dang, "The prediction for listed companies' financial distress by using multiple prediction methods with rough set and Dempster­Shafer evidence theory," Knowl.-Based Syst., vol. 26, pp. 196­206, Feb. 2011.
+[49] H. Li and J. Sun, "On performance of case-based reasoning in Chinese business failure prediction from sensitivity, specificity, positive and negative values," Appl. Soft Comput., vol. 11, no. 1, pp. 460­467, 2011.
+[50] C.-F. Tsai, "Feature selection in bankruptcy prediction," Knowl.-Based Syst., vol. 22, no. 2, pp. 120­127, 2009.
+[51] H. Li and J. Sun, "Hybridizing principles of the Electre method with case-based reasoning for data mining: Electre-CBR-I and Electre-CBR-II," Eur. J. Oper. Res., vol. 197, no. 1, pp. 214­224, 2009.
+[52] S.-W. Lin, Y.-R. Shiue, S.-C. Chen, and H.-M. Cheng, "Applying enhanced data mining approaches in predicting bank performance: A case of Taiwanese commercial banks," Expert Syst. Appl., vol. 36, no. 9, pp. 11543­11551, 2009.
+[53] H. J. Min and C. Jeong, "A binary classification method for bankruptcy prediction," Expert Syst. Appl., vol. 36, no. 3, pp. 5256­5263, 2009.
+[54] K.-S. Shin, T. S. Lee, and H.-J. Kim, "An application of support vector machines in bankruptcy prediction model," Expert Syst. Appl., vol. 28, no. 1, pp. 127­135, 2005.
+[55] E. I. Altman, "Financial ratios discriminant analysis and the prediction of corporate bankruptcy," J. Financ., vol. 23, no. 4, pp. 589­609, 1968.
+[56] E. B. Deakin, "A discriminant analysis of predictors of business failure," J. Account. Res., vol. 10, no. 1, pp. 167­179, 1972.
+[57] R. O. Edmister, "An empirical test of financial ratio analysis for small business failure prediction," J. Financ. Quant. Anal., vol. 7, no. 2, pp. 1477­1493, 1972.
+[58] L. V. G. Springate, "Predicting the possibility of failure in a Canadian firm," M.B.A. Res. Project, Simon Fraser Univ., Burnaby, BC, Canada, 1978.
+
+Travis Miranda Lakshmi is working toward the Ph.D. degree in computer science with Bharathiar University, Coimbatore, India.
+She is an Assistant Professor with the PG and Research Department of Computer Science, St. Joseph's College (Autonomous), Cuddalore, India. Her research interests include multicriteria decision making, business intelligence, and software engineering.
+Aruldoss Martin received the B.Sc. degree in chemistry from St. Joseph's College, Cuddalore, India, in 1997, the M.C.A. degree from Bharathidasan University, Trichy, India, in 2000, the M.E. degree in computer science and engineering from Mailam Engineering College, Mailam, India, in 2007, and the Ph.D. degree in computer science and engineering (banking technology) from Pondicherry University, Puducherry, India, in 2014.
+He is an Associate Professor with the Department of Master of Computer Applications, Sri Manakula Vinayagar Engineering College, Puducherry, India. He also is a Research Scholar of Banking Technology, Pondicherry University, Puducherry, India. His research interests include business intelligence, bankruptcy prediction techniques, multicriteria reporting, and information delivery techniques.
+Venkatasamy Prasanna Venkatesan received the B.Sc. degree in physics from Madras University, Chennai, India, in 1986, the M.C.A degree from Pondicherry University, Puducherry, India, in 1990, and the M.Tech. and Ph.D. degrees from Pondicherry University, both in computer science and engineering, in 1995 and 2008, respectively.
+He is an Associate Professor of Banking Technology with Pondicherry University, Puducherry, India. He has over 20 years of teaching and research experience in the field of computer science and engineering and banking technology. He has developed an architectural reference model for multilingual software. His research interests include software engineering, service oriented architecture, pervasive computing, bankruptcy prediction methods, and business intelligence.
+
+
+

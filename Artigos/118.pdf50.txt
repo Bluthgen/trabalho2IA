@@ -1,0 +1,3674 @@
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+315
+
+FN-TOPSIS: Fuzzy Networks for Ranking Traded Equities
+Abdul Malek Yaakob, Antoaneta Serguieva, Senior Member, IEEE, and Alexander Gegov, Member, IEEE
+
+Abstract--Fuzzy systems consisting of networked rule bases, called fuzzy networks, capture various types of imprecision inherent in financial data and in the decision-making processes on them. This paper introduces a novel extension of the technique for ordering of preference by similarity to ideal solution (TOPSIS) method and uses fuzzy networks to solve multicriteria decision-making problems where both benefit and cost criteria are presented as subsystems. Thus, the decision maker evaluates the performance of each alternative for portfolio optimization and further observes the performance for both benefit and cost criteria. This approach improves significantly the transparency of the TOPSIS methods, while ensuring high effectiveness in comparison with established approaches. The proposed method is further tested to solve the problem of selection/ranking of traded equity covering developed and emergent financial markets. The ranking produced by the method is validated using Spearman rho rank correlation. Based on the case study, the proposed method outperforms the existing TOPSIS approaches in terms of ranking performance.
+Index Terms--Fuzzy networks (FNs), multicriteria decision making (MCDM), portfolio selection, ranking performance, Spearman rho correlation, technique for ordering of preference by similarity to ideal solution, type 1 fuzzy numbers, type 2 fuzzy numbers, Z-numbers.
+I. INTRODUCTION
+M ULTICRITERIA decision-making (MCDM) problems are often observed in reality, and decision makers (DMs) are faced with the challenge of the presence of multiple criteria. The focus is on identifying the best performing solution among feasible alternatives assessed by a group of DMs and evaluated through multiple criteria [1]. In portfolio optimization, investors target high returns and affordable risks. Typically, assets with the potential for high returns also carry a high market risk [2]. Structuring complex problems well and considering multiple criteria explicitly lead to more informed and better decisions. There have been important advances in the field since the start of the modern MCDM discipline in the early 1960s. Various MCDM techniques have been developed with the overall objective to assist DMs solve complex decision problems in a systematic, consistent, and more productive way.
+Manuscript received August 3, 2015; revised December 4, 2015; accepted February 11, 2016. Date of publication April 21, 2016; date of current version March 29, 2017. This work was supported in part by Universiti Utara Malaysia.
+A. M. Yaakob is with the School of Quantitative Sciences, Universiti Utara Malaysia, 06010 Sintok, Malaysia, and also with the University of Portsmouth, Portsmouth PO1 2UP, U.K. (e-mail: abd.malek@uum.edu.my).
+A. Serguieva is with the Department of Computer Science, University College London, London WC1E 6EA, U.K. (e-mail: a.serguieva@ucl.ac.uk).
+A. Gegov is with the School of Computing, University of Portsmouth, Portsmouth PO1 3HE, U.K. (e-mail: alexander.gegov@port.ac.uk).
+Digital Object Identifier 10.1109/TFUZZ.2016.2555999
+
+TOPSIS is an MCDM technique for ranking and selection of alternatives [15]. The TOPSIS analysis considers two reference points--a positive ideal solution (PIS) and a negative ideal solution (NIS)--as well as the distances to both PIS and NIS. The preference order is ranked according to the closeness of PIS and NIS, and according to a combination of the two distance measures. TOPSIS is considered as one of the major decision-making techniques and, in recent years, has been effectively applied to the areas of human resource management [3], transportation [4], product design [5], manufacturing [6], water management [7], quality control [8], military [9], tourism [10], food science [11], and location analysis [12].
+TOPSIS is used in this research due to its stability and simplicity of use with cardinal information [13]. TOPSIS has been successfully applied in MCDM problems as one of the most frequent methods used. The main advantage of the TOPSIS methods is that they are easily implemented and understood, as they directly define values based on experts' opinions in order to calculate final results [14].
+Fuzzy TOPSIS was introduced to approach uncertainty in linguistic judgment. Initial research on fuzzy TOPSIS was conducted in [15], where TOPSIS is extended to type-1 fuzzy environments; this extended version used type-1 fuzzy linguistic value (represented by type-1 fuzzy number [16]) as a substitute for the directly given crisp value in grade assessment. Overall, the type-1 fuzzy TOPSIS problem is to find the most desirable alternative(s) from a set of n feasible alternatives, according to the decision information by DMs about attribute weights and attribute values. There is no solution satisfying all attributes simultaneously, as attributes are conflicting to some extent. Thus, the solution is a set of noninferior solutions, or a compromise solution according to the DM's preferences [17]. However, the existing fuzzy MCDM methods are only based on type-1 fuzzy sets [18]. In order to offer better care for the problems of vagueness, another discovery, type-2 fuzzy set was provided by Mendel, John, and Liu [19]. This concept looks to comprehensively represent uncertainties, compared with type 1 fuzzy set, due to the ability of providing more flexible spaces [18].
+Zadeh introduced the concept of type-2 fuzzy set [20], which is a generalization of the concept of fuzzy set. This concept is illustrated by a fuzzy membership function, where each element of this set is a fuzzy set in [0, 1], unlike a type-1 fuzzy set where the membership grade is a crisp number in [0, 1] [21]. The membership functions of type 2 fuzzy set are 3-D and include a footprint of uncertainty (FOU) as the new third dimension, which can be described as the union of the primary member-
+
+1063-6706 Е 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
+
+316
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+ships [22]. The FOU provides additional degrees of freedom to directly model and process uncertainties, and type-2 fuzzy set is more comprehensive compared with fuzzy set in providing more flexibility spaces to represent uncertainties [23]. The challenges in computational volume have led to the development of interval type-2 fuzzy set in 2000 by Mendel and Liang [24]. It can be viewed as a special case, as all values of secondary membership are equal to 1 [25]. Currently, interval type-2 fuzzy set is widely used and successfully applied in perceptual computing [26], [27], control systems [28]Г[31], and the MCDM field. One of the MCDM methods incorporating interval type 2 fuzzy set is the interval type-2 fuzzy TOPSIS (T2-TOPSIS), which was first established in [18]. The authors introduced a T2-TOPSIS method to approach fuzzy MCDM problems.
+Most recently, Z-number has been the newest fuzzy number presented in the literature of fuzzy sets. Z-number is introduced in [32] as an extension of type-1 fuzzy number but is completely different from type-2 fuzzy number. Although both Z -number and type-2 fuzzy number are extensions of type-1 fuzzy number, the former is capable of measuring the reliability of the decision made while the latter is not. Since fuzzy numbers are the medium of quantitative representation for natural language, Z- number enhances the capability of both type-1 and type-2 fuzzy numbers by taking into account the reliability of the numbers used [32]. According to [33], Z-number is represented by two embedded type-1 fuzzy numbers, where one of them plays the role to define the reliability of the first one. Research on utilizing Z-number in decision-making applications is inadequate as compared with other fuzzy numbers, as it is a new concept developed in the theory of fuzzy sets. One of the MCDM methods that implemented Z-number is called Z-TOPSIS and was first established in [34]. The authors presented a Z-TOPSIS method to handle fuzzy MCDM problems, in order to give a meaningful structure for formalizing information in decision-making problems, as it takes into account DMs' reliability. Z-number uncertainty relates to fuzziness of class boundaries. Possibility theory is rooted in uncertainty of type-1; however, over the years, possibility theory has moved in the direction of extending its domain to accommodate uncertainty of type-2 [35].
+Fuzzy systems are vital within the armory of fuzzy tools and applicable to real-life decision-making environments. There are three types of fuzzy systems introduced in the literature: systems with a single rule base, systems with multiple rule bases, and systems with networked rule bases. Systems with a single rule base are characterized with a black box nature, where the inputs are mapped directly to the output without considering any internal connection. Systems with multiple rule bases are characterized with a white box nature, where the inputs are mapped to the outputs through interval variables as connections. This type of systems is also termed chained fuzzy systems or hierarchical fuzzy systems. The third type of fuzzy systems incorporates networked rule bases and is termed fuzzy networks (FN). FNs are introduced as a theoretical concept in [36] and are characterized with a white box nature, where the inputs are mapped to the outputs through intermediate variables.
+According to [37], the accuracy of single rule base is moderate, but the level of transparency is low, while multiple rule bases are regarded as having low accuracy in dealing with
+
+complex process management. While in most decision-making studies, single rule bases and multiple rule bases are common approaches [38], in this research, we focus on FNs as they are both well transparent and accurate. A node represents each subsystem in an FN, whereby the interactions among subsystems are the connections between nodes. Therefore, FNs consider explicitly the interaction among subsystems [37]. An FN is more transparent than a single-rule-based fuzzy system for decision making because it considers separately benefit-related and costrelated criteria. This network takes into account explicitly the internal structure of the modeled process by representing each group of criteria as a node and the interactions among different groups as connections. This network-based approach allows the modeled process to be presented as a white box in contrast with the existing system-based approaches that use a black-box presentation. In this case, the white-box presentation improves significantly the transparency of the model due to the explicit and adequate reflection of the internal structure of the modeled process. This ability brings considerable benefits to modeling complex processes, and although FNs have been introduced recently, a significant volume of work has been done and dedicated to the theoretical development and applications of FNs [36], [37], [39], [40].
+On the other hand, the reliability of decision information and the experience of experts are still in need of better incorporation into modeling complex decision-making processes. For example, how confident in their choices are investors as DMs, and how much experience experts as financial analysts have in relevant asset classes and markets [41]. Furthermore, existing TOPSIS methods have a very low transparency level and, therefore, are not able to track the performance of benefit and cost criteria [42]. In decision-making processes, it is important that DMs are aware of how the multiple criteria are performing. Based on [43], in a decision-making environment, it is essential to track the performance of criteria, in order to take control and not underestimate or overestimate uncertainty of the criteria. The proposed method represents a systematic TOPSIS approach to estimating the strengths and weaknesses of alternatives that satisfy transactions, activities, or functional requirements for a business. In addition to that, tracking of criteria allows DMs to determine if it is a sound investment/decision (justification/feasibility) and provides a basis for comparing alternatives. In this case, it involves comparing the total expected cost criteria of each alternative against the total expected benefit criteria, to see whether the benefits outweigh the costs and by how much. The inefficiencies described above bring the motivation of this study.
+This paper proposes a novel FN-based modeling method that represents an extension of fuzzy set theory. The method has been validated comparatively against established fuzzy-systembased modeling methods for a case study on ranking traded equities. The main advantages of the proposed method in the context of this case study are its higher transparency and accuracy. This paper is structured as follows. Section II briefly reviews the concepts of fuzzy sets and fuzzy systems, and the operation of FNs. The novel methodology of TOPSIS using FNs with merging rule base FN-TOPSIS is formulated in Section III. Section IV illustrates the application of FN-TOPSIS to the
+
+YAAKOB et al.: FN-TOPSIS: FUZZY NETWORKS FOR RANKING TRADED EQUITIES
+
+317
+
+problem of ranking equities traded on the major stock exchanges in a developed and a developing financial market. Further discussion and analysis of the FN-TOPSIS ranking performance are provided in Section V. The main conclusions are summarized in Section VI.
+
+II. THEORETICAL PRELIMINARIES
+A. Fuzzy Sets Definition 1 (Type-1 fuzzy sets) [20]: A type-1 fuzzy set A
+is defined on a universe X and is denoted as
+
+A = {(x, A (x))|x  X}
+
+where A (x) : X  [0, 1] is the membership function of A. The membership A (x) describes the degree of belonging-
+ness of x  X in A. Throughout this paper, type-1 and type-2 fuzzy numbers and Z-numbers are presented through trapezoidal membership functions. The good coverage of trapezoidal membership functions is a good compromise between efficiency and effectiveness.
+Definition 2 (Type-1 fuzzy numbers) [44]: A trapezoidal type-1 fuzzy number is represented by the following membership function:
+
+ 
+
+x a2 1,
+
+- a1 - a1
+
+,
+
+A
+
+(x)
+
+=
+
+(a1
+
+,
+
+a2 ,
+
+a3
+
+,
+
+a4
+
+)
+
+=
+
+
+
+a4 a4
+
+-x - a3
+
+,
+
+0,
+
+if a1  x  a2 if a2  x  a3 if a3  x  a4 otherwise.
+
+Definition 3 (Type-2 fuzzy sets) [19]: A type-2 fuzzy set A~ in the universe of discourse X is represented by a type-2 membership function A~ as follows:
+A~ = {((x, u) , A~ (x, u)) |uJX  [0, 1] , 0A~ (x, u)  1}
+where JX denotes an interval in [0, 1]. A type-2 fuzzy set A~ can also be represented as
+
+A~ =
+
+A~ (x, u)
+
+xX uJx (x, u)
+
+where JX  [0, 1] and denotes the union over all admissible x and u.
+
+Definition 4 (Interval type-2 fuzzy numbers) [19]: A trapezoidal interval type-2 fuzzy number is represented by
+
+A~ = A~U , A~L = a1U , a2U , aU3 , aU4 ; 1 A~U , 2 A~U ,
+
+aL1 , aL2 , a3L , a4L ; 1 A~L , 2 A~L
+
+where A~U and A~L are type-1 fuzzy numbers, while
+
+aU1 , the
+
+aU2 , aU3 , interval
+
+aU4 , aL1 type-2
+
+,fau2Lzz,ya3Ln,uamnbdear L4A~a. rIenthaeddrietfieorne,ncej (pA~oUin)tsdoef-
+
+notes the membership value of the element a(Uj+1) in the up-
+
+per trapezoidal membership function A~U for 1  j  2, and
+
+j (A~L ) denotes the membership value of the lower trapezoidal
+
+membership function A~L for 1  j  2. Here, 1 (AU )  [0, 1],
+
+2 (AU )  [0, 1], 1 (AL )  [0, 1], and 2 (AL )  [0, 1], for 1 
+
+i  n.
+
+Definition 5 (Z-numbers) [32]: Z-number is an ordered pair of type-1 fuzzy numbers denoted as Z = (A~, B~). The first component A~, a restriction on the values, is a real-valued uncertain variable. The second component B~ is a measure of reliability
+
+for the first component. The concept of a Z-number Z = (A~, B~) provides a basis for
+
+computation with fuzzy numbers that have various reliabilities. The second component B~ may be interpreted as a response to the question: How confident are DMs that X~ is A~.
+
+B. Fuzzy Systems
+A fuzzy system consists of a single rule base where inputs are processed simultaneously without taking into account the connections and the structure of the system. For this type of system, the rules are derived based on expert knowledge about the process. The results are normally quite accurate, but the poor transparency of the system can be an obstacle to understanding complex processes.
+
+C. Fuzzy Networks
+An FN is a new type of fuzzy system, which consists of networked rule bases (nodes) and deals with inputs sequentially, while taking into account the connections and structure of the system. The rules for both fuzzy systems and FNs are derived from knowledge and data. A networked fuzzy system is transparent and fairly accurate at the same time due to its hybrid nature, which facilitates the understanding and management of complex processes.
+There are four formal models for FNs characterized in [36], namely: 1) IFГTHEN rule and integer tables; 2) block schemes and topological expressions; 3) incidence and adjacency matrices; and 4) Boolean matrices and binary relations. Here, we
+
+Rule 1 : If is S11 and и и и and pm is Sm 1 , then q1 is T11 and и и и and ql is Tn1
+
+...
+
+...
+
+...
+
+Rule r : If is S1r and и и и and pm is Sm r , then q1 is T1r and и и и and ql is Tnr .
+
+(1)
+
+318
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+employ IFГTHEN rules and Boolean matrices, in order to represent the fuzzy rules. Hence, the properties of such models will be reviewed briefly. The choice is justified by the ability of these formal models to work with any number of nodes in FNs.
+A fuzzy system with r rules, m inputs p1 , . . . , pm taking linguistic terms from the sets {s11 , . . . , s1r }, . . . , {sm1 , . . . , smr }, and n outputs q1 , . . . , qn taking linguistic terms from the output sets {T11 , . . . , T1r }, . . . , {Tn1 , . . . , Tnr }, can be described by the following rule base from (1), as shown at the bottom of the previous page.
+A rule base is incorporated as a node within the FN. A generalized Boolean matrix compresses information from a rule base represented by a node. The row and column labels of the Boolean matrix are all possible permutation of linguistics terms of the inputs and outputs for this rule base. The elements of the Boolean matrix are either "0"s or "1"s, where each "1" reflects a present rule. The Boolean matrix representation of the rule base from (1) is given as
+
+T11 и и и Tn1 и и и T1r и и и Tnr
+
+S11 и и и Sm 1
+
+1 иии 0
+
+...
+
+...
+
+...
+
+...
+
+.
+
+(2)
+
+S1r и и и Sm r
+
+0 иии 1
+
+Boolean matrices are very suitable for formal representation of FNs [40]. They describe FNs at a lower level of abstraction with respect to individual nodes. Boolean matrices also lend themselves easily to manipulation for the purpose of simplifying FNs to linguistically equivalent fuzzy systems, using the linguistics composition approach. In the next subsection, we briefly review two Boolean matrix operations, as these two are involved in the FN-TOPSIS.
+Basic operations: Horizontal merging is a binary operation that can be applied to a pair of sequential nodes in FN. This operation combines the operand nodes from the pair into a single product node. The operation can be applied when the output from the first node is fed forward as an input to the second node in the form of an intermediate variable. The product node has the input from first operand node and the output from the second operand node, whereas the intermediate variable does not appear in the product node.
+
+Fig. 1. Horizontal merging of nodes.
+
+Therefore, if the first operand node is the rule base in (1) that is represented by the Boolean matrix in (2), and the second operand node is the rule base in (3), shown at the bottom of the page, that is represented by the generalized Boolean matrix in (4), see (3):
+Then, the generalized Boolean matrix of (3) is described as
+
+R11 и и и Rg1 и и и R1r и и и Rgr
+
+T11 и и и Tn1
+
+1
+
+иии
+
+0
+
+...
+
+...
+
+...
+
+...
+
+.
+
+(4)
+
+T1r и и и Tnr
+
+0
+
+иии
+
+1
+
+The product node is the rule base in (5), as shown at the bottom of the page, and its generalized Boolean matrix of (5) is constructed as
+
+R11 и и и Rg1 и и и R1r и и и Rgr
+
+S11 и и и Sm 1
+
+1
+
+иии
+
+0
+
+...
+
+...
+
+...
+
+...
+
+.
+
+(6)
+
+S1r и и и Sm r
+
+0
+
+иии
+
+1
+
+The fuzzy system described by the rule base in (3) is
+with r rules, n inputs q1 , . . . , qn taking linguistic terms from the input sets {T11 , . . . , T1r }, . . . , {Tn1 , . . . , Tnr }, and g outputs w1 , . . . , wg taking linguistic terms from the set of outputs {R11 , . . . , R1r }, . . . , {Rg1 , . . . , Rgr }. Similarly, the fuzzy system described by the rule base in (5) is with r rules,
+m inputs p1, . . . , pm taking linguistic terms from the input sets {S11 , . . . , S1r }, . . . , {Sm 1 , . . . , Sm r }, and g outputs w1 , . . . , wg taking linguistic terms from the set of outputs {R11 , . . . , R1r }, . . . , {Rg1 , . . . , Rgr }. In general, the operand rule bases may have a different number of rules, but the number
+of rules in the product rule base is always equal to the number of
+rules in the first operand rule base. For simplicity, the notations
+used in Fig. 1 are in a vector form where the vectors x, y, and v are of dimensions n, m, and g, respectively.
+
+Rule 1 : If q1 is T11 and и и и and qm is Tn1 , then w1 is R11 and и и и and wg is Rg1
+
+...
+
+...
+
+...
+
+Ruler : If q1 is T1r and и и и and qm is Tnr , then w1 is R1r and и и и and wg is Rgr .
+
+(3)
+
+Rule 1 : If p1 is S11 and и и и and pm is Sm 1 , then w1 is R11 and и и и and wg is Rg1
+
+...
+
+...
+
+...
+
+Rule r : If p1 is S1r and и и и and pm is Sm r , then w1 is R1r and и и и and wg is Rgr
+
+(5)
+
+YAAKOB et al.: FN-TOPSIS: FUZZY NETWORKS FOR RANKING TRADED EQUITIES
+
+319
+
+Vertical merging is a binary operation that can be applied to a pair of parallel nodes in an FN. The inputs to the product node represent the union of the inputs to the operand nodes, and the outputs from the product node represent the union of the output from the operand nodes.
+Therefore, if the first operand node is the rule base in (1) that is represented by the Boolean matrix in (2), and the second operand is the rule base in (7), shown at the bottom of the page, that is represented by the generalized Boolean matrix in (8): then the generalized Boolean matrix of (8) is described with (9):
+
+Q11 и и и Qh1 и и и Q1s и и и Qhs
+
+R11 и и и Rg1
+
+1
+
+иии
+
+0
+
+...
+
+...
+
+...
+
+...
+
+. (8)
+
+R1r и и и Rgs
+
+0
+
+иии
+
+1
+
+The product node is the rule in the following equation:
+
+Rule 1 : If p1 is S11 and и и и and pg is Sm 1 w1
+
+is R11 and и и и and wg is Rg1 then q1 is and и и и and
+
+qn is Tn1 and y1 is Q11 and и и и and yh is
+
+...
+
+...
+
+...
+
+Rule r и s : If p1 is S1r and и и и and pm is Sm r and w1 is R1s and и и и and wg is Rgs then q1 is T1r and и и и and qn is Tnr and y1 is Q1s and и и и and yh is Qhs (9)
+
+and the generalized Boolean matrix of (9) is constructed as
+
+T11 и и и Tn1 Q11 и и и Qh1
+
+иии
+
+T1r и и и Tnr Q1s и и и Qhs
+
+S11 и и и Sm 1
+R11 и и и Rg1 ...
+
+1
+
+иии
+
+0
+
+. (10)
+
+...
+
+...
+
+...
+
+S1r и и и Sm r Rgr и и и Rgs
+
+0
+
+иии
+
+1
+
+In this case, the fuzzy system described by the rule base
+in (8) has s rules, g inputs w1 , . . . , wg taking linguistic terms from the input sets {R11 , . . . , R1s }, . . . , {Rg1 , . . . , Rgs }, and h outputs y1, . . . , yh taking linguistic terms from the output sets {Q11 и и и Q1s }, . . . , {Qh1 и и и Qhs }. However, the fuzzy system described by the rule base in (10) is with r и s rules, m + g
+inputs x1 , . . . , xm , w1 , . . . , wg taking linguistic terms from the input sets
+
+{S11 , . . . , S1r } , . . . , {Sm 1 , . . . , Sm r } , {R11 , . . . , R1s } , . . . , {Rg1 , . . . , Rgs } ,
+
+Fig. 2. Vertical merging of nodes.
+Fig. 3. FN model for TOPSIS.
+and n + h outputs q1 , . . . , qg , y1 , . . . , yh taking linguistic terms from the output sets
+{T11 , . . . , T1r } , . . . , {Tn1 , . . . , Tnr } , {Q11 , . . . , Q1s } , . . . , {Qh1 , . . . , Qhs } .
+The number of rules in the product rule base is equal to the product of the number of rules in the operand rule bases. For simplicity, the notations used in Fig. 2 are in a vector form, where the vectors x, y, v, and w have dimensions n, m, g, and h, respectively.
+III. METHOD FORMULATION In this approach, the DMs' opinions are evaluated independently, since they may have different influence degrees, depending on their experience in the area. Furthermore, criteria are categorized into benefit criteria or cost criteria. Each category generates correspondingly benefit fuzzy systems or cost fuzzy systems, where the output of the systems is benefit levels (BLs) or cost levels (CLs), representing the performance of each category. Fig. 3 illustrates the proposed generalized FN model
+
+Rule 1 : If w1 is R11 and и и и and wg is Rg1 , then y1 is Q11 and и и и and wg is Qh1
+
+...
+
+...
+
+...
+
+Rule s : If w1 is R1s and и и и and wg is Rgs , then y1 is Q1s and и и и and wg is Qhs
+
+(7)
+
+320
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+TABLE I LINGUISTIC TERMS FOR THE IMPORTANCE WEIGHT OF EACH CRITERION
+
+Linguistic Terms
+
+Trapezoidal Fuzzy Number
+
+Very Low (VL)
+
+1
+
+Low (L)
+
+2
+
+Medium Low (ML) 3
+
+Medium (M)
+
+4
+
+Medium High (MH) 5
+
+High (H)
+
+6
+
+Very High (VH)
+
+7
+
+(0.00, 0.00, 0.00, 0.10) (0.00, 0.10, 0.10, 0.25) (0.15, 0.30, 0.30, 0.45) (0.35, 0.50, 0.50, 0.65) (0.55, 0.70,0.70, 0.85) (0.80, 0.90, 0.90, 1.00) (0.90, 1.00, 1.00, 1.00)
+
+TABLE II LINGUISTIC TERMS FOR THE RATING OF EACH ALTERNATIVE
+
+Linguistic Terms
+
+Trapezoidal Fuzzy Number
+
+Very Poor (VP)
+
+1
+
+Poor (P)
+
+2
+
+Medium Poor (MP) 3
+
+Fair (F)
+
+4
+
+Medium Good (MG) 5
+
+Good (G)
+
+6
+
+Very Good (VG)
+
+7
+
+(0, 0, 0, 1) (0, 1, 1,3) (1, 3, 3, 5) (3, 5, 5, 7) (5, 7, 7, 9) (7, 9, 9, 10) (9, 10, 10, 10)
+
+In the decision matrices DkB and DkC and weight matrices WkB and WkC (k = 1, . . . , K), it is assumed that e is the number of benefit criteria, f is the number of cost criteria, and k is the
+
+number of the DM, as shown in the following equation:
+
+
+
+
+
+B1 x11,k x12,k и и и x1m ,k
+
+DkB =
+
+B2 ...
+
+
+
+x21,k ...
+
+x22,k ...
+
+иии ...
+
+x2m ...
+
+,k
+
+
+
+Be xe1,k xe2,k и и и xem ,k
+
+
+
+
+
+C1 y11,k y12,k и и и y1m ,k
+
+DkC =
+
+C2 ...
+
+
+
+y21 ...
+
+,k
+
+y22,k ...
+
+иии ...
+
+y2m ,k ...
+
+
+
+Cf yf 1,k yf 2,k и и и yf m ,k
+
+WkB = g1,k g2,k и и и ge,k
+
+WkC = h1,k h2,k и и и hf,k , for k = 1, . . . , K
+
+(11)
+
+TABLE III LINGUISTIC TERMS FOR THE LEVEL OF ALTERNATIVES
+
+Linguistic Terms
+
+Trapezoidal Fuzzy Number
+
+Very Bad (VB) 1
+
+Bad (B)
+
+2
+
+Regular (R)
+
+3
+
+Good (G)
+
+4
+
+Very Good (VG) 5
+
+(0.00, 0.00, 0.00,0.25) (0.00, 0.25, 0.25, 0.50) (0.25, 0.50, 0.50, 0.75) (0.50, 0.75, 0.75, 1.00) (0.75, 1.00, 1.00, 1.00)
+
+for TOPSIS, where benefit system (BS), cost system (CS) and alternative systems (AS) are incorporated in the form of FN nodes. The inputs are the benefit criteria B1 , . . . , Be and the cost criteria C1 , . . . , Cf . At the end of the process, alternatives levels (AL) are determined. The dotted frame represents the vertical merging of rule bases, and the dashed frame illustrates the horizontal merging of rule bases.
+The next subsections illustrate systematically the implementation of type-1, type-2, and Z-fuzzy numbers to FN-TOPSIS.
+A. Type-1 Fuzzy Number Implementation
+Tables I and II are used by DMs to evaluate the rating of alternatives and the importance of criteria, and Table III is used to determine the AL as the output, in generating fuzzy rule bases.
+The following are the procedures involved in implementing an FN with merging rule bases to TOPSIS, based on type-1fuzzy numbers. Steps 1Г6 are adopted from [15] and [45], while steps 7Г10 are introduced as part of the proposed method in this paper.
+Step 1: Construct decision matrices where each DM opinion is evaluated independently, and categorize into two criteria categories as benefit criteria and cost criteria defined through a BS and a CS.
+
+where xij,k are type-1 fuzzy sets representing the rating of alternatives Aj (j = 1, . . . , m) with respect to benefit criteria Bi (i = 1, . . . , e) according to the kth DM, and gi,k are type1 fuzzy sets representing the weights of benefit criteria Bi,k (i = 1, . . . , e) according to the kth DM, where k = 1, . . . , K.
+In addition, yij,k are type-1 fuzzy sets describing the rating of alternatives Aj (j = 1, . . . , m) with respect to cost criteria Ci (i = 1, . . . , f ) according to the kth DM, and hi,k are type-1 fuzzy sets describing the weights of cost criteria Ci (i = 1, . . . , f ) according to the kth DM, where k = 1, . . . , K.
+Step 2: Construct weighted and normalized decision
+matrices.
+The fuzzy rating and weight of each criterion are variables
+described with type-1 trapezoidal fuzzy numbers. The ratings
+of alternatives Aj (j = 1, . . . , m) are described with the type-1 trapezoidal fuzzy numbers xij,k = (axij,k , bixj,k , cxij,k , dxij,k ) and yij,k = (aiyj,k , byij,k , cyij,k , diyj,k ), while the importance of benefit criteria Bi (i = 1, . . . , e) and cost criteria Ci (i = 1, . . . , f ) are, respectively, represented by gi,k = (agi,k , big,k , cig,k , dgi,k ) and hi,k = (ahi,k , bhi,k , cih,k , dih,k ), for k = 1, . . . , K. The normalized fuzzy decision matrices Rk and weight normalized fuzzy decision matrices Vk are calculated as
+
+Rk = [rij,k ] (e+f )Оm
+
+(12)
+
+where   riBj.k =
+rij,k =  riCj.k =
+
+dix,k
+
+=
+
+max j
+
+dxi j
+
+,
+
+k
+
+ayi ,k
+
+=
+
+min j
+
+ayi j
+
+,
+
+k
+
+axi j , k dxi ,k
+
+,
+
+bixj , k dix,k
+
+,
+
+cxi j , k dxi ,k
+
+,
+
+dxi j , k dxi ,k
+
+,
+
+aiy,k dyi j , k
+
+,
+
+ayi ,k cyi j , k
+
+,
+
+aiy,k biyj , k
+
+,
+
+aiy,k aiyj , k
+
+,
+
+for Bi  B for Ci  C
+
+(i = 1, . . . , e) , (j = 1, . . . , m)
+
+(i = 1, . . . , f ) , (j = 1, . . . , m) .
+
+YAAKOB et al.: FN-TOPSIS: FUZZY NETWORKS FOR RANKING TRADED EQUITIES
+
+321
+
+B and C are the sets of benefit criteria and cost criteria, respectively:
+
+Vk = [vij,k ] (e+f )Оm
+
+where
+
+vij,k =
+
+viBj.k = rij,k (и) gi,k , viCj.k = rij,k (и) hi,k ,
+
+for Bi  B for Ci  C
+
+and vij,k = (avij,k , bivj,k , cvij,k , divj,k ) are type-1 fuzzy sets, for k = 1, . . . , K.
+Step 3: Find the fuzzy positive ideal solution (FPIS) and
+fuzzy negative ideal solution (FNIS) for each alternative, and
+the distance between each alternative to FPIS and FNIS. The FPIS and FNIS solutions are correspondingly A+k =
+(v1+,k , v2+,k , . . . , v(+e+f ),k ) and A-k = (v1-,k , v2-,k , . . . , v(-e+f ),k ), where vi+j,k = ( 1 1 1 1 ) and vi-j, = ( 0 0 0 0 ) are type-1 fuzzy sets, for k = 1, . . . , K. The distance for benefit criteria of each alternative j from Ak+ is Bj,k+ , calculated as (13), as shown at the bottom of the page. The distance for benefit criteria of each alternative from Aj-,k is Bj,k-, calculated as (14), as shown at the bottom of the page. The distance for cost criteria of each alternative from Ak+ isjC,k+ , calculated as (15), as shown at the bottom of the page. Finally, the distance for cost criteria of each
+
+alternative from A-k is Cj,k-, calculated as (16), as shown at the bottom of the page.
+Step 4: Find the closeness coefficients for both the BS and
+CS. The closeness coefficients CCjB,k for the BSs and the close-
+ness coefficients CCjC,k for the CSs are calculated as
+
+C CjB, k
+
+=
+
+Bj,k- Bj,k+ + jB,k-
+
+,
+
+C CjC, k
+
+=
+
+Cj,k- jC,k+ + jC,k-
+
+for j = 1, . . . , m and k = 1, . . . , K.
+
+(17)
+
+Step 5: Derive the influenced closeness coefficients (ICC) by no applying the influence degree of each DM. Then, find the normalized ICC (NICC), dividing the ICC by the maximum value of ICC.
+
+Let k denote the influence degree, between 0 (uninfluential) and 10 (very influential), of DM k, where k = 1, . . . , K. Next, let k stands for the normalized influence degree of the kth DM, k = 1, . . . , K, as evaluated with
+
+k =
+
+k
+K l=1
+
+l
+
+,
+
+for k = 1, . . . , K.
+
+(18)
+
+e
+
+jB,k+ =
+
+Bk
+
+i=1
+
+viBj,k , vi+,k
+
+where kB viBj,k , vi+,k =
+
+1 3
+
+aivj,,Bk - 1
+
+2
++
+
+bivj,,Bk - 1
+
+2
++
+
+civj,,Bk - 1
+
+2
++
+
+dvij,,Bk - 1
+
+2
+,
+
+for j = 1, . . . , m and Bi  B and k = 1, . . . , K.
+
+(13)
+
+e
+
+Bj,k+ =
+
+Bk
+
+i=1
+
+viBj,k , vi+,k
+
+where Bk viBj,k , vi+,k =
+
+1 3
+
+aivj,,Bk - 1
+
+2
++
+
+bvij,,Bk - 1
+
+2
++
+
+cvij,,Bk - 1
+
+2
++
+
+divj,,Bk - 1
+
+2
+,
+
+for j = 1, . . . , m and Bi  B and k = 1, . . . , K.
+
+(14)
+
+f
+
+Cj,k+ =
+
+kC
+
+i=1
+
+viCj,k , vi+,k
+
+where Ck viCj,k , vi+,k =
+
+1 3
+
+aivj,,Ck - 1
+
+2
++
+
+bvij,,Ck - 1
+
+2
++
+
+cvij,,Ck - 1
+
+2
++
+
+dvij,,Ck - 1
+
+2
+
+for j = 1, . . . , m and Ci  C and k = 1, . . . , K.
+
+(15)
+
+f
+
+Cj,k- =
+
+kC
+
+i=1
+
+viCj,k , vi-,k
+
+where kC viCj,k , vi-,k =
+
+1 3
+
+avij,,Ck - 0
+
+2
++
+
+bivj,,Ck - 0
+
+2
++
+
+cvij,,Ck - 0
+
+2
++
+
+divj,,Ck - 0
+
+2
+
+for j = 1, . . . , m and Ci  C and k = 1, . . . , K.
+
+(16)
+
+322
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+Equation (19) evaluates the influence closeness coefficients ICCjB,k and ICCjC,k for each DM k, respectively, along the benefit and cost criteria:
+
+ICCjB,k = k  CCjB,k and ICCjC,k = k  CCjC,k ,
+
+for j = 1, . . . , m and k = 1, . . . , K.
+
+(19)
+
+It is further necessary to normalize the coefficients, in or-
+der to ensure that their values vary between 0 and 1. Equation (20) evaluates the normalized coefficients, where N ICCjB,k and N ICCjC,k are, respectively, the normalized influence closeness coefficients for the BS and CS, as related to the kth DM
+
+N ICCjB,k
+
+=
+
+I C CjB, k
+
+ma
+j
+
+x
+
+I
+
+C
+
+CjB,k
+
+and N ICCjC,k
+
+=
+
+I C CjC, k
+
+ma
+j
+
+x
+
+I
+
+C
+
+CjC,k
+
+for j = 1, . . . , m and k = 1, . . . , K.
+
+(20)
+
+Both N ICCjB,k and N ICCjC,k will take linguistic terms from Table III for the level of alternatives performance.
+
+Step 6: Construct the antecedent matrices and the conse-
+
+quent matrices for the BS and CS, based on DM opinions and
+
+the values of the NICC coefficients.
+Having the opinions DkB and DkC of all DMs (k = 1, . . . , K) on each alternative j(j = 1, . . . , m) in respect to each benefit
+
+criterion i(i = 1, . . . , e) and each cost criterion i(i = 1, . . . , f )
+
+[see (11)], we can define the BS antecedent matrix Xk and the
+
+CS antecedent matrix Yk for each DM k, as introduced in
+
+
+
+
+
+x11,k x12,k и и и x1m ,k
+
+Xk
+
+=
+
+
+
+x2 ...
+
+1
+
+,
+
+k
+
+x22 , ...
+
+иии ...
+
+x2m ,k ...
+
+
+
+xe1,k xe2,k и и и xem ,k
+
+
+
+
+
+y11,k y12,k и и и y1m ,k
+
+Yk
+
+=
+
+
+
+y2 ...
+
+1
+
+,
+
+k
+
+y2 2 , k ...
+
+иии ...
+
+y2m ,k ...
+
+
+
+,
+
+for k = 1, . . . , K (21)
+
+yf 1,k yf 2,k и и и yf m ,k
+
+where xij,k and yij,k are linguistic terms describing DMs' opinions. Having determined the N ICCjB ,k and N ICCjC,k coefficients for all DMs (k = 1, . . . , K), next, the benefit consequent
+matrix k and the cost consequent matrix k are defined as
+
+k = [1,k 2,k и и и m ,k ]
+
+k = [1,k 2,k и и и m ,k ] , for k = 1, . . . , K (22)
+
+where i,k and i,k are linguistic terms representing the output of the BS and CS, based, respectively, on the values of N ICCjB,k and N ICCjC,k . FPIS represents the compromise solution, while FNIS represents the worst possible solution. The range is within the closed interval [0, 1]. NICC equation illustrates the distance
+of each alternative from FPIS and FNIS with the nearest value to
+compromise solution which is 1. The closer the NICC to 1, the
+higher the priority of the alternatives. The scalar is translated into
+linguistic term to which the scalar has the highest membership
+
+degree. The BS consists of K matrix decision rules presented as
+
+
+
+
+
+x11,k x12,k и и и x1m ,k
+
+If Xk
+
+=
+
+
+
+x21,k ...
+
+x22 , ...
+
+иии ...
+
+x2m ,k ...
+
+ ,
+
+then
+
+xe1,k xe2,k и и и xem ,k
+
+k = [1,k 2,k и и и m ,k ] for k = 1, . . . , K (23)
+
+and can be described with the rule bases as
+
+Rule 1 : If B1 is x11,k and и и и and Be is xe1,k , then
+
+BL is 1,k ...
+
+...
+
+...
+
+Rule m : If B1 is x1m ,k and и и и and Be is xem ,k , then BL is m ,k
+
+(24)
+
+where BL is the benefit level of alternatives, for j = 1, . . . , m
+
+and for k = 1, . . . , K. The CS consists of K matrix decision
+
+rules presented in
+
+
+
+
+
+y11,k y12,k и и и y1m ,k
+
+If
+
+Yk
+
+=
+
+
+
+y2 ...
+
+1,k
+
+y22,k ...
+
+иии ...
+
+y2m ,k ...
+
+
+
+,
+
+then
+
+yf 1,k yf 2,k и и и yf m ,k
+
+k = [1,k 2,k и и и m ,k ] , for k = 1, . . . , K (25)
+
+and can be described with the rule bases as
+
+Rule 1 : If C1 is y11,k and и и и and Cf yf 1,k , then
+
+CL1 is 1,k
+
+...
+
+...
+
+...
+
+Rule m : If C1 is yf 1,k and и и и and Cf yf m ,k , then
+
+CLm is m ,k
+
+(26)
+
+where CL is the cost level of alternatives, for j = 1, . . . , m and k = 1, . . . , K.
+Step 7: Construct the antecedent matrices and consequent matrices for the AS.
+The AS antecedent matrices Mk are based on the BLs k and CLs k , which are the outputs of the BS and CS correspondingly. The antecedent matrix of a system with two inputs, i.e., BL and CL, each taking m possible values, will be usually of size 2 О (m и m), as presented in the following:
+
+Mk
+
+=
+
+BL CL
+
+1,k и и и 1,k и и и m ,k и и и m ,k 1,k и и и m ,k и и и 1,k и и и m ,k
+
+for k = 1, . . . , K.
+
+, (27)
+
+However, in this case, each tuple of inputs (j,k , j,k ) stands for the assessed levels of the same alternative j through two types of criteria--benefits and costs. Therefore, the AS antecedent
+
+YAAKOB et al.: FN-TOPSIS: FUZZY NETWORKS FOR RANKING TRADED EQUITIES
+
+323
+
+matrices Mk are of size 2 О m, as constructed in the following:
+
+Mk
+
+=
+
+BL CL
+
+1,k 2,k 3,k и и и m ,k 1,k 2,k 3,k и и и m ,k
+
+,
+
+for k = 1, . . . , K.
+
+(28)
+
+The AS consequent matrices are derived as follows: i) Calculate the aggregation j,k of weighted N ICCjB,k and N ICCjC,k ; the division by two in (29) reflects the equal importance of each of the two subsystems by means of a weighted
+mean:
+
+N ICCjB,k О j,k =
+
+e e+f
+
++ N ICCjC,k О 2
+
+f e+f
+
+,
+
+for j = 1, . . . , m and k = 1, . . . , K.
+
+(29)
+
+ii) Normalize the values of j,k to ensure they lie within [0, 1], as calculated in the following:
+
+N j,k
+
+=
+
+j,k , maxj j,k
+
+for j = 1, . . . , m and k = 1, . . . , K. (30)
+
+iii) For N j,k , take linguistic terms from Table III for the ALs. The translation of scalars to linguistic terms is done in the
+
+same way as in (22). Then, the K for AS consequent matrices,
+
+in this case of size 1 О m rather than 1 О m и m, are described
+
+as
+
+Nk = AL N 1,k N 2,k и и и N m ,k , for k = 1, . . . , K (31)
+where AL is the level of alternatives. Therefore, the AS is presented with K matrix decision rules,
+as constructed in the following:
+
+if
+
+Mk
+
+=
+
+BL CL
+
+1,k 1,k и и и m ,k 1,k 2,k и и и m ,k
+
+, then
+
+Nk = AL N 1,k N 2,k и и и N m ,k , for k = 1, . . . , K (32)
+
+and can be described with the rule bases as
+
+Rule 1 : If BL is 1,k and CL is 1,k , then AL is N 1,k
+
+...
+
+...
+
+...
+
+Rule m : If BL is m ,k and CL is m ,k then AL
+
+is N m ,k , for k = 1, . . . , K
+
+(33)
+
+where BL is the level of benefits, CL is the level of costs, and AL is the level of alternatives.
+Step 8: Construct the generalized Boolean matrix representing the overall system.
+Having derived the rules for the three systems--BS, CS, and AS--we can now translate these rules into Boolean matrix form. The generalized BS Boolean matrix for each alternative j is constructed in (34), based on the opinions of all K DMs:
+
+j,1 и и и j,K
+
+x1j,1 и и и xej,1 1 и и и 0
+
+...
+
+... . . . ... , for j = 1, . . . , m (34)
+
+x1j,K и и и xej,K 0 и и и 1
+
+where the row and column labels of the Boolean matrix are all possible permutation for the BS rule base of the linguistics terms for the input 1Г7 as in Tables I and II, and of the linguistic terms for the output 1Г5 as in Table III.
+The generalized CS Boolean matrix for each alternative j is constructed in (35) based on the opinions of all K DMs:
+
+j,1 и и и j,K
+
+y1j,1 и и и yf j,1 1 и и и 0
+
+...
+
+... . . . ... , for j = 1, . . . , m (35)
+
+y1j,K и и и yf j,K 0 и и и 1
+
+where the row and column labels of the Boolean matrix are all possible permutation for the CS rule base of the linguistics terms for the input 1Г7 as in Tables I and II, and of the linguistic terms for the output 1Г5 as in Table III.
+The vertical merging of the BS and CS generalized Boolean matrices will produce the generalized Boolean matrix constructed as
+
+x1j,1 и и и xej,1 y1j,1 и и и yf j,1
+...
+x1j,K и и и xej,K y1j,K и и и yf j,K
+
+j,1 j,1
+
+иии
+
+1 иии
+
+... . . .
+
+0 иии
+
+j,K j,K
+0 ,
+...
+1
+
+for j = 1, . . . , m. (36)
+
+Next, the AS generalized Boolean matrix for each alternative j is introduced in (37) based on the opinions of all K DMs:
+
+N j,1 и и и N j,K
+
+j,1 j,1 1 и и и 0
+
+...
+
+... . . . ... , for j = 1, . . . , m. (37)
+
+j,K j,K 0 и и и 1
+
+Then, the resultant generalized Boolean matrix for the overall system for each alternative j is produced in (38) based on the opinions of all K DMs:
+
+x1j,1 и и и xej,1
+y1j,1 и и и yf j,1 ...
+
+N j,1 и и и N j,K 1 иии 0 ... . . . ... ,
+
+for j = 1, . . . , m
+
+x1j,K и и и xej,K y1m ,k и и и yf m ,k
+
+0 иии
+
+1
+
+(38)
+
+Step 9: Derive the rules for the alternatives based on the
+
+generalized Boolean matrix from (40), as shown below for j =
+
+1, . . . , m :
+
+Rule 1 : If B1 is x1j,1 and и и и and Be is xej,1 and C1 is y1j,1
+
+and и и и and Cf is yf j,1 , then AL is N j,1
+
+...
+
+...
+
+...
+
+Rule nj : If B1 is x1j,K and и и и and Be is xej,K and C1 is y1j,K
+
+and и и и and Cf is yf j,K , then AL is N j,K .
+
+324
+
+TABLE IV LINGUISTIC TERMS FOR THE IMPORTANCE WEIGHT OF EACH CRITERION
+
+Linguistic Terms
+
+Trapezoidal Type 2 Fuzzy Number
+
+Very Low (VL)
+
+1 (0.00,0.00,0.00,0.10,1,1)(0.00,0.00,0.00,0.10,1,1)
+
+Low (L)
+
+2 (0.00,0.10,0.10,0.25,1,1)(0.00,0.10,0.10,0.25,1,1)
+
+Medium Low (ML) 3 (0.15,0.30,0.30,0.45,1,1)(0.15,0.30,0.30,0.45,1,1)
+
+Medium (M)
+
+4 (0.35,0.50,0.50,0.65,1,1)(0.35,0.50,0.50,0.65,1,1)
+
+Medium High (MH) 5 (0.55,0.70,0.70,0.85,1,1)(0.55,0.70,0.70,0.85,1,1)
+
+High (H)
+
+6 (0.80,0.90,0.90,1.00,1,1)(0.80,0.90,0.90,1.00,1,1)
+
+Very High (VH)
+
+7 (0.90,1.00,1.00,1.00,1,1)(0.90,1.00,1.00,1.00,1,1)
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+TABLE V LINGUISTIC TERMS FOR RATING OF ALL ALTERNATIVES
+
+Linguistic Terms
+
+Trapezoidal Type 2 Fuzzy Number
+
+Very Poor (VP)
+
+1
+
+Poor (P)
+
+2
+
+Medium Poor (MP) 3
+
+Fair (F)
+
+4
+
+Medium Good (MG) 5
+
+Good (G)
+
+6
+
+Very Good (VG)
+
+7
+
+(0,0,0, 1,1) (0,0,0, 1,1) (0,1,1,3,1,1) (0,1,1,3,1,1) (1,3,3,5,1,1) (1,3,3,5,1,1) (3,5,5,7,1,1) (3,5,5,7,1,1) (5,7,7,9,1,1) (5,7,7,9,1,1) (7,9,9,10,1,1) (7,9,9,10,1,1) (9,10,10,10,1,1)(9,10,10,10,1,1)
+
+Step 10: Derive a final score for each alternative. In order to produce a final score j for each alternative j, take the average aggregate membership value of the consequent part of the nj rules in (38). Then, multiply with the influence multiplier based on the K DMs' average influence degree for alternative j. This is shown as
+
+j =
+
+nK
+N j,k и N ICCjB,k + N ICCjC,k
+Rule=1 k=1
+nиK
+
+for j = 1, . . . , m.
+
+, (39)
+
+Thus, the ranking order of all alternatives can be determined: the better alternatives j have higher values of j . The alternatives we have developed the above ranking approach for are stock exchange traded equities. We have considered application to a developing financial market and are currently extending the application to comparison of performance in developing and developed financial markets.
+
+B. Interval Type-2 Fuzzy Number Implementation
+In this implementation of FN-TOPSIS, we use interval type-2 fuzzy number, as detailed in Tables IVГVI, for rating of alternatives and weighting the importance of criteria. All linguistics terms are written in the form of trapezoidal type-2-fuzzy numbers.
+In terms of steps involved in the implementation of type-2 fuzzy numbers in FN-TOPSIS, the concept of ranking trapezoidal interval type-2 fuzzy numbers is relevant to step 3 prior to finding the distance of alternatives from PISs and NISs. The other steps are the same as type-1 fuzzy sets implementation discussed in Section III-A:
+Step 3: Find the FPIS and FNIS for each alternative, and the distance between each alternative to FPIS and FNIS.
+In order to construct the ranking weighted decision matrices, for j = 1, . . . , m and k = 1, . . . , m, we need to calculate the ranking value of each interval type-2 fuzzy numbers vij,k , i.e., Rank(vij,k ).The maximum number n of edges in the upper membership function viUj,k and the lower membership function viLj,k are first defined, where i = 1, . . . , e + f and j = 1, . . . , m. If n is an odd number and n  3, then r = n + 1. If n is an even number and n  4, then r = n. The Rank(vij,k ) of an interval
+
+type-2 fuzzy numbers is presented as
+
+Rank (vij,k ) =
+
+M1 vilj,k +
+
+M2 vilj,k + и и и
+
+l {U , L }
+
+l {U , L }
+
++
+
+Mr -1
+
+vil j , k
+
+-1 r
+
+l {U , L }
+
+S1 vilj,k +
+
+S2 vilj,k
+
+l {U , L }
+
+l {U , L }
+
++ иии+
+
+Sr vilj,k
+
+l {U , L }
+
++
+
+1 vilj,k
+
+l {U , L }
+
++
+
+2 vilj,k + и и и +
+
+r -2 vilj,k .
+
+l {U , L }
+
+l {U , L }
+
+(40)
+
+Here, Mp (vilj,k ) denotes the average of the elements aivj,,lk,p and avij,,lk,(p+1) , i.e., Mp (vilj,k ) = (avij,,lk,p + aivj,,lk,(p+1) )/2, for p = 1, . . . , r - 1. In addition, Sp (vilj,k ) denotes the standard deviation of elements aivj,,lk,1 , aivj,,lk,2 , . . . , aivj,,lk,p , i.e.,
+
+Sp (vilj,k ) =
+
+1 p
+
+p
+
+(aivj,,lk ,t
+
+-
+
+1 p
+
+p
+
+2
+avij,,lk ,t ) ,
+
+t=1
+
+t=1
+
+for p = 1, . . . , r. Finally, p (vilj,k ) denotes the membership
+value of the element avij,,lk,(p+1) for p = 1, . . . , r - 2, where
+l  {U, L} and r is an even number. The FPIS A+k = (v1+,k , v2+,k , . . . , v(+e+f ),k ) and the FNIS
+Ak- = (v1-,k , v2-,k , . . . , v(-e+f ),k ) are defined as
+
+A+k = v1+,k , v2+,k , . . . , v(+e+f ),k
+
+A-k = v1-,k , v2-,k , . . . , v(-e+f ),k
+
+(41)
+
+where
+
+
+
+vi+,k
+
+=
+
+ 
+
+max
+1j e+j
+min
+
+1j e+f
+
+Rank viBj,k Rank viCj,k
+
+, Bi  B , Ci  C
+
+and
+
+
+
+vi-,k
+
+ = 
+
+min
+1j e+f
+max
+
+1j e+f
+
+Rank viBj,k Rank viCj,k
+
+, Bi  B , Ci  C.
+
+Here, B denotes the set of benefit criteria, C denotes the set of cost criteria, and i = 1, . . . , m. The distance j+,k between
+
+YAAKOB et al.: FN-TOPSIS: FUZZY NETWORKS FOR RANKING TRADED EQUITIES
+
+325
+
+TABLE VI LINGUISTIC TERMS FOR AL
+
+Linguistic Terms
+
+Trapezoidal Type 2 Fuzzy Number
+
+Very Bad(VB)
+
+1 (0.00,0.00,0.00,0.25,1,1)(0.00,0.00,0.00,0.25,1,1)
+
+Bad (B)
+
+2 (0.00,0.25,0.25,0.50,1,1)(0.00,0.25,0.25,0.50,1,1)
+
+Regular (R)
+
+3 (0.25,0.50,0.50,0.75,1,1)(0.25,0.50,0.50,0.75,1,1)
+
+Good (G)
+
+4 (0.50,0.75,0.75,1,1,1) (0.50, 0.75, 0.75, 1,1,1)
+
+Very Good (VG) 5 (0.75,1.00,1.00,1.00,1,1) (0.75,1.00,1.00,1.00,1,1)
+
+TABLE VII LINGUISTIC TERMS FOR EXPERT RELIABILITY
+
+Linguistic Terms
+
+Trapezoidal Fuzzy Number
+
+Strongly Unlikely (SUL) Unlikely (UL) Somewhat Unlikely (SWU) Neutral (N) Somewhat Likely (SWL) Likely (L) Strongly Likely (SL)
+
+(0.00, 0.00, 0.00, 0.10) (0.00, 0.10, 0.10, 0.25) (0.15, 0.30, 0.30, 0.45) (0.35, 0.50, 0.50, 0.65) (0.55, 0.70,0.70, 0.85) (0.80, 0.90, 0.90, 1.00) (0.90, 1.00, 1.00, 1.00)
+
+to convert into a crisp number using fuzzy expectation, as
+
+ = xB~ dx
+
+(44)
+
+B~ dx
+
+where denotes an algebraic integration. Then, add the weight of the second part (reliability) to the first part (restriction). Weighted Z-numbers can be denoted as
+
+Z~ = {(x, A~ ) |A~ (x) = A~ (x) , x  [0, 1] } .
+
+These can be represented with type-1 fuzzy numbers as
+
+Z~ =
+
+< x, Z~ (x) > |Z~ (x) = A~
+
+x 
+
+, x  [0, 1] .
+
+It is proven in [33] that Z~ has the same fuzzy expectation as Z~ . The remaining steps of the algorithm are the same as for the type-1 fuzzy sets implementation. The next section systematically illustrates the application of type-1 fuzzy sets of the proposed FN-TOPSIS method to solve the problem of selection/ranking of traded equity.
+
+each alternative Aj,k and the FPIS A+k is calculated with (42):
+
++j,k =
+
+e+f
+
+Rank (vij,k ) - vi+,k
+
+2
+,
+
+i=1
+
+for j = 1, . . . , m and k = 1, . . . , K. (42)
+
+The distance j-,k between each alternative Aj,k and the FNIS A-k is calculated as
+
+-j,k =
+
+e+f
+
+Rank (vij,k ) - vi-,k
+
+2
+,
+
+i=1
+
+for j = 1, . . . , m and k = 1, . . . , K. (43)
+
+C. Z-Number Implementation
+For the Z-number implementation of TOPSIS-FN, Tables I ГIII from Section III-A are used, with an additional Table VII for the linguistic terms representing DM reliability.
+Here, the reliability of experts is taken into consideration during the decision-making process. The experts are advised to use the linguistic terms in Table VII to evaluate the confidence in their decision. DMs are not supposed to use negative weight to represent their opinion. Otherwise, this would imply the use of unreliable information, which is undesirable. This applies at the start of step 1 of the algorithm described in type-1 fuzzy number implementation of FN-TOPSIS. The other steps are the same as the implementation discussed in Section III-A.
+Step 1: Use the information from Table VII to derive the second component B of the Z-number, and then, convert the Z-number to type-1 fuzzy number.
+Let Z = (A~, B~) is a Z-number, where {A~ = (x, A~)|x  [0, 1]}, {B~ = (x, B~ )|x  [0, 1]}, and A~ and B~ are trapezoidal membership functions. The second part (reliability) needs
+
+IV. RANKING OF TRADED EQUITY
+We study the problem of ranking traded equity in developing financial markets within a crisis period, in order to illustrate the applicability and validity of the proposed FN methodology in a realistic scenario. DMs with different levels of experience evaluate 25 equities listed on the main board of the Kuala Lumpur Stock Exchange (KLSE) on November 30, 2007. A set of financial ratios for the equities are considered toward the benefit and cost criteria in the FN-TOPSIS algorithm. These include the following: 1) Market value of firm (B1), defined as market value of firm-to-earnings before amortization, interest, and taxes. This is one of the critical financial indicators, and the lower the ratio, the better the equity [46]. 2) Return on equity (ROE) (B2), which evaluates how much the company earns on the investment of its shareholders. ROE is measured as net income divided by stockholder funds. Portfolio managers examine ROE when deciding whether to trade (buy or sell) equities. The higher values of the ratio indicate healthier companies. 3) Debt-to-equity ratio (C1), belonging to long-term solvency ratios that are intended to address the firm's long run ability to meet its obligations. It is considered by DMs that the lower the ratio, the better [47]. 4) Current ratio (B3), which measures liquidity of companies and explains the ability of a business to meet its current obligations when fall due. The higher the ratio, the more liquid is the company and, therefore, in a better position.[48]. 5) Market value-to-net sales (B4) is market value ratios of particular interest to investors. The lower the ratio, the better the equity [49]. The lower this ratio is, the better the equity. 6) Price/earnings ratio (C2) measures the ratio of market price of each share of common stock to the earnings per share, the lower this ratio, the better.
+In this study, the processes of ranking equities follow the proposed methods in Section III. Fig. 4 illustrates the FN model for the problem of selection/ranking of traded equity and includes four benefit criteria and two cost criteria.
+
+326
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+and to produce overall
+
+4
+
+1B,1+ =
+
+1B + vi1,1 , vi+,1
+
+i=1
+
++ 0.298 = 1.4841.
+
+= 0.11 + 0.409 + 0.668
+
+Next, using (14) for j = 1 and k = 1, the distance between E1 according to DM1 and the FPIS A1- is calculated as
+
+Fig. 4. FN for the FN-TOPSIS application to ranking traded equity.
+Step 1: Based on the information provided by experts and using (11), the decision matrices for the BS and CS can be constructed. The rating of each criterion for each equity and the importance of criteria are based on DMs' opinions.
+Step 2: Considering the BS, the normalized decision matrix RkB and the weight normalized decision matrix VkB can be constructed for each k, using (12) correspondingly.
+For example, the calculations for E1 using the opinion of DM1 are as follows:
+g1,1 = (0.9, 1, 1, 1) ; x11,1 = (9, 10, 10, 10) ; dx1,1 = 10 r1B1,1 = (9/ 10, 10/ 10, 10/ 10, 10/ 10) = (0.9, 1, 1, 1) v1B1,1 = (0.9 О 0.9, 1 О 1, 1 О 1, 1 О 1) = (0.81, 1, 1, 1) .
+This step is then repeated for the CS, in order to calculate the normalized decision matrix RkC and the weight normalized decision matrix VkC .
+Step 3: The FPIS and the FNIS for each equity based on both systems, and the distances between the rating of criteria for each equity and the FPIS and FNIS, can be evaluated as follows.
+FPIS and FNIS are determined as
+Ak+ = (1, 1, 1, 1)1,k , (1, 1, 1, 1)2,k , . . . , (1, 1, 1, 1)25,k Ak- = (0, 0, 0, 0)1,k , (0, 0, 0, 0)2,k , . . . , (0, 0, 0, 0)25,k .
+
+B1 -(v11,1 , v1-,1 ) =
+
+1 [(0.81 - 0)2 + и и и + (1 - 0)2 ] = 1.373; 3
+
+similarly, B2 -(v21,1 , v2-,1 ) = 1.063 , B3 -(v31,1 , v3-,1 ) = 0.789, and B4 -(v41,1 , v4-,1 ) = 1.242, producing overall
+
+4
+
+1B,1- =
+
+B1 - vi1,1 , vi-,1
+
+i=1
+
++ 1.242 = 4.4671.
+
+= 1.373 + 1.063 + 0.789
+
+Now, the distances jC,k+ and Cj,k- between the rating according to DM k of cost criteria i = 1, . . . , 2 for each equity j (j = 1, . . . , 25) and the FPIS A+k or FNIS A-k are calculated
+using (15) and (16). For example, the distance between the first equity E1 according to DM1 and the FPIS A+1 is calculated using (15) for j = 1 and k = 1, as follows:
+
+1C + v11,1 , v1+,1 = and similarly
+
+1 (0.39-1)2 +и и и +(0.85- 1)2 = 0.49 3
+
+kC + vij,k , vi+,k = 1C + v21,1 , v2+,1 = 1.12
+
+producing overall
+
+2
+C1,+1 = C1 + vi1,1 , vi+,1 = 0.49 + 1.12 = 1.61.
+i=1
+
+Next, using (16) for j = 1 and k = 1, the distance between E1 according to DM1 and the FPIS A-1 is calculated as
+
+= C1 - v11,1 , v1-,1
+
+= 1 (0.39 - 0)2 + и и и + (0.85 - 0)2 3
+= 1.017
+
+The distances Bj,k+ and Bj,k-, between the rating according to DM k of benefit criteria i = 1, . . . , 4 for each equity j(j = 1, . . . , 25) and the FPIS A+k or FNIS A-k are calculated
+using (13) and (14). For example, the distance between the first equity E1 according to DM1 and the FPIS A+1 is calculated using (13) for j = 1 and k = 1, as follows:
+
+B1 + v11,1 , v1+,1 =
+
+1 (0.81-1)2 + и и и +(1- 1)2 = 0.11. 3
+
+Similarly
+
+B1 + v21,1 , v2+,1 = 0.409 1B + v31,1 , v3+,1 = 0.668 B1 + v41,1 , v4+,1 = 0.298
+
+and similarly
+
+kC - vij,k , vi-,k = C1 - v21,1 , v2-,1 = 0.339
+
+producing overall
+
+2
+1C,-1 = 1C - vi1,1 , vi-,1 = 1.017 + 0.339 = 1.358.
+i=1
+
+Step 4: Find the closeness coefficients for the BS CCjB,k and for the CS CCjC,k , using (17) for each equity Ej, j = 1, . . . , 25. For example, the closeness coefficient for E1 in the BS under
+the first DM k = 1 is calculated using (19) as follows:
+
+C C1B, 1
+
+=
+
+B1,1- B1,1+ + 1B,1-
+
+=
+
+4.4671 1.4841 + 4.4671
+
+=
+
+0.751
+
+YAAKOB et al.: FN-TOPSIS: FUZZY NETWORKS FOR RANKING TRADED EQUITIES
+
+327
+
+and the closeness coefficient in the CS
+
+C C1C, 1
+
+=
+
+1C,-1 1C,+1 + C1,-1
+
+=
+
+1.358 1.61 + 1.358
+
+=
+
+0.457.
+
+Step 5: The ICCs ICCjB,k and ICCjC,k for each DM k are derived by applying the influence degree k of each DM, using (18) and (19). Then, the normalized coefficients N ICCjB,k and N ICCjC,k are calculated with (20).
+For example, the influence degree of DM1 is 1 = 8, and
+using (18), his normalized expertise is
+
+1 =
+
+1
+
+3 l=1
+
+l
+
+=
+
+8 8 + 10 + 7
+
+= 0.32.
+
+Then, the ICC ICC1B,1 for the BS for equity E1 according to DM1 is calculated with (19) as
+
+ICC1B,1 = 1  CC1B,1 = 0.32  0.751 = 0.2403.
+
+Similarly, the corresponding ICC for the CS ICC1C,1 is produced as
+
+ICC1C,1 = 1  CC1C,1 = 0.32  0.457 = 0.1462.
+
+Next, the ICCs have to be normalized prior to matching the
+coefficients to the linguistic variable in Table III. Using (20), N ICC1B,1 and N ICC1C,1 are calculated as
+
+N ICC1B,1 =
+
+I C C1B, 1 maxj I CCjB,k
+
+=
+
+0.2403 0.2403
+
+and
+
+N ICC1C,1 =
+
+I C C1C, 1 maxj I CC1C,1
+
+=
+
+0.1462 . 0.1659
+
+Finally, the normalized coefficients are matched to the variable in Table III:
+
+N ICC1B,1 = 1 = V G, N ICC1C,1 = 0.8812 = V G.
+
+Step 6: The antecedent matrices Xk for the BS are constructed using (21) for k = 1, . . . , K, based on DM k opinions. Each DM has a separate benefit antecedent matrix. The consequent matrices k for the BS are constructed using (22) for k = 1, . . . , K, based on the values of N ICCjB,k calculated at step 5 above and matched to the linguistic terms in Table III.
+Each DM has a separate benefit antecedent matrix. Similarly, the antecedent matrices Yk and the consequent matrices k are produced for the CS. Thus, the antecedent and consequent ma-
+trices for the benefit and cost rule bases are generated in this
+step.
+
+For example, using (21), and according to the first DM k = 1, the antecedent matrix X1 for the BS is
+
+X1 =
+
+E1
+
+E2 и и и E25
+
+
+
+
+
+B1 B2 B3
+
+x1,1,1
+
+
+
+x2 x3
+
+, ,
+
+1,1 1,1
+
+x1,2,1 x2,2,1
+x3,2,1
+
+иии иии ...
+
+x1,25,1
+
+x2,25,1 x3,25,1
+
+
+
+B4 x4,1,1 x4,2,1 и и и x4,25,1
+
+E1
+
+E2 и и и
+
+
+
+=
+
+B1 B2 B3
+
+VG
+
+
+
+V V
+
+G G
+
+MG VG
+M
+
+иии иии ...
+
+B4 G G и и и
+
+E25
+
+
+
+MG
+
+F MP
+
+
+
+G
+
+where Bi are the four benefit criteria. Then, using (22), the consequent matrix 1 is
+
+E1 E2 и и и E25
+
+1 = BL 1,1 2,1 и и и 25,1
+
+E1
+
+E2 и и и E25
+
+= BL V G V G и и и G .
+
+Next, using (22), and according to the first DM k = 1, the antecedent matrix Y1 for the CS is
+
+E1 E2 и и и E25
+
+Y1
+
+=
+
+C1 C2
+
+y1,1,1 y2,1,1
+
+y1,2,1 y2,2,1
+
+иии иии
+
+y1,25,1 y2,25,1
+
+= E1 E2 и и и E25
+
+C1 C2
+
+G F
+
+F G
+
+иии иии
+
+F G
+
+.
+
+Then, using (22), the consequent matrix 1 is
+
+E1 E2 и и и E25 E1 E2 1 = CL[1,1 2,1 25,1 ] = CL[V G G
+
+иии иии
+
+E2 G]
+
+5
+
+.
+
+The rule base of the BS for DM1 is constructed using (23) and (24) as if
+
+E1 E2 и и и E25
+
+
+
+
+
+X1 =
+
+B1 B2 B3
+
+VG
+
+
+
+V V
+
+G G
+
+MG VG
+M
+
+иии иии ...
+
+MG
+
+F MP
+
+
+
+,
+
+B4 G
+
+G иии G
+
+then
+
+1
+
+=
+
+E1 BL[ V
+
+G
+
+E2 VG
+
+иии иии
+
+E25 . G]
+
+Rule 1: If B1 is VG and B2 is VG and B3 is VG and B4 is G,
+
+then the output BL is VG
+
+Rule 2: If B1 is MG and B2 is VG and B3 is M and B4 is G,
+
+then the output BL is VG
+
+...
+
+...
+
+...
+
+Rule 25: If B1 is MG and B2 is F and B3 is MP and B4 is G, then the output BL is G
+
+328
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+TABLE VIII RANKING BASED ON TYPE-1, TYPE-2, AND Z FUZZY NUMBER
+IMPLEMENTATION OF THE PROPOSED FN-TOPSIS METHOD
+
+closeness coefficients N ICCjB,1 and N ICCjC,1 according to DM1, e.g., for j = 1:
+
+Type-1 Implementation
+
+Equity Final Score Rank
+
+E1
+
+0.7900
+
+6
+
+E2
+
+0.8090
+
+3
+
+E3
+
+0.8813
+
+1
+
+E4
+
+0.4283
+
+20
+
+E5
+
+0.2735
+
+22
+
+E6
+
+0.7871
+
+7
+
+E7
+
+0.4652
+
+14
+
+E8
+
+0.4388
+
+18
+
+E9
+
+0.1730
+
+25
+
+E10
+
+0.4555
+
+16
+
+E11
+
+0.5084
+
+12
+
+E12
+
+0.4528
+
+17
+
+E13
+
+0.3661
+
+21
+
+E14
+
+0.7506
+
+9
+
+E15
+
+0.7936
+
+5
+
+E16
+
+0.8467
+
+2
+
+E17
+
+0.2551
+
+24
+
+E18
+
+0.4308
+
+19
+
+E19
+
+0.6536
+
+10
+
+E20
+
+0.4629
+
+15
+
+E21
+
+0.7761
+
+8
+
+E22
+
+0.2616
+
+23
+
+E23
+
+0.7956
+
+4
+
+E24
+
+0.6338
+
+11
+
+E25
+
+0.4899
+
+13
+
+Type-2 implementation
+
+Final Score Rank
+
+0.6836
+
+8
+
+0.7198
+
+4
+
+0.8701
+
+1
+
+0.2717
+
+20
+
+0.1861
+
+23
+
+0.7684
+
+3
+
+0.3891
+
+14
+
+0.2799
+
+19
+
+0.1628
+
+24
+
+0.3357
+
+16
+
+0.4600
+
+12
+
+0.2920
+
+18
+
+0.2561
+
+21
+
+0.6441
+
+9
+
+0.6981
+
+5
+
+0.8370
+
+2
+
+0.1595
+
+25
+
+0.3568
+
+15
+
+0.5532
+
+11
+
+0.2987
+
+17
+
+0.6907
+
+7
+
+0.1982
+
+22
+
+0.6958
+
+6
+
+0.5574
+
+10
+
+0.3928
+
+13
+
+Z implementation
+
+Final Score Rank
+
+0.6931
+
+5
+
+0.5712
+
+10
+
+0.8221
+
+1
+
+0.2615
+
+20
+
+0.2267
+
+23
+
+0.6355
+
+7
+
+0.3029
+
+17
+
+0.2936
+
+19
+
+0.1152
+
+25
+
+0.3490
+
+16
+
+0.4169
+
+13
+
+0.3640
+
+15
+
+0.2457
+
+21
+
+0.6376
+
+6
+
+0.7237
+
+3
+
+0.7571
+
+2
+
+0.2409
+
+22
+
+0.3746
+
+14
+
+0.4993
+
+11
+
+0.2977
+
+18
+
+0.7029
+
+4
+
+0.1849
+
+24
+
+0.5940
+
+9
+
+0.6315
+
+8
+
+0.4937
+
+12
+
+By analogy, the rule base for the CS is constructed.
+Step 7: The AS in this application is the equity system (ES),
+and the antecedent matrices Mk of each DM k for ES are constructed using (28) based on the BL and CL, which are the
+outputs of the BS and CS, respectively. Each DM has a separate
+equity antecedent matrix Mk . Next, the ES consequent matrices Nk are derived using (29)Г(31), while calculating the aggregations j,k of weighted coefficients N ICCjB,k and N ICCjC,k for each equity j (j = 1, . . . , 25), then producing the normalized aggregations N j,k , and constructing the ES consequent matrices Nk based on N j,k . Each DM k has a separate equity consequent matrix Nk .
+For example, based on the BL and CL evaluated in step 6
+above and using (27), the ES antecedent matrix M1 according to DM1 is evaluated as
+
+E1
+
+E2 и и и E25
+
+M1 =
+
+BL CL
+
+1,1 1,1
+
+2,1 2,1
+
+иии иии
+
+25,1 25,1
+
+E1 E2 и и и E25
+
+=
+
+BL CL
+
+VG VG
+
+VG G
+
+иии иии
+
+G G
+
+.
+
+Next, the ES consequent matrix N1 according to DM1 is derived through:
+
+i) calculating the aggregated closeness coefficient j,1 for each equity j = 1, . . . , 25, with (28) and based on the normalized
+
+N ICC1B,1 О 1,1 =
+
+4 4+2
+
++ N ICC1C,1 О 2
+
+2 4+2
+
+=
+
+1,1 =
+
+1.00 О
+
+2 3
+
++ 0.8812
+
+1 3
+
+2
+
+= 0.480
+
+ii) calculating the normalized aggregated closeness coefficients N j,1 for each equity j = 1, . . . , 25 with (29) and based on the values j,1 produced in Step 7(i) above, e.g., for j = 1:
+
+N 1,1
+
+=
+
+1,1 maxj j,1
+
+=
+
+0.48 0.50
+
+= 0.96
+
+and the value of N 1,1 is matched to the linguistic variable for equity levels in Table III:
+
+N 1,1 = 0.960 = V G
+
+iii) the ES consequent matrix N1 for DM1 is constructed using (30) and based on the values N j,1 for each equity j produced in Step 7(ii) above, e.g., for j = 1:
+
+E1 E2 и и и E25 N1 = EL N 1,1 N 2,1 и и и N 25,1 E1 E2 и и и E25 = VG VG иии G .
+
+Therefore, the ES rule base according to DM1 is evaluated using (25) and (26) as
+
+E1 E2 и и и E25
+
+if M1 =
+
+BL CL
+
+VG VG VG G
+
+иии G иии G
+
+, then
+
+E1 E2 и и и E25
+
+N1 = EL V G V G G .
+
+Rule 1 : If BL is VG and CL is VG, then EL is VG
+
+Rule 2 : If BL is VG and CL is VG, then EL is VG
+
+...
+
+...
+
+...
+
+Rule 25 : If BL is G and CL is G, then EL is G.
+
+Step 8: Having list of rules for three systems--BS, CS, ES-- we now present these rules in the Boolean matrix form. The Boolean matrices for each equity are constructed based on the opinions from all DMs. For example, using (33), the Boolean matrix of the BS for E1 is produced in (45).The row and column labels of the Boolean matrix are all possible permutations of linguistics variable for the input 1Г7 as in Table I and the linguistic variable for the output 1Г5 as in Table III, for the benefit
+
+YAAKOB et al.: FN-TOPSIS: FUZZY NETWORKS FOR RANKING TRADED EQUITIES
+
+329
+
+TABLE IX ALTERNATIVE RANKING BASED ON ESTABLISHED TOPSIS METHODS (EM)
+AND PROPOSED FN-TOPSIS METHODS (PM)
+
+Equity
+E1 E2 E3 E4 E5 E6 E7 E8 E9 E10 E11 E12 E13 E14 E15 E16 E17 E18 E19 E20 E21 E22 E23 E24 E25
+
+Actual
+2 4 1 21 19 11 17 24 23 22 8 13 25 9 3 5 18 12 15 16 7 20 6 14 10
+
+Conventional TOPSIS Approach (EM)
+2 7 1 21 24 6 11 14 25 15 20 12 23 10 8 3 18 19 13 17 4 22 5 9 16
+
+Non-Rule Based Fuzzy Fuzzy TOPSIS Approach (EM)
+
+T-1 T-2 Z
+
+4
+
+3
+
+7
+
+3
+
+5
+
+9
+
+1
+
+1
+
+1
+
+20 18 20
+
+24 23 24
+
+6
+
+6
+
+8
+
+12 12 17
+
+18 17 18
+
+25 24 25
+
+16 14 14
+
+14 15 13
+
+17 16 16
+
+22 22 22
+
+9
+
+10 10
+
+8
+
+8
+
+3
+
+2
+
+2
+
+2
+
+21 21 21
+
+19 19 19
+
+11 11 11
+
+15 13 15
+
+7
+
+7
+
+4
+
+23 20 23
+
+5
+
+4
+
+5
+
+10
+
+9
+
+6
+
+13 25 12
+
+FN-TOPSIS Approach
+(PM)
+
+T-1 T-2 Z
+
+6
+
+8
+
+5
+
+3
+
+4 10
+
+1
+
+1
+
+1
+
+20 20 20
+
+22 23 23
+
+7
+
+3
+
+7
+
+14 14 17
+
+18 19 19
+
+25 24 25
+
+16 16 16
+
+12 12 13
+
+17 18 15
+
+21 21 21
+
+9
+
+9
+
+6
+
+5
+
+5
+
+3
+
+2
+
+2
+
+2
+
+24 25 22
+
+19 15 14
+
+10 11 11
+
+15 17 18
+
+8
+
+7
+
+4
+
+23 22 24
+
+4
+
+6
+
+9
+
+11 10 8
+
+13 13 12
+
+rule base
+
+12345
+
+1111 0 0 0 0 0
+
+... ... ... ... ... ...
+
+6576 0 0 0 0 1
+
+... ... ... ... ... ... .
+
+(45)
+
+7655 0 0 0 0 1
+
+... ... ... ... ... ...
+
+7776 0 0 0 0 1
+
+7777 0 0 0 0 0
+
+Next, using (34), the Boolean matrix of the CS for E1 is defined as
+
+12345
+
+11 0 0 0 0 0
+
+... ... ... ... ... ...
+
+44 0 0 0 1 0
+
+... ... ... ... ... ... .
+
+(46)
+
+64 0 0 0 1
+
+... ... ... ... ... ...
+
+76 0 0 0 0 0
+
+77 0 0 0 0 0
+
+Step 9: Vertical merging is performed to merge the BS and CS Boolean matrices for each equity, then horizontal merging performed to merge the Boolean matrix obtain from the vertical merging operation with the ES Boolean matrix for each equity. For example, applying vertical merging of the BS and CS Boolean matrices for E1, the resultant Boolean matrix is constructed as
+
+11 и и и и и и 55 55
+
+1111/11 0 и и и и и и 0 0
+
+...
+
+... ... ... ... ...
+
+6576/44 0 и и и и и и 1 0
+
+6576/64 0 и и и и и и 0 1
+
+...
+
+... ... ... ... ...
+
+7655/44 0 и и и и и и 1 0 .
+
+(47)
+
+7655/64 0 и и и и и и 0 1
+
+...
+
+... ... ... ... ...
+
+7776/44 0 и и и и и и 1 0
+
+7776/64 0 и и и и и и 0 1
+
+...
+
+... ... ... ... ...
+
+7777/77 0 и и и и и и 0 0
+
+The ES Boolean matrix for E1 is evaluated as
+
+12345
+
+11 0 0 0 0 0
+
+... ... ... ... ... ...
+
+33 0 0 0 0 0
+
+... ... ... ... ... ... .
+
+(48)
+
+44 0 0 0 0
+
+... ... ... ... ... ...
+
+54 0 0 0 0 1
+
+55 0 0 0 0 1
+
+Next, the resultant Boolean matrix for the overall system is produced as shown in (49), through horizontal merging between the Boolean matrices in (47) and (48):
+
+12345
+
+1111/11 0 0 0 0 0
+
+...
+
+... ... ... ... ...
+
+6576/44 0 0 0 0 1
+
+6576/64 0 0 0 0 1
+
+...
+
+... ... ... ... ...
+
+(49)
+
+7655/44 0 0 0 0 1
+
+7655/64 0 0 0 0 1
+
+...
+
+... ... ... ... ...
+
+7776/44 0 0 0 0 1
+
+7776/64 0 0 0 0 1
+
+7777/77 0 0 0 0 0
+
+where only the rows containing 1 are shown, along with the first and last rows.
+
+330
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+TABLE X SPEARMAN RHO CORRELATION COEFFICIENT FOR ALL TOPSIS METHODS
+
+Conventional TOPSIS Approach (EM)
+
+Equity
+
+i
+
+
+
+2 i
+
+E1
+
+0
+
+0
+
+E2
+
+-3
+
+9
+
+E3
+
+0
+
+0
+
+E4
+
+0
+
+0
+
+E5
+
+-5
+
+25
+
+E6
+
+5
+
+25
+
+E7
+
+6
+
+36
+
+E8
+
+10
+
+100
+
+E9
+
+-2
+
+4
+
+E10
+
+7
+
+49
+
+E11
+
+-12
+
+144
+
+E12
+
+1
+
+1
+
+E13
+
+2
+
+4
+
+E14
+
+-1
+
+1
+
+E15
+
+-5
+
+25
+
+E16
+
+2
+
+4
+
+E17
+
+0
+
+0
+
+E18
+
+-7
+
+49
+
+E19
+
+2
+
+4
+
+E20
+
+-1
+
+1
+
+E21
+
+3
+
+9
+
+E22
+
+-2
+
+4
+
+E23
+
+1
+
+1
+
+E24
+
+5
+
+25
+
+E25
+
+-6
+
+36
+
+0
+
+556
+
+
+
+0.786
+
+Method
+
+6
+
+Ranking
+
+According
+
+Performance
+
+Non-Rule Based TOPSIS Approach (EM)
+
+T-1
+
+T-2
+
+Z
+
+i
+
+
+
+2 i
+
+-2 4
+
+11
+
+00
+
+11
+
+-5 25
+
+5 25
+
+5 25
+
+6 36
+
+-2 4
+
+6 36
+
+-6 36
+
+-4 16
+
+39
+
+0
+
+0
+
+-5 25
+
+3
+
+9
+
+-3 9
+
+-7 49
+
+4 16
+
+1
+
+1
+
+0
+
+0
+
+-3 9
+
+1
+
+1
+
+4 16
+
+-3 9
+
+0 362
+
+0.861
+
+3Г4
+
+i
+
+
+
+2 i
+
+-1 1
+
+-1 1
+
+0
+
+0
+
+3
+
+9
+
+-4 16
+
+5 25
+
+5 25
+
+7 49
+
+-1 1
+
+8 64
+
+-7 49
+
+-3 9
+
+3
+
+9
+
+-1 1
+
+-5 25
+
+3
+
+9
+
+-3 9
+
+-7 49
+
+4
+
+16
+
+3
+
+9
+
+0
+
+0
+
+0
+
+0
+
+2
+
+4
+
+5 25
+
+-15 225
+
+0 630
+
+0.758
+
+7
+
+i
+
+
+
+2 i
+
+-5 25
+
+-5 25
+
+0
+
+0
+
+1
+
+1
+
+-5 25
+
+3
+
+9
+
+0
+
+0
+
+6
+
+36
+
+-2 4
+
+8
+
+64
+
+-5 25
+
+-3 9
+
+3
+
+9
+
+-1 1
+
+0
+
+0
+
+3
+
+9
+
+-3 9
+
+-7 49
+
+4
+
+16
+
+1
+
+1
+
+3
+
+9
+
+-w3 9
+
+1
+
+1
+
+8
+
+64
+
+-2 4
+
+0 404
+
+0.845
+
+5
+
+T-1
+
+i
+
+
+
+2 i
+
+-4 16
+
+11
+
+00
+
+11
+
+-3 9
+
+4 16
+
+39
+
+6 36
+
+-2 4
+
+6 36
+
+-4 16
+
+-4 16
+
+4 16
+
+0
+
+0
+
+-2 4
+
+3
+
+9
+
+-6 36
+
+-7 49
+
+5 25
+
+1
+
+1
+
+-1 1
+
+-3 9
+
+2
+
+4
+
+39
+
+-3 9
+
+0 332
+
+0.872
+
+2
+
+FN-TOPSIS Approach (PM)
+
+T-2
+
+i
+
+
+
+2 i
+
+-6 36
+
+00
+
+00
+
+11
+
+-4 16
+
+8 64
+
+39
+
+5 25
+
+-1 1
+
+6 36
+
+-4 16
+
+-5 25
+
+4 16
+
+0
+
+0
+
+-2 4
+
+3
+
+9
+
+-7 49
+
+-3 9
+
+4 16
+
+-1 1
+
+0
+
+0
+
+-2 4
+
+0
+
+0
+
+4 16
+
+-3 9
+
+0 362
+
+0.861
+
+3-4
+
+Z
+
+i
+
+
+
+2 i
+
+-3 9
+
+-6 36
+
+0
+
+0
+
+1
+
+1
+
+-4 16
+
+4 16
+
+0
+
+0
+
+5 25
+
+-2 4
+
+6 36
+
+-5 25
+
+-2 4
+
+4 16
+
+3
+
+9
+
+0
+
+0
+
+3
+
+9
+
+-4 16
+
+-2 4
+
+4 16
+
+-2 4
+
+3
+
+9
+
+-4 16
+
+-3 9
+
+6 36
+
+-2 4
+
+0 320
+
+0.877
+
+1
+
+From the Boolean matrix in (49), the rule basis for equity E1 is derived as
+
+Rule 1 : 6576/44/5 6 5 7 6 4 4 5
+
+Rule 2 : 6576/64/5 6 5 7 6 6 4 5
+
+Rule 3 : 7655/44/5 7 6 5 5 4 4 5 Rule 4 : 7655/64/5 7 6 5 5 6 4 5
+
+(50)
+
+Rule 5 : 7776/44/5 7 7 7 6 4 4 5
+
+Rule 6 : 7776/64/5 7 7 7 6 6 4 5.
+
+The rules in (50) with six inputs and one output can be represented in linguistic terms as
+
+Rule 1 : If B1 is G, and B2 is MG and B3 is VG and B4 is G and C1 is F and C 2 is F, then E1 is VG Rule 2 : If B1 is G, and B2 is M G and B3 is V G and B4 is G and C1 is G and C2 is F , then E1 is V G Rule 3 : If B1 is V G , and B2 is G and B3 is M G and B4 is M G and C1 is F and C2 is F , then E1 is V G Rule 4 : If B1 is V G, and B2 is G and B3 is M G and B4 is M G and C1 is G and C2 is F , then E1 is V G
+
+Rule 5 : If B1 is V G, and B2 is V G and B3 is V G
+
+and B4 is G and C1 is F and C2 is F , then E1 is V G
+
+Rule 6 : If B1 is V G, and B2 is V G and B3 is V Gand
+
+B4 is G and C1 is G and C2 is F , then E1 is V G. (51)
+
+Step 10: The final score for each alternative j = 1, . . . , 25 is derived with (39), by taking average of the aggregate membership value of the consequent part of all active rules in the overall system for equity j and then multiplying with the influence multiplier based on the average influence degree across all K DMs for each equity j.
+For example, there are six active rules for E1 generated from the Boolean matrix operation. Equation (39) is used in order to obtain final score for E1; the average aggregate membership value for the output of the six rules is calculated and, then, multiplied with the influence multiplier for E1 across all DMs
+
+= 1 =
+
+6 Rule=1
+
+3 k=1
+
+N i,k
+
+и
+
+N ICCjB,k + N ICCjC,k
+
+6.3
+
+=
+
+0.9(0.94)
+
++
+
+0.9(0.79) 18
+
++
+
+0.9(0.91)
+
+YAAKOB et al.: FN-TOPSIS: FUZZY NETWORKS FOR RANKING TRADED EQUITIES
+
+331
+
++ 0.9(0.94) + 0.9(0.79) + 0.9(0.91) 18
+
++
+
+0.9(0.94)
+
++
+
+0.9(0.79) 18
+
++
+
+0.9(0.91)
+
++
+
+0.9(0.94)
+
++
+
+0.9(0.79) 18
+
++
+
+0.9(0.91)
+
+0.9(0.94) + 0.9(0.79) + 0.9(0.91)
+
++
+
+18
+
++ 0.9(0.94) + 0.9(0.79) + 0.9(0.91) = 0.79. 18
+
+The final score and ranking positions for all 25 equities considered in this case study, and based on type-1, type 2, and Z fuzzy number implementation of the proposed FN-TOPSIS method, are provided in Table VIII.
+
+V. ANALYSIS OF RESULTS
+
+For the validation of the proposed rule-based FN-TOPSIS, the authors consider established TOPSIS methods, as the nonfuzzy TOPSIS [13] and the nonrule-based fuzzy TOPSIS approaches: T1-TOPSIS [15], T2-TOPSIS [18], and Z-TOPSIS [34]. All these methods are applied to evaluate the final ranking of the equities as shown in Table IX, based on case study in Section IV and compared with the performance of FN-TOPSIS. The actual monthly equity returns in November 2007, based on trading the shares of the 25 companies on the KLSE and holding for a month, are used for benchmarking. The rankings are compared using the Spearman rho correlation coefficient , where  measures the strength of association between two ranked variables. This comparison approach is intuitively interpretable and less sensitive to bias due to the effect of outliers [50]. The Spearman's Rank coefficient is evaluated as
+
+
+
+=
+
+1
+
+-
+
+6 n3
+
+i2 -n
+
+(52)
+
+where i represents the difference between the ranks, and n is the number of considered alternatives.
+The coefficient  takes values between +1 and Г1. Perfect positive relationship of ranks is indicated with  = 1, and  = -1 indicates perfect negative association of ranks, while  = 0 shows no relationship.
+Considering the criteria set used, i.e., B1, B2, B3, B4, C1, and C2 of traded equity described in Section IV, the three proposed FN TOPSIS methods (PM) outperform the four established TOPSIS methods (EM), as shown in the last row of Table X.
+
+VI. CONCLUSION
+This paper introduces a novel TOPSIS method--FNTOPSIS--extending the capabilities of rule-based FNs within MCDM analysis. FN-TOPSIS uses type-1, type-2, and Z-fuzzy numbers and incorporates experts' knowledge into decision analysis as well as experts' degree of experience and influence. At the same time, the approach improves transparency of decision analysis, particularly, in the TOPSIS process, by explicitly taking into account all subsystems and interactions among them. FN-TOPSIS not only provides an effective way to
+
+process imperfect information in decision-making practice in a
+more flexible and intelligent manner, but also presents expert
+knowledge more accurately. The performance of the proposed
+method is validated using a benchmark and comparing against
+a set of competitive approaches. The results show that the pro-
+posed method outperforms the existing nonrule-based TOPSIS
+methods in terms of ranking performance. We have successfully
+applied FN-TOPSIS to the problem of ranking equities traded in
+a developing financial market during a crisis period. This study
+continues research on hybrid approaches, implementing fuzzy
+set theory in equity ranking and investment decisions, in a developed market (U.K.) during a precrisis period [51]Г[54]. The next objective is to implement and analyze the performance of
+the approach within developing and developed financial markets
+during a postcrisis period.
+REFERENCES
+[1] A. Hadi-Vencheh and M. Mirjaberi, "Seclusion-factor method to solve fuzzy-multiple criteria decision-making problems," IEEE Trans. Fuzzy Syst., vol. 19, no. 2, pp. 201Г209, Apr. 2011.
+[2] T. T. Nguyen, L. Gordon-Brown, A. Khosravi, D. Creighton, and Saeid Nahavandi, "Fuzzy portfolio allocation models through a new risk measure and fuzzy sharpe ratio," IEEE Trans. Fuzzy Syst., vol. 23, no. 3, pp. 656Г 676, Jun. 2015.
+[3] A. Kelemenis, K. Ergazakis, and D. Askounis, "Support managers' selection using an extension of fuzzy TOPSIS," Expert Syst. Appl., vol. 38, no. 3, pp. 2774Г2782, Mar. 2011.
+[4] A. Awasthi, S. S. Chauhan, and H. Omrani, "Application of fuzzy TOPSIS in evaluating sustainable transportation systems," Expert Syst. Appl., vol. 38, no. 10, pp. 12270Г12280, Sep. 2011.
+[5] H. Shidpour, M. Shahrokhi, and A. Bernard, "A multi-objective programming approach, integrated into the TOPSIS method, in order to optimize product design; in three-dimensional concurrent engineering," Comput. Ind. Eng., vol. 64, no. 4, pp. 875Г885, Apr. 2013.
+[6] Y. T. IcИ, "An experimental design approach using TOPSIS method for the selection of computer-integrated manufacturing technologies," Robot. Comput. Integr. Manuf., vol. 28, no. 2, pp. 245Г256, Apr. 2012.
+[7] A. Pires, N.-B. Chang, and G. Martinho, "An AHP-based fuzzy interval TOPSIS assessment for sustainable expansion of the solid waste management system in Setu┤bal Peninsula, Portugal," Resources Conservation Recycling, vol. 56, no. 1, pp. 7Г21, Nov. 2011.
+[8] M. Saremi, S. F. Mousavi, and A. Sanayei, "TQM consultant selection in SMEs with TOPSIS under fuzzy environment," Expert Syst. Appl., vol. 36, no. 2, pp. 2742Г2749, Mar. 2009.
+[9] M. Dagdeviren, S. Yavuz, and N. KilincИ, "Weapon selection using the AHP and TOPSIS methods under fuzzy environment," Expert Syst. Appl., vol. 36, no. 4, pp. 8143Г8151, May 2009.
+[10] D. Mohamad and R. M. Jamil, "A preference analysis model for selecting tourist destinations based on motivational factors: A case study in Kedah, Malaysia," Procedia, Soc. Behav. Sci., vol. 65, pp. 20Г25, Dec. 2012.
+[11] E. Ansarifar, F. Shahidi, M. Mohebbi, S. M. Razavi, and J. Ansarifar, "A new technique to evaluate the effect of chitosan on properties of deep-fried Kurdish cheese nuggets by TOPSIS," LWT-Food Sci. Technol., vol. 62, no. 2, pp. 1211Г1219, Jul. 2015.
+[12] S.-Y. Chou, Y.-H. Chang, and C.-Y. Shen, "A fuzzy simple additive weighting system under group decision-making for facility location selection with objective/subjective attributes," Eur. J. Oper. Res., vol. 189, no. 1, pp. 132Г145, Aug. 2008.
+[13] K. Hwang and C. L. Yoon, Multiple Attribute Decision Making: Methods and Applications. New York, NY, USA: Springer-Verlag, 1981.
+[14] J.-W. Wang, C.-H. Cheng, and K.-C. Huang, "Fuzzy hierarchical TOPSIS for supplier selection," Appl. Soft Comput., vol. 9, pp. 377Г386, 2009.
+[15] C.-T. Chen, "Extensions of the TOPSIS for group decision-making under fuzzy environment," Fuzzy Sets Syst., vol. 114, no. 1, pp. 1Г9, Aug. 2000.
+[16] T.-Y. Chen, "A linear assignment method for multiple-criteria decision analysis with interval type-2 fuzzy sets," Appl. Soft Comput., vol. 13, no. 5, pp. 2735Г2748, 2013.
+[17] A. A. Bazzazi, M. Osanloo, and B. Karimi, "Deriving preference order of open pit mines equipment through MADM methods: Application of modified VIKOR method," Expert Syst. Appl., vol. 38, pp. 2550Г2556, 2011.
+
+332
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+[18] S.-M. Chen and L.-W. Lee, "Fuzzy multiple attributes group decisionmaking based on the interval type-2 TOPSIS method," Expert Syst. Appl., vol. 37, no. 4, pp. 2790Г2798, Apr. 2010.
+[19] J. M. Mendel, R. I. John, and F. L. Liu, "Interval type 2 fuzzy logical system made simple," IEEE Trans. Fuzzy Syst., vol. 6, no. 14, pp. 808Г 821, Dec. 2006.
+[20] L. A. Zadeh, "The concept of a linguistic variable and its application to approximate reasoning," J. Inf. Sci., vol. 1, no. 8, pp. 199Г249, 1975.
+[21] J. M. Mendel, Uncertain Rule-Based Fuzzy Logic Systems: Introduction and New Directions. Upper Saddle River, NJ, USA: Prentice-Hall, 2001.
+[22] M. H. Fazel Zarandi, I. B. Turksen, and O. Torabi Kasbi, "Type-2 fuzzy modeling for desulphurization of steel process," Expert Syst. Appl., vol. 32, pp. 157Г171, 2007.
+[23] L. A. Zadeh, "Fuzzy sets," J. Inf. Control, vol. 8, pp. 338Г353, 1965. [24] J. Mendel and Q. Liang, "Equalization of nonlinear time-varying chan-
+nels using type-2 fuzzy adaptive filters," IEEE Trans. Fuzzy Syst., vol. 5, no. 8, pp. 551Г563, Oct. 2000. [25] J. Hu, Y. Zhang, X. Chen, and Y. Liu, "Multi-criteria decision making method based on possibility degree of interval type-2 fuzzy number," Knowl.-Based Syst., no. 463, pp. 21Г29, 2013. [26] J. M. Mendel and D. R. Wu, Perceptual Computing: Aiding People in Making Subjective Judgments. New York, NY, USA: Wiley/IEEE Press, 2010. [27] J. M. Mendel et al., "What computing with words means to me," IEEE Comput. Intell. Mag., vol. 5, no. 1, pp. 20Г26, Feb. 2010. [28] H. Hagras, F. Doctor, V. Callaghan, and A. Lopez, "An incremental adaptive lifelong learning approach for type-2 fuzzy embedded agents in ambient intelligent environments," IEEE Trans. Fuzzy Syst., vol. 15, no. 1, pp. 41Г55, Feb. 2007. [29] E. A. Jammeh, M. Fleury, C. Wagner, H. Hagras, and M. Ghanbari, "Interval type-2 fuzzy logic congestion control for video streaming across IP networks," IEEE Trans. Fuzzy Syst., vol. 17, no. 5, pp. 1123Г1142, Oct. 2009. [30] C. Wagner and H. Hagras, "Toward general type-2 fuzzy logic systems based on z-slices," IEEE Trans. Fuzzy Syst., vol. 18, no. 4, pp. 637Г660, Aug. 2010. [31] D. R. Wu and J. M. Mendel, "On the continuity of type-1 and interval type-2 fuzzy logic systems," IEEE Trans. Fuzzy Syst., vol. 19, no. 1, pp. 179Г192, Feb. 2011. [32] L. A. Zadeh, "A note on Z-numbers," Inf. Sci., vol. 181, no. 14, pp. 2923Г 2932, Jul. 2011. [33] B. Kang, D. Wei, Y. Li, and Y. Deng, "A method of converting Z-number to," J. Inf. Comput. Sci., vol. 3, pp. 703Г709, Mar. 2012. [34] A. Sotoudeh-Anvari and S. Sadi-Nezhad, "A new approach based on the level of reliability of information to determine the relative weights of criteria in fuzzy TOPSIS," Int. J. Appl. Decis. Sci., vol. 8, pp. 164Г178, 2015. [35] R. A. Aliev and O. H. Huseynov, Decision Theory with Imperfect Information. Hackensack, NJ, USA: World Scientific, 2014. [36] A. Gegov, Fuzzy Networks for Complex System: A Modular Rule Base Approach. Berlin, Germany: Springer-Verlag, 2011. [37] A. Gegov, N. Petrov, and B. Vatchova, "Advanced modelling of complex processes by rule based networks," in Proc. IEEE Int. Conf. Intell. Syst., 2010, pp. 197Г202. [38] F. J. J. Santos and H. A. Camargo, "Decision support systems in multicriteria groups: An approach based on fuzzy rules," in Proc. IEEE Int. Conf. Fuzzy Syst., Jul. 2010, pp. 1Г8. [39] A. Gegov, N. Petrov, and E. Gegov, "Rule base identification in fuzzy networks by Boolean matrix equations," J. Intell. Fuzzy Syst., vol. 1, no. 26, pp. 405Г419, 2014. [40] A. Gegov, F. Arabikhan, and N. Petrov, "Linguistic composition based modelling by fuzzy networks with modular rule bases," Fuzzy Sets Syst., vol. 269, pp. 1Г29, Jun. 2015. [41] M. Yaakob and A. Gegov, "Interactive TOPSIS based group decision making methodology using z-numbers," Int. J. Comput. Intell. Syst., vol. 9, pp. 311Г324, 2016. [42] R. W. Chen, D. Navin-Chandra, and Fritz B. Prinz, "A cost-benefit analysis model of product design for recyclability and its application," IEEE Trans. Compon. Packag. Manuf. Technol., vol. 17, no. 4, pp. 502Г507, Dec. 1994. [43] T. Clark, Why Track Actual Costs and Resource Usage on Projects?. New York, NY, USA: ACM, Mar. 2008. [44] P. Grzegorzewski and E. Mro┤wka, "Trapezoidal approximations of fuzzy numbers--revisited," Fuzzy Sets Syst., vol. 158, no. 7, pp. 757Г768, Apr. 2007. [45] A. M. Yaakob and A. Gegov, "Fuzzy rule based approach with z-numbers for selection of alternatives using TOPSIS," in Proc. IEEE Int. Conf. Fuzzy Syst., 2015, pp. 1Г8.
+
+[46] F. Tiryaki and M. Ahlatcioglu, "Fuzzy stock selection using a new fuzzy ranking and weighting algorithm," Appl. Math. Comput., vol. 170, no. 1, pp. 144Г157, Nov. 2005.
+[47] J. Lukeman, The Market Maker's Edge: Day Trading Tactics from a Wall Street Insider. Toronto, ON, Canada: McGraw-Hill, 2003.
+[48] A. Roshayani, U. Laily, and M. A. Siti Maznah, Financial Accounting An Introduction, 2nd ed. Selangor, Malaysia: McGraw-Hill, 2007.
+[49] J. J. Weygandt, D. E. Kieso, and P. D. Kimmel, Accounting Principles, 6th ed. Hoboken, NJ, USA: Wiley, 2002.
+[50] V. G. Hansen, "Detection performance of some nonparametric rank tests and an application to radar," IEEE Trans. Inf. Theory, vol. IT-16, no. 3, pp. 309Г318, May 1970.
+[51] A. Serguieva and J. Hunter, "Fuzzy interval methods in investment risk appraisal," Int. J. Inf. Sci. Fuzzy Sets Syst., vol. 142, no. 3, pp. 443Г466, 2004.
+[52] A. Serguieva, Computational Intelligence in Asset Risk Analysis. Uxbridge, U.K.: Brunel Univ., 2004.
+[53] A. Serguieva, T. Khan, and T. Kalganova, "An intelligent system for risk classification of equity investment projects," J. Appl. Syst. Stud. (Spec. Issue Real Life Appl. Nat. Inspired Comb. Heuristics), vol. 4, no. 2, pp. 236Г261, 2003.
+[54] A. Serguieva and T. Kalganova, "A neuro-fuzzy-evolutionary classifier of risky investments," in Proc. 11th IEEE Int. Conf. Fuzzy Syst., 2002, pp. 997Г1002.
+Abdul Malek Yaakob was born in Pahang, Malaysia, in 1985. He received the Diploma degree in computer science and the B.Sc. degree in mathematics from the Universiti Teknologi MARA, Malaysia, in 2006 and 2008, respectively, and the M.Sc. degree in mathematics from Universiti Teknologi Malaysia, Johor Bahru, Malaysia, in 2011. He is currently working toward the Ph.D. degree with the School of Computing, University of Portsmouth, Portsmouth, U.K.
+Since February 2009, he has been a Tutor in mathematics with the School of Quantitative Sciences, Universiti Utara Malaysia, Sintok, Malaysia. His current and previous research interests include rule-based systems and networks, computational intelligence, financial mathematics, and decision-making analysis.
+Antoaneta Serguieva (SM'11) received the M.Sc. degree in systems engineering from the Technical University of Sofia, Sofia, Bulgaria, the M.B.A. degree in finance from the University of National and World Economy, Sofia, the Ph.D. degree in computer science from Brunel University, London, U.K., and is currently completing the Ph.D. degree in applied mathematics at King's College London.
+She is a member of the Research Center for Blockchain Technologies, University College London (UCL), London, U.K., since 2016; and is an elected UCL Academic Board member since 2016. She is a Senior Teaching Fellow at the Financial Computing and Analytics Group, Department of Computer Science, UCL, since 2010; where she has been Program Director for M.Sc. Financial Computing from 2014 to 2016, and is starting as Program Co-Director for the new M.Sc. Business Analytics in 2016. She is also a Research Advisor in Advanced Analytics at the Bank of England, since 2015. Her research interests include nature-inspired computational intelligence and heuristics in modeling complex sociotechnical systems, contagion mechanisms, behavioral tendencies, and cognition.
+Alexander Gegov (M'15) was born in Sofia, Bulgaria, in 1961. He received the B.Sc. degree in automatics and the M.Sc. degree in robotics from the Technical University of Sofia, Sofia, in 1987 and 1989, respectively, and the Ph.D. degree in control systems and the D.Sc. degree in intelligent systems from the Bulgarian Academy of Sciences, Sofia, in 1992 and 1997, respectively.
+Since 2009, he has been a Reader in computational intelligence with the School of Computing, University of Portsmouth, Portsmouth, U.K. He is the author of four research monographs, ten book chapters, and more than 40 journal articles. His current and previous research interests include complex system modeling and simulation, rule-based systems and networks, and computational intelligence. Dr. Gegov is a Fellow of the HEA.
+
+
+

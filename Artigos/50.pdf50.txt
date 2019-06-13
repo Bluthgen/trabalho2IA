@@ -1,0 +1,708 @@
+994
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+Filtering of a Discrete-Time HMM-Driven Multivariate Ornstein-Uhlenbeck Model With Application to Forecasting Market Liquidity Regimes
+Anton Tenyakov, Rogemar Mamon, Member, IEEE, and Matt Davison
+
+Abstract--This paper investigates the modeling of risk due to market and funding liquidity by capturing the joint dynamics of three time series: the treasury-Eurodollar spread, the VIX, and a metric derived from the S&P 500 spread. We propose a two-regime mean-reverting model for explaining the behaviour of three time series, which mirror liquidity levels for financial markets. An expectation-maximisation algorithm in conjunction with multivariate filters is employed to construct optimal parameter estimates of the proposed model. The selection of the modeling set-up is justified by balancing the best-fit criterion and model complexity. The model performance is demonstrated on historical market data, and a descriptive analysis of the different liquidity measures shows the presence of clear high and low states.
+Index Terms--Ornstein-Uhlenbeck process, Markov chain, change of measure, multivariate HMM filtering, TED, VIX, S&P 500, financial distress.
+I. INTRODUCTION
+T HE purchase or sale of an asset like a stock, a bond, a currency, or a traded commodity sometimes affects the market price of that asset. The purchase of the asset tends to drive the price up, the sale driving the pricing down. If large quantities of an asset can be traded with a small impact on its price, the market for that asset is said to be liquid. The liquidity of markets can, however, change over time: during periods of great financial stress, markets may become unbalanced with many more sellers than buyers making it hard to sell large quantities of the asset without offering buyers a large discount to the current market price.
+Typically, cash and the short-term government debt of major countries are very liquid assets which businesses and traders can use to meet their immediate financial needs. Although major currencies are usually liquid assets, even they can
+Manuscript received October 16, 2015; revised February 17, 2016 and March 26, 2016; accepted March 29, 2016. Date of publication March 31, 2016; date of current version August 12, 2016. This work was supported in part by the NSERC under Grant RGPIN/341780-2012 to R. Mamon and in part by MITACS, Inc. and MPRIME Network, Inc. through the project "Modelling Trading and Risk in the Market" led by M. Davison. The guest editor coordinating the review of this manuscript and approving it for publication was Dr. Dmitry M. Malioutov.
+R. Mamon is with the Department of Statistical and Actuarial Sciences, University of Western Ontario, London, ON N6A 5B7, Canada (e-mail: rmamon@stats.uwo.ca).
+A. Tenyakov is with the Treasury and Balance Sheet Management Department, TD Bank Financial Group, Toronto, ON M5K 1A2, Canada.
+M. Davison is with the Department of Statistical and Actuarial Sciences, Department of Applied Mathematics, University of Western Ontario, London, ON N6A 5B7, Canada.
+Color versions of one or more of the figures in this paper are available online at http://ieeexplore.ieee.org.
+Digital Object Identifier 10.1109/JSTSP.2016.2549499
+
+at times suffer from severe illiquidity when they must be exchanged in the foreign exchange market. For example, some economists worry that the US dollar and US dollar-linked assets could become much less liquid than at present if countries, such as China, which hold trillions of dollars in dollar-denominated US government bonds, began to dump them. This worry about the impact of Chinese actions on US market liquidity is motivated by past events. For example, China's support of a rising yuan in July 2005 seemed to trigger the subsequent slide in US Treasury bonds, with follow-on impacts on US mortgage and corporate debt markets [26].
+Businesses, and in particular financial institutions, are also said to possess sufficient liquidity if they can sell sufficient assets to be able to repay counterparties. The recent Basel III accord, which provides the risk management "rulebook" for large international financial institutions, focuses on the importance of liquidity and prescribes liquidity guidelines for assets held by large financial institutions. Basel III directives also require the diversification of counterparty risk and imposes the need for stress tests which could identify unusual market liquidity conditions. The goal of these regulations is to prevent undue weight in investments that are particularly susceptible to liquidity shifts; see [3].
+In 2007, the world was deemed to have experienced the worst financial crisis since the 1930s. This crisis originated in the United States and spread across the global financial markets within less than a year. Some big financial organisations and banks declared bankruptcy. The downfall of Lehman Brothers was the most calamitous high-profile default of this crisis; see Gorton [22]. Whilst many financial market events in 2007­2008 were considered to be a direct consequence of improper credit risk management, it is also believed that the main trigger of economic turmoil was the inability to predict liquidity in the markets. In 2008, AIG had a huge portfolio of CDS and CDO that was originally rated AAA but backed by subprime loans. As a result of financial instability, the AIG products were downgraded and the company had to post additional collateral for its positions. These events are believed to be the main trigger of the liquidity crisis that began in September 2008, essentially bringing AIG to a level of bankruptcy but eventually bailed out by the US government.
+In this paper, we propose a method of quantifying and forecasting illiquidity in the financial market. As financial turbulence cannot be avoided, warning systems that aid the prediction of economic crunches are necessary to prepare market participants to deal with future instability. We use three
+
+1932-4553 Š 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications_standards/publications/rights/index.html for more information.
+
+TENYAKOV et al.: FILTERING OF DISCRETE-TIME HMM-DRIVEN MULTIVARIATE ORNSTEIN-UHLENBECK MODEL
+
+995
+
+proxies to measure liquidity. These are the T-Bill Eurodollar spread (TED spread), the Volatility Index (VIX), and a measure based on the difference between bid and ask prices. Each of these indices measures, as well as the liquidity of the market, something else, which is why we use all three to infer the underlying market state. It is noted in Boudt et al. [6] that the T-bill­Eurodollar (TED) spread is directly correlated with market stability. The TED spread is calculated as the difference between the interest rate linked to interbank loans and the yield on short-term US T-bills. Currently, its computation makes use of the three-month London Interbank Offer Rate (LIBOR) and the three-month T-bill yield rates. An increasing TED spread usually portends a stock market meltdown as it is taken as a sign of liquidity withdrawal. The TED spread, as described in Boudt et al. [6], can gauge perceived liquidity risk in the general economy since T-bills are risk-free instruments and the funding liquidity risk of lending to commercial banks is encapsulated by LIBOR. The TED spread does also measure market expectations about credit risk, in addition to liquidity concerns. A rising TED spread indicates that lenders view the default counterparty risk to be rising as well. Thus, lenders either require a higher rate of interest or settle for lower returns on safer instruments such as T-bills. Conversely, when the default risk of banks decreases, the TED spread falls; see Krugman [28].
+We made contributions in terms of methodology in modelling the regime switches in a multivariate OU model and understanding the dynamics of liquidity. We provide economic and econometric motivations throughout this work by explicating the relevance of chosen data for market illiquidity, and the proposed model captures the joint effects of the 3 state processes. This study demonstrates a useful application of signal processing methods and technologies and serves the signal processing community to be exposed to the state of the art in financial signal processing.
+We aim to use hidden Markov models (HMMs) driving a mean-reverting process in the analysis of the joint movements of important economic indicators to forecast liquidity and illiquidity states of the financial market. The HMM filtering in this paper uses the measure-change approach, which avoids the forward-backward algorithm usually embedded in several filtering techniques, and hence our approach requires much less memory during computation. Furthermore, other filters (e.g., Hamilton-type filters) are computationally intensive to implement because they are based on static algorithms that entail full reruns involving the original data set every time a few data points are newly added. In our case, we do not have to deal with the issue of recalculation using the old data set that gets larger as time evolves. Instead, we have dynamic online filters that easily provide updates on various quantities related to the Markov chain thereby updating the parameter estimates quickly upon the arrival of new data. In this paper, we utilise observed TED spread data as market signals and filter out the state of the economy and subsequently liquidity levels. Filtering results could be useful in assessing near-future market stability. The proposed idea is very similar to that of Abiad [1] wherein a regime-switching approach is used as an early warning device in identifying and characterising periods of currency crises. It must be recognised, however, that a noticeable
+
+TED spread movement cannot be taken as a pure indication of extreme illiquidity/market downturns caused by severe illiquidity. Whilst fluctuations in the TED spread may happen due to some significant underlying factors, these fluctuations are sometimes caused by pure noise alone. In the late 1990s, with the world battling the dot-com bubble and other financial upheavals, more instability and uncertainty in the behaviour of the TED spread was observed.
+The second indicator for liquidity levels that we consider is the VIX. This is a trademarked ticker symbol for the Chicago Board Options Exchange (CBOE)'s market volatility index and measures the implied volatility of S&P 500 index options (www.cboe.com/micro/VIX). Whilst the VIX also captures market sentiment about the future degree of volatility and market uncertainty, this is wrapped together with liquidity concerns, as in an illiquid market prices will move more for a given level of trading. Using historical data, VIX appears to capture some periods of illiquidity that were not picked up by the TED spread.
+The third indicator we consider is a metric based on the evolution of the S&P 500. At the end of October 2012, market illiquidity was felt to be brought about by cautious trading as speculators and traders' anxiously anticipated the result of the US presidential election. This illiquidity was captured by an S&P 500-based bid-ask spread metric but not by the TED spread. The absolute level of the bid-ask spread is connected with market microstructure issues, but the changes in the level reflect, at least in part, liquidity concerns. This fact can be explained by the absence of direct causation effect between the proposed metric and the TED spread. For this reason, for a reasonably adequate study modelling liquidity can be accomplished by investigating the TED spread dynamics along with other indicators such as the VIX and an S&P 500-driven measure.
+There have been many attempts to model and explain illiquidity such as those put forward in van der End and Tabbae [34], Macini et al. [30], and Vayanos et al. [35], amongst others. Whilst these proposed modelling approaches include Monte Carlo simulations to demonstrate their implementability, they are nonetheless built on simple assumptions for tractability and do not offer the capacity for dynamic calibration using market data. This leaves a huge gap between model implementation which unifies theoretical approaches and real data. In this work, we attempt to address this gap by explaining how to fit the model with the data. With the aid of filtered estimates, we provide a description of the data dynamics with emphasis on the effect of illiquidity shocks.
+In forecasting illiquidity, we use a discrete-time Markov chain assumed to modulate the parameters of a mean-reverting process so that several economic regimes can be embedded into the model. As mentioned in Brunnermeier [7], the economy has a liquidity "self-stabilising effect", which is either a "loss" or a "margin" type; see Brunnermeier and Pedersen [8] for additional discussion. It is, therefore, reasonable to look at the Ornstein-Uhlenbeck (OU) process as a simple model for the TED spread and thus liquidity level in general, as self stabilising and the mean-reverting properties of a process are closely linked. More specifically, a market downturn with a falling spiral effect could elicit a fire sale amongst borrowers, which in
+
+996
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+turn decreases prices and further worsen funding conditions. Clearly, such downturn effects are associated with episodes of deflation and periods of poor economic growth. As such, the evolution of indicators for these observed economic events can be captured by an OU process that exhibits temporary low and high value levels.
+Goyenko [23] showed a strong correlation between TED and VIX as major indicators in illiquidity estimation; in the same paper, a measure for the evaluation of stock illiquidity was also presented using market bid and ask prices. Our work is based on similar assumptions, but instead of finding correlation between the major indicators of illiquidity, we incorporate as much information as possible into our model by simultaneously using the three market variables integrated by a set of multidimensional dynamic filters. For stock illiquidity, the S&P 500-based spread is used. The main consideration of this paper is the prediction of illiquidity level based on previous information contained in a joint time series of indicators. The dynamic filtering algorithm's structure enables the finding of expected state probability of the illiquidity level at the next time steps.
+Our main contribution is the development of an HMM-driven model tailored for capturing and predicting liquidity risk levels. The model's fit and forecasting power are examined using historical data series. Detailed empirical implementation procedures are provided along with the discussion of various aspects concerning model validation and other post-diagnostic modelling considerations. Our numerical results demonstrate that the proposed model has satisfactory capacity in identifying periods of liquidity crises. This modelling tool shows promise in aiding the prediction of economic crunches occurring over a short-time horizon.
+The paper is organised in the following way. Section II gives an overview of the modelling set up including the HMM formulation and introduction of the change of measure concept for the filtering technique. A description of the mathematical filtering equations is also presented. We specify in section III the data used for the numerical estimation and prediction experiments. The process of recursive parameter calculation together with the discussion of the econometric interpretation of the dynamics of estimates are delineated in section IV. Finally, section V concludes.
+
+II. MODELLING SETUP
+An Ornstein-Uhlenbeck (OU) process rt is any process that satisfies the stochastic differential equation (SDE)
+
+drt = ( - rt)dt + dWt,
+
+(1)
+
+where Wt is a standard Brownian motion defined on some probability space (, F, P ), and ,  and  are positive constants. The parameter  is the mean level to which the process tends to move to over time, whilst  is the speed of mean reversion, and  is the volatility. Assuming that ,  and  are constants, the solution of (1) by ItŻo's lemma is given by
+t
+rt = r0e-t + (1 - e-t) + e-t esdWs, (2)
+0
+
+where r0 is the initial value at time t = 0. Applying the property of a Gaussian distribution and the ItŻo's isometry to find the
+variance of rt in (2), we find that
+
+Var[rt]
+
+=
+
+2
+
+1
+
+-
+
+e-2t 2
+
+(3)
+
+with t = tk+1 - tk. So, following the results established in James and Webber
+[27], the discretisation of the analytic solution in (2) is
+
+rtk+1 = rtk e-(t) + 1 - et 
+
++
+
+1 2
+
+(1
+
+-
+
+e-2t)k+1,
+
+(4)
+
+where the equality means in distribution and k+1  N (0, 1). Invoking Hamilton [24] (pp. 53­56) further, a discrete version of an OU process also has the mean-reverting property.
+In the sequel, it is assumed that ,  and  will be timedependent; hence, we respectively denote them by t, t and t. To capture the switching of economic regimes, we also assume that the values of parameters t, t and t are modulated by a discrete-time Markov chain with a finite-state space. We regard the state of the underlying Markov chain as the regime of an economy (e.g., see Zhou and Mamon [38]), or more specifically a liquidity regime dependent on major factors causing economic turbulence. The scenario when t is high characterises the "worse" regime, i.e., it corresponds to very unstable periods of the global financial crisis. In particular, there are two cases: (i) a high t with high t occurs when t reaches a high value with t considerably spiking up creating a completely unstable behaviour for t, and (ii) a high t and a low t is also possible when correlation is used as a liquidity proxy. This is because all equity correlation go to 1 in case of a crisis, leading to a high t and low t. See further Campbell et al. [10], and Longin and Solnik [29] for studies on correlation during a crisis.
+A distinct contribution of this paper is the detailed implementation of parameter estimation under a multivariate OU setting which extends the one-dimensional framework of Erlwein and Mamon [19]. We consider d OU processes; each process is denoted by rt(g) with component g  {1, , . . . , d}. All vectors and matrices are written in bold lowercase and uppercase letters, respectively. Following the idea developed by Elliott et al. [16] let us assume that (, F, P ) is a probability space under which xk is a homogeneous Markov chain with a finitestate space in discrete time. Thus, xk evolves according to the equation
+
+xk+1 = xk + vk+1,
+
+(5)
+
+where  is a transition matrix and vk+1 is a martingale increment, i.e., E[vk+1|Ck] = 0, where Ck = Fk  Rk. For ease of calculation, the state space of xk is associated with the canonical basis of IRN , which is the set of unit vectors eh with eh having 1 in its hth entry and 0 elsewhere, h = 1, 2, . . . , N.
+Here, Fk = {x0, x1, . . . , xk} is the filtration generated by x0, x1, . . . , xk and Rk is the filtration generated by the {rk}
+process.
+
+TENYAKOV et al.: FILTERING OF DISCRETE-TIME HMM-DRIVEN MULTIVARIATE ORNSTEIN-UHLENBECK MODEL
+
+997
+
+We shall make the parameters of equation (4) regimeswitching so that each component of the d-dimensional observation process can be written as
+
+rk(g+)1 = rk(g)e-(g)(xk)t + (1 - e-(g)(xk)t)(g)(xk)
+
++ (g)(xk)
+
+1
+
+-
+
+e-2(g) (xk 2(g) (xk )
+
+)t
+
+k(g+)1,
+
+(6)
+
+where (g) = ((1g), 2(g), . . . , (Ng)) , (g) = (1(g), 2(g), . . . , N(g)) and (g) = (1(g), 2(g), . . . , N(g)) are all in IRN . Thus, given the state-space representation, we have in equation (6), (g)(xk) = k(g), xk , (g)(xk) = k(g), xk and (g)(xk) = k(g), xk , where ˇ, ˇ is the usual scalar product and denotes the transpose of a vector.
+Equation (6) can be re-expressed as
+
+rk(g+)1 = (g)(xk)rk(g) + (g)(xk) + (g)(xk)k(g+)1,
+
+1  g  d,
+
+(7)
+
+where k(1), k(2), . . . , k(d) are independent standard Gaussian random variables and
+
+(g)(xk) = e-(g)(xk)t,
+
+(8)
+
+(g)(xk) = (1 - e-(g)(xk)t)(g)(xk),
+
+(9)
+
+(g)(xk) = (g)(xk)
+
+1 - e-2(g)(xk)t 2(g)(xk) .
+
+(10)
+
+The succeeding calculations are inspired by the approach described in Elliott et al. [16], where filters are derived under some equivalent probability measure PŻ. Under this ideal measure, the observations are independent and identically distributed random variables making the calculations of conditional expectations easy. The filters, which are conditional expectations, are then related back to the real-world by the use of Bayes' theorem for conditional expectation. Following Elliott et al. ([16] chapter 3.4, page 62), the ideal measure PŻ is equivalent to the real-world measure P via the Radon-Nikodym derivative constructed as
+
+K
+
+=
+
+dP dPŻ
+
+CK =
+
+d
+
+K
+k(g), K  1, 0  1,
+
+(11)
+
+g=1 k=1
+
+where
+
+kg
+
+=
+
+1 (g)(xk-1)
+
+exp
+
+-
+
+1 2
+
+(k(g)2
+
+-
+
+rk2 )
+
+,
+
+k(g) = rk -
+
+rk-1(g)(xk-1) + (g)(xk-1) (g)(xk-1)
+
+.
+
+(12)
+
+Write the conditional probability of xk given Ck under P as
+
+pki := P (xk = eh|Ck) = E[ xk, eh |Ck],
+
+where pk = (p1k, p2k, . . . , pkN )  IRN . Now,
+
+pk
+
+=
+
+E [xk |Ck ]
+
+=
+
+EŻ [k xk |Ck ] EŻ [k |Ck ]
+
+by the Bayes' theorem for conditional expectation. Let ck =
+N
+EŻ[kxk|Ck] and note that xk, eh = 1. Thus,
+
+N
+
+N
+
+i=1
+
+ck, ei =
+
+EŻ[kxk|Ck], ei
+
+i=1
+
+i=1
+
+N
+= EŻ k xk, ei Ck = EŻ[k|Ck]. (13)
+
+i=1
+
+Consequently, equation (13) implies that
+
+pk =
+
+ck
+
+N i=1
+
+ck, eh
+
+.
+
+Similar to Erlwein et al. [21] or Erlwein and Mamon [19], we define the following quantities:
+
+k+1
+
+Jkj+s 1x =
+
+xn-1, ej xn, es
+
+n=1
+
+(14)
+
+k+1
+
+Okj +1x =
+
+xn, ej
+
+n=1
+
+(15)
+
+k+1
+
+Tkj+1(f )x =
+
+xn-1, ej f (rn) , 1  j  N.
+
+(16)
+
+n=1
+
+Equations (14) and (15) are the respective number of jumps
+
+from es to ej and the amount of time that x occupies the state ej up to k + 1 . The quantity Tkj+1(f ) is an auxiliary process that depends on the function f of the observation process; in our
+case, f takes the form f (r) = r, f (r) = r2 or f (r) = rk+1rk.
+
+Other than generalising the framework in Erlwein and
+
+Mamon [19], our contribution includes expressing recursive fil-
+
+tering equations compactly though matrix notation. This allows
+
+efficient computation and decreases parameter estimation time
+
+using vector-optimised mathematical packages (e.g., MATLAB
+
+by The Mathworks). Define the diagonal matrix D(rk) with
+
+elements dij by  
+(dij(rk)) = 
+
+d
+kg
+g=1
+
+=
+
+1 i(g)
+
+exp
+
+-
+
+1 2
+
+(k(g,i)2
+
+-
+
+rk2 )
+
+,
+
+where k(g,i) =
+
+rk -
+
+rk-1 i(g) +i(g) i(g)
+
+for i = j
+
+0 otherwise.
+
+(17)
+
+For any process Gk, we denote the conditional expectation, under PŻ, of kGk by (G)k := EŻ[kGk|Ck]. We provide recursive filters for ck, (J j,ix)k, (Oix)k and (T i(f )(g)x)k.
+Theorem 1: Let D be the matrix defined in (17). Then
+
+ck = Dck-1
+
+(18)
+
+(J j,ix)k = D(rk)(J j,ix)k-1
+
++ ck-1, ei D(rk)ei, ei jiej (19)
+
+(Oix)k = D(rk)(Oix)k-1
+
++ ck-1, ei D(rk)ei, ei ei
+
+(20)
+
+(T i(f )(g)x)k = D(rk)(T i(f )(g)x)k-1
+
++ ck-1, ei D(rk)ei, ei f (rk(g))ei.
+
+(21)
+
+998
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+Proof: The proof follows similar derivations of the filtering equations as those provided in Elliott et al. [16], Erlwein, et al. [21] or Erlwein and Mamon [19].
+To obtain the model parameter estimates, we use the Expectation-Maximisation (EM) algorithm [14]. The EM estimation for the multi-regime setting is very similar to that in the one-dimensional case illustrated in Erlwein and Mamon [19], so the proof of the next theorem is omitted.
+As indicated in the above discussion, the model parameters (g), (g) and (g) have estimates that depend on the filters of quantities given in Theorem 1. These dynamic parameter estimates are given as follows.
+Theorem 2: If a multivariate data set with row components r1(g), r2(g) . . . rK(g) 1  g  d is drawn from the model described in equation (7) then the EM parameter estimates are
+
+ji
+
+=
+
+ 
+
+J j,i k (Oi)k
+
+ i(g) =
+
+Ti
+
+rk(g+)1, rk(g) k - i(g) T i r(g)  T i (r(g))2 k
+
+k
+
+i(g) =  T i r(g)
+
+k+1 - i(g) T i r(g)  (Oi)k
+
+k
+
+i(g) = 
+
+Ti
+
+(r(g))2 k+1 + (i(g))2 T i  T i (r(g))2 k
+
+(r(g))2
+
+k
+
++
+
+(i(g))2 Oi  T i (r(g))2
+
+k k
+
+i(g) -2
+
+Ti
+
+rk(g+)1, rk(g) k + i(g)  (Oi)k
+
+Ti
+
+r(g)
+
+-
+
+2
+
+i(g)i(g) T i  (Oi)k
+
+r(g)
+
+k.
+
+(22) (23) (24)
+k+1
+(25)
+
+Proof: The derivations of (22)­(25), which generalise the filters for the univariate OU case, are straightforward based on Erlwein and Mamon [19].
+
+Remarks:
+1) To implement the recursive equations in Theorem 1
+in providing the dynamic updating of the estimates (22)­(25) under Theorem 2, note that (Hi)k = (Hi 1, xk ) = 1, (Hixk) , for some function H which may denote J, O or T . 2) Equation (23) in Theorem 2 contains the parameter (g),
+which must be known prior to achieving a workable recur-
+sion. In practice, the sequence of equations (23) and (24) can be implemented in reverse order. That is, (g) can be estimated using the previous knowledge of (g). This lat-
+ter implementation was adopted in the empirical part of
+this paper, resulting in significant stability in parameter
+estimates.
+
+III. DESCRIPTION OF DATA FOR IMPLEMENTATION
+To model the levels of liquidity, we use three monthly time series data covering the period of 30 April 1998­30 April
+
+Fig. 1. Plot of TED spread recorded on 11th or last trading day of the month.
+
+2013; the data points are recorded at the last trading day of each month. These data sets are: (i) TED spread obtained from Bloomberg, (ii) S&P 500 VIX compiled by the CBOE, and (iii) calculated average spread of S&P 500 based on the data collected by Bloomberg. The indicator in (iii), MktIll (a short form for "Market Illiquidity"), was adopted from Goyenko [23] and defined by
+
+MktIll
+
+=
+
+2
+
+Bid Bid
+
+- +
+
+Ask Ask
+
+,
+
+(26)
+
+where Bid and Ask are the respective bid and ask prices. The choice of the end-of-month time series data sets in
+our analysis is mainly due to convenience as they are readily available from all data sources. To ensure that we are not missing possible anomalous patterns in the data, we also look at the time series values recorded at other days of the month. Figure 1 shows the dynamics of the TED spread for the data collected on the last day of the month (TED-30) and on the 11th of each month (TED-11); if the 11th is not a trading day we utilise the value of the previous trading day. Except for a few time points that correspond to the recession period of the late 90s and 2007­09 crisis, the behaviour of the two time series is almost identical. Although not shown here, the graph of VIX and Mktill data series display a very similar pattern. The main purpose of this research is not to accurately predict the dynamics of individual variables, but to capture the joint effects of these variables to forecast illiquidity. Whilst we use monthly discretisation, our method works for any discretisation frequency. The important consideration is to select a discretisation grid (monthly in our case) just fine enough to capture all the major economic breaks and instabilities, and without creating distortions or introducing extra noise in the data. Data sets with weekly and quarterly frequency were also considered. The general behaviour of the data remains the same, and therefore monthly observations are appropriate for our intended application given the correct number of calculations involved in the window processing of data points.
+The data set for our filtering applications is formed by constructing a matrix with a dimension of 181 × 3 over the period 30 April 1998 ­ 30 April 2013 with the TED, VIX and MktIll in the first, second and third columns, respectively. Figure 2 displays a visualisation of the movements of the TED spread, VIX and MktIll × 100 variables. Note that we use MktIll × 100 to scale the magnitude of MktIll and make it comparable to that of the TED and VIX. The instability of the TED spread in
+
+TENYAKOV et al.: FILTERING OF DISCRETE-TIME HMM-DRIVEN MULTIVARIATE ORNSTEIN-UHLENBECK MODEL
+
+999
+
+Fig. 2. Plot of TED spread, VIX and MktIll × 100.
+the late 1990s - early 2000s has been limited to the information technology bubble, political dispute surrounding the 2000 US presidential election, political and financial crises in postSoviet Russia, and a recession in Japan; see [4] and [33], for example. The dot-com price bubble persisted through 19972000 climaxing in March 2000. It is worth noting that these three indicators pin down the occurrence of the financial market instability directly affecting liquidity. However, each indicator captures this instability at different moments and with different durations. The superiority of one measure over the others is therefore not clear. This is usually the case whenever the duration of the market crash is short and rapid economic recovery is expected by many.
+On the other hand, the subprime mortgage crisis in 20082009 was captured by all three measures at once. The noticeably unusual spike in the TED spread during June 2007 seems to clearly herald the coming of extreme financial meltdown that happened in August-September 2008. From the plot of the trivariate series, we also observe the cyclical behaviour of the economy shifting from stable to unstable states. This provides support for using a multivariate version of the OU process in modelling the generating process of the underlying data.
+IV. NUMERICAL APPLICATION
+A. Calculation of Estimates and Other Implementation Assumptions
+Several approaches may be employed to find initial parameters for filtering algorithms. These include the methods in Erlwein and Mamon [19], Erlwein et al. [20], and Date and Ponamareva [12], amongst others. Good starting parameter values are necessary to stabilise the filtering algorithm procedure. However, estimating initial parameters is not straightforward considering the nature of the data and other factors. Whilst none of the initial-value estimation algorithms must be disregarded, the choice of which to adopt mainly depends on (i) achieving stable performance and (ii) relative ease of implementation. In this paper, we combine the above-mentioned approaches to generate reasonable initial estimates.
+To choose the number of states in a regime-switching model, statistical inference-based methods such as the Akaike criterion information (AIC) [2], Bayes' information criterion (BIC) described in Schwarz [31] and Hardy [25], or the CHull
+
+metric mentioned in Ceulemans and Kiers [11] may be utilised. These criteria are independent of the nature of the data; they are general tools that can be applied to any data set with an ultimate goal of selecting the model that optimally balances goodness of fit and model complexity. To make the discussion meaningful and the mathematics tractable, one may posit that the economy can only have two states - a "crisis" regime associated with abnormally high indicator values and a "regular" regime. A transitional state may be created and persists over some time due to the weighted combination of volatilities under the above two regimes.
+Brokers who have long-term positions in different securities hedge their portfolios differently depending whether to expect a future crash or rally. In the trading world the value of the financial contract can only go up, go down or stay the same. In general, it is assumed that every stock always has a positive growth, i.e., it earns more money than what one can get from a risk-neutral investment. Therefore, even when the potential growth on a stock, mutual fund and other risky investment portfolios is minimal but the level of liquidity is high, the economy is still deemed to be in the good (or "high") state. Consequently, when the percentage change in the value of the index or any other major indicators of the financial state of the country (GDP, for example) is relatively close to the risk-neutral rate, we regard the economy to be in the "high" state. Furthermore, we rely on the results of Boudt et al. [6] and Dionne [15] advancing two-state models in investigating liquidity. Any three-state model will be shown later as a special case of the two-regime framework, where the third state is between the "high" and "low" states.
+Finding parameter estimates via the likelihood maximisation procedure is a tedious endeavour but such a procedure provides the best results for dynamic modelling, if it can be accomplished. We shall use the first 40 points of the multidimensional data set to calculate the starting parameters for our filters. For simplicity, when obtaining initial filter values, it is assumed at the outset that the set of true parameters
+
+ = {ij , (g)(xi), (g)(xi), (g)(xi)}
+
+is homogeneous, i.e., the values of the set  do not change when subsets of the data are chosen in a sense that true parameters of the model stay the same for data subsets of any type or size. Whilst this may be a strong assumption, the filters will eventually adapt and parameters will change accordingly as the number of algorithm passes is increased. The likelihood function, conditional on knowing which state the process xi is in, is given by
+
+dK
+L=
+g=1 i=1
+
+1 2((g)(xi))2
+
+× exp
+
+-
+
+(ri(+g)1
+
+-
+
+(g)(xi)ri(g) - 2((g)(xi))2
+
+ (g) (xi ))2
+
+(27)
+
+or
+
+dK
+
+L=
+
+g,i,
+
+g=1 i=1
+
+(28)
+
+1000
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+TABLE I INITIAL PARAMETER ESTIMATES FOR THE FILTERING ALGORITHMS
+UNDER THE TWO-STATE SETTING
+
+TABLE II INITIAL PARAMETER ESTIMATES FOR THE FILTERING ALGORITHMS
+UNDER THE ONE-STATE SETTING
+
+to the three indicators produce a stable convergence for the filtering procedure outlined in the next subsection.
+
+where
+
+g,i = 
+
+ri(+g)1 - (g)(xi)ri(g) - (g)(xi) (g)(xi)
+
+(29)
+
+and  stands for the density of the standard Gaussian distribution.
+As the sequence of the states xi is hidden, a recursive algorithm similar to the one proposed in Hardy [25] is used. The idea of the algorithm is to calculate the most probable set  by building the likelihood function using recursions and to apply standard computer routines for maximisation of the function over a desired set of parameters. Although Hardy's method was designed for the geometric Brownian motion model, we extend it in a straightforward manner to handle our multidimensional data set assumed to follow the OU process. Additionally, the definition of the log-likelihood function is extended by using the sum of the log-likelihood functions for the TED, VIX and MktIll data sets. Adopting the notation of this article, the density function of the process at time t in Hardy's algorithm, given the whole set of parameters including the state of the Markov chain at time t, is changed to g,i(ri+1, ri, ).
+The results of the initial parameter estimation under the twostate model are provided in Table I. The values of parameters 1 and 2, encapsulating the speed of mean reversion, can be considered to be almost the same for all three variables. This empirical result that these parameters have uniformly close estimated values is no coincident and gives additional strong support to the hypothesis about the dependency of TED, VIX and MktIll on the same underlying factor.
+The HMM filtering algorithms can only give a local maximum, and at times could be extremely unstable to implement. Such limitation can be rectified by choosing initial estimates that fit the data very well and working in double precision arithmetic. It is also possible to employ a symbolic package such as Wolfram Researches' Mathematica, but in that case the speed of the computation drops dramatically. The static log-likelihood maximisation approach appears to yield initial parameters that afford appreciable stability for our OU-based filters.
+The starting values for the one-regime model are obtained by simply maximising the likelihood function (27), taking into account that x = 1, i.e., the system always operates under one state. The results of this optimisation are exhibited in Table II. As expected, the initial parameter values for the single state model lie between the corresponding estimates for the tworegime model. The only parameter which does not follow this observation is ; but even then such  values corresponding
+
+B. Filtering Procedure
+In the estimation of the parameters of the underlying OU process, we employ the method described in section II using the starting parameters in Tables I and II. The data set described in section III contains columns consisting of g = 1 (TED), 2 (VIX), and 3 (MktIll). There are 141 time points considered in our filtering application. The first 40 time points for the three vectors of data are used for the initialisation discussed in subsection IV-A. The predictive power of the model is tested on the last 60 monthly observations from the middle of the financial crisis (30 May 2008) up to the end of the time series data (30 April 2013). All results are analysed and evaluated using a combination of both intuitive and rigorous statistical approaches for decision making.
+The dynamics of the estimates ,  and  are computed by first producing the estimates of ,  and . Then using equations (8), (9) and (10), we back out the values of the desired model parameters. The OU filters described in section II were implemented with a moving window spanning vectors of data which extends the idea of the procedure in Erlwein and Mamon [19]. More specifically, vectors of data are processed through the recursive equations of the filter to obtain the best estimates (in the sense of conditional expectation) after several time points. Once the parameters are estimated from a batch of vector of data points, they become starting values for the next recursion, and so on. The size of the processing window is determined by likelihood-maximum or other statistical criterion. Owing to the complex nature of the data and the filtering equations, we employ the smallest window possible (3 points per window in our case) that gives stability to the algorithms. Whilst this choice results in a relatively high volatility, the outputs contain ample information about parameter fluctuations.
+Figures 3­6 provide output for the parameter estimates of the OU process corresponding to the TED spread. An implication that can be drawn from the behaviour of transition probabilities in Figure 6 is that, over our study window, major illiquidity events do not happen very often, but when they do, they do not last very long and are not severe until the financial market collapse in 2007­2008; see Figures 3­6 or 10. After the crisis in 2008, the structure of the economy changed completely. This fact is supported by Figure 3, wherein the mean-reverting levels are switched. This phenomenon occasionally arise in similar filtering applications (e.g., Xi and Mamon [36] or Xi and Mamon [37]). In our case, this anomaly can be explained by the presence of higher volatility levels during times of greater uncertainty. This is substantiated by Figure 5 as the level of  reaches the highest level in 2008.
+
+TENYAKOV et al.: FILTERING OF DISCRETE-TIME HMM-DRIVEN MULTIVARIATE ORNSTEIN-UHLENBECK MODEL
+
+1001
+
+Fig. 3. Evolution of the mean-level estimates for the TED spread data.
+
+Fig. 6. Evolution of the filtered transition probabilities obtained from the multivariate data.
+
+Fig. 4. Evolution of the speed of mean reversion for the TED spread data.
+
+Fig. 7. Evolution of the mean-reverting level under the one-state setting using the TED spread data.
+
+Fig. 5. Evolution of the volatility levels for the TED spread data.
+The other odd behaviour shown by the filtering results is the negativity of  in Figure 4. Even though the formulation of the OU process does not allow the parameter  to be negative, the multi-regime construction of OU process, proposed by Elliott and Wilson [18], does not restrict  to be always positive. From an empirical perspective, the somewhat bizarre result of   0
+
+is justified by the fact that the OU process becomes unstable as can be seen during the 2007­2008 period when there was a sudden unfolding of several related financial and economic events leading to the crisis. The negative value estimated for the speed of mean-reversion is, perhaps, a signal of the failure of the Ornstein-Uhlenbeck framework to capture what is going on during periods of extreme market stress. However, during stable periods, the speed of mean reversion remains positive and the process tends to a mean level as time goes by.
+The results of the dynamic parameter estimation based on filtering under the one-regime framework are illustrated in Figures 7­9. The dynamics of the parameters look similar to those of the two-regime model. This fact can be interpreted as an excellent fit of the 2-state HMM-modulated OU model to the data set. We use the AIC and BIC tailored to several previous works on filtering, in particular, Date et al. [13] and Xi and Mamon [37] to show that the proposed two-regime model provides a better explanation of the data compared to the one-regime setting. The AIC and BIC metrics are computed as
+
+AIC = ln L - p
+
+(30)
+
+1002
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+we report that it takes 5-6 algorithm steps for the OU filters to adjust and maintain some stability.
+
+Fig. 8. Evolution of the speed of mean-reversion under the one-state setting using the TED spread data.
+
+Fig. 9. Evolution of the volatility under the one-state setting using the TED spread data.
+TABLE III COMPARISON OF SELECTION CRITERIA FOR SINGLE- AND
+2-STATE REGIME MODELS
+
+and
+
+BIC
+
+=
+
+ln
+
+L
+
+-
+
+1 2
+
+p
+
+ln
+
+N,
+
+(31)
+
+where L is the log-likelihood function for the entire multivariate data set, N is the number of observations and p is the number of parameters in a model. With the calculated value for the log-likelihood function of the last 141 vector of monthly observations, both the AIC and BIC signifies that the tworegime model significant outperforms the one-state model; see Table III.
+The general trend of the behaviour of the data during the crisis in 2007­2008 is captured by the model. Nonetheless, due to extreme volatility movements, getting a perfect fit during this period is a challenge. Given the initial parameter estimates,
+
+C. Filtering and Forecasting Illiquidity
+There are many approaches in modeling illiquidity based on the TED spread or other major economic factors. However, these approaches either look at a certain threshold of the TED spread as benchmark for illiquidity (see, Boudt et al. [6] and Krugman [28]) or correlate the TED spread with another major economic variable (see Goyenko [23]).
+In this work, we introduce a new approach which is naturally suited for dynamic filtering algorithms. It relies on the dynamics of pk = E[xk|Ck]. As previously specified, the tworegime model is instructive in that each regime corresponds to illiquid and liquid states of the market. We put forward that if pk(1) = p, e1 0.5, i.e., the probability of being in regime 1 is very high, the market is extremely liquid and it is therefore easy to buy and sell every contract. But, if pk(1) 0.5, which is equivalent to pk(2) = p, e2 0.5, then the market is very illiquid, which typically corresponds to recession or period of economic crisis brought about by some major financial events.
+We implement the above approach with the objective of determining regimes of illiquidity through the HMM filtering of data. The output of this implementation is displayed in Figure 10; the upper panel shows the joint plot for the evolving estimates of i, i, ij and p^k(1) whilst the lower panel shows the TED evolution plotted on the same time scale. We omit the graphs of the two other indicators (VIX and MktIll) to avoid overcrowding the lower panel of this illustration. They are displayed in Figure 2 and similar demonstrations can be produced using various combination of results in Figures 2­6. Two salient points are as follows. First, every point estimate of each model parameter was obtained via a data processing procedure based on a deemed optimal filtering window of size three. Clearly, this inherent dependence on the data processing window size is a source of variability for modelling results. Second, from the side-by-side comparison in Figure 10, we delineate four major trigger events of the 2007­2008 liquidity crisis captured by the model with the period of their occurrences charted against the time axis. These events are the hedge fund crash, total loss underestimation by the federal regulators in the US, major collapse of the economy in September 2008 and recovery stage. One important finding of our modelling implementation is the pre-crisis stage that is captured only by the illiquidity state process, but not by the dynamics of any of the model parameters. Thus, it is essential to monitor all parameters, indicators and any other metrics simultaneously.
+It is asserted in Brunnermeier [7] that the hedge fund crash was one of the major triggers of the 2007­2008 liquidity collapse. The outcome obtained in our model is consistent with Brunnermeier's argument; in fact, our results indicate that the hedge fund crash event triggered the chain of events leading to the deepening of the financial crisis up to January-February 2009. The severity of the crisis is seemingly marked by the underestimation of the total loss by federal regulators. After this event, return to the "normal" liquidity level did not happen
+
+TENYAKOV et al.: FILTERING OF DISCRETE-TIME HMM-DRIVEN MULTIVARIATE ORNSTEIN-UHLENBECK MODEL
+
+1003
+
+Fig. 11. Evolution of the estimated liquidity-state probabilities and one-step ahead forecasts of liquidity-state probabilities.
+
+forecasting of liquidity state. First, pk is computed for some k, and second, the expectation of pk+1 given Ck is calculated as
+
+E[pk+1|Ck] = kpk,
+
+(32)
+
+Fig. 10. Side-by-side comparison between behaviour of model parameter estimates and movement of the TED spread along with the identification of major financial market events through time.
+without the painful experience of several major defaults in the financial industry and new drastic measures taken by the regulators. The proposed model and modelling approach capture these dynamics exceptionally well. In winter 2009, after many bankruptcies and government bailouts, trading levels started to pick up. Subsequently, financial uncertainty decreased, and trading volume rose from already low level comparable to that of the pre-crisis stage. Around this time, the considerable restructuring of the general economy caused the behaviour of the variables we are examining to change altogether with levels, movements and model parameter estimates completely different from those of the past.
+As previously noted, we also aim to predict the state or regime of liquidity. We describe our technique to achieve the
+
+where k is defined by equation (5). Figure 11 depicts the dynamics of the prediction values
+E[pk(1)|Ck-1] and shows the estimates of pk(1) obtained by applying the filtering algorithms on the last 60 points of the data set. The drastic change in the movement of estimated probabilities between the fourth and fifth time points corresponds to a significant drop in the values of all the three variables (TED, VIX, MktIll) in April-May 2009; such a twist was perfectly captured by the dynamics of pk(1).
+To distinguish the liquid from the illiquid state, we propose a criterion that hinges on pk(i) 0.5 for i = 1, 2. If pk(1) > 0.6, it is assumed that there is enough evidence to conclude that the level of liquidity in the market is high, and traders can take positions with little or no probability of acquiring additional risks due to market or funding liquidity. So, the higher the pk(1), the higher the liquidity level. Whenever pk(1) < 0.4, the financial markets are assumed illiquid, and therefore, additional capital must be infused to deal with the financial distress.
+Based on empirical evidence, typifying exactly the liquidity state when 0.4 < pk(i) < 0.6, i = 1, 2 is not an easy endeavour. This situation is characterised by a very high level of uncertainty regarding market directions over a short time. On the one hand, the "state of uncertainty" signals the occurrence of future hard times. On the other hand, it can also be viewed as a sign that economic stability is forthcoming after an economic downturn. The case in point here is the period of early 2009, when regulators used all possible schemes to stabilise the market sentiments and provided instant artificial liquidity to help markets function the way they were intended to be. We note that our proposed model gives somewhat overoptimistic estimates for E[pk(1)] during the last period of the market crash in 2008, and this requires some adjustment. However, the estimates for the pk(1) still remain at the 0.4 level, coinciding with what was
+
+1004
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+previously argued concerning "state of uncertainty" and artificial liquidity. Liquidity state prediction for the last 48 data points is accurate in the sense that the predictions jibe very well with the classification of the liquidity state estimates.
+The "state of uncertainty" can be viewed either as a third regime in a two-state model, which is interpreted as the lowest/worst bound for the "high" regime and upper/best bound for the "low" regime. This can be explained from an econometric point of view. Recession and upturn times in the economy are generally followed by short periods of market anxiety. During these unstable periods, liquidity can rise and fall quite frequently because speculators do not have stable expectations for the long-term horizons and short-term government interventions can provide only temporary relief. It is rather difficult to capture that "state" as it has in a way the characteristics of either regime. Of course, the stability of a possible separate threeregime model must be investigated as well, and could certainly be an alternative model. Nevertheless, preliminarily results in our case reveal that recursive algorithms do not provide even an approximate convergence for finding the starting parameters for the three-state model. Thus, we rule out the dynamic three-regime setting as inappropriate for this data set.
+V. CONCLUDING REMARKS
+In this work, we developed an HMM-based modelling approach in assessing levels of market and funding liquidity risks. The structure of the proposed model incorporates major econometric assumptions concerning factors of economic recovery. We provided a detailed methodology on how to extract information from major economic indicators, and linking these to the short-term prediction of market illiquidity or liquidity. The methodology employed made use of newly developed multivariate HMM recursive filtering algorithms expressed in matrix representations. Effects of mean-reversion and liquidity state dependency were also explored.
+The model's implementability and forecasting performance were investigated using market data. Results were analysed against statistical metrics and interpreted by examining underlying historical financial events. We found that the one-regime model significantly underperforms compared to a two-regime model. Undoubtedly, a simple OU process cannot capture all the very complex features of the liquidity risk in the financial market. A technique for liquidity-state estimation naturally consistent with dynamic HMM filtering algorithms was put forward and its validity was evaluated using past data.
+An improvement that could be done with our modelling approach is the further examination of the two-state model. Its predictability of liquidity becomes uncertain if the conditional probability of the Markov chain falls in the range [0.4, 0.6]. Despite our empirical and economic reasoning to support our assumption and conclusions under this scenario, additional analysis of this particular aspect is a promising research direction. Our preliminary results suggest that the three-state model cannot be fitted given the data we examined. There is however a possibility that the three-regime model may work by adding some other economic variables portraying clear multi-regime behaviour.
+
+Our suggested modelling construction and empirical work used monthly data. Building on our results, further analysis of data with different frequency could be carried out to open avenues for modelling methods and insights about liquidity risk over a long or very short-time periods. These entail establishing new drivers, factors and determinants of liquidity to be included in the filtering experiments. The HMM-driven OU process may have to be tweaked to accommodate these new inputs leading to new filters.
+We put forward and empirically tested a new way of estimating and predicting liquidity levels in the financial market. This approach provides a quantitative methodology that supports economic interpretation of our liquidity proxy variables. The liquid/illiquid regimes pinpointed by our regime-switching modelling approach accurately correspond to those identified by practitioners. This paper therefore addressed the missing link between economical and mathematical modelling of liquidity. The methodology it contains could be useful for traders, economists, regulators and policy makers.
+The current recommended modelling and estimation set up can be effectively exploited under sophisticated trading-scheme environments. For example, underlying variables involved in trading, valuation or reserve calculation for financial derivative contracts, are known to follow the OU process. Our filtering equations can be employed to provide dynamic parameter estimates both for pricing and risk management. Regulators may also consider this model to study the impact of different constraints on the economy. Finally, we recognise, of course, the paper's limitation. That is, despite the promising features of our proposed approach, there is the associated model risk with the given parametric set up.
+ACKNOWLEDGEMENTS
+All authors sincerely appreciate the helpful comments from three anonymous referees that significantly improved this manuscript.
+REFERENCES
+[1] A. Abiad, "Early warning systems for currency crises: A regimeswitching approach," in Hidden Markov Models in Finance, R. Mamon and R. Elliott, Eds. New York, NY, USA: Springer, 2007, pp. 155­184.
+[2] H. Akaike, "A new look at the statistical model identification," IEEE Trans. Autom. Control, vol. AC-19, no. 6, pp. 716­723, Dec. 1974.
+[3] Bank of International Settlement. (2010). Group of Governors and Heads of Supervision Announces Higher Global Minimum Capital Standards [Online]. Available: http://www.bis.org/press/p100912.pdf
+[4] R. Bianchi, M. Drew, and T. Wijeratne, "Systemic risk, the TED spread and hedge fund returns," Int. J. Bus. Econ., vol. 1, no. 1, pp. 59­78, 2009.
+[5] N. Bloom and M. Floetotto, "Good news at last? The recession will be over sooner than you think," Centre for Economic Policy Research, London, U.K., 2009 [Online]. Available: http://www.voxeu.org/article/ good-news-last-recession-will-be-over-sooner-you-think
+[6] K. Boudt, E. Paulus, and R. Rosenthal, "Funding liquidity, market liquidity and TED spread: A two-regime model," Working Paper, 2010 [Online]. Available: http://dx.doi.org/10.2139/ssrn.1668635
+[7] M. Brunnermeier, "Deciphering the liquidity and credit crunch 2007­ 2008," J. Econ. Perspect., vol. 23, no. 1, pp. 77­100, 2009.
+[8] M. Brunnermeier and L. Pedersen, "Market liquidity and funding liquidity," Rev. Financial Stud., vol. 22, no. 6, pp. 2201­2238, 2008.
+[9] K. Bulteel, T. Wilderjans, F. Tuerlinckx, and E. Ceulemans, "CHull as an alternative to AIC and BIC in the context of mixtures of factor analyzers," Behav. Res. Methods, vol. 45, pp. 782­791, 2013.
+
+TENYAKOV et al.: FILTERING OF DISCRETE-TIME HMM-DRIVEN MULTIVARIATE ORNSTEIN-UHLENBECK MODEL
+
+1005
+
+[10] R. Campbell, K. Koedijk, and P. Kofman, "Increased correlation in bear markets," Financial Anal. J., vol. 58, no. 1, pp. 87­94, 2002.
+[11] E. Ceulemans and H. Kiers, "Selecting among three-mode principal component models of different types and complexities: A numerical convex hull based method," Brit. J. Math. Stat. Psychol., vol. 59, pp. 133­150, 2006.
+[12] P. Date and K. Ponomareva, "Linear and nonlinear filtering in mathematical finance: A review," IMA J. Manage. Math., vol. 22, pp. 195­211, 2011.
+[13] P. Date, R. Mamon, and A. Tenyakov, "Filtering and forecasting commodity futures prices under an HMM framework," Energy Econ., vol. 40, pp. 1001­1013, 2013.
+[14] A. Dempster, N. Laird, and D. Rubin, "Maximum likelihood from incomplete data via the EM algorithm," J. Roy. Stat. Soc. B, Methodol., vol. 39, no. 1, pp. 1­38, 1977.
+[15] G. Dionne and O. M. Chun, "Default and liquidity regimes in the bond market during the 2002-2012 period," Can. J. Econ., vol. 46, no. 4, pp. 1160­1195, 2013.
+[16] R. Elliott, L. Aggoun, and J. Moore, Hidden Markov Models: Estimation and Control. New York, NY, USA: Springer, 1995.
+[17] R. Elliott, W. Hunter, and B. Jamieson, "Financial signal processing: A self-calibrating model," Int. J. Theor. Appl. Finance, vol. 4, pp. 567­584, 2001.
+[18] R. Elliott and C. Wilson, "The term structure of interest rates in a hidden Markov setting," in Hidden Markov Models in Finance, R. Mamon and R. Elliott, Eds. New York, NY, USA: Springer, 2007.
+[19] C. Erlwein and R. Mamon, "An online estimation scheme for Hull-White model with HMM-driven parameters," Stat. Methods Appl., vol. 18, no. 1, pp. 87­107, 2009.
+[20] C. Erlwein, F. Benth, and R. Mamon, "HMM filtering and parameter estimation of an electricity spot price model," Energy Econ., vol. 32, no. 5, pp. 1034­1043, 2010.
+[21] C. Erlwein, R. Mamon, and M. Davison, "An examination of HMMbased investment strategies for asset allocation," Appl. Stochastic Models Bus. Ind., vol. 27, pp. 204­221, 2011.
+[22] G. Gorton, Misunderstanding Financial Crises: Why We Don't See Them Coming. London, U.K.: Oxford Univ. Press, 2012.
+[23] R. Goyenko. (2013). Treasury Liquidity and Funding Liquidity: Evidence From Mutual Fund Returns [Online]. Available: http://dx.doi.org/10.2139/ssrn.2023187
+[24] J. Hamilton, Time Series Analysis. Princeton, NJ, USA: Princeton Univ. Press, 1994.
+[25] M. Hardy, "A regime-switching model of long-term stock returns," North Amer. Actuarial J., vol. 6, no. 1, pp. 171­173, 2002.
+[26] N. Hughes. (2005). A Trade War With China. Foreign Affairs [Online]. Available: http://www.foreignaffairs.com/articles/60825/neil-c-hughes/atrade-war-with-china
+[27] J. James and N. Webber, Interest Rate Modelling. Hoboken, NJ, USA: Wiley, 2000.
+[28] P. Krugman, "The coincidence of a liberal--Mission not accomplished, not yet anyway," New York Times, Mar. 12, 2008 [Online]. Available: http://krugman.blogs.nytimes.com/2008/03/12/mission-notaccomplished-not-yet-anyway/
+[29] F. Longin and B. Solnik, "Extreme correlation of international equity markets," J. Finance, vol. 56, no. 2, pp. 649­676, 2001.
+[30] L. Mancini, A. Ranaldo, and J. Wrampelmeyer. (2012). The Foreign Exchange Market: Not as Liquid as You May Think [Online]. Available: http://www.voxeu.org/article/foreign-exchange-market-not-liquid-youmay-think
+[31] G. Schwarz, "Estimating the dimension of a model," Ann. Statist., vol. 6, no. 2, pp. 461­464, 1978.
+[32] S. Shreve, Stochastic Calculus for Finance II: Continuous Time Models. New York, NY, USA: Springer, 2004.
+
+[33] R. Sipley, Market Indicators: The Best-Kept Secret to More Effective Trading and Investing. New York, NY, USA: Bloomberg Press, 2009.
+[34] J. W. van der End and M. Tabbae, "When liquidity risk becomes a systemic issue: Empirical evidence of bank behaviour," J. Financial Stab., vol. 8, pp. 107­120, 2012.
+[35] D. Vayanos and J. Wand, "Market liquidity--Theory and empirical evidence," in Handbook of the Economics of Finance: Financial Markets and Asset Pricing, G. Constantinides, R. Stulz, and M. Harris. Amsterdam, The Netherlands: Elsevier, 2013, pp. 1289­1361.
+[36] X. Xi and R. Mamon, "Parameter estimation of an asset price model driven by a weak hidden Markov chain," Econ. Modell., vol. 28, pp. 36­ 46, 2011.
+[37] X. Xi and R. Mamon, "Yield curve modelling using a multivariate higherorder HMM," in State-Space Models and Applications in Economics and Finance, Y. Zeng and S. Wu, Eds. New York, NY, USA: Springer, 2013, pp. 185­202.
+[38] N. Zhou and R. Mamon, "An accessible implementation of interest rate models with Markov-switching," Expert Syst. Appl., vol. 39, pp. 4679­ 4689, 2012.
+Anton Tenyakov received the B.Sc. degree in applied mathematics (first class with distinction) and the M.A. degree in statistics (with concentration in Financial Mathematics) both from York University, Toronto, ON, Canada, and the Ph.D. degree from the University of Western Ontario, London, ON, Canada. He is a Manager, Financial Modeling in the Treasury and Balance Sheet Management Department, TD Bank Group, Toronto, ON, Canada. His research interests include the applications of HMM filtering methods in the parameter estimation of new and extended regime-switching-based models for various financial markets.
+Rogemar Mamon (M'16) is a Professor with the Department of Statistical and Actuarial Sciences, University of Western Ontario, London, ON, Canada. His research interests include the applications of stochastic processes to financial and actuarial modeling, hidden Markov models and their estimation including filtering, smoothing and prediction, and inverse problems in finance. He is a Co-Editor of the IMA Journal of Management Mathematics (Oxford University Press). He is an elected Fellow of the U.K.'s Institute of Mathematics and its Applications and Chartered Scientist of the U.K.'s Science Council.
+Matt Davison received the degrees in engineering and maths. He was previously a Front Office Desk Quant with Deutsche Bank Canada. He is a Professor with the Department of Statistical and Actuarial Sciences and the Department of Applied Mathematics, University of Western Ontario, London, ON, Canada. He has held the Canada Research Chair in Quantitative Finance and is a Fellow of the Fields Institute for Research in Mathematical Sciences, Toronto, ON, Canada. His research interests include computational finance, incomplete market theory, and energy finance. He continues to consult with industry and serves as the Director and an Advisor to several Toronto-area financial companies.
+
+
+

@@ -1,0 +1,749 @@
+1112
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+Financial Stress Through Complexity Science
+Apit Hemakom, Student Member, IEEE, Theerasak Chanwimalueang, Student Member, IEEE, Alicia Carrio´n, Lisa Aufegger, Anthony G. Constantinides, Life Fellow, IEEE, and Danilo P. Mandic, Fellow, IEEE
+
+Abstract--Financial markets typically undergo periods of prosperity followed by periods of stagnation, and this undulation makes it challenging to maintain market efficiency. The efficient market hypothesis (EMH) states that there exist differences in structural complexity in security prices between regular and abnormal situations. Yet, despite a clear link between market acceleration (cf. recession in security prices) and stress in physical systems, indices of financial stress still have significant scope for further development. The overarching aim of this work is therefore to determine the characteristics of financial indices related to financial stress, and to establish a robust metric for the extent of such `stress'. This is achieved based on intrinsic multiscale analysis which quantifies the so called complexity-loss hypothesis in the context of financial stress. The multiscale sample entropy and our proposed Assessment of Latent Index of Stress methods have successfully assessed financial stress, and have served as a measure to establish an analogy between transitions from `normal' (relaxed) to `abnormal' (stressed) financial periods with the sympatho-vagal balance in humans. Four major stock indices of the US economy over the past 25 years are considered: (i) Dow Jones Industrial Average, (ii) NASDAQ Composite, (iii) Standard & Poor's 500, and (iv) Russell 2000, together with FTSE 100, CAC 40 and exchange rates. Our findings support the EMH theory and reveal high stress for both the periods of Internet bubble burst and sub-prime mortgage crisis.
+Index Terms--Assessment of Latent Index of Stress (ALIS) index, complexity-loss hypothesis, determinism, financial stress, intrinsic phase synchrony (IPS), multiscale entroypy, nonlinearity.
+I. INTRODUCTION
+I NDICES of major stock markets are generally accepted as indicators of the financial health and economic wellbeing [1], [2]. Given their close link with socio-economic and geo-political factors (here, we refer to those as `events') the latent dynamics of stock indices are also a reliable indicator of the influence those events have on the health of the financial system. To put this into context, in the last 25 years the US alone have been through a number of events, including the `dot-com
+Manuscript received October 15, 2015; revised May 01, 2016 and June 07, 2016; accepted June 07, 2016. Date of publication June 15, 2016; date of current version August 12, 2016. This work was supported by the Financial Signal Processing Laboratory (http://www.fsplab.com/) at Imperial College London. The guest editor coordinating the review of this manuscript and approving it for publication was Prof. Ali N. Akansu.
+A. Hemakom, T. Chanwimalueang, L. Aufegger, A. G. Constantinides, and D. P. Mandic are with the Department of Electrical and Electronic Engineering, Imperial College London, London, SW7 2BT U.K. (e-mail: apit.hemakom12@imperial.ac.uk; theerasak.chanwimalueang13@imperial.ac. uk; l.aufegger@imperial.ac.uk; a.constantinides@imperial.ac.uk; d.mandic@ imperial.ac.uk).
+A. Carrio´n is with the Universita`t Polite`cnica de Vale`ncia, Valencia, Spain (e-mail: alcarga4@upv.es).
+Color versions of one or more of the figures in this paper are available online at http://ieeexplore.ieee.org.
+Digital Object Identifier 10.1109/JSTSP.2016.2581299
+
+boom' in the 1990s, the 9/11 terrorist attack in 2001 and the sub-prime mortgage crisis in 2008. It is therefore natural to ask whether a general health of the economy, seen through the lens of stock indices, can be assessed in a way analogous to the way we examine health of living organisms. This motivates us to embark upon the significant body of work on human stress in order to derive indicators of `stress' of the financial system and establish `biomarkers' of characteristic events in stock indices. To this end, we employ the so-called complexityloss hypothesis which states that organisms experiencing constraints (illness, ageing, stress) exhibit lower structural complexity of their physiological responses than healthy organisms. Our analysis falls under this general umbrella, but is finance-specific and employs nonparametric analyses of the determinism (via predictability), nonlinearity, multiscale entropy, and synchrony, within an intrinsic multivariate analysis framework.
+In technical terms, stock indices exhibit trends--local and global `first order' characteristics [3]--together with economic and non-economic cyclical influences (e.g., the four-year presidential cycle in the US) and effects of our habits, such as the Sell in May stock trading strategy and the Christmas sales effect [4]. Trends in financial indices are perhaps their most examined characteristics, with both numerical and graphical methods used for their detection. Stock market volatility, on the other hand, reflects the degree of uncertainty in stock indices. Financial analysts are therefore interested in patterns in historical data in order to predict financial crashes--an often disputed practice called `technical analysis' [5], [6]. A very popular numerical technical analysis method is the class of moving-average (MA) algorithms which yield indicators of general movements of stock prices such as: (i) price MA for raw data with trend, and (ii) rate of change at different scales, for detrended data. The price MAs allow investors to compare fluctuations in stocks to the trends over time, while the rates of change are relatively faithful indicators of the momentum of stocks. For example, a positive value of the rate of change suggests enough market support to continue driving prices in the direction of the current trend, while its negative value indicates lack of market support and tendency for stock values to become stagnant or to reverse.
+The efficient market hypothesis (EMH) is a cornerstone of modern financial theory and states that current security prices (the underlying value of the asset) incorporate and reflect all relevant information that could be gathered, so that stocks always trade at fair value [7]. This implies that in `normal' situations markets cannot be consistently beaten over long time; in other words, the security prices tend to exhibit a random walk type of behaviour, characterised by poor predictability from their historical values and high uncertainty in the rate of change of stock prices. However, when speculative economic bubbles--`abnormal' situations--occur, the markets are often driven by buyers who are prone to sentiment or irrational ex-
+
+1932-4553 Š 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
+
+HEMAKOM et al.: FINANCIAL STRESS THROUGH COMPLEXITY SCIENCE
+
+1113
+
+uberance. In such scenarios, the buyers tend to overestimate stock values while anticipating the growth of markets, which in turn brings less uncertainty to the rate of change of future prices. This `acceleration-stabilisation' type of behaviour is not dissimilar to the sympatho-vagal balance in humans, whereby the sympathetic autonomous nervous system (SNS) accelerates body functions while the parasympathetic nervous system (PNS) slows them down [8].
+In human sciences, stress is defined as a non-specific neuroendocrine response [9]. In the same way, we propose to define the financial stress as a non-specific deviation from its normal functioning. There is no agreement on a more specific definition, as episodes of financial stress often vastly differ, from dot-com bubble through to sub-prime mortgage crisis. A risk (stress) indicator specific to currency markets was proposed in [10], and defines financial risk through a reduction in the number of significant factors--principal components. However, the suggestions that a decrease in the degrees of freedom invariably signifies the loss of complexity during an episode of crisis is not necessarily valid; to this end, higher-order features related to long-range couplings also need to be examined [11], for example those manifested in long-term correlation, which is the basis for practical structural complexity analysis. The degree of determinism (predictability) of the signal, in addition, also plays an important role in determining the degree of complexity [12]. The financial stress index (FSI) proposed in [13] considers the variations in the intensity and duration of financial stress episodes through high-frequency (HF) price variables. Based on an equal-variance weighted average, financial stress is detected when the value of the FSI exceeds one standard deviation above the trend (using the Hodrick-Prescott filter); the FSI also indicates whether an episode of financial stress is due to stress in banking, securities, or foreign exchange sectors. The FSI in [14] focuses on market responses in the securities, exchange and banking sectors. It evaluates monthly changes in the degree of stress transmission and the stress co-movement between advanced and emerging economies [15], [16]. Financial stress is then deemed present if the index exceeds 1.5 standard deviations above its mean [17]; the FSI also provides estimation of the type of crisis, for example, the EMPI component was able to capture 80% of the currency crisis found in the literature.
+In addition to specific indices which capture a particular aspect of financial stress, composite indices include the Chicago Fed National Activity Index and the Kansas City FSI [18], which are calculated over a range of variables. Our approach falls between these two categories--it is composite in the sense that it simultaneously analyses several individual market indices, while being specific enough to examine the balance/imbalance aspect of markets. In an analogy to the sympatho-vagal balance in human stress research, we consider the `biomarkers' of financial stress to be accelerations followed by recessions in stock indices. The market expansions are therefore interpreted similarly to the effects of the SNS activity in humans, and are characterised by investors' over-excitement, over-confidence, and heuristic approaches. Market recessions are then analogous to the effects of the PNS, whereby the financial slow-down is accompanied by a lack of confidence and a decrease in market efficiency.
+
+During a financial crisis, the term `systemic risk' refers to a series of correlated defaults among financial institutions, occurring over a short time span and triggering withdrawal of liquidity and a widespread loss of confidence in the financial system as a whole. At the heart of the concept is the notion of `contagion', a particularly strong propagation of failures from one institution, market, or system to another. Five different measures of systematic risk were proposed in [19], based on statistical relations among the market returns of hedge funds, banks, brokers and insurance companies. Using the correlations, cross-correlations, PCA, regime-switching models, and Granger causality tests, it was found that all the four sectors have become highly interrelated and less liquid over the past decade, an indicator of increased level of systemic risk in finance and insurance industries. These measures can also identify and quantify financial crisis periods.
+The absorption ratio [20] is an indicator of market fragility and systemic risk, and is defined as the fraction of the total variance of a set of assets explained or absorbed by a finite set of eigenvectors. A high value for the absorption ratio corresponds to a high level of systemic risk and fragility. For example, high values of absorption ratio of the US stock market during the dot-com bubble and the global financial and sub-prime mortgage crises suggested that the market was extremely fragile and vulnerable to negative shocks, which propagated quickly and broadly in both periods. The absorption ratio can also be used as a warning for investors, as on average, stock prices decreased following one-standard-deviation spikes in the absorption ratio, and increased after one-standard-deviation drops in the absorption ratio.
+The `10-by-10-by-10' approach for the assessment of systemic financial risk related to stress scenarios was proposed in [21], and involves three factors: financial institutions, a number of counterparties and stress tests. The total of gains and losses of each stress test for each institution (also counterparty) is calculated and then reported periodically.
+This all indicates a void in the literature when it comes to the quantification of both financial stress and systemic risk. To this end, in an analogy to human stress (sympatho-vagal imbalance) the signatures of which are derived from the low-frequency (LF) and high-frequency (HF) bands within heart rate variability, we propose the Assessment of Latent Index of Stress (ALIS) which examines the LF and HF bands in detrended financial data. Our rationale is that low-frequency changes (LF band), which correspond to time spans of over 1 year, are driven by global factors (monetary policies), whereas the more rapid changes (HF band), over spans of 5 days to 3 months, signify abrupt events, such as the 9/11 crisis and the Internet bubble burst.
+The ALIS index therefore determines `crisis versus no-crisis' episodes of the financial stress evolution through the examination of long- and short-term changes in specific stock indices, whereas the existing FSIs in [13], [14], [18] consider several sub-components, such as stock market returns and time-varying stock market return volatility, which may be responsible for the onset and development of financial stress. While the ALIS index is not designed for specific analyses using financial market variables as potential cofounders for financial stress, it is one of the first methods which extends beyond the second order analysis
+
+1114
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+in [13], [14], [18] to detect the patterns of financial crises in specific financial indices using a bio-inspired signal processing approach.
+II. SUMMARY OF MOTIVATION AND CONTRIBUTION
+Inspired by the catastrophe theory [22] and the EMH theory, we propose the ALIS index as an indicator of financial stress during episodes of financial crises in different individual stock indices. Following on the complexity-loss theory, financial systems are shown to exhibit lower levels of structural complexity during financial crises, compared to normal periods [1]. We also introduce the moving-average multivariate sample entropy (MA-MSE) algorithm to quantify different degrees of such complexity. The recurrence quantification analysis (RQA) and delay vector variance (DVV) are then employed so as to establish the ground truth of the deterministic (predictable) versus stochastic (unpredictable) and the linear versus nonlinear signal modality for stock indices. Finally, the intrinsic phase synchrony (IPS) is used for the quantification of inter-dependencies during financial crises, as financial systems often exhibit high levels of systemic risk, that is, they are contagious and, to an extent, dependent on one another.
+It is almost self-evident that financial markets exhibit high structural complexity which in turn can be quantified through entropy, for example, using the multivariate multiscale sample entropy (MMSE) [11], [23] algorithm. This approach examines long-term correlations of both the trend and the detrended data. For enhanced resolution, we introduce a novel MA-MSE algorithm, described in Section III-B. Also, prior to modelling financial indices, it is a prerequisite to establish the ground truth for the linear versus nonlinear and deterministic versus stochastic nature of the data, referred to as signal modality analysis. To this end, we employ nonparametric analyses using the methods of recurrence plots (RPs) [24] and DVV [25], which examine the nature of the underlying generating mechanisms [26], a subject of Section III-C and Section III-D.
+We also examine the degree of synchrony between financial indices and establish the extent to which IPS [27] can be used to quantify synchronous behaviour--financial contagion leading to systemic risk--among multiple stock indices related to the same sector, as elaborated in Section III-E.
+In the analysis, we consider four major stock indices which indicate the state of economy of the US[1]: (i) Dow Jones Industrial Average (DJIA), (ii) NASDAQ Composite, (iii) Standard & Poor's 500 (S&P 500), and (iv) Russell 2000. The DJIA comprises 30 of the largest companies in the US across a range of industries except for transport and utilities; NASDAQ is an indicator of the performance of stocks in technology and of the growth in companies; S&P 500 consists of 500 large companies from a vast number of industries, each having market capitalisation of more than $5 billion; and Russell 2000 comprises a small-cap segment of the US equity market. We also consider four financial markets outside the US in order to assess the performance of the ALIS: (i) Financial Times Stock Exchange 100 (FTSE 100), (ii) Cotation Assiste´e en Continu 40 (CAC 40), (iii and iv) foreign exchange (Forex) markets for the EUR/GBP and GBP/JPY. The FTSE 100 is a share index of the 100 companies listed on the London Stock Exchange, the CAC 40 represents
+
+the 40 most significant values among the highest 100 market capitalisation of the Euronext Paris (Paris stock exchange).
+It is arguable whether increased local variances may already signify financial crises, without assistance of sophisticated numerical methods. The studied nonparametric methods, however, are independent of signal variance which being only a 2nd order moment may not effectively reveal major financial crises. Indeed, we show how such crises can be precisely determined through changes in the intrinsic characteristics of financial data, such as their determinism, linearity, and complexity. The purpose of this study is therefore to quantify these time-varying characteristics in order to simultaneously characterise, in a full multivariate way, the financial stress through the complexityloss hypothesis (systems under stress exhibit greater regularity and less freedom.) [28]­[30] and systemic risk (the markets are contagious and behave in the same way during financial crises). This is achieved by examining in stock trends intrinsic and inter-channel dependencies together with their nonlinear and stochastic properties. The detrended stock indices (the rate of change) of the market indices over the last 25 years (between 1st January 1991 and 31st August 2015) were analysed using the following nonparametric methods: (i) MMSE, (ii) MA-MSE, (iii) RQA, (iv) DVV, (v) ALIS, and (vi) IPS. Methods (ii), (v), and (vi) are novel and are derived specifically for financial data. The analysis is verified over several case studies which support the complexity-loss hypothesis for financial markets, a robust framework to understand financial stress, and is expected to be beneficial to those interested in middle- and long-term investments.
+
+III. ALGORITHM AND BACKGROUND We shall first briefly describe the algorithms used in this study.
+
+A. MA Algorithm for the Multivariate Case
+
+This standard approach considers a multivariate signal xorg,k,i, k = 1, 2, . . . , p, i = 1, . . . , N , with p being the number of data channels,  time lag, and N the total number of sample points. The MA filter removes the trend, sk,j , from the original xorg,k,i, using the following functional form
+
+sk ,j
+
+=
+
+1 
+
+j +/2-1
+
+xorg,k ,i ,
+
+1  j  N -  + 1,
+
+(1)
+
+i=j -/2-1
+
+where  is a pre-defined scale factor (data window size). The detrended data, zk,j , is then obtained as
+
+zk,j = xorg,k,i - sk,j , i = 1, 2, . . . , N - 1.
+
+(2)
+
+Observe that long window sizes will remove short trends.
+
+B. Multivariate Multiscale Sample Entropy (MMSE) & Moving-Average Multivariate Sample Entropy (MA-MSE)
+The sample entropy (SampEn) method calculates empirical estimates of entropy [31] based on the probability of similarity between the delay vectors (patterns) in data. The SampEn is a single-scale measure, however, the interpretation of complexity estimated via entropy requires multiple scales. To this end, the multiscale sample entropy (MSE) algorithm [32] employs
+
+HEMAKOM et al.: FINANCIAL STRESS THROUGH COMPLEXITY SCIENCE
+
+1115
+
+pre-determined scales, constructed using the coarse graining
+
+process (CGP). Such scales do not match intrinsic properties in
+
+the data, and in addition the number of data points for a given
+
+scale,
+
+,
+
+N
+
+=
+
+N 
+
+,
+
+decreases
+
+linearly
+
+in
+
+the
+
+scale
+
+factor.
+
+For
+
+better resolution, the modified multiscale entropy (Mod-MSE)
+
+[33] algorithm replaces GCP by a MA scale definition process.
+
+Both the MSE and the Mod-MSE are, however, univariate
+
+algorithms, not capable of accounting for cross-channel
+
+dependencies. To cater for multivariate cases, the multivariate
+
+MSE (MMSE) [11], [23], reveals both the intrinsic- and
+
+cross-complexities through a multivariate embedding process.
+
+We here introduce its variate, termed MA-MSE, to quantify
+
+multivariate complexity of both the trend and the detrended
+
+data, a procedure referred to as the MA-MSE, outlined in
+
+Algorithm 1. By virtue of MA-MSE, pre-defined and physically
+
+meaningful scales are generated to match periods of interest
+
+(finance-specific scales) in financial data, such as short-term
+
+trading (1­5 days), and short- (less than a month), medium-
+
+(1­3 months) and long-term (over a year) trends [6].
+
+Within either the MMSE or the MA-MSE, first the embedding
+
+dimension m and time lag  of each variate are calculated to
+
+construct a composite multivariate delay vector, given by
+
+Algorithm 1: Multivariate multiscale sample entropy
+
+(MMSE) & Moving-average multivariate sample entropy
+
+(MA-MSE).
+
+For each scale: yk,j (MMSE), or wk,j (MA-MSE): 1) Construct a composite delay vector based on the scale
+yk,j (MMSE) or wk,j (MA-MSE). 2) Search for similar patterns in every data channel of the
+
+composite delay vector. If the difference in the pair-
+
+wise distance is less than or equal to the defined
+
+tolerance ||Xm (i) - Xm (j)||  r, j = i, the event of
+
+similarity, denoted by Pm , is counted.
+
+3)
+
+Calculate the probability Bm (r) =
+
+1 N Pm , where N is
+
+the total number of searches in composite delay vector.
+
+4) Repeat Steps 1 to 3 for the (m + 1)-dimensional
+
+composite delay vector.
+
+5) Calculate the MMSE or the MA-MSE using
+
+Bm+1r
+
+SampEn(m, , r) = - ln Bm r
+
+(6)
+
+Xm (i) = [x1,i , x1,i+1 , . . . , x1,i+(m 1 -1)1 ,
+
+x2,i , x2,i+2 , . . . , x2,i+(m 2 -1)2 , . . . ,
+
+xp,i , xp,i+p , . . . , xp,i+(m p -1)p ],
+
+(3)
+
+where M = [m1 , m2 , . . . , mp ]  Rp is the embedding dimension vector,  = [1 , 2 , . . . , p ] denotes the time lag vector, p is the number of variates, and Xm (i)  Rm .
+The CGP within the MMSE creates scale factors by averaging
+the adjacent sample points within non-overlapping windows of
+increasing length  (scale factor). The resulting data, denoted by yk,j , represent a coarse-grained scale  and is obtained as
+
+yk ,j
+
+=
+
+1 
+
+j
+
+xk,i ,
+
+1j  N. 
+
+(4)
+
+i=(j -1)+1
+
+The proposed MA-MSE replaces the CGP by MA-based scale generation, whereby both the trend, sk ,j , and the detrended data, zk,j , are combined as wk,j = [sk ,j , zk,j ] and are used as predefined scales (input) for the algorithm.
+Before computing the MMSE and the MA-MSE, a tolerance parameter, r, is defined and is used to search for similar patterns (delay vectors) by comparing the scalar distance between all pairs of delay vectors in Eq. (3), but without self-comparison. If the difference in the distance of a pair of delay vectors is less than r, the event of a similar pattern has occurred.
+
+C. Recurrence Quantification Analysis (RQA)
+The RP method [24], outlined in Algorithm 2, was introduced to visualise the dynamics of phase space trajectories. Using the Takens embedding theorem [34], for a given univariate time series x(n), the phase space can be reconstructed by embedding the time series as follows:
+
+Xm , (i) = [xi , xi+ , . . . , xi+(m -1) ]
+
+i = 1, . . . , N - (m - 1),
+
+(5)
+
+Algorithm 2: Recurrence quantification analysis (RQA).
+Input: Discrete time series x(n). 1) Given the optimal embedding parameters, m and  , generate the delay vectors (DVs), as in Eq. (5). 2) Compute the RPs matrix, which summarises all pairwise Euclidean distances between DVs, as
+
+RPi,j =   - ||X(i) - X(j)|| , i, j = 1, . . . , Ns ,
+
+(7)
+
+where Ns is the number of considered states in X,  a threshold distance (60% of the mean Euclidean distance of the DVs), || ˇ || the Euclidean distance, and (ˇ) the Heaviside function. 3) The percentage of recurrence points which form diagonal lines measures the degree of predictability, and is computed as:
+
+DET =
+
+Ns j=jm i
+Ns j=1
+
+n
+j
+
+j ˇ
+
+ˇ P (j) P (j)
+
+,
+
+(8)
+
+where P (j) is the number of diagonal lines of length j, and jmin the minimum number of points to be considered as a diagonal line (in this work, jmin = 2).
+
+where N is the total number of points,  the delay between consecutive points of the time series, and m the embedding dimension. A common approach to determining the time lag  is based on the mutual information algorithm [35], while the selection of the minimum embedding dimension m is based on the false nearest neighbours method [36]. A joint calculation of the optimal  and m has been proposed in [37].
+The quantification of the number and duration of the recurrences allows us to study the degree of determinism [38], whereas the length of a diagonal line in RP reflects the number of consecutive states in which the two trajectory segments exhibit similar evolution.
+
+1116
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+Algorithm 3: Delay vector variance (DVV).
+
+1) Given the optimal embedding parameters, m and  ,
+generate the delay vectors (DVs) based on
+Eq. (5). Every DV , X(i), has a corresponding target,
+xi+(m -1) +1 . 2) The mean, d , and the standard deviation, d , are
+computed over all pairwise Euclidean distances between DVs, ||X(i) - X(j)||(i = j). 3) The sets k (rd ) are generated such that k (rd ) = {x(i)||x(k) - x(i)||  rd }, i.e., sets which consist of all DVs that lie closer to x(k) than a certain
+distance rd , taken from the interval [max {0, d - nd d }], e.g., Ntv uniformly spaced distances, where nd is a parameter which controls the span over which the DVV analysis is performed.
+4) For every set k (rd ), the variance of the corresponding targets, k2 (rd ), is computed. The average over all sets k (rd ), normalised by the variance of the time series, k , yields the target variance, 2 (rd ):
+
+1
+2 = N
+
+N k=1
+x2
+
+k2
+
+(rd
+
+)
+
+,
+
+(9)
+
+where N denotes the total number of sets k (rd ). 5: Repeat Steps 1 to 4 for the Ns surrogates.
+
+A time series x(n) is considered deterministic if its trajectory in the phase space is smooth and can be modelled as a continuous function. This results in an RP matrix where almost every state is recurrent and forms long diagonal lines, where the DET value is close to unity. On the other hand, if a time series is stochastic, the DET values are close to zero. The intermediate case corresponds to a signal which comprises both deterministic and stochastic components.
+D. Delay Vector Variance (DVV)
+The DVV method [25] is a phase space technique which examines the deterministic versus stochastic nature of a time series, and when combined with the method of surrogate data [25], it also provides information about its linear versus nonlinear behaviour. Most statistical signal nonlinearity analyses, including the surrogate data method, are based on the MonteCarlo approach [39], whereby an ensemble of surrogate data is constructed to represent linearised versions of the original data. A statistical measure (test statistics) is then computed for both the original time series and the surrogates; if these are significantly different, the data at hand are deemed not to be generated by a linear process.
+The standard definition of a linear signal is that it is generated by a Gaussian linear stochastic process. Based on this `null hypothesis', constrained surrogates are commonly generated by the iterative amplitude adjusted Fourier transform (iAAFT) [40], and its refined version, the maximal overlap discrete wavelet transform (MODWT), where the original iAAFT-procedure is applied to each set of wavelet coefficients (WiAAFT). The WiAAFT retains not only the signal distribution and amplitude spectrum of the original time series but also the local mean and
+
+the variance of the original time series [41]. The DVV method is summarised in Algorithm 3.
+Due to the standardisation of the intervals of rd , the determinism/nonlinearity analysis by DVV can be illustrated in a scatter diagram where the horizontal axis corresponds to measured variances of the original signal, and the vertical axis to that of the average of the surrogates. If the surrogates exhibit similar behaviour to the original signal, the DVV graph will lie on the bisector line and the original signal is considered to be linear; any deviation from the bisector line indicates a nonlinear signal. Moreover, the minimum target variance for the original signal is a measure of the amount of uncertainty present in the time series.
+
+E. Intrinsic Phase Synchrony (IPS)
+The degree of phase synchronisation between data channels can be measured through phase synchrony, which quantifies only the phase relationship between two signals without accounting for amplitude information, and is defined in terms of the deviation from perfect synchrony via the phase synchronisation index (PSI).
+The IPS was originally proposed in the so called intrinsic multiscale analysis framework in [27] and generalises standard phase synchrony by equipping it with the ability to operate at the intrinsic scale level. It employs multivariate empirical mode decomposition (MEMD) [42] to decompose a given multivariate signal into its narrowband intrinsic oscillations (IMFs), which makes it possible to quantify the temporal locking of the phase information in IMFs using the standard phase synchronisation index (PSI), as outlined in Algorithm 4.
+Financial time series contain different degrees of volatility, or in other words power imbalances among the signal channels; therefore in the intrinsic multiscale analysis we use the noiseassisted adaptive-projection intrinsically-transformed MEMD (NA-APIT-MEMD) which accounts for the different dynamics in multivariate data (see [43] for more detail). By virtue of NA-APIT-MEMD, these intrinsic scales physically represent short-term trading, and short-, medium-, and long-term trends. Standard phase synchrony can then be employed to characterise scale-wise dependencies in stock indices.
+
+F. Assessment of Latent Index of Stress (ALIS)
+
+We shall now introduce the ALIS to quantify `stress level of
+
+a financial organism' by considering the detrended data, zk,j , as the input, followed by aggregating the normalised financial
+
+time series of the low (0­0.0042 Hz, LF) and high (0.0167­
+
+0.2 Hz, HF) frequency bands. The LF band was chosen so as
+
+to correspond to long-term trends (over a year), while the HF
+
+band is related to short-term trading (5 days), short-term trends
+
+(less than a month) and medium-term trends (3 months). Given
+
+the sampling frequency, fs, of 1 Hz (the close stock value for
+
+each
+
+day),
+
+and
+
+f
+
+=
+
+fs N0
+
+,
+
+where
+
+f
+
+is
+
+the
+
+frequency
+
+and
+
+N0
+
+the
+
+number of data points, a simple period-frequency conversion
+
+maps the periods of one year (240 sample points), 3 months (60
+
+sample points), and 5 days (5 sample points) to the correspond-
+
+ing
+
+frequencies
+
+of
+
+0.0042
+
+Hz
+
+(f
+
+=
+
+fs N0
+
+=
+
+1 240
+
+= 0.0042 Hz),
+
+0.0167
+
+Hz
+
+(f =
+
+fs N0
+
+=
+
+1 60
+
+= 0.0167
+
+Hz)
+
+and
+
+0.2
+
+Hz
+
+(f
+
+=
+
+fs N0
+
+=
+
+1 5
+
+= 0.2
+
+Hz)
+
+in
+
+detrended
+
+financial
+
+time
+
+series.
+
+These
+
+HEMAKOM et al.: FINANCIAL STRESS THROUGH COMPLEXITY SCIENCE
+
+1117
+
+Algorithm 4: Intrinsic phase synchrony (IPS).
+
+Input: Discrete time series x1(n), x2(n). 1) Obtain IMFs via the NA-APIT-MEMD, c1,i and c2,i, i = 1, . . . , M . 2) Calculate the instantaneous phases for the IMFs and the phase difference i(n). 3) Phase synchrony is then defined in terms of the deviation from perfect synchrony via the phase synchronisation index (PSI) [44], given by
+
+(n)
+
+=
+
+Sm a x
+
+-
+
+S ,
+
+(10)
+
+Sm a x
+
+where S = -
+
+M m=1
+
+pm
+
+ln pm
+
+is
+
+the
+
+Shannon
+
+entropy
+
+of the distribution of phase differences
+
+i (n
+
+-
+
+W 2
+
+:
+
+n
+
++
+
+W 2
+
+)
+
+within
+
+a
+
+window
+
+of
+
+length
+
+W
+
+,
+
+M
+
+is the number of bins within the distribution of phase
+
+differences, and pm is the probability of
+
+i (n
+
+-
+
+W 2
+
+:
+
+n
+
++
+
+W 2
+
+)
+
+within
+
+the
+
+mth
+
+bin.
+
+The
+
+maximum entropy Smax is given by
+
+Smax = 0.626 + 0.4 ln(W - 1).
+
+(11)
+
+Algorithm 5: Assessment of Latent Index of Stress (ALIS). Input: Generate the detrended data, zk,j , using the MA
+algorithm with a pre-defined scale factor (window size) of the length 1 year.
+1) Construct the two time series corresponding to the LF and HF frequency bands, LF (d) and HF (d), where symbol d denotes a month.
+2) Normalise the LF and HF time series by subtracting the mean and dividing by standard deviation in order to alleviate the problem of scaling.
+3) Remove the offset in both the LF (d) and HF (d). 4) The ALIS is given by ALIS(d) = LF (d) + HF (d). 5) Use the median in the ALIS(d) as a threshold for
+stress in the market.
+frequencies were used as cut-off frequencies for the LF and HF bands. A threshold which determines whether the market is judged `stressed' or `normal' is derived based on the median, as summarised in Algorithm 5.
+IV. ANALYSIS AND RESULTS
+We applied our methodology to four stock market indices which represent the US economy over the last 25 years, between 1st January 1991 and 31st August 2015. Five consecutive periods of different natures were identified, based on our interpretation of key geopolitical and socio-economic events which affected the US and world economies [1], as follows:
+1) Period 1: 1-JAN-1991 to 31-DEC-1999. Economic boom, followed the `dot-com' boom from 1997 to December 1999.
+2) Period 2: 1-JAN-2000 to 31-DEC-2003. Uncertainty, high volatility, and Internet bubble burst; the economy crisis further deteriorated due to the 9/11 terrorist attack and its aftermaths.
+
+3) Period 3: 1-JAN-2004 to 31-DEC-2007. Recovery due to huge investment in undervalued stocks.
+4) Period 4: 1-JAN-2008 to 31-DEC-2011. Sub-prime mortgage and debt crises.
+5) Period 5: 1-JAN-2012 to 31-AUG-2015. Weak growth and recovery owing to the uncertainty in fiscal policy (`fiscal cliff'), increases in tax, and a slowdown in the housing sector.
+A. Analytical Framework
+Fig. 1 shows the framework of the data analysis using the algorithms presented in Section III. In the MA-MSE analysis, MA filters with different window sizes, , were first employed in order both to extract the trends in the four stocks (as a multivariate variable) and to produce the detrended data. The multivariate complexities of both the trends and the detrended data were then estimated using multivariate SE given in Algorithm 1. The detrended data of univariate variables of the four stocks were then generated using an MA filter with the window size, , of 5 days for the RQA and DVV analyses, given in Algorithms 2 and 3, so as to quantify the determinism and linearity. An MA filter with the window size, , of 1 year was next used to extract univariate detrended data of the four stocks for the ALIS index. This algorithm, given in Algorithm 5, was employed in order to determine the stress level for each stock index. Finally, dependencies between the stock indices were estimated using the IPS outlined in Algorithm 4.
+B. MA Algorithm
+For the MA-MSE analysis, six scale factors of 5 days (shortterm trading), 10 day, 1 month (short-term trends), 2 months, 3 months (medium-term trends) and 1 year (long-term trends) were employed in the MA algorithm, in order to obtain trends within the original daily-adjusted closing prices of the four financial indices and the detrended data. For the RQA and DVV analyses, a scale factor of 5 days was used in the MA algorithm, while for the ALIS index, a scale factor of 1 year was used in the MA algorithm. The trends and the detrended data of the DJIA, NASDAQ, Russell 2000, and S&P 500 were estimated using a scale factor of 5 days, and the results are shown in Fig. 2(a)­(d).
+C. Multivariate Multiscale Sample Entropy & Moving-Average Multivariate Sample Entropy
+Financial data were considered as an output of a low noise system. This is natural as they represent actual values of the stock indices, and therefore m = 2 was used. A unit time lag  = 1 was chosen as there exist short-term correlations in the sliding windows.1 Four-year sliding windows with 3 years and 11 months overlap (1 month increment) were used.
+1The appropriate selection of m and  relies on the underlying dynamics of a given multivariate time series. Pincus suggested that the values m = 2 or 3 [45] are sufficient for a low-dimensional system under low noise. Kaffashi et al. [46] recommended that  = 1 is sufficient for the estimation of complexity of a system which has a relatively short-term correlation, and the tolerance r is typically set between 10­20% of the standard deviation (SD) for robustness to noise. We have therefore selected the middle value, 15% of the SD, for the MMSE and MA-MSE algorithms.
+
+1118
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+Fig. 1. Analytical framework. Framework of the data analysis using MA-MSE, RQA, DVV, ALIS, and IPS.
+
+Fig. 2. Stock market indices (DJIA, NASDAQ, Russell 2000 and S&P 500) and their detrended versions. Upper panels: Original data and their trends for a 5-day scale. Lower panels: Detrended data. (a) The DJIA over 1991­2015. (b) The NASDAQ over 1991­2015. (c) The Russell 2000 over 1991­2015. (d) The S&P 500 over 1991­2015.
+
+HEMAKOM et al.: FINANCIAL STRESS THROUGH COMPLEXITY SCIENCE
+
+1119
+
+more regularity--were observed. These findings are supported by the RQA analysis in Section IV-D. Note that while the occurrences of the crises were detected using the MA-MSE applied to the financial trends, stress in the financial markets was observed using the MA-MSE applied to the detrended data.
+
+Fig. 3. Structural complexity of trends in compound stock indices. The MAMSE values which represent the structural complexity for the trends of the four financial indices in different economic periods. The trends were generated using the MA algorithm with six pre-defined scale factors (5 days, 10 days, 1 month, 2 months, 3 months and 1 year).
+The long- and short-term correlations in data were found via the MA filter with different pre-defined scale factors, . We considered six pre-defined scale factors which match the periods of interest in financial data (short-term trading, short-, medium-, and long-term trends), for which the scale factors were respectively 5 days (5 sample points), 10 days (10 sample points), 1 month (20 sample points), 2 months (40 sample points), 3 months (60 sample points), and 1 year (240 sample points).
+Fig. 3 shows the multivariate complexity of the trends (price moving average) estimated using the MA-MSE with the six pre-defined scale factors. Observe that in each economic period the multivariate complexities in all the scales exhibited similar sample entropy values. The MA-MSE suggested substantially higher multivariate complexity during the dot-com bubble and the Internet bubble burst, the periods of uncertainty and high volatility. During the sub-prime mortgage crisis, the MA-MSE revealed higher entropy values than the `normal' periods ­ the economic-boom, economic-recovery, and weak-growth periods. Note that high multivariate complexities of the trends estimated using the MA-MSE revealed the presence of the crises, as financial trends show the tendencies of the markets to change in a particular way over time [3].
+The multivariate complexities of the original data of the four financial indices and the trends were estimated respectively using the MMSE and the MA-MSE, and are shown in Figs. 9 and 10. Observe that the multivariate complexity quantified using the MA-MSE had no aliasing at large scales, a major improvement of the MA-MSE in scale generation.
+Fig. 4 validates our complexity-loss hypothesis by examining the multivariate complexity of the detrended data (rate of change) estimated using the MA-MSE with six pre-defined scales. It suggests high complexity between 2000 and 2004, the period of uncertainty and high volatility. Observe in both the figures a high variation in complexity among different scales from 2004 to 2008 (the economic recovery period)--highly pronounced in the 5-day pre-defined scale, which indicates enhanced short-term dependencies in data. Also, during the `dotcom bubble' between 1997 and 2000, long-term correlations--
+
+D. Recurrence Quantification Analysis
+Fig. 5 shows the degree of determinism of the detrended data of individual stock indices, calculated by applying the RQA to detrended data. A 4-year sliding windows with 3 years and 11 months overlap (1 month increment), was used in order to capture economic changes over a small number of economic cycles. From 1994 to 1996 (period of economic stability), the RQA indicated very low determinism--high uncertainty--for all the indices. This conforms with the EMH, which states that during `normal' situations stock prices behave in a random (uncertain) way.
+During the `dot-com bubble' between 1997 and 2000, exceptional levels of growth in technological companies were reflected in an increase in the levels of determinism of the NASDAQ (stock market for technological companies), together with the Russell 2000. Both the growth in the stock indices and the degrees of determinism of both the NASDAQ and the Russell 2000 peaked simultaneously in 2000. This also conforms with the EMH hypothesis, whereby speculative economic bubbles are reflected in overestimation in stock prices--high determinism-- particularly in the DJIA and the S&P.
+The degrees of determinism in all the four indices dropped again in 2000, for the duration of the Internet bubble burst, until 2004. Observe that during this crisis the DJIA and the S&P500 were very uncertain (low determinism). The NASDAQ and the Russell 2000 also showed significant decrease in determinism, with a short boost of NASDAQ by the Internet bubble burst in 2003.
+During the economic recovery period from 2004 to 2008, the degrees of determinism of all the four indices were very low (lower than 0.1)--low determinism in `normal' situations. The investors began to buy undervalued stocks which in turn drove sub-prime mortgage crisis in the mid-2008, as indicated by an increase in determinism for the DJIA and the S&P 500--high determinism during speculative economic bubbles. The NASDAQ and Russell 2000 were less affected, as housing investment bear no relevance for these indices. Finally, from 2011 to date the markets weakly recovered, and the degrees of determinism were as low as those in the healthy periods (2004­2008)--low determinism in normal situations.
+Observe that both markets for `large' business companies (DJIA and S&P 500) exhibited pronounced synchrony within the considered 25 years, and the degrees of determinism of the four financial indices were inversely related to the multivariate complexity of the detrended data quantified by the MA-MSE (see Fig. 4).
+E. Delay Vector Variance
+The DVV method examined linearity and uncertainty in the detrended data. Fig. 6 analyses the four detrended indices based on 99 surrogates generated by the WiAAFT, where the chosen parameters were: the maximum span nd = 3, subset size
+
+1120
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+Fig. 4. Structural complexity of detrended compound stock indices. The MA-MSE values which represent the structural complexity for the detrended data of the four financial indices. These values were estimated using 4-year sliding windows with 3 years and 11 months overlap (1 month increment). The trends were generated using the MA algorithm with six pre-defined scale factors (5 days, 10 days, 1 month, 2 months, 3 months and 1 year).
+
+Fig. 5. Determinism in individual stock indices estimated using RQA. The degree of determinism for the 5-day MA detrended financial data of the DJIA (solid thick line), the NASDAQ (broken thin line), the Russel 2000 (solid thin line), and the S&P 500 (broken thick line). The degrees were estimated using the RQA. Four-year sliding windows with 3 years and 11 months overlap (1 month increment) were employed in the analysis using the embedding parameters obtained via mutual information ( ) and Cao's method (m).
+
+Nsub = 200 points, and 20 uniformly spaced distances in the horizontal axes. A variance measurement was considered valid if the set of points was within a certain Euclidean distance, rd , and contained at least 30 delay vectors (DVs). Based on Fig. 6, five sub-periods of two-year length, with both low and high degrees of determinism, were chosen for the analysis and the local predictability of the original signals and the surrogates was assessed in order to detect the presence of nonlinearity.
+Fig. 6(a) shows that between 1993 and 1995 (period of economic stability) the four indices exhibited strictly random and linear behaviour. In Fig. 6(b), each of the four indices shows clear deviations from the bisector lines in the period 1998­ 2000, indicating the presence of nonlinear dynamics during the dot-com bubble. Between 2005 and 2007 (see Fig. 6(c)), the economy recovered (low determinism in Fig. 5), as exemplified by a relative linearity and low predictability (lower distance of DVV plots from the vertical axis) except for the NASDAQ which still suffered from the consequences of technological
+
+boom in the late 1990s. The sub-prime mortgage crisis between 2008 and 2010 and global recession were reflected in the deterministic and nonlinear behaviour of financial data (see Fig. 6(d)), as indicated by a large deviation from the bisector line. Finally, recent weak growth in the economy was reflected in random and linear behaviour of the indices (see Fig. 6(e)), similar to the first and third sub-periods.
+The DVV analysis therefore complements the RQA analysis and suggests that during financially stable periods, stock market indices exhibit random and linear behaviour, while any abnormal events (bubbles or crises) cause a more predictable (less stochastic) and nonlinear behaviour.
+F. Intrinsic Phase Synchrony
+Multivariate data exhibit inter-channel dependencies, and in order to assess synchronous behaviour among stock indices in different economic periods in a full multivariate way, we analysed the synchrony between stock indices using IPS. The four
+
+HEMAKOM et al.: FINANCIAL STRESS THROUGH COMPLEXITY SCIENCE
+
+1121
+
+Fig. 6. Nonlinearity in individual stock indices. The DVV analysis with 99 WiAAFT surrogates was performed on the four stock market indices using the embedding parameters obtained via the mutual information algorithm ( ) and Cao's method (m). First row: the DJIA. Second row: the NASDAQ. Third row: the S&P 500. Fourth row: Russell 2000. The columns correspond to the subperiods: (a) 1993­1995, (b) 1998­2000, (c) 2005­2007, (d) 2008­2010, and (e) 2013­2015.
+
+financial time series were combined into a single quadrivariate signal, for which the intrinsic, data-adaptive, scales were determined using the NA-APIT-MEMD with ten adjacent noise channels, and the  value for the NA-APIT-MEMD was 1, to cater for power imbalances among the four data channels (see [43] for more detail). The PSIs between pairs of the data channels at every IMF index were then calculated from 50 realisations of NA-APIT-MEMD, and the confidence intervals at each IMF index were calculated by benchmarking against the PSIs between pairs of noise channels (no synchrony). The PSI values between the financial time series within these confidence intervals were adjudged spurious.
+Fig. 7 shows the PSI values between all pairs of stock indices at different IMF indices, estimated from 50 realisations of NAAPIT-MEMD. Observe that PSI values at IMF indices 6 and 7, which represent the periods of 1 and 2 years (long-term trends), in all the five periods were always higher than 0.8, indicating
+
+that all the stock indices exhibited prominent synchrony in their long-term trends.
+In all the five periods, the DJIA and the S&P 500 were also highly synchronised in: (i) short-term trading (periods of 1­5 days, represented by IMFs 1­2); (ii) short-term trends (periods of less than a month, represented by IMFs 3­4); and (iii) medium-term trends (periods of 1­3 months, represented by IMF 5). This finding is also supported by Fig. 2(a) and (d), and the RQA analysis.
+Notice from Fig. 7 that all the PSI values at IMFs 1-2 (shortterm trading) during the dot-com bubble (1997­2000, the first period) and the Internet bubble burst (2000­2004, the second period) (except for the DJIA - S&P 500) were relatively low (lower than 0.6). These periods are exemplified by: (i) relatively low short-term dependencies (see Fig. 4), (ii) high variations in the degree of determinism (see Figs. 5 and 6(b)), and (iii) relatively high levels of stress of the four financial
+
+1122
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+Fig. 7. Intrinsic synchrony between individual stock indices. The graphs show phase synchrony (PSI) between stock indices across different time scales (IMF index) for the five periods considered (black line), and the upper- and lower-bounds of confidence intervals (red lines). The IMFs [1, 2], [3, 4], 5, 6, 7 correspond respectively to the time scales of 1­5 days, 1 month, 1­3 months, 1 year, and 2 years. (a) DJIA against NASDAQ. (b) DJIA against Russell 2000. (c) DJIA against S&P 500. (d) NASDAQ against Russell 2000. (e) NASDAQ against S&P 500. (f) Russell 2000 against S&P 500. The PSI values outside the confidence intervals were statistically relevant estimates of synchronisation. The PSI values at IMF index 7 of the fifth period could not be estimated as they were monotonic functions.
+
+indices as indicated by ALIS in the next section (see Fig. 8(a) and (d)).
+However, during the third period (2004­2007), with low variations in the determinism and low levels of stress (see Section IV-G), all of the stock pairs exhibited higher synchrony in short-term trading (IMFs 1-2) (all the PSI values were higher than 0.6). This indicates pronounced short-term dependencies, which were also detected using the MA-MSE analysis (see Fig. 4).
+Observe that during the sub-prime mortgage crisis (2008­ 2011, the fourth period) all the PSI values (except for the DJIA - S&P 500) were, on the average, higher than those for the recovery and weak growth periods (the third and fifth periods, 2004­2007 and 2012­2015). This also indicates the presence of systemic risk, where the markets are contagious and behave in the same way during the financial crisis.
+G. Assessment of Latent Index of Stress
+The wellbeing of the `economic organism' was next examined through the complexity-loss hypothesis, whereby the low
+
+complexity (high `stress' level) is indicated by high values of the proposed ALIS index applied to the detrended data. Four-year sliding windows with 3 years and 11 months overlap (1 month increment) were used. Fig. 8(a)­(d) show the stress levels for the DJIA, NASDAQ, Russell 200 and S&P 500. Observe that the stress levels of the DJIA and the S&P 500 (markets for big companies) were above the thresholds during the two crises: the Internet bubble burst and the sub-prime mortgage crisis, where the NASDAQ (market for IT companies) exhibited substantially higher level of stress during the dot-com bubble and the Internet bubble burst. Although the sub-prime mortgage crisis primarily affected the housing sector and non-IT companies, it also impacted on IT companies, as indicated by an excess stress level of the NASDAQ in 2011. The Russell 2000 also exhibited high stress level during the sub-prime mortgage crisis and the recent weak growth period. However, as it comprises a small-cap segment of the US equity market, it was less affected by the Internet bubble burst. Observe that both the markets for `large' business companies (DJIA and S&P 500) exhibited pronounced synchrony within the 25 years considered. This finding is also
+
+HEMAKOM et al.: FINANCIAL STRESS THROUGH COMPLEXITY SCIENCE
+
+1123
+
+it exhibits in its responses to major socio-economic and geopolitical events. This has been achieved for four major stock markets over a period of 25 years. The MSE based multivariate MA-MSE algorithm has been shown to provide both a composite estimate of complexity for financial indices and an estimate of systemic risk. In addition, the univariate RQA and DVV approaches have shown that irregularities in the market, such as the Internet bubble burst, the 9/11 crisis or sub-prime mortgage crisis, are reflected in an increase in the determinism in stock indices (via RQA), the corresponding reduction in complexity (via MA-MSE), and increase in nonlinearity (via DVV).
+The novel IPS [27] has been employed to quantify scale-wise couplings in financial indices, and has indicated pronounced and physically meaningful synchronisation in the DJIA and the S&P 500, across the scales. Higher degrees of synchrony have also been found in short-term dependencies during the periods with low market stress and low variations in the determinism. Conversely, the short-term synchrony decreased with high stress and high variations in the determinism in the markets. Systemic risk has further been identified by increased levels of average synchrony between the markets.
+Finally, we have introduced a new metric, referred to as the ALIS, which measures the degree of financial stress based on the physically meaningful scales which reflect common trading principles. The ALIS has strongly indicated financial stress during the Internet and mortgage bubble crises.
+This work has conclusively demonstrated the utility of posterior complexity science approaches in the assessment of financial stress. Our future studies will focus on incorporating these approaches within machine learning algorithms in predictive scenarios.
+
+APPENDIX
+
+A. Multivariate Multiscale Sample Entropy (MMSE) & Moving-Average Multivariate Sample Entropy (MA-MSE)
+
+Fig. 8. Financial stress evolution through the proposed ALIS index. Observe the perfect match in ALIS for the DJIA, Russell 2000 and S&P 500 for both the Internet burst and sub-prime mortgage abnormalities. The NASDAQ comprises only IT companies and thus reacted more strongly to the Internet bubble burst and less strongly for the housing crisis. (a) Evolution of ALIS for DJIA. (b) Evolution of ALIS for NASDAQ. (c) Evolution of ALIS for Russell 2000. (d) Evolution of ALIS for S&P 500.
+supported by the RQA analysis (in Fig. 5) and the IPS analysis (in Fig. 7).
+V. CONCLUSION We have examined the financial market from the point of view of complexity science and have analysed the constraints
+
+As an economic cycle typically lasts for approximately a year, and in order to capture economic changes over a small number of economic cycles, 4-year sliding windows with 3 years and 11 months overlap (1 month increment) were applied. Fig. 9 illustrates the multivariate complexity of the original four financial indices estimated using the MMSE. The maximum duration of coarse graining scales was set to 1 year for which the six pre-defined scale factors can be selected. However, only the entropies of five scales (5 days, 10 days, 1 month, 2 months and 3 months) could be computed, as the entropy estimated using the 1-year scale diverged. Notice the effect of aliasing caused by poor resolution of CGP in the 2- and 3-month scales, which implies that MMSE may not be suitable for large scales in financial data.
+Fig. 10 shows the multivariate complexity of the trends (price moving average) estimated using MA-MSE with the six predefined scale factors. Observe that the multivariate complexities in all the scales exhibited similar sample entropy values and no aliasing, except for the 1-year scale which showed a lower entropy, but similar variation as the other scales. The MA-MSE suggested high multivariate complexity during 2000 and 2004, the period of uncertainty and high volatility.
+
+1124
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+Fig. 9. Structural complexity of trends in compound stock indices estimated using MMSE. The values were estimated using 4-year sliding windows with 3 years and 11 months overlap (1 month increment). The scale factors were 5 days, 10 days, 1 month, 2 months. For the 1-year scale, the entropy values diverged, and are excluded from the graph.
+Fig. 11. Financial stress evolution of non-US financial markets through the ALIS index. (a) The FTSE 100. (b) The CAC 40. (c) EUR/GBP. (d) GBP/JPY. Observe a perfect match in ALIS for the FTSE 100, CAC 40 and GBP/JPY exchange rate for both the Internet burst and sub-prime mortgage abnormalities. The ALIS for the EUR/GBP exchange rate indicates that it was severely impacted by the sub-prime mortage crisis, but not by the Internet burst.
+
+Fig. 10. Structural complexity of trends in compound stock indices estimated using MA-MSE. The values were estimated using 4-year sliding windows with 3 years and 11 months overlap (1 month increment). The trends were generated using the MA algorithm with six pre-defined scale factors (5 days, 10 days, 1 month, 2 months, 3 months and 1 year).
+
+B. Application of the ALIS to Non-US Financial Markets
+The ALIS index was additionally applied to following financial markets outside the US: (i) Financial Times Stock Exchange 100 (FTSE 100), (ii) Cotation Assiste´e en Continu 40 (CAC 40), (iii and iv) foreign exchange (Forex) markets for the EUR/GBP and GBP/JPY. The data for the Euro was taken from 1-JAN-1999 to 31-Aug-2015, as the electronic version of the Euro has existed since 1-JAN-1999 although the Euro was officially issued in 2002.
+Fig. 11(a)­(d) show the ALIS stress levels for the FTSE 100, CAC 400, and EUR/GBP and GBP/JPY Forex markets. Observe that the stress levels for the FTSE 100 and CAC 40 (markets for big companies in the UK and France) were above the threshold during the two crises. As expected, the EUR/GBP Forex market was not affected by the Internet bubble burst, but was severely impacted by the sub-prime mortgage crisis, while the GBP/JPY Forex market exhibited high stress level during both of the crises.
+C. Volatility Index
+Volatility index (VIX) is a financial measure for predicting fear or stress in stock markets in the future. The classic VIX, so called historical VIX, is represented by the standard deviation of the returns (the logarithm of the ratio between the current and previous prices) over a specific period of time, and is typically expressed in percentages. A large percentage means the majority of investors realise a significant risk in the movement of the market, in other words, it implies high stress in the system. The VIX was first estimated for the S&P 100 to observe projected
+
+Fig. 12. VIX of the compound stock indices. (a) The FTSE 100. (b) The CAC 40. (c) EUR/GBP. (d) GBP/JPY. The typical monthly and annually periods are selected as the periods for calculating the VIX, for a fair comparison with the RQA and ALIS.
+fear of investors over the upcoming 30 days. A modern method for calculating the VIX with capability to monitor volatility in real time was proposed and performed by Chicago Board Options Exchange (CBOE) [47]. The CBOE also provides different names of the VIX for individual stock index, such as VIX (S&P 500), VXN (NASDAQ), VXD (Dow jones) and RVX (Russel 2000).
+Fig. 12(a)­(d) illustrate the VIX of the individual stock indices monthly and annually. Observe that the highest percentage point of the VIX occurs in the sub-prime mortgage crisis for the DJIA, Russel 2000 and S&P 500 (for the NASDAQ, it is the second highest peaks), which matches the results obtained by the ALIS index. Comparing with the RQA, however, only the DJIA and S&P 500 exhibited similar peaks during the crisis. The second highest percentage of the VIX can be observed during the Internet bubble burst, while the ALIS and RQA indicate the most prominent peak of the crisis only in NASDAQ, and less significant one in Russel 2000. Considering the trend cycles of
+
+HEMAKOM et al.: FINANCIAL STRESS THROUGH COMPLEXITY SCIENCE
+
+1125
+
+the MA-MSE result, the highest peak is located in the Internet bubble burst and the second highest one is in the sub-prime mortgage crisis. This means that the rank orders of the peaks resulting from the MA-MSE are swapped, compared to the VIX results. This consequently implies that the MA-MSE could be affected by only one market (NASDAQ).
+Our proposed algorithms exhibit slightly different levels of magnitudes during the two important crises, as they use detrended data with pre-defined scales. Since such data are less sensitive to immediate changes in the events of the markets, our proposed algorithms provide more information of particular trend-cycles for the individual stock indices (via RQA, DVV and ALIS) and a correlated trend-cycle for the compound stock indices (via MA-MSE).
+ACKNOWLEDGMENT
+The authors would like to thank Giuseppe Giovanni Calvi, Bruno Scalzo Dees, Mosabber Uddin Ahmed, and Alexander Stott for their help with this study.
+REFERENCES
+[1] W. Er and D. P. Mandic, "Dynamical complexity analysis of multivariate financial data," in Proc. IEEE Int. Conf. Acoust., Speech, Signal Process., 2013, pp. 8732­8736.
+[2] N. Amenc, F. Goltz, and V. Le Sourd, Assessing the quality of stock market indices. Nice, France, EDHEC Risk & Asset Management Research Centre Publication, 2007.
+[3] G. Fontanills and T. Gentile, Start Market Course. Hoboken, NJ, USA: Wiley, 2001.
+[4] H. S. Dent Jr., The Next Great Bubble Boom: How to Profit from the Greatest Boom in History: 2006­2010. New York, NY, USA: Free Press, 2006.
+[5] R. Stuteley, Numbers Guide: The Essentials of Business Numeracy, 5th ed. Hoboken, NJ, USA: Wiley, 2003.
+[6] R. D. Edwards, J. Magee, and W. Bassetti, Technical Analysis of Stock Trends, 9th ed. Boca Raton, FL, USA: CRC, 2007.
+[7] E. F. Fama, "Efficient capital markets: A review of theory and empirical work," J. Finance, vol. 25, no. 2, pp. 383­417, 1970.
+[8] M. Malik, "Heart rate variability: Standards of measurement, physiological interpretation, and clinical use," Eur. Heart J., vol. 17, no. 3, pp. 354­381, 1996.
+[9] H. Selye, "Stress and the general adaptation syndrome," Brit. Med. J., vol. 1, no. 4667, pp. 1383­1392, 1950.
+[10] P. Lequeux and M. Menon, "An eigenvalue approach to risk regimes in currency markets," J. Derivatives Hedge Funds, vol. 16, no. 2, pp. 123­ 135, 2009.
+[11] M. U. Ahmed and D. P. Mandic, "Multivariate multiscale entropy: A tool for complexity analysis of multichannel data," Phys. Rev. E, vol. 84, no. 6, pp. 061918­1­061918­10, 2011.
+[12] P. M. Addo, M. Billio, and D. Gue´gan, "Understanding exchange rates dynamics," CES Working Papers halshs-00803447, ver. 1, pp. 1­14, 2013.
+[13] R. Cardarelli, S. Elekdag, and S. Lall, "Financial stress and economic contractions," J. Financial Stability, vol. 7, no. 2, pp. 78­97, 2011.
+[14] R. Balakrishnan, S. Danninger, S. Elekdag, and I. Tytell, "The transmission of financial stress from advanced to emerging economics," IMF Working Paper WP/09/133, pp. 1­52, 2009.
+[15] R. Cardarelli, S. Elekdag, and S. Lall, "Financial stress, downturns, and recoveries," IMF Working Paper WP/09/100, pp. 1­58, 2009.
+[16] K. J. Forbes, "Are trade linkages important determinants of country vulnerability to crises?," NBER Working Paper 8194, pp. 1­66, 2001.
+[17] G. L. Kaminsky and C. M. Reinhart, "The twin crises: The causes of banking and balance-of-payments problems," Amer. Econ. Rev., vol. 89, no. 3, pp. 473­500, 1999.
+[18] C. S. Hakkio and W. R. Keeton, "Financial stress: What is it, how can it be measured, and why does it matter?" Federal Reserve Bank of Kansas City, no. Q II, pp. 5­50, 2009.
+
+[19] M. Billio, M. Getmansky, A. W. Lo, and L. Pelizzon, "Measuring systemic risk in the finance and insurance sectors," MIT Sloan School Working Paper 4474­10, pp. 1­66, 2010.
+[20] M. Kritzman, Y. Li, S. Page, and R. Rigobon, "Principal components as a measure of systemic risk," J. Portfolio Manage., vol. 37, no. 4, pp. 1­16, 2011.
+[21] D. Duffie, "A 10-by-10-by-10 approach," NBER Working Paper 17281, pp. 1­10, 2011.
+[22] E. C. Zeeman, "Catastrophe theory," Scientific Amer., pp. 65­70, 75­83, 1976.
+[23] M. U. Ahmed and D. P. Mandic, "Multivariate multiscale entropy analysis," IEEE Signal Process. Lett., vol. 19, no. 2, pp. 91­94, Feb. 2012.
+[24] J.-P. Eckmann, S. O. Kamphorst, and D. Ruelle, "Recurrence plots of dynamical systems," Europhysics Lett., vol. 4, no. 9. pp. 973­977, 1987.
+[25] D. P. Mandic, M. Chen, T. Gautama, M. M. Van Hulle, and A. Constantinides, "On the characterization of the deterministic/stochastic and linear/nonlinear nature of time series," in Proc. Roy. Soc. A, 2008, vol. 464, no. 2093, pp. 1141­1160.
+[26] P. M. Addo, M. Billio, and D. Gue´gan, "Nonlinear dynamics and recurrence plots for detecting financial crisis," North Amer. J. Econ. Finance, vol. 26, pp. 416­435, 2013
+[27] D. Looney, A. Hemakom, and D. P. Mandic, "Intrinsic multiscale analysis: A multivariate EMD framework," Proc. Roy. Soc. A, vol. 471, no. 2173, pp. 20140709-1­20140709-28, 2015.
+[28] A. L. Goldberger, L. A. N. Amaral, J. M. Hausdorff, P. Ch. Ivanov, C.-K. Peng, and H. E. Stanley, "Fractal dynamics in physiology: Alterations with disease and aging," Proc. Nat. Acad. Sci. USA, vol. 99, pp. 2466­2472, 2002.
+[29] R. Hornero, D. Aba´solo, J. Escudero, and C. Go´mez, "Nonlinear analysis of electroencephalogram and magnetoencephalogram recordings in patients with Alzheimer's disease," Philosophical Trans. Roy. Soc. A, vol. 367, no. 1887, pp. 317­336, 2009.
+[30] T. Takahashi et al., "Age-related variation in EEG complexity to photic stimulation: A multiscale entropy analysis," Clin. Neurophysiology, vol. 120, no. 3, pp. 476­83, 2009.
+[31] J. S. Richman and J. R. Moorman, "Physiological time-series analysis using approximate entropy and sample entropy," Amer. J. Physiology Heart Circulatory Physiology, vol. 278, no. 6, pp. H2039­H2049, 2000.
+[32] M. Costa, A. L. Goldberger, and C. K. Peng, "Multiscale entropy analysis of complex physiologic time series," Phys. Rev. Lett., vol. 89, no. 6, pp. 068102-1­069102-4, 2002.
+[33] S.-D. Wu, C.-W. Wu, K.-Y. Lee, and S.-G. Lin, "Modified multiscale entropy for short-term time series," Physica A, vol. 392, no. 2013, pp. 5865­5873, 2013.
+[34] D. A. Rand and L. S. Young, "Dynamical Systems and Turbulence," New York, NY, USA: Springer-Verlag, 1981.
+[35] A. Fraser and H. Swinney, "Independent coordinates for strange attractors from mutual information," Phys. Rev. A, vol. 33, no. 2, pp. 1134­1140, 1986.
+[36] L. Cao, "Practical method for determining the minimum embedding dimension of a scalar time series," Physica D: Nonlinear Phenomena, vol. 110, no. 1­2, pp. 43­50, 1997.
+[37] T. Gautama, D. P. Mandic, and M. M. Van Hulle, "A differential entropy based method for determining the optimal embedding parameters of a signal," in Proc. IEEE Int. Conf. Acous. Speech Signal Process., 2003, vol. 6, pp. 29­32.
+[38] L. L. Trulla, A. Giuliani, J. P. Zbilut, and C. L. Webber Jr, "Recurrence quantification analysis of the logistic equation with transients," Phys. Lett. A, vol. 223, no. 4, pp. 255­260, 1996.
+[39] T. Schreiber and A. Schmitz, "Surrogate time series," Physica D, vol. 142, no. 3­4, pp. 346­382, 2000.
+[40] T. Schreiber and A. Schmitz, "Improved surrogate data for nonlinearity tests," Phys. Rev. Lett., vol. 77, no. 4, pp. 635­638, 1996.
+[41] C. J. Keylock, "Improved preservation of autocorrelation structure in surrogate data using an initial wavelet step," Nonlinear Processes Geophysics, vol. 15, no. 3, pp. 435­444, 2008.
+[42] N. Rehman and D. P. Mandic, "Multivariate empirical mode decomposition," in Proc. Roy. Soc. A, 2010, vol. 466, no. 2117, pp. 1291­1302.
+[43] A. Hemakom, V. Goverdovsky, D. Looney, and D. P. Mandic, "Adaptiveprojection intrinsically transformed multivariate empirical mode decomposition in cooperative brain-computer interface applications," Phil. Trans. Roy. Soc. A, vol. 374, no. 2065, pp. 20150199-1­20150199-15, 2016.
+
+1126
+
+IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
+
+[44] P. Tass et al., "Detection of n:m phase locking from noisy data: Application to magnetoencephalography," Phys. Rev. Lett., vol. 81, no. 15, pp. 3291­ 3294, 1998.
+[45] S. M. Pincus and A. L. Goldberger, "Physiological time-series analysis: What does regularity quantify?," Amer. Physiological Soc., vol. 266, no. 4, pp. H1643­H1656, 1994.
+[46] F. Kaffashi, R. Foglyano, C. G. Wilson, and K. A. Loparo, "The effect of time delay on approximate & sample entropy calculations," Physica D, vol. 237, no. 23, pp. 3069­3074, 2008.
+[47] CBOE Execute Success, "White paper--the CBOE volatility index-- VIX R : The powerful and flexible trading and risk management tool from the Chicago Board Options Exchange," pp. 1­23, 2014.
+
+Lisa Aufegger received the M.Sc. degree in psychology from the University of Klagenfurt, Austria, and the Ph.D. in performance science from the Royal College of Music, London, U.K. Her research focuses on designing and validating simulation training and quantitative metrics to identify signatures of stress in physiological signals. She is currently a Research Associate at the Department of Surgery and Cancer, Faculty of Medicine, Imperial College London, U.K., where she continues her research on simulation training in order to develop strategic leadership skills in clinical and non-clinical managers in the NHS healthcare system.
+
+Apit Hemakom received the B.Eng. degree in telecommunications engineering from the King Mongkut's Institute of Technology Ladkrabang, Thailand, in 2005, and the M.Eng. degree in computer engineering from Chulalongkorn University, Thailand, in 2008. Upon obtaining the M.Sc. degree in biomedical engineering in 2013, from Imperial College London, U.K., he is currently working toward the Ph.D. degree in adaptive multiscale signal processing at the same institution. He worked as a Research Assistant at the National Electronics and Computer Technology Center, Thailand, from 2008 to 2012, where he was involved in research on assistive and rehabilitative technologies for the hearing and cognitive impaired. His research interests include biomedical signal processing, cooperative brain-computer interface, and rehabilitation technology.
+Theerasak Chanwimalueang received the B.Eng. degree in electrical engineering from the Khon Kaen University, Thailand, in 2000, and the M.Eng. degree in biomedical electronics from the King Mongkut's Institute of Technology Ladkrabang, Thailand, in 2007. He is currently working toward the Ph.D. degree at the Department of Electrical and Electronic Engineering, Imperial College London, London, U.K. Since 2007, he has been a lecturer at the Department of Biomedical Engineering, Faculty of Engineering, Srinakharinwirot University, Thailand. His research interests include biomedical signal processing, portable and wearable medical devices, and complexity science.
+Alicia Carrio´n received the M.Eng. degree in telecommunication engineering from the Universita`t Polite`cnica de Vale`ncia (UPV), Spain, in 2011. She received the M.Sc. degree from Fraunhofer Institute IOSB, Karlsruhe, Germany. She is currently working toward the Ph.D. degree at the Institute of Telecommunication and Multimedia Applications, UPV, Spain. Her research interests include nonlinear signal processing and signal modality characterisation, with applications in submarine acoustics, ultrasonic testing, and finance.
+
+Anthony G. Constantinides (S'68­M'74­SM'78­ F'98) is a Professor of Communications and Signal Processing at Imperial College, London, U.K. and former Head of Communications and Signal Processing Division of the Department of Electrical and Electronic Engineering at the same place. He has been actively involved with research in various aspects of digital signal processing, digital image processing, digital filter design, and communications for more than 45 years. His recent work has been directed toward the demanding problems arising in financial signal processing and he now leads the Financial Signal Processing Lab in the EEE Department of Imperial College. He has published several books and more than 400 learned articles in the areas of digital signal processing, image processing, and communications, and their many applications. He has been on, and is currently serving as, a member of many technical program committees of the IEE and other international conferences. He is the recipient of a number of awards and honours around the world, including Officier, Palmes Academiques, by the French government. He holds honorary doctorates from European and Far Eastern Universities. In addition he holds Visiting Professorships, Distinguished Lectureships, Fellowships and other honours around the world. He has served as a Member of the Board of Governors of the IEEE Signal Processing Society, a member of several Technical Committees of the IEEE and the IEE, and is on the Editorial Boards of many professional journals. He has been on the Editorial Board of the Proceedings of the Royal Society, Part B. He is a Fellow of the Royal Academy of Engineering and of the Institution of Electrical Engineers, U.K.
+Danilo P. Mandic (M'99­SM'03­F'12) received the Ph.D. degree in nonlinear adaptive signal processing from Imperial College London, London, U.K., in 1999. He is a Professor of signal processing at Imperial College London, London, U.K., where he has been involved in nonlinear adaptive signal processing and nonlinear dynamics. He is a Deputy Director of the Financial Signal Processing Laboratory at Imperial College London. He has been a Guest Professor with Katholieke Universiteit Leuven, Leuven, Belgium, the Tokyo University of Agriculture and Technology, Tokyo, Japan, and Westminster University, London, U.K., and a Frontier Researcher with RIKEN, Wako, Japan. He has two research monographs titled Recurrent Neural Networks for Prediction: Learning Algorithms, Architectures and Stability (West Sussex, U.K.: Wiley, 2001) and Complex Valued Nonlinear Adaptive Filters: Noncircularity, Widely Linear and Neural Models (West Sussex, U.K.: Wiley, 2009), an edited book titled Signal Processing Techniques for Knowledge Extraction and Information Fusion (New York, NY, USA: Springer, 2008), and more than 200 publications on signal and image processing. He has been a member of the IEEE Technical Committee on Signal Processing Theory and Methods, and an Associate Editor of the IEEE Signal Processing Magazine, the IEEE TRANSACTIONS ON CIRCUITS AND SYSTEMS II, the IEEE TRANSACTIONS ON SIGNAL PROCESSING, and the IEEE TRANSACTIONS ON NEURAL NETWORKS. He has produced award winning papers and products resulting from his collaboration with the industry.
+
+
+

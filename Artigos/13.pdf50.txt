@@ -1,0 +1,397 @@
+2194
+
+IEEE TRANSACTIONS ON CONTROL SYSTEMS TECHNOLOGY, VOL. 25, NO. 6, NOVEMBER 2017
+
+Feedback Controllers as Financial Advisors for Low-Income Individuals
+Hugo Gonzalez Villasanti and Kevin M. Passino, Fellow, IEEE
+
+Abstract-- Feedback controllers are introduced to help manage an individual's or household's financial life and build savings. The controllers can be viewed as financial advisors for an individual's resource allocation problem, which is modeled as a nonlinear discrete time stochastic system with income uncertainties, asset losses, and constraints on cash flow and credit. We introduce a model predictive controller (MPC) and a proportional-integralderivative (PID) controller, and compare them with a benchmark method employed in finance and economics, stochastic dynamic programming (DP). Both MPC and PID produce similar consistency in financial management compared with DP. They also offer the advantage of low computational complexity relative to DP, which allows us to efficiently perform assessments of robustness (reliability) and disturbance rejection (e.g., effects of uncertainties), both of which are of significant practical engineering importance. In addition, this flexibility enables us to uncover the system's properties, such as the existence of a "poverty trap" caused by constraints in the control space and dynamics. The effectiveness of a PID-based aid intervention for low-skilled and low-endowed agents that lie within the trap is assessed and contrasted with other existing cash transfer programs, with results that support a further implementation analysis. These assessments constitute a novel application of feedback controllers that, besides effectively dealing with scarcity constraints, present practical advantages that are shown to translate into an ability to implement the MPC or PID controller in a variety of ways for low-income individuals via computer-assistive methods (e.g., a cell phone).
+Index Terms-- Feedback control, model predictive control (MPC), poverty trap, proportional-integralderivative (PID) control, reliability, safety net.
+I. INTRODUCTION
+H UMANITY is facing significant challenges to improve the quality of life of more than 1 billion people that live in extreme poverty. Engineers are increasingly committing themselves to developing and implementing technologies that improve the overall welfare of the poor [1], proposing practical applications based on the empirical and theoretical findings in the context of social, political, and economical systems. This brief introduces the use of "feedback control engineering" to help poor manage their financial lives.
+This brief aimed at alleviating poverty has identified best practices to overcome poverty, as noted in [2] and [3]. The optimal allocation of investment and consumption has been studied in [4], with extensions to household finance
+Manuscript received June 20, 2016; revised August 27, 2016; accepted September 25, 2016. Date of publication December 9, 2016; date of current version October 9, 2017. Manuscript received in final form November 20, 2016. Recommended by Associate Editor S. Di Cairano.
+The authors are with the Department of Electrical and Computer Engineering, Ohio State University, Columbus, OH 43210 USA (e-mail: gonzalezvillasanti.1@osu.edu).
+Color versions of one or more of the figures in this paper are available online at http://ieeexplore.ieee.org.
+Digital Object Identifier 10.1109/TCST.2016.2632524
+
+in [5], and some insights into households in developing economies can be found in [6]. Viewing economic systems as evolving dynamical systems, where agents need to adapt themselves to a changing environment, can lead to a holistic view of the phenomena and the design of better tools to help with the pressing need for managing the economic lives of the poor.
+Various publications stress the importance of providing better tools for the financial lives of the poor [2], [7]­[9]. In [7], three fundamental financial needs are identified from a survey of 250 households from South Asia and South Africa. The first of these needs is to cope with irregular income to meet daily basic needs. The second is to deal with "shocks," even with low savings, and the third is to find strategies to accumulate larger sums of money via savings. This last need is considered as significant importance in [2], where, after analyzing individuals in 49 villages in Thailand, the authors concluded that the households that could accumulate savings by any means often dealt better with uncertainties and shocks.
+Treating an economic agent and the local market as a dynamical system opens the possibility of employing feedback controllers both in economics [10]­[12] and finance [13], [14]. Furthermore, controllers to manage budgets, overcome savings, and credit constraints could become tools to overcome low financial literacy of people in poverty [15], and achieve resilience by adapting to the changing environment when dealing with risk and uncertainties. A potential framework for the implementation of these controllers could be a microfinance institution that deals with individuals (households), and mainly small-scale entrepreneurs, seeking to improve their well-being and escape poverty. There has been a broad consensus among scholars on the role of microfinance as a tool to alleviate poverty [7], [8], and their close contact with people represents an attractive alternative to apply feedback controllers as financial advisors for their clients.
+Building on this brief, our goal is to model the financial life of low-income individuals and find, via feedback controllers, the decisions he/she must make in order to cope with the three needs stated above. Also, the external interventions in the form of cash transfers that must be performed in order to assist them in this financial quest are assessed, including a PID-based transfer program. Overall, this brief provides a novel and important application of feedback controllers, one that directly assists individuals in escaping poverty with mobile or PC implementation.
+II. MODEL OF ECONOMIC AGENT'S DYNAMICS
+"Households" in development economics are often portrayed as both consumption and production units, either wage earners or small entrepreneurs [16]. Building on the classical
+
+1063-6536 Š 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications_standards/publications/rights/index.html for more information.
+
+GONZALEZ VILLASANTI AND PASSINO: FEEDBACK CONTROLLERS AS FINANCIAL ADVISORS FOR LOW-INCOME INDIVIDUALS
+
+2195
+
+models of financial resource allocation between risky and risk-less assets of Merton [4] and Samuelson [17], and their subsequent improvements that introduced various constraints, we propose a discrete time multiple input multiple output stochastic model with state-dependent constraints that reflect income uncertainties, investments, risks, liquidity, and credit constraints for underprivileged households. The dynamical model presented here intends to reflect the three main challenges identified in [7], along with financial management data of poor families in [2].
+
+A. Household Dynamics
+
+In financial accounting, individual wealth is usually repre-
+sented as composed of two dimensions: assets and liabilities.
+Meanwhile, assets are classified either in current and fixed
+assets. In this brief, we model current assets as composed only of cash in hand x1(k)  R while fixed assets are modeled as x2(k)  R. We assume that all the agent's fixed assets generate income, thus referring to x2(k) as capital. We also consider that the current assets are employed to fund
+consumption and all transactions that require cash, and that
+the sale of fixed assets is done without cost or time delay. Liabilities or debt is represented with x3(k)  R. Thus, the state variable is x(k) = [x1(k), x2(k), x3(k)]T and the control or decision variable is u(k) = [u1(k), u2(k), u3(k)]T , where u1(k)  R is the agent's expenses or consumption, and u2(k)  R is the flow from capital to cash in hand in period k to fund consumption u1(k) and debt payment u3(k)  R, which is positive (negative), when it decreases (increases)
+debt. Here, we will represent an agent who, at each time
+step, must decide how much to consume for a household's needs, how much to invest into the working capital x2(k) to secure future income, how much to decrease or increase debt x3(k), and how much to save, i.e., increase cash in hand x1 in order to overcome uncertain income and possible shocks. The
+model is
+
+
+
+
+
+3
+
+x1(k + 1) = x1(k) - u j (k) (1 - s1(k)) (1a)
+
+j =1
+
+x2(k + 1) = (x2(k) + u2(k))(1 + i2(k) - s2(k)) (1b)
+
+x3(k + 1) = (x3(k) - u3(k))(1 + i3)
+
+(1c)
+
+where i2(k)  R is a random return on the capital invested x2(k). As the markets in developing countries evolve in a different way than in the developed world and there is a gap
+in the literature in representing those markets, we chose to model this variable as i2(k) =  +  (k), where m is the expected or mean return on the investment and  (k) is a zero mean Gaussian random variable. Furthermore, i3  0 is the debt interest rate, and the random variables s1(k)  0 and s2(k)  0 represent negative shocks to cash in hand and working capital, respectively, e.g., unexpected healthcare cost
+or damage to assets by natural disasters. They are modeled as
+independent and uncorrelated discrete time events with specific
+probability mass functions defined below.
+
+B. Constraints The constraints on the control space can be modeled as
+
+u1(k)  cmin  0
+
+(2a)
+
+u2(k)  -x2(k)
+
+(2b)
+
+u3(k)  x3(k) - clim
+
+(2c)
+
+u1(k) + u2(k) + u3(k)  x1(k)
+
+(2d)
+
+where the lower bound on u1(k) is the subsistence constraint or minimum consumption needed to survive. The lower bound on u2(k) is the available amount for disinvestment and the lower bound corresponding to u3(k) is determined by the available amount to withdraw as credit, which is the difference between the amount owed and the credit limit clim  0. Next, the upper bound on the sum u1(k) + u2(k) + u3(k) is the liquidity constraint, and it simply implies that at the beginning of each
+period k, the agent cannot create a budget that will deplete all of his cash in hand, and if the desired consumption u1(k) is greater than the available cash, i.e., if u1(k) > x1(k), then the deficit must be covered by the working capital x2(k) via u2(k) < 0 and/or via debt with u3(k) < 0 as explained above.
+
+C. Objective Function
+With this model, we will try to develop controllers that help the agent to build savings that will make him/her more resilient to shocks and uncertainty. Our goal is not to model the agent's behavior by employing cost functions, such as the constant relative risk aversion utility function or other standard isoelastic cost function [18]; instead, we seek to minimize a running quadratic cost over a finite horizon with target states x   R2 and controls u  U
+g(x , u) = |x (k)-x |T Q|x (k)-x |+|u(k)-u|T R|u(k)-u|. (3)
+The parameters of Q and R assign weights to consumption, the desire to quickly accumulate assets, or the commitment to pay debt. Although these values correspond to behavioral traits and a connection that can be drawn with standard economic terms, such as impatience and risk aversion, more research is needed to properly establish this connection. Here, we distance ourselves from the economic questions and instead focus on performance and reliability assessment. Throughout this brief, we make the assumption that the agents have perfect knowledge of the states, i.e., the agent has information about his/her cash in hand, working capital, and debt, which is usually the case for individuals or households with a basic level of financial literacy. This avoids the need for estimators and observers for the state.
+III. HOUSEHOLD ECONOMIC DECISION MAKING USING FEEDBACK
+A. Dynamic Programming
+A very common method employed to solve dynamic economic models, such as the one above, is dynamic programming (DP). Using the terminology found [19], the basic problem in DP uses
+x(k + 1) = fk (x(k), u(k), w(k)), k = 0, 1, . . . , N - 1
+
+2196
+
+IEEE TRANSACTIONS ON CONTROL SYSTEMS TECHNOLOGY, VOL. 25, NO. 6, NOVEMBER 2017
+
+where the state x(k) is an element of S(k) and control u(k)  Uk(x(k)). The random disturbance w(k) is assumed to be independent of the past values of the disturbance. Using the principle of optimality, an optimal control policy is found employing the following routine, which proceeds backward in time from period N - 1 to period 0 by
+
+Solving an open loop problem allows us avoid the complications of the curse of dimensionality, yet recomputation at each step while in a feedback loop leads to good performance (as has been seen in a multitude of very complex industrial applications [23]).
+
+JN (xN ) = gN (xN )
+
+(4)
+
+Jk(x(k)) = min E {gk(x(k), u(k), w(k))
+u(k)Uk w(k)
+
++ Jk+1( fk(x (k), u(k), w(k)))}
+
+(5)
+
+for k = 0, 1, . . . , N - 1
+
+J0(x0) = J (x0).
+
+In general, a closed-form solution for the DP routine is not possible except for some special cases. One typically has to resort to a discretization of the state space and proceed with a numerical computation. The computational effort that increases with the number discretization points leads to the "curse of dimensionality," which implies that the realistic models with a large number of variables can quickly become intractable in terms of computational analysis and implementation. Numerical methods to overcome the curse have been proposed in [20] and [21], although the computational cost still remains high for practical implementation, as seen in this brief. Here, we considered the problem as an infinitehorizon stochastic shortest path problem and solve it via policy iteration, employing a scattered data interpolation algorithm.
+
+B. Model Predictive Control Model predictive controller (MPC) features the explicit use
+of a model to predict the economic system's behavior, and the calculation of a control sequence minimizing a cost function with a receding horizon strategy. The process is repeated at each time step with the use of the output measurements. The MPC resembles human decision making with the use of a model (mental model of the process) [22]. To present the formulation, suppose we have
+x(k + 1) = fk (x(k), u(k), w(k)), k = 0, 1, . . . , N - 1
+with the same assumptions as DP with respect to x(k)  Sk and u(k)  Uk(x(k)). Then, the MPC algorithm proceeds as follows at each time k.
+1) Given a time horizon k + m, find a controller sequence {u(k), u(k + 1), . . . , u(k + m - 1)} that minimizes
+k+m-1
+gi (x(i ), u(i ))
+i =k
+subject to the constraints
+x(i + 1) = fi (x(i ), u(i )) u(i )  Ui , i = k, k + 1, . . . , k + m - 1.
+2) Apply the control input
+(x(k)) = u(k).
+3) Return to step 1 until the final time N.
+
+C. Proportional-Integral-Derivative Control
+A widely successful controller for many industrial applications is the proportional-integral-derivative (PID) controller. An advantage of this controller is that no prior knowledge of the plant parameters is required and yet, via appropriate tuning, good performance is often obtained even for nonlinear models with random variables, as is the case here. PID control is the most widely implemented feedback controller in the world, with successful application to countless challenging feedback control problems.
+1) Formulation: As the PID controller does not explicitly consider the minimization of a cost function in its usual form, we build a reference vector r (k), where the reference trajectories are ramps from the initial condition x0 to the desired values x with given slopes for each state, denoted by the vector S. The goal of the controller will be to drive the error e(k) = r (k) - x(k) to zero, where the reference vector r (k) is
+r (k) = min{x0 + k S, x }.
+
+We define a PID controller as the feedback law correspond-
+ing to each input ui (k) for i  {1, 2, 3}. Each controller produces an input based on the error value defined as ei (k) = ri (k) - xi (k), then
+
+ui (k) = Pi (k) + Ii (k) + Di (k) for i  {1, 2, 3}
+
+where
+
+Pi (k) = K p,i ei (k), Ii (k) = Ii (k - 1) + Kt,i ei (k)
+
+and
+
+Di (k) =
+
+K d ,i Kd,i + Kn,i
+
+Di (k
+
+-
+
+1)
+
++
+
+Kd,i Kn,i Kd,i + Kn,i
+
+(ei (k)
+
+-
+
+ei (k
+
+-
+
+1))
+
+where Pi (k), Ii (k), and Di (k) are the proportional, integral, and derivative terms and in the same way, the constants K p,i , Kt,i , and Kd,i are the proportional, integral, and derivative gains, and Kn,i is the "filter coefficient."
+To tune the controller gains for the three PID controllers, simulations were performed to find the parameters that minimize both the error vector e(k) = [e1(k), e2(k), e3(k)]T and at the same time make the controller reliable, defined in this brief as the ability to avoid "management failures," i.e., the
+event where, at some time period k, the controller is unable to find a solution within the feasible set Uk. The management failure event represents the situation, where there is not enough
+liquidity to ensure the acquisition of basic needs to ensure subsistence. We develop a "projection algorithm" to ensure
+that the control input remains in the feasible set Uk.
+
+GONZALEZ VILLASANTI AND PASSINO: FEEDBACK CONTROLLERS AS FINANCIAL ADVISORS FOR LOW-INCOME INDIVIDUALS
+
+2197
+
+IV. RESULTS
+In the first part of this section, we will show results for time trajectories, computational complexity, and goal attainment performance for the three controllers implemented. In the second part, further assessment on disturbance rejection, reliability, and cash transfer is performed on the MPC and PID controllers.
+
+A. Simulation Parameters
+The time length considered is N = 150 weeks, with the sample interval equal to one week. The random return on investment is
+
+i2(k) =  +  (k).
+
+In the following simulations, we chose   0.22, 0.4, which
+
+lie within the range found in [2]. The volatility of the return
+
+on the investment  (k) follows a discrete normal distribution
+
+with zero mean and standard deviation  = /4. Furthermore,
+
+the variables s1(k) and s2(k), corresponding to discrete shocks,
+
+were generated in the following way [24] and both follow the
+
+same probability mass function
+
+
+
+p(s1(k))
+
+=
+
+p(s2(k))
+
+=
+
+00..9081 00..000055
+
+if s1(k) = 0 if s1(k) = 0.2 if s1(k) = 0.3 if s1(k) = 0.5.
+
+(6)
+
+The minimum consumption is umin = 6.7 that represents an expenditure of around $0.95 per day for an individ-
+
+ual. Lower amounts are not considered as the spirit of
+
+these financial advisors is to keep a relative dignified liveli-
+
+hood across the process. The initial conditions were cho-
+
+sen to be x (0) = [cmin, clim, 0]T to denote an agent that
+
+who can access a credit equal to his/her initial endow-
+
+ment. The reference state and input values are x =
+
+[80, 200, 0]T and u respectively. Matrices
+
+= Q
+
+=[x2d(iag/[10+.8x)(,2-)/xx2((1/),11+, 0.6)],
+
+0]T , and
+
+R = diag[3x(2)/u(1), 0, 0] are designed to represent an
+
+individual with higher priority to consume, followed by the
+
+desire to accumulate capital and cash in hand. Hence, the
+
+goal is to increase capital and at the same time increment
+
+the consumption while managing the debt.
+
+B. Performance
+With respect to controller parameters, for the DP approach, we had to discretize both the state and control spaces and build a finite Markov chain to obtain a desired feedback law within our computational capabilities. For this, we chose x1(k)  [0, 90], x2(k)  [0, 250], x3(k)  [0, clim], u1(k)  [6.7, 90], u2(k)  [-90, 50}, and u3(k)  [clim, clim]. We employ 15 discretization points for each variable and use a scattered data interpolation algorithm based on triangulation of the points on the optimal policy and state space. With this, we avoid the computational intensive methods of approximate policy iteration, which usually require a large number of simulations to train a neural network that approximates the cost-to-go function. To discretize the random variable  (k), we employ a
+
+binomial distribution. For the MPC, the prediction horizon was chosen as m = 15 simulating that the controller would have an estimation of the mean return on investment micrometer of up to fifteen weeks. We tuned the PID controllers to obtain a good compromise between tracking and reliability performance. We chose, after tuning, for PID controller 1, K p,1 = -1.1025, Kt,1 = -0.6615, and Kd,1 = 0, for PID controller 2, K p,2 = 1.1025, Kt,2 = 0.6615, and Kd,2 = 0, and for PID controller 3, K p,3 = -1.1025, Kt,3 = -0.0662, and Kd,3 = 0. We also determined PID's ramp slope to allow higher consumption and maintain reliability by reaching the desired values at the 25th week.
+To show the results of tracking performance, we evaluate time trajectories for the three controllers, for two different cases: 1) a relatively well endowed and skilled individual with  = 0.4 and clim = 50 and 2) an unskilled individual with low initial capital and credit limit, with  = 0.22 and clim = 25. All simulations were performed under the same sequence of random numbers, and to simplify the implementation of the DP controller, we chose s1 = 0 in these first round of simulations. Fig. 1 shows the results of x(k) and u(k) for DP, MPC, and PID controllers for case 2). It can be seen that the MPC and DP provide a "smoother" regulation around the desired consumption than the PID whose tuning set points are seen in the more "aggressive" behavior. However, the PID shows that it is practical to climb the ramp toward the desired state while managing debt. In the initial stages of the simulation, all controllers reduce consumption to the minimum while accumulating assets that generate income. Also, notice the reaction of the controllers to a shock: the MPC and DP incur a debt and repay the loan in several weeks in order to maintain consumption as high as possible, whereas the PID projection algorithm responds by practically not taking any loans and instead, it reduces consumption. This is due to the fact that the desired consumption was not explicitly used in the PID formulation and that the projection algorithm finds the closest point in the control space Uk from the output of the PID. Fig. 2 shows results for average wealth (x1 + x2 - x3) over time using Monte Carlo simulations with 1500 runs for the unskilled and skilled cases. The boxes edges correspond to first and third quartiles, the notches represent median, and the outer horizontal lines are within a distance of 1.5 interquartile distance from the median. We see that although the DP controller uses an interpolation of its discrete state space, it achieves a similar performance than the MPC, specially for the skilled case, when the individual is well endowed to achieve the desired wealth. The PID shows its ability to track the reference trajectory, showing little variance between Monte Carlo runs.
+C. Computational Complexity
+To further compare the strategies, an analysis of computational complexity is performed, measuring the time in seconds to perform the controllers' computation within the simulation on a PC and the memory used to store the required variables. To compute the time, we use the tic/toc function in MATLAB that uses internal sources of time service. This analysis is
+
+2198
+
+IEEE TRANSACTIONS ON CONTROL SYSTEMS TECHNOLOGY, VOL. 25, NO. 6, NOVEMBER 2017
+TABLE I PROCESSING TIME IN SECONDS
+
+The preprocessing stage refers to any process that occurs before the actual simulation and in this specific case, it only refers to the time and memory employed to obtain the optimal policy for the DP, where the effects of the curse of dimensionality are clearly seen, especially in terms of memory use. With respect to the actual simulation time, the MPC processing time is 37 times higher than the PID, basically because of the optimization process that has to be performed at each iteration in the MPC. The extensive time and memory required to compute the optimal policy for the DP case makes the analysis performed in Sections IV.D and IV.E very lengthy, where variations in the model parameters are considered. This fact will make the DP approach infeasible in cases where there exists uncertainty about the process parameters, and several preprocessing processes would be needed.
+
+Fig. 1. Time trajectories for cash in hand x1, capital x2, debt x3, consumption u1, investment u2, and debt payment u3 for a poorly endowed, unskilled individual. Dotted lines: desired state and control input. (a) DP controller. (b) MPC. (c) PID controller.
+Fig. 2. Median (notch), first and third quartiles (box edges) of average wealth for DP (yellow), MPC (red), and PID (blue). Dotted line: desired wealth.
+
+D. Disturbance Rejection
+To further assess the performance of the controllers, we analyze the disturbance rejection behavior for two sources of uncertainties in the model: the multiplicative disturbance on the volatility of the return on investment  (k) and the effect of the agent not following the advice, represented by the random vector z(k), which is a Gaussian additive input disturbance with mean 1. Hence, in the latter case, the actual consumption is u1(k) = u1(k)+z(k), i.e., on average, the agent is consuming more and investing less than what is suggested. Taking  = 0.3 and clim = 66.67, x  = [80, 300, 0], the plot in the top of Fig. 3(a) shows the effects of  on wealth w(k) = x1(k)+ x2(k)- x3(k) for the MPC, with the horizontal lines as the median wealth for a 2000 run Monte Carlo simulation, and the bottom and top edges of the boxes are the first and third quartile. The dotted line represents the desired value for wealth. The bottom plot of Fig. 3(a) shows the same result, now with respect to the standard deviation of input disturbance z(k) and fixing  = 0.075. Fig. 3(a) shows similar results for the PID controller. It can be seen that both MPC and PID maintain wealth close to its desired value despite the uncertainties. Although when  is higher than 0.267, or roughly 90% of the mean return on investment micrometer, the PID performance degrades abruptly again due to the constraints in the model that leads to management failures, while the MPC does good tracking of desired wealth. With respect to input disturbance rejection, we see that for the values chosen, all controllers maintain wealth close to the desired value, with the PID controller performing better by allowing less deviation from the reference.
+
+of particular importance when projecting the feasibility of an E. Reliability actual implementation of the controllers in real environments In Section IV-D, we showed that the consumption and debt with mobile phones or PCs. Results are shown in Table I. payment must be held at the minimum values, and maximum
+
+GONZALEZ VILLASANTI AND PASSINO: FEEDBACK CONTROLLERS AS FINANCIAL ADVISORS FOR LOW-INCOME INDIVIDUALS
+
+2199
+
+Fig. 3. 2000-run Monte Carlo simulation results showing the median wealth (red horizontal lines) of the sample, with the bottom and top edges of the boxes representing the 25th and 75th percentile, respectively, for various values of the standard deviation of the volatility of the return on investment  (k) (top) and the standard deviation of the input disturbance z(k) (bottom) for (a) MPC and (b) PID controllers.
+capital investment must be set to achieve the desired wealth quickly. However, it has to be clarified that not all agents are sufficiently endowed to climb that wealth ramp, and suffer the effects of the scarcity constraints. In [7], is it described how agents with low skills and low initial capital perform several transfers between cash in hand, capital, and debt in order to secure consumption and subsistence. Considering those issues, the aim of this section is to show how the feedback controllers perform in situations, where the effects of the input constraints in (2a)­(2d) are more severe. To measure such performance, we define a reliability index, which takes a value of zero (0) if the simulation failed with a management failure as defined in Section III-C1, whereas it takes value one (1) if the run has not failed. Fig. 4 shows average reliability index results using 2000 runs in a Monte Carlo simulation for the three controllers. The axes are the mean return on investment micrometer and initial capital x2(0) = clim. Here, the plots correspond to the MPC (top) and PID (bottom). The plots present two clearly differentiated zones and an intermediate zone. The zone to the top-right of the plot corresponds to agents endowed well enough to reach the desired states and control inputs without failures, whereas the number of agents achieving that
+
+Fig. 4. 2000-run Monte Carlo simulation results for reliability index for various values of mean return on investment m and initial capital x2(0) for (a) MPC and (b) PID controllers. Values close to zero (one) implies higher (lower) number of management failure cases.
+is zero for households with initial wealth and mean return on investment that lies in the bottom-left of the plot, in the "management failure zone." We can see that both MPC and PID show very similar reliability performance. Note that the red dots in the plots represent the individual parameters used in the simulations in Fig. 1.
+These results show what can be interpreted as a "poverty trap," using the terms defined in [25], where the low ability to obtain income (low micrometer) and low initial endowment hinder the possibility of reaching the desired wealth and spending. However, in [25], the poverty trap is a consequence of multiple equilibria in a nonlinear system, whereas in our case, it can be argued that the set of points whose initial conditions are in the trap are not included in any positive invariant set for closed loop system as defined in [26]. Thus, according to the same reference, the system does not show persistent feasibility, implying that there is no control law that can steer the system to the desired values without violating the constraints.
+F. PID-Based Cash Transfer Program
+As we argued above, some agents will not be able to reach the desired wealth despite the use of the financial advisors due to system's properties and parameters. As the goal of this brief
+
+2200
+
+IEEE TRANSACTIONS ON CONTROL SYSTEMS TECHNOLOGY, VOL. 25, NO. 6, NOVEMBER 2017
+
+is to explore an alternative to assist low income people in their
+
+quest for financial reliability, it is convenient to ask, which
+
+are some efficient ways to help them beyond the scope of the
+
+tools we propose. For this, we select agents with characteristics
+
+that lie inside the "poverty trap" described above and assume
+
+that they employ the MPC financial advisor. Then, we analyze
+
+three prospective interventions or aid programs to assist these
+
+agents: 1) weekly cash transfers into x1(k), usually framed as
+
+"unconditional cash transfers;" 2) a lump sum cash transfer
+
+into x1(k) performed once at the beginning of the simulation; and 3) weekly "controlled" cash transfers onto x1(k). We use the word "controlled" to denote the fact that the amount of
+
+the transfer will be the output of a PI controller that has as an
+
+input the difference between the individual's current wealth
+
+and a desired wealth trajectory, modeled here as a ramp,
+
+similar to the implemented for the PID controllers above.
+
+We assume that the transfers are only performed during the
+
+first 30 weeks of the simulation. We compare the transfer
+
+methods by measuring performance in terms of mean and
+
+standard deviation of the reliability index for several fixed
+
+funding amounts available for transfer programs and degrees
+
+of uncertainty. We define the degree of uncertainty with a "risk
+
+parameter" P  [0, 0.2] as follows: shocks s1 and s2 will vary
+
+according to
+
+
+
+p(s1(k))
+
+=
+
+p(s2(k))
+
+=
+
+11/-3 PP 11//33 PP
+
+if s1(k) = 0 if s1(k) = P if s1(k) = 2P if s1(k) = 3P.
+
+(7)
+
+An input disturbance, i.e., the effect of the individual not following the advice, will also be modeled in terms of P with a Gaussian random variable with mean 10P and standard deviation P/10. We take  = 0.15, cmin = 6.7, and clim = 30 to simulate an individual in the management failure zone. PID controller parameters are taken to be K p = 0.95, Ki = 0.15, and Kd = 0, tuned to provide higher reliability, and the wealth reference ramp is designed such that the desired wealth is achieved in a year, in the 52nd week. Fig. 5 shows the performance results for each transfer program. The top plot of Fig. 5(a) shows mean wealth reliability index and the bottom plot shows its standard deviation for a 2000-run Monte Carlo simulation for the distributed cash transfer program, while the results for the lump sum and controlled transfer programs are shown in Fig. 5(b) and (c), respectively. Both the lump sum and the controlled program show higher values of reliability index than the distributed weekly cash transfers for the lower amounts of program funding. The standard deviation is high for the values of funding and P, where the programs transition from failure (reliability = 0) to success (reliability = 1). These observations show the clear effect of the poverty trap and the importance of a "big push" provided by large transfers at the beginning of the program to overcome the trap. The controlled transfer program seems to provide a similar performance than the lump sum program both in terms of mean and standard deviation, with a small advantage when it comes to low values of program funding. Although the results are promising for the PID-based cash transfer program, more analysis is needed
+
+Fig. 5. 2000-run Monte Carlo simulation results for mean (top) and standard deviation (bottom) of the reliability index for various values of program funding and risk parameter P for (a) distributed cash transfer, (b) lump sum transfer, and (c) controlled transfer.
+to determine which program is viable, such as availability of funds at the beginning of the simulation for the lump sum program or if the controlled transfer program could be implemented with an estimate of the individual's wealth (relaxing the assumption that he/she uses the financial advisor), among others.
+
+GONZALEZ VILLASANTI AND PASSINO: FEEDBACK CONTROLLERS AS FINANCIAL ADVISORS FOR LOW-INCOME INDIVIDUALS
+
+2201
+
+V. CONCLUSION
+We have evaluated three feedback controllers that could help manage the financial lives of the poor. Based on a tracking performance similar to the one shown by the DP controller with lower computational effort, along with adequate disturbance rejection behavior, we conclude that the MPC and PID controllers are viable tools to help manage the financial lives of the poor, with the advantage of smoother consumption patterns provided by MPC, which is a desired feature when considering real implementations. The reliability results also showed that both PID and MPC can manage the financial lives of low-skilled and low-endowed agents but only up to a certain threshold, beyond which external intervention is needed to ensure present and future subsistence under limited resources. The controllers allowed households to be better prepared to deal with uncertain income and shocks via proper management of their financial life, building the savings that may grant them the ability to perform the necessary investments to improve their well-being. We also tested a PID-based cash transfer program, with similar reliability improvement results to those obtained with a lump sum transfer method. Future work could be done on modeling the dynamics of the return on the investment i2(k), including the effects of education, health, and market factors, using adaptive control and estimation methods. It would be interesting to incorporate the findings in behavioral economics into the design of the controllers. In addition, the effects of cooperation/competition between agents via decentralized control techniques could be considered.
+REFERENCES
+[1] K. M. Passino, Humanitarian Engineering: Advancing Technologies for Sustainable Development, 3nd ed. Columbus, OH, USA: Bede Publishing, 2016.
+[2] A. Pawasutipaisit and R. M. Townsend, "Wealth accumulation and factors accounting for success," J. Econ., vol. 161, no. 1, pp. 56­81, 2011.
+[3] S. Rutherford, The Poor and Their Money. Oxford, U.K.: Oxford Univ. Press, 2001.
+[4] R. C. Merton, "Optimum consumption and portfolio rules in a continuous-time model," J. Econ. Theory, vol. 3, no. 4, pp. 373­413, 1971.
+[5] J. Y. Campbell and L. M. Viceira, "Consumption and portfolio decisions when expected returns are time varying," Nat. Bureau Econ. Res., Tech. Rep. 5857, vol. 114, pp. 433­495, 1999.
+
+[6] F. J. Zimmerman and M. R. Carter, "Asset smoothing, consumption smoothing and the reproduction of inequality under risk and subsistence constraints," J. Develop. Econ., vol. 71, no. 2, pp. 233­260, 2003.
+[7] D. Collins, J. Morduch, S. Rutherford, and O. Ruthven, Portfolios of the Poor: How the World's Poor Live on Two Dollars a Day. Princeton, NJ, USA: Princeton Univ. Press, 2009.
+[8] D. Hulme and P. Mosley, Finance Against Poverty. Evanston, IL, USA: Routledge, 1996.
+[9] J. Zollmann, "Kenya financial diaries: shilingi KWA shilingi--The financial lives of the poor," FSD Kenya, Nairobi, Kenya, Tech. Rep., 2014.
+[10] D. A. Kendrick, Stochastic Control for Economic Models. New York, NY, USA: McGraw-Hill, 1981.
+[11] J. Segupta and P. Fanchon, Control Theory Methods in Economics. Norwell, MA, USA: Springer, 1997.
+[12] T. F. Cosimano, "Optimal experimentation and the perturbation method in the neighborhood of the augmented linear regulator problem," J. Econ. Dyn. Control, vol. 32, no. 6, pp. 1857­1894, 2008.
+[13] F. Herzog, G. Dondi, and H. P. Geering, "Stochastic model predictive control and portfolio optimization," Int. J. Theor. Appl. Finance, vol. 10, no. 2, pp. 203­233, 2007.
+[14] V. V. Dombrovskii, D. V. Dombrovskii, and E. A. Lyashenko, "Predictive control of random-parameter systems with multiplicative noise. Application to investment portfolio optimization," Autom. Remote Control, vol. 66, no. 4, pp. 583­595, 2005.
+[15] D. Karlan, A. L. Ratan, and J. Zinman, "Savings by and for the poor: A research review and agenda," Rev. Income Wealth, vol. 60, no. 1, pp. 36­78, 2014.
+[16] J. E. Taylor and I. Adelman, "Agricultural household models: Genesis, evolution, and extensions," Rev. Econ. Household, vol. 1, no. 1, pp. 33­58, 2003.
+[17] P. A. Samuelson, "Lifetime portfolio selection by dynamic stochastic programming," Rev. Econ. Statist., vol. 51, no. 3, pp. 239­246, 1969.
+[18] A. Mas-Colell, M. D. Whinston, and J. R. Green, Microeconomic Theory. New York, NY, USA: Oxford Univ. Press, 1995.
+[19] D. P. Bertsekas, Dynamic Programming and Optimal Control, vol. 1. Belmont, MA, USA: Athena Scientific, 1995.
+[20] D. P. Bertsekas and J. N. Tsitsiklis, Neuro-Dynamic Programming. Belmont, MA, USA: Athena Scientific, 1996.
+[21] H. J. Kushner and P. G. Dupuis, Numerical Methods for Stochastic Control Problems in Continuous Time. Hamburg, Germany: Springer-Verlag, 2001.
+[22] K. Passino, Biomimicry for Optimization, Control, and Automation. London, U.K.: Springer-Verlag, 2005.
+[23] S. J. Qin and T. A. Badgwell, "A survey of industrial model predictive control technology," Control Eng. Pract., vol. 11, no. 7, pp. 733­764, 2003.
+[24] C. B. Barrett, M. R. Carter, and M. Ikegami, "Poverty traps and social protection," World Bank, Social Protection, Washington, DC, USA, Tech. Rep. 0804, 2008.
+[25] P. M. R. Carter and C. B. Barrett, "The economics of poverty traps and persistent poverty: An asset-based approach," J. Develop. Studies, vol. 42, no. 2, pp. 178­199, 2006.
+[26] F. Borrelli, A. Bemporad, and M. Morari. (2015). Predictive Control for Linear and Hybrid Systems, 2015. [Online]. Available: http://www.mpc.berkeley.edu/mpc-course-material
+
+
+

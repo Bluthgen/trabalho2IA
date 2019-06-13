@@ -1,0 +1,3067 @@
+402
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+Option Pricing With Application of Levy Processes and the Minimal Variance Equivalent Martingale Measure Under Uncertainty
+Piotr Nowak and Michal Pawlowski
+
+Abstract--This paper is dedicated to European option pricing under assumption that the underlying asset follows a geometric Levy process. The log-price of a primary financial instrument has the form of a sum of a drift component, a Brownian component, and a linear combination of time-homogeneous Poisson processes, modeling jumps in price. In our approach we apply stochastic analysis, especially the change of probability measure techniques, as well as fuzzy sets theory. To obtain the option valuation formulas we use the minimal variance equivalent martingale measure, which requires an advanced analysis of transformation of Levy characteristic triplets. We obtain analytical option valuation expressions in crisp case. Moreover, we assume that some model parameters are described in an imprecise way and therefore we use their fuzzy counterparts. Applying fuzzy arithmetic, we take into account various types of uncertainty on the market. As a result, we obtain the analytical option pricing formulas with fuzzy parameters. We also propose a method of automatized decision making, which utilizes the fuzzy valuation formulas. Apart from the general pricing expressions, we provide numerical examples to illustrate our theoretical results.
+Index Terms--Decision making, fuzzy logic, option pricing, stochastic processes.
+I. INTRODUCTION
+T HE traditional Black­Scholes model [1] is a cornerstone of financial mathematics, especially the theory of option pricing. In this model, the authors assume that the underlying asset prices evolve in continuous time and they are described by a geometric Brownian motion S. The main advantages of their approach are the closed analytical European option valuation expression [2] and the completeness of the Black­Scholes financial market model. Along with these benefits, the mentioned approach also has various drawbacks. Inter alia, in contradiction to theoretical assumptions concerning normality of distribution of log-returns of S, they are leptokurtic and skewed to the left [3] on the real market. In addition, the volatility smile is a widely known empirical phenomenon [4], [5].
+Manuscript received June 25, 2015; revised October 21, 2015, May 6, 2016, and August 15, 2016; accepted October 14, 2016. Date of publication December 9, 2016; date of current version March 29, 2017.
+P. Nowak is with the Systems Research Institute, Polish Academy of Sciences, Warsaw 01-447, Poland (e-mail: pnowak@ibspan.waw.pl).
+M. Pawlowski is with the Institute of Computer Science, Polish Academy of Sciences, Warsaw 01-248, Poland (e-mail: m.pawlowski@phd.ipipan.waw.pl).
+Digital Object Identifier 10.1109/TFUZZ.2016.2637372
+
+Many improvements and alternatives for the Black­Scholes model have been proposed in the financial literature. Application of various types of Levy processes for description of logprices of underlying assets is an important research trend in the theory of option pricing. Since the literature concerning the mentioned applications of Levy models is very rich, we only recall several interesting examples. Merton [6] proposed the sum of a drifted Brownian motion and a compound Poisson process with jump sizes following the normal distribution as the log-price process, assuming simultaneously that jump risk is not systematic. In [7] and [8], the European and path-dependent options applying a jump diffusion model with the asymmetric double exponential distribution of jump magnitudes were priced. A further development of this approach was presented in [9]­[14]. Very known and popular are pure jump Levy models: the normal inverse Gaussian model proposed in [15] and the variance gamma model considered in [16].
+In the primary financial instrument model proposed in this paper we take into account the fact that the asset price is subject to jumps. Our log-price model Y is a Levy process, which is a sum of a drifted Brownian motion and a linear combination of Poisson processes modeling jumps in the financial instrument prices. In order to derive the option pricing formulas, we use stochastic analysis and fuzzy sets theory.
+Within stochastic analysis, application of the martingale theory to pricing derivatives is very important in our considerations. We apply minimal variance equivalent martingale measure (MVEMM), described by Miyahara in [17], as the equivalent martingale measure. MVEMM, similarly as other minimal distance martingale measures, appears when the utility-functionbased martingale measure is studied [17]. Therefore, the applied measure is important for applications. Apart from the martingale measure, Levy characteristic triplets [18] are used to derive the arbitrage-free prices of the European options.
+As we have noted, we also use some elements of fuzzy sets theory [19], especially the extension principle and fuzzy arithmetic. Very often it is unreasonable to choose market parameters as crisp numbers and estimate them with the application of statistical methods, since their future fluctuation is possible [20]. In our approach we take into consideration the mentioned type of uncertainty, transferring experts' opinions into fuzzy numbers and introducing them to the model in the form of fuzzy parameters. Obtaining triangular fuzzy parameters based on experts' opinions was proposed, e.g., in [21], where another financial
+
+1063-6706 Š 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
+
+NOWAK AND PAWLOWSKI: OPTION PRICING WITH APPLICATION OF LEVY PROCESSES AND THE MINIMAL VARIANCE
+
+403
+
+problem was studied. In this paper, apart from the fuzzy option pricing formulas, we propose an automatized method of decision making based on the derived fuzzy prices.
+A fuzzy approach to stochastic pricing models, similar to the one proposed in this paper, was applied in the case of the traditional Black­Scholes model in [20] and [22]. An interesting method of option pricing was considered by Yoshida in [23], who assumed the geometric Brownian motion as the model of a primary financial instrument and used the rational expected option price, depending on a fuzzy goal. A jump-diffusion model was used for vulnerable options pricing in a fuzzy environment in [24]. Fuzzy reload option pricing problem was considered in [25]. In [26], fuzzy estimators for the volatility of stock returns, based on confidence intervals, were applied to option pricing. Thiagarajah et al. [27] used adaptive fuzzy numbers to model the uncertainty of volatility in the Black­Scholes model. An interesting and useful approach to option valuation is generalized hybrid fuzzy-stochastic binomial American real option model considered in [28]. Fuzzy methods of option pricing were also developed by other authors [29], [30].
+In this paper, similarly as in [31] and [32], we extended the method of option pricing under uncertainty, applied by Wu [20], [22] in the case of the classical Black­Scholes framework, by introducing jumps to the model of underlying asset prices. The main contribution of this paper is the adaptation of MVEMM in the martingale method of pricing in place of Esscher transformed and minimal entropy martingale measures considered in the previous papers. This leads to a new form of the European option pricing formulas in the crisp case which, to the best of our knowledge, were not published yet. Moreover, in comparison to [31] and [32], we describe the fuzzy option prices in a more detailed way, deriving the forms of their -level sets as functions of -level sets of the model parameters. Moreover, the proposed automatized decision-making method can be a useful tool for financial analysts. In the numerical part of this paper several sample market situations are investigated and, based on them, appropriate automatized recommendations are suggested. What is more, the membership function of the fuzzy option price is calculated and the sensitivity analysis of the price with regard to the volatility of the underlying instrument is performed.
+The paper is organized as follows. Section II is dedicated to definitions and facts from fuzzy sets theory. In Section III, we present some elements of stochastic analysis, including the MVEMM. In Section IV, we derive and prove the European call and put option pricing formulas, by using MVEMM. Section V is devoted to the valuation of European options in fuzzy environment. An automatized method of financial decision making is proposed in Section VI. In Section VII, we present numerical examples to illustrate the previously obtained theoretical results. Section VIII contains details of application of the proposed method in finance. In Section IX, we present concluding remarks and future possible direction of our studies.
+II. FUZZY ARITHMETIC--BASIC DEFINITIONS AND FACTS
+For a fuzzy subset A~ of the set of real numbers R, we use the symbol A~ to denote its membership function A~ : R  [0, 1]
+
+and the symbol A~ = {x : A~  } to denote the -level set of A~ for   (0, 1]. Additionally, A~0 denotes the closure of the set {x : A~ = 0}.
+A fuzzy number a~ is a fuzzy subset of R, with membership
+function a~ , such that 1) a~ is normal, i.e., there exists a real number x0 for which a~ (x0 ) = 1; 2) a~ is upper semicontinuous; 3) a~ is quasi-concave, i.e., a~ (x + (1 - )y)  min (a~ (x), a~ (y)), for all x, y  R and   [0, 1]; 4) the zero-level set a~0 of the number a~ is a compact subset of R. For each   [0, 1], the -level set a~ of a fuzzy number a~
+has the form of a bounded closed interval a~ = [a~L , a~U ] [33]. We denote the -field of Borel subsets of R by B (R) and the
+set of all fuzzy numbers by F (R). We call a fuzzy-number-valued map X~ :   F (R), where
+(, F) is a measurable space, a fuzzy random variable if
+(, x) : X~ () (x)    F × B (R)
+
+for every   [0, 1] (see [34] for further details). We recall basic facts concerning the arithmetic of fuzzy
+numbers. We denote the binary operators between fuzzy numbers, corresponding to standard operators +, -, ×, / of addition, subtraction, multiplication, and division between crisp real numbers by the symbols , , , and , respectively. Let and  be an operator between fuzzy numbers and the corresponding to operator between crisp real numbers, respectively. By the extension principle [35], for each a~, ~b  F (R) the membership function of a~ ~b is described by the formula:
+
+a~ ~b (z) = sup min{a~ (x), ~b (y)} .
+
+(1)
+
+(x,y ):xy =z
+
+We assume that zero does not belong to the support of ~b in a~ ~b. This assumption will be satisfied for all the operations of
+division in this paper. We denote a binary operator int, int, int or int between
+closed intervals [a, b] and [c, d] by the symbol int. If  is corresponding to int standard operator between the crisp real numbers (i.e., +, -, × or /), then
+
+[a, b] int [c, d] = {z  R : z = x  y, x  [a, b] y  [c, d]} (2)
+under the assumption that the interval [c, d] does not contain zero in the case of the interval operator of division.
+The following equalities are fulfilled:
+(a~  ~b) = a~ int ~b = [a~L + ~bL , a~U + ~bU ] (a~ ~b) = a~ int ~b = [a~L - ~bU , a~U - ~bL ] (a~  ~b) = a~ int ~b
+= min{a~L~bL , a~L ~bU , a~U ~bL , a~U ~bU },
+max{a~L ~bL , a~L ~bU , a~U ~bL , a~U ~bU }
+
+404
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+(a~ ~b) = a~ int ~b = min{a~L /~bL , a~L /~bU , a~U /~bL , a~U /~bU },
+
+max{a~L /~bL , a~L /~bU , a~U /~bL , a~U /~bU }
+
+under the assumption that -level set ~b does not contain zero for all   [0, 1] in the case of .
+
+In the further part of this paper, for each fuzzy number a~ we
+
+will denote the product (-1)  a~ by -a~ .
+
+The following proposition, quoted from [20], will be very
+
+useful in our pricing method.
+
+Proposition 1: Let f be an R-valued function such that
+
+{x  R : f (x) = y} is a compact set for each y  R. Then, the function f induces a fuzzy-valued function f~ : F (R)  F (R) via the extension principle [35]. Moreover, for each ~  F (R) the -level set of f~(~) satisfies the equality f~(~) = {f (x) : x  ~  }.
+In this paper, we will use L-R fuzzy numbers and triangular
+
+fuzzy numbers.
+
+A fuzzy number a~ is called a triangular fuzzy number if its
+
+membership function has the following form:
+
+ 
+
+x a2
+
+- a1 - a1
+
+,
+
+for a1  x  a2
+
+a~
+
+(x)
+
+=
+
+
+
+x
+a2 0,
+
+- a3 - a3
+
+,
+
+for a2  x  a3 otherwise.
+
+(3)
+
+The interval [a1 , a3 ] is called the supporting interval. The number a2 is called the modal value of a~. The triangular fuzzy number a~ will be denoted by
+
+a~ = (a1 , a2 , a3 ).
+
+We apply triangular fuzzy numbers in our numerical anal-
+
+ysis of fuzzy pricing formula for the European option (see
+
+Section VII-C).
+
+Let L, R : [0, 1]  [0, 1] be continuous strictly decreasing
+
+functions such that L(0) = R(0) = 1, L(1) = R(1) = 0. An
+
+L-R fuzzy number a~ is a fuzzy number with the membership
+
+function given by
+
+
+
+ L
+
+a2 - x a2 - a1
+
+,
+
+for a1  x  a2
+
+a~
+
+(x)
+
+=
+
+
+
+R 0,
+
+x - a2 a3 - a2
+
+,
+
+for a2  x  a3 otherwise.
+
+III. STOCHASTIC PRELIMINARIES
+This section is devoted to Levy processes and the problem of change of probability measure for option pricing. We introduce some notations and recall necessary definitions and facts concerning stochastic analysis in continuous time, including the martingale method of pricing.
+Let (, F , (Ft )t[0,T ] , P ), T < , be a filtered probability space. For an arbitrary probability measure M on (, F), we
+
+will denote the expected value with respect to M by EM . In particular, EP will be the expectation with respect to P .
+A stochastic process H = (Ht )t[0,T ] is called cadlag, if almost all its sample paths are right continuous and limited from
+the left at every point. A stochastic process H is called (Ft)-adapted [or adapted to
+the filtration (Ft)] if for each t  [0, T ] the random variable Ht is measurable with respect to the -field Ft .
+A probability measure Q on (, F) is equivalent to P if for each A  F P (A) = 0 if and only if Q (A) = 0.
+We assume that the risk-free spot interest rate is constant and
+we denote it by r. We use a cadlag stochastic process St, adapted to the filtration (Ft), as the underlying asset's price process. As a consequence, the discounted underlying asset's price process
+is given by
+
+Zt = e-rt St , t  [0, T ].
+
+(4)
+
+In order to price a financial derivative one should find a probability measure Q equivalent to P , called a martingale measure of St , for which the discounted price process Zt is a martingale. Then, the price of a financial derivative with a payment function  is described by the equality
+
+Ct = exp (-r(T - t)) EQ ( (S) |Ft ) , t  [0, T ] . (5)
+
+A cadlag stochastic process Y = (Yt )t[0,T ], Y0 = 0 a.s., is called a Levy process if it is adapted to the filtration (Ft ) and fulfills the conditions:
+1) it is stochastically continuous, i.e., for each t  [0, T ] and >0
+
+lim
+u t
+
+P
+
+(|Yu
+
+-
+
+Yt |
+
+>
+
+)
+
+=
+
+0;
+
+2) for each 0  s  t  T , the increment Yt - Ys is independent of the -field Fs ; and
+3) for each 0  s  t  T , the increment Yt - Ys and the random variable Yt-s have the same distributions.
+Jacod­Grigelionis characteristic triplet (Bt , Ct , t ), defined for semimartingales, has many applications in stochastic analy-
+sis. In particular, the semimartingale characteristics, which are
+stochastic processes, are used in mathematical finance. Their
+definition for real-valued semimartingales can be found in [18]
+and [36]. We also refer the reader to [37], where characteristic triplet (Bt , Ct , t ) was defined for quasi-left continuous semimartingales in the Hilbert space-valued case. For a Levy
+process Y , they have a deterministic form defined below (for
+details see, e.g., [18]). Let a truncation function hd have the form hd (x) = xI|x|d
+for a positive constant d. We will use the symbol M(R) to denote the space of all nonnegative measures on R.
+For each t  [0, T ] the characteristic function t () of Yt, where Y = (Yt )t[0,T ] is an arbitrary Levy process, has the following form:
+
+t () = EP eiYt = exp
+
+iBt
+
+-
+
+1 2
+
+2
+
+Ct
+
++ eix - 1 - ihd (x) t (dx)
+
+(6)
+
+R
+
+NOWAK AND PAWLOWSKI: OPTION PRICING WITH APPLICATION OF LEVY PROCESSES AND THE MINIMAL VARIANCE
+
+405
+
+where
+
+Bt : [0, T ]  R, Bt = bt
+
+(7)
+
+Ct : [0, T ]  R, Ct = ct
+
+(8)
+
+t : [0, T ]  M(R), t (dx) =  (dx) t
+
+ ({0}) = 0, |x|2  1  (dx) < 
+
+(9)
+
+R
+
+for some b  R, c = 2  0, and   M(R). Furthermore, only the value of b depends on the parameter d of the truncation
+function hd . Formula (6), describing the characteristic function of Yt for
+each t  [0, T ], is called the Levy­Khintchine formula. The triplet (Bt , Ct , t ) is the triplet of characteristics of the process Y . Thus, the Levy­Khintchine formula describes the charac-
+teristic function of a Levy process in terms of the triplet of
+its characteristics. To shorten notation, we will use the generating triplet b, 2,  as the representation of characteristics (Bt , Ct , t ), assuming that d = 1. It was proved in [17] that Y is uniquely determined by b, 2 ,  .
+The following theorem, quoted from [17], is known as Levy­
+Ito decomposition of Levy processes. Theorem 1: A Levy process Y = (Yt )t[0,T ], which corre-
+sponds to a generating triplet b, 2,  , can be decomposed as
+follows:
+
+t
+
+Yt = bt + Wt +
+
+xN~ (ds, dx)
+
+0 {|x|1}
+
+t
+
++
+
+xN (ds, dx)
+
+0 {|x|> 1}
+
+Let us assume that the discounted price process is defined by (4) for a constant interest rate r. Let
+
+Lt (f, g) = exp
+
+t 0
+
+fs dWs
+
+-
+
+1 2
+
+t
+fs2 ds
+0
+
+t
+
++
+
+g (s, x) N (ds, dx)
+
+0 -
+
+t
+
+-
+
+eg(s,x) - 1  (dx) ds
+
+0 -
+
+, t  [0, T ] (12)
+
+where W is a Brownian motion, N (dt, dx) is the Poisson random measure described by (10), and ft , gt = g (t, x), t  [0, T ] are two predictable processes such that the right-hand side of (12) is well defined. Then, we denote by QL(f,g) the equivalent
+probability measure given by the equality
+
+dQL ( f dP
+
+,g
+
+)
+
+|Ft
+
+=
+
+Lt
+
+(f, g) ,
+
+t
+
+
+
+[0, T ]
+
+where
+
+the
+
+symbol
+
+|F dQL ( f , g )
+
+dP
+
+t
+
+denotes
+
+the
+
+Radon­Nikodym
+
+density of QL(f,g) with respect to P restricted to the -field
+
+Ft .
+
+Let C be the set of pairs (f, g) of predictable processes
+
+(ft )t[0,T ] and gt = g(t, x), t  [0, T ], such that the following equality holds almost surely:
+
+b+
+
+2 2
+
++ ft  +
+
+R
+
+eg(t,x) (ex - 1) - xI|x|1 (x)
+
+ (dx) = r.
+
+(13)
+
+where Wt is a Brownian motion, N (dt, dx) is a Poisson random measure, N^ (dt, dx) = dt ˇ  (dx) is the compensator of N (dt, dx), and N~ (dt, dx) = N (dt, dx) - N^ (dt, dx).
+The Poisson random measure N (dt, dx) in the Levy­Ito decomposition is the jump measure of Y and it is defined for each Borel subset B of [0, T ] × R by the equality [38]:
+
+N (B) = # {(t, Yt - Yt-)  B} .
+
+(10)
+
+The intensity measure of N (dt, dx) is N^ (dt, dx). A stochastic process S = (St )t[0,T ] defined by the formula:
+
+Let F be a real-valued twice continuously differentiable function. The function F will be called the distance function. We introduce the set
+
+CF = {(f, g)  C and F (Lt (f, g)) is integrable} .
+
+Definition 1: Let F be a distance function. The minimal dis-
+
+tance equivalent martingale measure for F is the equivalent
+
+probability measure QF such that the Radon­Nikodym deriva-
+
+tive
+
+d QF dP
+
+satisfies the equality
+
+St = S0 exp (Yt ) , t  [0, T ]
+
+(11)
+
+where Y = (Yt )t[0,T ] is a Levy process corresponding to a generating triplet b, 2,  , is called a geometric Levy process.
+In this paper, we assume the process S describing the under-
+lying asset will have the form (11). Additionally, we assume that F = FT and for t  [0, T ]
+
+Ft =  (Su , u  [0, t]) .
+
+We define the class of minimal distance martingale measures, considered in [17]. This class of probability measures is very important in mathematical finance, similarly as the class of measures obtained by the Esscher transformation.
+
+dQF dP
+
+|FT
+
+= LT
+
+(f , g)
+
+(14)
+
+where (f , g) is a pair of predictable processes from CF , fulfilling the equality
+
+EP F (LT (f , g)) = inf EP F (LT (f, g)) .
+(f ,g )CF
+The MVEMM is the minimal distance martingale measure QL(f ,g) corresponding to the distance function F (x) = x2 . We will denote this measure by the symbol P (M V E M M ).
+In the next section, we will use the following theorem and remark, quoted from [17] (see Theorem 6.6 and Remark 6.7).
+
+406
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+Theorem 2: Let us assume that (f , g, ) is a solution of the following system of equations:
+
+f = 
+
+eg(x) - 1 =  (ex - 1)
+
+(15)
+
+2 + (1 +  (ex - 1)) (ex - 1) - xI|x|1 (dx)
+R
+
+=
+
+(16)
+
+where
+
+
+
+=
+
+r
+
+-
+
+(b
+
++
+
+2 2
+
+).
+
+Then
+
+1) the measure P (MVEMM) = QL(f ,g) is the MVEMM for
+
+St , 2) the Levy measure (MVEMM)(dx) of Y under P (MVEMM)
+
+is described by the equality
+
+(MVEMM) (dx) = eg(x) (dx).
+
+(17)
+
+Remark 1: Let us denote the generating triplet of Y under P (MVEMM) by b(MVEMM) , ((MVEMM) )2 , (MVEMM) .
+Then (MVEMM) = , (MVEMM)(dx) is described by (17), and b(MVEMM) is determined from the martingale condition.
+
+IV. PRICING WITH CRISP PARAMETERS
+
+The martingale method of pricing under the assumption of the absence of arbitrage on the market [39] is one of the most commonly used techniques in mathematical finance. To price European options we apply this method, assuming that the equivalent martingale measure is MVEMM.
+We assume that all the stochastic processes and random variables considered below are defined on the filtered probability space (, F , (Ft )t[0,T ], P ), described in the previous section. Let D be a positive integer. We assume that the underlying asset price is driven by the geometric Levy process St described by (11), where the process Yt has the following form:
+
+Yt = t + Wt + k1 Nt1 + k2 Nt2 + ˇ ˇ ˇ
+
++ kD NtD , t  [0, T ]
+
+(18)
+
+where Wt is a Brownian motion, the volatility  is posi-
+
+tive, the coefficients , k1 , k2 , . . . , kD are real numbers, and Nt1 , Nt2 ,...,NtD are Poisson processes with constant intensities 1 > 0, 2 > 0, . . . , D > 0. Furthermore, all the pro-
+
+cesses describing Y are independent. It is easy to verify that
+
+k1 , k2 , . . . , kD are the heights of jumps of the process Y .
+
+Let Nt be a Poisson process with the intensity  = 1 +
+
+2 + ˇ ˇ ˇ + D and let {i} i=1,2,... be a sequence of inde-
+
+pendent random variables taking values kj with probabilities
+
+pj
+
+=
+
+j 
+
+for j = 1, 2, . . . , D. The following lemma shows that
+
+the process defined by (18) has the same distribution as the
+
+process described by
+
+N
+
+ t
+
+Yt = t + Wt + i.
+
+(19)
+
+i=1
+
+Lemma 1: The processes given by formulas (18) and (19) have the same distributions.
+For the proof we refer the reader to Appendix A.
+
+We denote the set of all nonnegative integers by N0, and for each N > 0 the set of nonnegative integers not greater than N is denoted by N0,N . Additionally, we introduce the following notations:
+
+km = k1 m1 + k2 m2 + ˇ ˇ ˇ + kD mD
+
+and
+
+|m| = m1 + m2 + ˇ ˇ ˇ + mD
+for each m = (m1 , m2 , . . . , mD )  N0D . We denote the cumulative distribution function of the standard normal distribution by .
+Finally, we denote by CtV , PtV , t  [0, T ], prices of the European call and put option with the strike price K, obtained with application of MVEMM.
+Theorem 3: Let S be a geometric Levy process of the form (11), where the process Y is described by formula (18). Assume that the following equation:
+
++
+
+1 2
+
++
+
+
+
+D
+2 + i 1 +  eki - 1
+
+i=1
+
+has a solution  such that
+
+eki - 1 = r (20)
+
+ eki - 1 + 1 > 0, i = 1, 2, . . . , D.
+
+(21)
+
+Then MVEMM for S exists and 1) CtV for 0  t < T has the form
+
+CtV = e-V (T -t)
+
+ˇ
+m = (m 1 ,m 2 ,...,m D )N0D
+
+1V m 1 m1 !
+
+...
+
+VD m D mD !
+
+ˇ (T - t)|m | ItV ,m
+
+where
+
+2V m 2 m2 !
+(22)
+
+V = V1 + 2V + ˇ ˇ ˇ + VD
+
+ItV ,m
+
+=
+
+St
+
+e(
+
+V 1
+
+)  -r
+
+(T
+
+-t)+
+
+
+
+2
+
+(T 2
+
+-t )
+
++km
+
+dtV ,m ,+
+
+- e-r(T -t) K dtV ,m ,-
+
+V1 =  + 2 , iV = i  eki - 1 + 1 , i = 1, 2, . . . , D
+
+and for each m = (m1 , m2 , . . . , mD )  N0D
+
+dVt ,m ,- (s)
+
+=
+
+ln
+
+s K
+
++ V1 (T - t) + km  (T - t)
+
+dtV ,m ,- = dVt ,m ,- (St )
+
+dtV ,m ,+ (s)
+
+=
+
+ln
+
+s K
+
++ 1V
+
+(T
+
+- t) + 2
+
+(T
+
+- t) + km
+
+ (T - t)
+
+dtV ,m ,+ (s) = dtV ,m ,+ (St ) .
+
+NOWAK AND PAWLOWSKI: OPTION PRICING WITH APPLICATION OF LEVY PROCESSES AND THE MINIMAL VARIANCE
+
+407
+
+2) PtV for 0  t < T is described by
+
+PtV = e-V (T -t)
+
+ˇ
+m = (m 1 ,m 2 ,...,m D )N0D
+
+V1 m 1 m1 !
+
+...
+
+DV m D mD !
+
+ˇ (T - t)|m | JtV ,m
+
+V2 m 2 m2 !
+(23)
+
+where
+
+JtV ,m = e-r(T -t) K -dtV ,m ,-
+
+-
+
+St
+
+e(
+
+V 1
+
+) -r
+
+(T
+
+-t)+
+
+
+
+2
+
+(T 2
+
+-t )
+
++km
+
+
+
+-dVt ,m ,+
+
+.
+
+For the proof we refer the reader to Appendix B. In the following sections, using the Taylor expansion of function exp, we will replace the above European options pricing formulas with the following ones:
+
+CtV = e-V (T -t)
+ˇ
+m = (m 1 ,m 2 ,...,m D )N0D, N
+. . . DV m D mD !
+ˇ (T - t)|m | ItV ,m
+
+V1 m 1 2V m 2 m1 ! m2 !
+(24)
+
+and
+
+PtV = e-V (T -t)
+
+ˇ
+
+m = (m 1 ,m 2 ,...,m D )N0D, N
+
+1V
+
+m1
+
+2V
+
+m2
+...
+
+VD m D
+
+m1 ! m2 !
+
+mD !
+
+ˇ (T - t)|m | JtV ,m
+
+(25)
+
+for a sufficiently large positive integer N .
+
+V. PRICING WITH FUZZY PARAMETERS
+
+In this section, we will derive fuzzy versions of the previ-
+
+ously obtained European option pricing formulas. Introducing
+
+fuzzy parameters to the model enables consideration of uncer-
+
+tainties which arise from the estimation of their crisp values. To
+
+obtain values of the introduced parameters we can utilize the
+
+knowledge of experts. Our approach in this paper is general and
+
+arbitrary L-R fuzzy numbers can be used as the fuzzy parame-
+
+ters. However, in many situations we can obtain from an expert
+
+(often in the best-case scenario) only three numbers concern-
+
+ing the parameter: its smallest value, its greatest value, and the
+
+value, which is most likely to occur. One can transfer the three-
+
+mentioned values into a triangular fuzzy number (p1 , p2 , p3 ).
+
+If more experts' opinions are available, one can transfer them
+
+into
+
+a
+
+sequence
+
+of
+
+triangular
+
+fuzzy
+
+numbers
+
+(p(1i)
+
+,
+
+p(2i)
+
+,
+
+p(3i)
+
+N
+)i=
+
+1
+
+,
+
+where N > 1 is the number of experts and compute their average
+
+N i=1
+
+p(1i)
+
+,
+
+N
+
+N i=1
+
+p(2i)
+
+,
+
+N
+
+N i=1
+
+p(3i)
+
+N
+
+to obtain the parameter estimate. Such a method of estimation
+
+was used in [21] and [40] for financial applications. Thus, al-
+
+though in our approach the introduced fuzzy parameters can
+
+have the form of arbitrary L-R fuzzy numbers, in many practical
+
+situations they can be asymmetric triangular fuzzy numbers. We
+
+will write the symbol ~ above them to indicate the fuzziness of
+
+the considered fuzzy parameters. The parameters without ~ will
+
+be treated as crisp numbers. An approach similar to ours can be
+
+found in [20].
+
+In particular, we assume that the interest rate r and the underlying asset model parameters , , k = {ki}Di=1 ,  = {i}Di=1 are not precisely known. We replace them with L-R fuzzy numbers r~, ~, ~, k~ = {k~i}iD=1 , ~ = {~i}iD=1 . We denote their
+defuzzified versions, obtained by a maximum method (e.g., mean of maximum method) by r, , , k = {ki}iD=1 ,  = {i}Di=1 . For each t  [0, T ], we introduce S~t in the form of a fuzzy random variable. We additionally assume that r~, ~, ~1 , ~2 , . . . , ~D and S~t , t  [0, T ], are positive, i.e., their
+
+membership functions are equal to 0 for all nonpositive argu-
+
+ments.
+
+We denote the fuzzy call and put European option prices for
+
+parameters r~, ~, ~, k~1 , k~2 , . . . , k~D , ~1 , ~2 , . . . , ~D P~tV , 0  t < T .
+
+by C~tV
+
+and
+
+We introduce the following fuzzy counterparts of the crisp
+
+option valuation expressions (24) and (25). The new symbols
+
+introduced below are auxiliary and they are used for simplifying
+
+the pricing expressions with fuzzy parameters.
+
+C~tV = e-~V (T -t)  ~ It ,V
+
+P~tV = e-~V (T -t)  ~ tJ,V
+
+~ It ,V =
+
+~tV (m)  I~tV ,m
+
+m = (m 1 ,m 2 ,...,m D )N0D, N
+
+(26) (27)
+
+~ tJ,V =
+
+~Vt (m)  J~tV ,m
+
+m = (m 1 ,m 2 ,...,m D )N0D, N
+
+D
+~tV (m) =
+i=1
+
+~Vi m i
+
+mi !  (T - t)|m |
+
+~2 = ~  ~, ~1V = ~  (  ~2 ) , 
+~1,t = ~  T - t
+
+~iV = ~i    ek~i 1  1 , i = 1, 2, . . . , D
+
+~V = ~1V  ~2V  ˇ ˇ ˇ  ~VD
+
+408
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+where  is the solution of
+
+ + ()2
+
+1 2
+
++
+
+
+
+D
+
++
+
+i
+
+i
+
+
+
+ek
+
+ i
+
+-
+
+1
+
++1
+
+i=1
+
+ek
+
+ i
+
+-
+
+1
+
+= r
+
+(28)
+
+such that   (ek~i 1)  1, i = 1, 2, . . . , D, are positive
+fuzzy numbers. Furthermore, for each m = (m1 , m2 , . . . , mD )  N0D ,
+
+k~m = k~1  m1  k~2  m2  ˇ ˇ ˇ  k~D  mD
+
+~tV ,m ,- = ln S~t K  ~1V  (T - t)  k~m
+
+~tV ,m ,+ = ln S~t K  ~1V  (T - t)
+
+ (~2  (T - t))  k~m
+
+d~Vt ,m ,- = ln S~t K  ~1V  (T - t)  k~m
+
+~1,t
+
+d~tV ,m ,+ = ln S~t K  ~V1  (T - t)
+
+ (~2  (T - t))  k~m ~1,t
+
+I~tV ,m
+
+=
+
+S~t
+
+
+
+e[((~
+
+V 1
+
+r~)(T -t))(~2 (T -t) 2)k~m ]
+
+ ~ d~Vt ,m ,+
+
+e-r~(T -t)  K  ~ d~tV ,m ,-
+
+J~tV ,m = e-r~(T -t)  K  ~ -d~tV ,m ,-
+
+S~t
+
+
+
+e[((~
+
+V 1
+
+r~)(T -t))(~2 (T -t) 2)k~m ]
+
+ ~ -d~tV ,m ,+ .
+
+The following theorem describes the analytical forms of -level sets of fuzzy prices C~V and P~V as functions of the -level sets of the introduced above fuzzy parameters. Applying them as well as the resolution identities (see, e.g., [20] for details)
+
+C~
+
+V t
+
+(c)
+
+=
+
+sup
+0 1
+
+I(C~
+
+V t
+
+)
+
+(c)
+
+P~tV
+
+(p)
+
+=
+
+sup
+0 1
+
+I(P~tV
+
+)
+
+(p)
+
+one can obtain the values of the membership functions C~tV (c) and P~tV (p) for arbitrary c and p. The -level sets of C~V and P~V can be also comfortable tools for decision making. For a sufficiently high value of  (e.g.,  = 0.99) they can be treated as the intervals of the arbitrage-free European call or put option prices. Then any value from these intervals can be treated as the arbitrage-free option price with a high enough membership degree. For instance, if the current market price of the European option is outside of the intervals, an appropriate course of action (e.g., buying or selling the considered option) may be taken by a financial analyst.
+We denote the set of symbols  = {L, U } by  and introduce the operator :    by: L = U and U = L.
+
+Theorem 4: The European option prices C~tV and P~tV , 0  t < T have the form (26) and (27). Moreover, for   [0, 1] and
+
+
+C~tV
+
+
+=
+
+
+P~tV
+
+
+=
+
+
+e-~V (T -t) in t
+
+e-~V (T -t) in t
+
+
+~ tI ,V ~ Jt ,V
+
+ 
+ 
+
+(29) (30)
+
+where
+
+e-~V (T -t)
+
+
+
+=
+
+e-(~ V
+
+) 
+
+(T -t) ,
+
+
+
+~V
+
+D
+
+ 
+
+=
+
+i=1
+
+~Vi
+
+ 
+
+(31)
+
+~Vi
+
+ 
+
+=
+
+(~i )
+
+ int ek~i
+
+
+
+1
+
++1
+
+
+
+(32)
+
+ek~ i
+
+1
+
+
+
+=
+
+e(k~
+
+i
+
+) 
+
+- 1, i = 1, 2, . . . , D
+
+
+
+~ It ,V
+
+ 
+
+=
+m = (m 1 ,m 2 ,...,m D )N0D, N
+
+~ tV
+
+(m)
+
+int
+
+
+I~tV ,m
+
+(33)
+ 
+(34)
+
+~ tJ,V
+
+ 
+
+=
+m = (m 1 ,m 2 ,...,m D )N0D, N
+
+~ tV
+
+(m)
+
+int
+
+
+J~tV ,m
+
+ 
+
+(35)
+
+
+
+~ tV
+
+(m)
+
+ 
+
+=
+
+D
+
+
+
+i=1
+
+~iV
+
+ 
+
+mi !
+
+mi   (T - t)|m |
+
+(36)
+
+I~tV ,m
+
+ 
+
+
+= S~ e ( ) ( ) t
+
+~
+
+V 1
+
+ 
+
+-(r~)
+
+(T
+
+-t)+
+
+( ~
+
+2
+
+)
+
+ 
+
+(
+
+T
+
+2
+
+-t
+
+)
+
++
+
+D i=1
+
+mi
+
+k~ i
+
+ 
+
+
+
+ˇ
+
+d~Vt ,m ,+
+
+ 
+
+-
+
+e-(
+
+r~)
+
+ 
+
+(T
+
+-t) K
+
+d~tV ,m ,-
+
+ 
+
+(37)
+
+J~tV ,m
+
+
+
+=
+
+e-(
+
+r~)
+
+ 
+
+(T -t) K
+
+
+
+-
+
+d~Vt ,m ,-
+
+ 
+
+
+- S~ e ( ) ( ) t
+
+~
+
+V 1
+
+ 
+
+-(r~)
+
+ 
+
+(T
+
+-t)+
+
+( ~
+
+2
+
+)
+
+ 
+
+(T
+
+2
+
+-t
+
+)
+
++
+
+D i=1
+
+mi
+
+k~ i
+
+ 
+
+
+
+ˇ
+
+-
+
+d~Vt ,m ,+
+
+ 
+
+(38)
+
+d~Vt ,m ,-
+
+
+=
+
+
+d~Vt ,m ,+
+
+
+=
+
+
+~tV ,m ,-  ~tV ,m ,+ 
+
+
+int (~1,t )
+
+int (~1,t )
+
+(39) (40)
+
+NOWAK AND PAWLOWSKI: OPTION PRICING WITH APPLICATION OF LEVY PROCESSES AND THE MINIMAL VARIANCE
+
+409
+
+
+
+~tV ,m ,-
+
+ 
+
+= ln 
+
+S~t K
+
+ 
+
+ 
+
++
+
+~1V
+
+ 
+
+(T
+
+-
+
+t)
+
++
+
+k~m
+
+ 
+
+(41)
+
+~tV ,m ,+
+
+ 
+
+=
+
+~tV ,m ,-
+
+ 
+
++
+
+(~2 )
+
+(T
+
+-
+
+t)
+
+(42)
+
+for arbitrary m = (m1 , m2 , . . . , mD )  N0D,N ,
+
+(~2 ) = ~L 2 , ~U 2 , (~1,t )
+
+=
+
+~L
+
+ T
+
+-
+
+t, ~U
+
+ T
+
+-
+
+t
+
+(43)
+
+and
+
+~V1
+
+ 
+
+=
+
+(~)
+
++ (
+
+int
+
+(~2 ) )
+
+.
+
+(44)
+
+Proof: Introducing fuzzy parameters r~, ~, ~, k~1 , k~2, . . ., k~D , ~1 , ~2 , . . . , ~D and operators , , , in place of their crisp counterparts to (24) and (25) we obtain formulas (26)
+
+and (27). Let   [0, 1],    and 0  t < T be fixed. Since
+
+~ is positive, (43) holds. Functions  (x), exp (x) and ln (x)
+
+satisfy the assumptions of Proposition 1 and they are increasing.
+
+Therefore, for each fuzzy number a~
+
+ea~  =
+
+ea~
+
+L 
+
+,
+
+ea~
+
+U 
+
+(45)
+
+~ (a~)  =  a~L ,  a~U
+
+(46)
+
+and for each positive fuzzy number ~b
+
+ln ~b
+
+=
+
+
+ln ~bL
+
+, ln
+
+~bU
+
+.
+
+(47)
+
+In particular, (45) implies the equalities
+
+e-r~(T -t)
+
+
+
+=
+
+e-(r~)
+
+ 
+
+(T -t)
+
+
+
+(48)
+
+and (31) (since ~V is positive). Making standard computations,
+
+we obtain (32)­(36), (39), (40), and (44). From (46),
+
+~ d~Vt ,m ,-
+
+
+=
+
+
+d~Vt ,m ,-
+
+ 
+
+(49)
+
+~ -d~Vt ,m ,-
+
+
+=
+
+
+-
+
+d~tV ,m ,-
+
+ 
+
+(50)
+
+~ d~Vt ,m ,+
+
+
+=
+
+
+d~Vt ,m ,+
+
+ 
+
+(51)
+
+~ -d~tV ,m ,+
+
+
+=
+
+
+-
+
+d~Vt ,m ,+
+
+ 
+
+.
+
+(52)
+
+Equality (47) implies (41) and (42). Finally, applying (45), (48), and (49)­(52), we obtain (37) and (38).
+It is worth to note that the application of fuzzy numbers instead of intervals makes our approach more general and flexible. In the case when experts' estimates of parameters have the form of intervals, the option prices also have the interval forms. Their analysis can be insufficient for the choice of an appropriate decision. In turn, in our approach the possibility of choice of -level sets of the option prices for sufficiently high   1 can enable to
+
+choose such a decision and simplify the decision process. Moreover, the method of automatized decision-making proposed in Section VI is intended and constructed for the fuzzy form of option prices.
+
+VI. AUTOMATIZED DECISION-MAKING
+
+A. Computational Method
+In this section we describe a method which was proposed in [20], where the classical Black­Scholes model was considered. It was applied by us to the problem of catastrophe bond pricing and presented in [41]. The mentioned method can be also used for computation of values of the membership function X~t for X~t = C~t or X~t = P~t , where C~t and P~t are the option prices described by Theorem 4, based on the forms of -level sets of X~t . We will apply the equality (see, e.g., [20] for details)
+
+X~ t
+
+(x)
+
+=
+
+sup
+0 1
+
+I(X~
+
+t
+
+)
+
+(x) .
+
+Theorem 4 implies that functions g, h : [0, 1]  R, where g() = (X~t )L and h() = (X~t )U , are continuous. It is easy to verify that function g is increasing and function h is decreasing. Furthermore, X~t is a normal fuzzy number. The value of X~t (x) is the solution of the optimization problem:
+(OP1) max , subject to: g()  x  h(), 0    1, which can be rewritten to the form:
+(OP2) max , subject to: g()  x, h()  x, 0    1. To obtain the solution of (OP2) it suffices to consider the
+following three cases: 1) If x belongs to the interval [g(1), h(1)], then X~t (x) = 1. 2) If the inequality x < g(1) is satisfied, then the following problem should be solved: (OP3) max , subject to: g()  x, 0    1. 3) If the inequality x > h(1) holds, then one should solve (OP4) max , subject to: h()  x, 0    1. The solutions of (OP3) and (OP4) can be obtained with ap-
+plication of bisection search [20].
+In our further considerations, we will use the following notations for a constant x^:
+
+X~t (x^) = sup X~t (x) : x  x^
+
+X~t (x^) = sup X~t (x) : x  x^ .
+
+It is easy to verify that (cf. [41])
+
+
+
+X~ t
+
+(x^)
+
+=
+
+ X~ t  1,
+
+(x^) ,
+
+for
+
+X~t
+
+L
+ x^ 
+
+X~t
+
+L
+
+0
+
+1
+
+otherwise
+
+
+
+X~ t
+
+(x^)
+
+=
+
+ X~ t  1,
+
+(x^) ,
+
+for
+
+X~t
+
+U
+ x^ 
+
+X~t
+
+U
+
+1
+
+0
+
+otherwise.
+
+B. Investment Decision Making
+The fuzzy version of the European option pricing formula can be applied to investment decision making. We present a modified approach from [42], which was also applied in [41]. We use
+
+410
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+formulas introduced and derived in [41], where the problem of catastrophe bond pricing was considered.
+We fix t  [0, T ] and   [0, 1] (e.g.,  = 0.95). Similarly as in the previous section, X~t = C~t or X~t = P~t , where C~t and P~t are the option prices described by Theorem 4, corresponding to crisp option prices Xt = Ct or Xt = Pt . Let X^t denotes the current market price of the considered option. A financial analyst can consider the -level set of X~t as the interval of the option prices. Any value from this set can be treated by a financial analyst as the option price with an acceptable membership degree. Besides the analysis of the -level set, the financial analyst can additionally consider the set V = {B, A, H, R, S} of possible decisions, where:
+1) B denotes a decision to buy (if the considered option is significantly undervalued);
+2) A denotes a decision to accumulate (if the option is undervalued);
+3) H is a decision to hold (if X is fairly valued); 4) R is a decision to reduce (if the option is overvalued); 5) S denotes a decision to sell (if the option is significantly
+overvalued). The advice choice function  : R2  2V is given by
+B Xt , X^t  X^t < Xt
+ X^t  Xt  Ź X^t  Xt
+A Xt , X^t  X^t  Xt
+
+TABLE I FUZZY PARAMETERS CHOSEN FOR THE CALL OPTION PRICE ANALYSIS
+
+S~
+
+(0.8, 1, 1.2)
+
+~
+
+(0.02, 0.03, 0.05)
+
+r~
+
+(0.03, 0.04, 0.06)
+
+~
+
+(0.05, 0.1, 0.2)
+
+~ 1
+
+(0.04, 0.08, 0.12)
+
+~ 2
+
+(0.02, 0.065, 0.11)
+
+k~ 1
+
+(0.01, 0.07, 0.1)
+
+k~2 (-0.13, -0.05, -0.02)
+
+~l (R) = sup X~t (x) : x  X^t = X~t X^t
+
+~l (S) = min sup X~t (x) : x  X^t ,
+
+1 - sup X~t (x) : x  X^t
+
+= min X~t X^t , 1 - X~t X^t
+
+.
+
+The -level set ~(X~t , X^t ) can be used by the financial analyst, who can choose one of the decisions from this set. The choice of an appropriate  can simplify the decision process. For a given set of parameters and a current market price of the considered option, the choice of a higher value of   1 can diminish the number of elements of ~(X~t , X^t ) . Thus, the number of appropriate decisions can be less than in the case of a smaller .
+
+H Xt , X^t  X^t = Xt  X^t  Xt  X^t  Xt
+R Xt , X^t  X^t  Xt S Xt , X^t  X^t > Xt
+ X^t  Xt  Ź X^t  Xt . On the basis of the Zadeh extension principle, one can obtain the extended advice choice function ~ : [0, 1]R × R  [0, 1]V . Let us denote the membership function of ~(X~t , X^t ) by ~l. Then,
+~l (B) = min sup X~t (x) : x  X^t , 1 - sup X~t (x) : x  X^t
+= min X~t X^t , 1 - X~t X^t ~l (A) = sup X~t (x) : x  X^t = X~t X^t ~l (H) = min sup X~t (x) : x  X^t ,
+sup X~t (x) : x  X^t = min X~ t X^t , X~t X^t
+
+VII. NUMERICAL EXAMPLES
+The analytical formulas for -level sets of option prices included in Theorem 4 enable us to calculate the prices directly without using any simulation or approximation methods. We assume that the parameters mentioned at the beginning of Section V are triangular fuzzy numbers--fuzziness may reflect their big variabilities, difficulties in estimation or incertitude of financial analysts in perception of the current market situation. As a result, the option prices are given by the fuzzy numbers, as well.
+In this section, a thorough overview of pricing patterns is performed.
+A. Price's -Level Sets, Membership Function, Sensitivity Analysis
+Let us concentrate on the call option price with a strike price K = 0.9 and time to maturity T - t = 1. In our valuations, we assume the following set of fuzzy parameters' and fuzzy asset's values (see Table I).
+Now we can investigate the dependence of the -level sets of the fuzzy call option price on the changing value of  (see Fig. 1). The crisp value of this option is equal to 0.1354. Note, that the wide 0-level set for the underlying instrument S may represent its high variability which is often the case, for instance on commodities markets [43].
+The membership function C~t of the call option price for the same set of parameters is shown in Fig. 2.
+
+NOWAK AND PAWLOWSKI: OPTION PRICING WITH APPLICATION OF LEVY PROCESSES AND THE MINIMAL VARIANCE
+
+411
+
+Fig. 1. -level sets' ends (circles: right ends, triangles: left ends) of the call option price depending on .
+
+Fig. 4. Sensitivity analysis of 0.95-level sets of the fuzzy call option price to changing triangular numbers of the parameters k1 and k2 representing the upward and downward jumps, respectively (circles: right ends of the price's 0.95-level sets, triangles: left ends of the price's 0.95-level sets).
+
+Fig. 2. Membership function for the fuzzy call option price.
+
+Fig. 5. Rolling historical volatility on the market on which the asset's variability abruptly and noticeably increases.
+
+gets smaller, the call option price decreases. This behavior is concordant with the intuition and with the theoretical formulas for the prices.
+
+Fig. 3. Sensitivity analysis of 0.95-level sets of the fuzzy call option price to changing triangular number of the parameter  (circles: right ends of the price's 0.95-level sets, triangles: left ends of the price's 0.95-level sets).
+In Fig. 3, we may observe that when the left and right ends of the 0.95-level set of the fuzzy parameter  are simultaneously and gradually increased, 0.95-level sets of the fuzzy call option price rise as well. This effect is consistent with the nonfuzzy theory of pricing.
+In a similar way, in Fig. 4, a sensitivity analysis of 0.95-level sets of the fuzzy call option price with respect to the fuzzy parameters k1 and k2 , responsible for the sizes of positive and negative jumps, is presented. It is evident that when the values of the positive jump size grows, the call option price grows, too. Analogously, when the values of the negative jump size
+
+B. Pricing on a Volatile Market--Case Study
+Having investigated the fuzzy option prices behavior, we may now illustrate a typical market situation in which pricing in fuzzy environment is especially advantageous. Consider a market with an asset whose rolling volatility with a window length equal to 30 days is presented in Fig. 5. Assume that an investor wants to price a call option based on the historical data. According to this data, the historical volatility is equal to 0.0996 (it is estimated as a mean of the presented rolling volatility). If he uses this estimator and the model described in this paper, but with crisp parameters equal to modal values of the parameters described in Table I, then he obtains the crisp option price equal to 0.1374. However, it is very likely that the quoted option price on the market is higher, say 0.1424, as the asset's volatility significantly increased. Then the implied volatility equals 0.13. If the investor used an expert fuzzy number estimator for his model's volatility, e.g., (0.09, 0.0996, 0.16) (with the modal value equal to the underestimated, historically based crisp estimator) and chose  = 0.8, as a result he would obtain the price interval (0.1305, 0.1426). The quoted option price 0.1424 lies within
+
+412
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+TABLE II AUTOMATIZED DECISION MAKING FOR FIVE DIFFERENT MARKET OPTION
+PRICE SCENARIOS
+
+C^ t
+
+~l (B) ~l (A) ~l (H ) ~l (R) ~l (S)
+
+0.042 recommendations 0.14 recommendations 0.145 recommendations 0.17 recommendations 0.3 recommendations
+
+0.9844 B: yes 0.0685 B: no 0.0318 B: no
+0 B: no
+0 B: no
+
+1 A: yes
+1 A: yes
+1 A: yes 0.8589 A: no 0.0229 A: no
+
+0.0156 H: no 0.9315 H: no 0.9682 H: yes 0.8589 H: no 0.0229 H: no
+
+0.0156 R: no 0.9315 R: no 0.9682 R: yes
+1 R: yes
+1 R: yes
+
+0 S: no
+0 S: no
+0 S: no 0.1411 S: no 0.9771 S: yes
+
+Fig. 6. Dependence of the membership functions ~l (B) (left figure) and ~l (R) (right figure) on the market call option price C^t .
+this interval and thus we may conclude that even in case of such unexpected market situation and highly variable asset's behavior, combined with the nonadequate historical volatility estimator, the fuzzy approach does not exclude in its result the actual option price. This example clearly points on benefits from using fuzzy approach.
+C. Automatized Investment Decision Making
+Finally, let us focus on automatized decision making, the theory of which was described in Section VI. May the fuzzy parameters remain unchanged (see Table I) and the triangle number of the asset price S be (0.98, 1.015, 1.05). We also fix  at 0.95 level which means that an investor makes decisions from the 0.95-level set ~(C~t , C^t )0.95 depending on the current market call option price C^t . The recommendations for five different market situations, with the fuzzy option price with modal value equal to 0.1493, are summarized in Table II.
+It is also interesting to analyze how the recommendation for a particular decision changes when the market price of the call option evolves continuously. Such dependence is shown in Fig. 6. Recommendation ~l (B) to buy the option decreases from 1 to 0 and achieves its minimum when the market price is equal to the option crisp price. Recommendation ~l (R) to reduce is a mirror image--it increases from 0 to 1, when the market price is below the crisp price, and then remains at the maximal level.
+
+VIII. APPLICATION OF THE METHOD
+The method of option pricing and decision making in the fuzzy environment proposed in this paper can be applied by both the analyst and the investor. However, the cooperation of the two can be helpful for the investor, since usually he does not possess a detailed expert knowledge how the market perceives the magnitudes of the parameters employed in the formulas for the option price. The analyst can rely on his own experience, additionally asking other experts for their recommendations. It is widely known that the financial market fluctuates in time and that statistical estimates of the parameters are imprecise and biased. The possibility of taking into account the uncertainty of the market in the form of fuzzy numbers ensures the appropriate approach to options valuation and is a principal advantage over existing in the literature methods. Thus, the application of our method, which utilizes the experts' opinions, broadens the knowledge about the fair value of the financial instrument. A direct recipient of the method is the analyst, nevertheless an indirect addressee is the investor. The analyst constructs the parameters in the form of triangular fuzzy numbers and selects an adequately high value of . As a result, he receives the -level set ~(C~t , C^t ) of possible investment decisions. Consulting with the investor, together they appoint the final decision.
+Going to the pros and cons of the method, apart from the aforementioned merits the approach has some disadvantage. In comparison to the standard process of investment decision making, it requires more intensive communication between the investor and the analyst supported by a group of market experts. It is due to the existence of more than one recommendations. On the other hand, this methodology may lead to much more balanced and cautious decisions. Performing reasonable analysis, it enables us to make profitable decisions which would not be considered based on crisp pricing. To sum up, we reckon that our approach brings decidedly more investment bonus than troubles.
+A. Financial Market Numerical Application
+For the sake of illustration, we will present in details the consecutive stages of the analysis conducted in Section VII-C.
+Let us assume that the analyst together with two other experts introduce their opinions in the form of the following triangular fuzzy numbers:
+for S~ : (0.65, 1, 1.1), (0.85, 0.88, 1.2), (0.9, 1.12, 1.3), for ~ : (0.018, 0.033, 0.05), (0.021, 0.0305, 0.05), (0.021, 0.0265, 0.05), for r~ : (0.032, 0.039, 0.07), (0.035, 0.041, 0.05), (0.023, 0.04, 0.06), for ~ : (0.045, 0.11, 0.2), (0.058, 0.09, 0.15), (0.047, 0.1, 0.25), for ~1 : (0.042, 0.07, 0.11), (0.038, 0.08, 0.14), (0.04, 0.09, 0.11), for ~2 : (0.017, 0.065, 0.105), (0.019, 0.065, 0.109), (0.024, 0.065, 0.116), for k~1 : (0.01, 0.065, 0.101), (0.01, 0.076, 0.101), (0.01, 0.069, 0.098),
+
+NOWAK AND PAWLOWSKI: OPTION PRICING WITH APPLICATION OF LEVY PROCESSES AND THE MINIMAL VARIANCE
+
+413
+
+for k~2 : (-0.12, -0.06, -0.021), (-0.13, -0.05, -0.016), (-0.14, -0.04, -0.023). Computing averages of the above fuzzy numbers for every parameter, the analyst obtains the fuzzy values of S~, ~, r~, ~, ~1, ~2 , k~1 , k~2 , presented in Table I. We assume that the analyst picked the 0.95 value of . According to the results shown in Table II, for different current market values of the options, the sets of possible decisions have the following forms:
+
+~ C~t , 0.042
+
+= {B, A}
+
+0.95
+
+~ C~t , 0.14
+
+= {A}
+
+0.95
+
+~ C~t , 0.145
+
+= {A, H, R}
+
+0.95
+
+~ C~t , 0.17
+
+= {R}
+
+0.95
+
+~ C~t , 0.3
+
+= {R, S} .
+
+0.95
+
+The terminal decision is made by the investor on basis of the obtained above -level sets.
+Let us assume that the actual market price is equal to 0.145. It refers to the third case of our example. As we can see, there are three recommendations: A, H, R. Inasmuch as the actual price is slightly less than the crisp price (equal to 0.1493), the obvious, instantaneous recommendations would be to accumulate or to hold. Nevertheless, our method suggests taking into consideration reducing the position in this derivative which on a first sight is unusual. However, this recommendation is strongly justifiable because the supports of fuzzy numbers of the volatility and the underlying asset price are wide and therefore it may lead to a great change of the market option price and a reversion of the relation between the actual market option price and the crisp option price.
+
+IX. CONCLUSION
+In this paper we studied that the European option pricing problem, assuming that the dynamics of the primary financial instrument is modeled by a geometric Levy process and the jump part of the log-price, which describes positive and negative jumps in the asset prices, is a linear combination of Poisson processes. We applied stochastic analysis to derive the crisp European option valuation expressions, by using MVEMM as the equivalent probability measure in the martingale method of pricing. Applying fuzzy sets theory, we also obtained fuzzy counterparts of the crisp pricing formulas, taking into account the uncertainty of the model's parameters. Furthermore, we proposed an automatized method of decision making, based on the fuzzy valuation expressions. Finally, we provided numerical examples to illustrate our theoretical results.
+Future possible direction of our studies is an extension of the proposed approach to more complex underlying asset models. Another interesting possibility is the derivation of the fuzzy valuation expressions for some classes of path-dependent options.
+
+APPENDIX A PROOF OF LEMMA 1
+
+It suffices to show that the processes
+
+Ut = k1 Nt1 + k2 Nt2 + ˇ ˇ ˇ + kD NtD , t  [0, T ]
+
+and
+
+N
+
+ t
+
+Vt = i, t  [0, T ]
+
+i=1
+
+have the same distributions. It is easy to check straightforwardly
+
+that U satisfies the definition of a Levy process. V as a compound
+
+Poisson process is also a Levy process. Therefore, to prove that
+
+both processes have the same distributions, one only needs to
+
+prove that for arbitrary t  [0, T ] the characteristic functions of Ut and Vt , denoted by Ut () and tV (), coincide.
+Let t  [0, T ] . From independence of the processes Nt1 , Nt2 , . . . , NtD
+
+Ut () = EP eiUt = EP ei
+
+D l=1
+
+kl
+
+N
+
+ t
+
+l
+
+D
+
+D
+
+
+
+=
+
+EP
+
+ei
+
+
+
+k
+
+l
+
+N
+
+ t
+
+l
+
+=
+
+EP
+
+I{N
+
+ t
+
+l
+
+=
+
+j
+
+}
+
+ei
+
+
+
+k
+
+l
+
+j
+
+l=1
+
+l=1 j=0
+
+D
+
+=
+
+P (Ntl = j) eikl j
+
+l=1 j=0
+
+= D e-l t  (l t)j eikl j
+
+j!
+
+l=1
+
+j=0
+
+D
+
+
+
+= e-l t
+
+l=1
+
+j=0
+
+l teikl j!
+
+j
+
+=
+
+D
+
+e e -l t l tei  k l
+
+l=1
+
+D
+
+=
+
+e ( l t ei  k l -1) = et
+
+D l=
+
+1
+
+
+
+l
+
+(e i
+
+
+
+k
+
+l
+
+-1).
+
+l=1
+
+Independence of {i } i=1,2,... implies
+
+tV () = EP eiVt = EP ei
+
+N
+
+ t
+
+l=1
+
+l
+
+
+
+= EP
+
+I{N
+
+ t
+
+=
+
+j
+
+}
+
+ei
+
+j=0
+
+j l=1
+
+l
+
+
+= P (Nt = j) EP ei
+j=0
+
+j l=1
+
+l
+
+= e-t  (t)j j EP eil
+
+j!
+
+j=0
+
+l=1
+
+
+= e-t
+j=0
+
+tEP ei 1 j = e-t etEP ei   1 j!
+
+= e ( t EP ei   1 -1) = et(
+
+) = e D
+l=1
+
+ei k l
+
+l 
+
+-1
+
+t
+
+( ). D
+l=1
+
+l
+
+ei  k l -1
+
+Thus, for each t  [0, T ] Ut () = tV () which finishes the proof.
+
+414
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+APPENDIX B PROOF OF THEOREM 3
+We obtain the generating triplet b, 2,  of the process Y by a straightforward computation of the characteristic function of Yt, t  [0, T ] , and comparison of this function with the Levy­ Khintchine formula. As a result,  coincides with the volatility coefficient in Y
+
+b=+
+
+i ki
+
+i:1iD , |ki |1
+
+and
+
+D
+ (dx) = i {ki } (dx) .
+i=1
+
+For the generating triplet b, 2,  corresponding to process
+Y , (16) and inequalities obtained by a reformulation of (15)
+have the form (20) and (21). Therefore, if there exists a solution  of (20), satisfying the inequalities (21), Theorem 2
+implies the existence of MVEMM. To shorten notation we will write P V instead of P (MVEMM). According to Theo-
+rem 2 and Remark 1, the elements of the generating triplet b(MVEMM) , (MVEMM) 2 , (MVEMM) of the process Y
+
+under P V have the form: (MVEMM) = 
+
+D
+
+(MVEMM) =
+
+Vi {ki } (dx)
+
+i=1
+
+b= +
+
+Vi ki
+
+i:1iD , |ki |1
+
+where the number  should be determined from the martingale
+condition. Therefore, the process Y of the underlying asset with respect to P V has the form
+
+Yt =  t + WtV
+
++
+
+k1
+
+Nt
+
+V 1
+
++
+
+k2
+
+Nt
+
+V 2
+
++
+
+ˇ
+
+ˇ
+
+ˇ
+
++
+
+kD
+
+Nt
+
+V D
+
+,
+
+× t  [0, T ]
+
+(53)
+
+where under P V the process W V is a Brownian motion,
+
+Nt
+
+V 1
+
+,
+
+Nt
+
+V 2
+
+,
+
+.
+
+.
+
+.
+
+,Nt
+
+V D
+
+are Poisson processes with intensities
+
+V1 , V2 , . . . , DV , respectively, and all the processes describ-
+
+ing Y in formula (53) are independent.
+
+Although in [32] we derived option pricing expressions with
+
+respect to different then MVEMM equivalent probability mea-
+
+sures, some formulas used in the further part of the proof and
+
+CtV = e-r(T -t) EP V (ST - K)+ |Ft = e-r(T -t) EP V (ST - K) I{ST >K }|Ft
+
+= EP V
+
+( ) ( ) 
+
+V 1
+
+-r
+
+(T -t)+
+
+W
+
+V T
+
+-W
+
+V t
+
++
+
+D i=1
+
+ki
+
+N
+
+ T
+
+V i
+
+-N
+
+ t
+
+V i
+
+S et
+
+- e-r(T -t) K
+
+ˇI
+
+(
+
+V 1
+
+-r
+
+)(
+
+T
+
+-t
+
+)+
+
+
+
+(W
+
+V T
+
+-W
+
+V t
+
+)+
+
+D i=1
+
+ki
+
+V
+
+V
+
+N T i -N t i
+
+>ln
+
+K St
+
+-r (T -t)
+
+Ft
+
+= EP V
+
+se( ) ( ) 
+
+V 1
+
+-r
+
+(T -t)+
+
+W
+
+V T
+
+-W
+
+V t
+
++
+
+D i=1
+
+ki
+
+N
+
+ T
+
+V i
+
+-N
+
+ t
+
+V i
+
+- e-r(T -t) K
+
+ˇI ( ) ( ) 
+
+V 1
+
+-r
+
+(T -t)+
+
+W
+
+V T
+
+-W
+
+V t
+
++
+
+D i=1
+
+ki
+
+N
+
+ T
+
+V i
+
+-N
+
+ t
+
+V i
+
+>ln
+
+K s
+
+-r (T
+
+-t)
+
+= EP V
+
+se(
+
+V 1
+
+-r
+
+)(
+
+T
+
+-t
+
+)
+
++
+
+
+
+W
+
+V T
+
+-t
+
++
+
+- e K D
+i=1
+
+ki
+
+N
+
+ T
+
+V i -t
+
+-r (T -t)
+
+s=St
+
+ˇI ( ) 
+
+V 1
+
+-r
+
+(T
+
+-t
+
+)
+
++
+
+
+
+W
+
+V T
+
+-t
+
++
+
+D i=1
+
+V
+
+k
+
+i
+
+N
+
+T
+
+i -t
+
+>
+
+ln
+
+K s
+
+-r (T -t)
+
+s=St
+
+= EP V
+
+
+
+
+
+. . . I m 1 =0 m 2 =0
+
+mD =0
+
+N
+
+ T
+
+V 1 -t
+
+=
+
+m
+
+1
+
+,
+
+N
+
+ T
+
+V 2 -t
+
+=
+
+m
+
+2
+
+,.
+
+..
+
+,N
+
+ T
+
+V D -t
+
+=
+
+m
+
+D
+
+ˇ
+
+se(
+
+V 1
+
+) -r
+
+(T
+
+-t
+
+)
+
++
+
+
+
+W
+
+V T
+
+-t
+
++
+
+k
+
+m
+
+- e-r(T -t) K
+
+ˇ
+
+I{(
+
+V 1
+
+-r )(T
+
+-t
+
+)+
+
+
+
+W
+
+V T
+
+-t
+
++
+
+k
+
+m
+
+>ln
+
+K s
+
+-r (T -t)}
+
+s=St
+
+
+= e-V (T -t) ˇ
+
+
+
+
+
+...
+
+m1 =0 m2 =0 mD =0
+
+1V m 1 m1 !
+
+V2
+
+m2
+...
+
+m2 !
+
+DV m D mD !
+
+ˇ (T - t)|m |
+
+ˇ EP V
+
+se(
+
+V 1
+
+) -r
+
+(
+
+T
+
+-t
+
+)
+
++
+
+
+
+W
+
+V T
+
+-t
+
++
+
+k
+
+m
+
+- e-r(T -t) K
+
+ˇ
+
+I{(
+
+V 1
+
+) -r
+
+(T
+
+-t
+
+)
+
++
+
+
+
+W
+
+V T
+
+-t
+
++
+
+k
+
+m
+
+>ln
+
+K s
+
+-r (T -t)}
+
+.
+s=St
+
+(55)
+
+NOWAK AND PAWLOWSKI: OPTION PRICING WITH APPLICATION OF LEVY PROCESSES AND THE MINIMAL VARIANCE
+
+415
+
+their counterparts from [32] can have the same or similar form,
+despite that they refer to different problems. 1) Let us denote the generating triplet of the process Y~t = -rt + Yt with respect to P V by b ,  2 ,  . Since Z = exp(Y~ ) is a P V martingale, the following equality holds
+(see, e.g., [18]):
+
+b
+
++
+
+2 2
+
++
+
+R
+
+ex - 1 - xI|x|1 (x)
+
+ (dx) = 0.
+
+(54)
+
+Subtracting formula (16) from (54), we obtain the follow-
+
+ing equality:
+
+ = V1 =  + 2 .
+
++ e-r(T -t) K 1 -  dVt ,m ,-
+
+- St
+
+= e-V (T -t)
+
+m = (m 1 ,m 2 ,...,m D )N0D
+
+ˇ
+
+2V m 2 m2 !
+
+...
+
+VD m D mD !
+
+(T
+
+- t)|m |
+
+ˇ e-r(T -t) K -dtV ,m ,-
+
+1V m 1 m1 !
+
+-
+
+St
+
+e(
+
+V 1
+
+-r )(T
+
+-t)+
+
+ 2 (T 2
+
+-t )
+
++km
+
+1 -  dtV ,m ,+
+
+which gives equality (23).
+
+To obtain the European call option pricing formula we compute the conditional expected value with respect to P V , as can be seen in formulas (55) at the bottom of the previous page. It is easy to verify that
+
+1V - r (T - t) + WTV-t + km
+
+N
+
+1V - r
+
+(T
+
+-
+
+t)
+
++
+
+km ,
+
+ T
+
+-
+
+t
+
+.
+
+Therefore, for each s > 0
+
+EP V
+
+se(
+
+V 1
+
+-r )(T
+
+-t
+
+)
+
++
+
+
+
+W
+
+V T
+
+-t
+
++
+
+k
+
+m
+
+- e-r(T -t) K
+
+ˇI{(
+
+V 1
+
+) -r
+
+(T
+
+-t
+
+)
+
++
+
+
+
+W
+
+V T
+
+-t
+
++
+
+k
+
+m
+
+>ln
+
+K s
+
+-r (T -t)}
+
+=
+
+se(
+
+V 1
+
+-r )(T
+
+-t)+
+
+ 2 (T 2
+
+-t )
+
++km
+
+
+
+dVt ,m ,+ (s)
+
+- e-r(T -t) K dVt ,m ,- (s)
+
+which ends the proof. 2) The following formula is a consequence of (20)
+
+e-V (T -t)
+m = (m 1 ,m 2 ,...,m D )N0D
+
+V1 m 1 m1 !
+
+2V m 2 m2 !
+
+...
+
+DV m D mD !
+
+(T
+
+-
+
+t)|m |
+
+ˇ
+
+e(
+
+V 1
+
+) -r
+
+(T
+
+-t)+
+
+
+
+2
+
+(
+
+T 2
+
+-t ) + k m
+
+= 1.
+
+(56)
+
+Applying the put-call parity relationship (see, e.g., [44]), (22) and (56), we obtain
+
+PtV = CtV - St + e-r(T -t) K
+
+= e-V (T -t) ˇ
+
+m = (m 1 ,m 2 ,...,m D )N0D
+
+ˇ
+
+V2 m 2 m2 !
+
+...
+
+DV m D mD !
+
+(T - t)|m |
+
+1V m 1 m1 !
+
+ˇ
+
+St
+
+e(
+
+V 1
+
+) -r
+
+(T
+
+-t)+
+
+
+
+2
+
+(
+
+T 2
+
+-t )
+
++km
+
+
+
+dVt ,m ,+
+
+ACKNOWLEDGMENT
+The authors would like to thank Prof. O. Hryniewicz from Systems Research Institute, Polish Academy of Sciences for his valuable comments and advices.
+REFERENCES
+[1] F. Black and M. Scholes, "The pricing of options and corporate liabilities," J. Political Econ., vol. 81, pp. 637­659, 1973.
+[2] J. C. Hull, Options, Futures and Other Derivatives. New York, NY, USA: Prentice Hall, 1997.
+[3] M. Davis, "Mathematics of financial markets," in Mathematics Unlimited 2001 and Beyond, B. Engquist and W. Schmid, Eds. Berlin, Germany: Springer-Verlag, 2001, pp. 361­380.
+[4] G. Bakshi, C. Cao, and Z. Chen, "Empirical performance of alternative option pricing models," J. Finance, vol. 52, no. 5, pp. 2003­2049, 1997.
+[5] D. S. Bates, "Jumps and stochastic volatility: Exchange rate processes implicit in Deutschemark options," Rev. Finance Stud., vol. 9, no. 1, pp. 69­107, 1996.
+[6] R. Merton, "Option pricing when underlying stock returns are discontinuous," J. Finance Econ., vol. 3, pp. 125­144, 1976.
+[7] S. G. Kou, "A jump-diffusion model for option pricing," Manage. Sci., vol. 48, no. 8, pp. 1086­1101, 2002.
+[8] S. G. Kou and H. Wang, "Option pricing under a double exponential jump diffusion model," Manage. Sci., vol. 50, no. 9, pp. 1178­1192, 2004.
+[9] S. Asmussen, F. Avram, and M. Pistorius, "Russian and American put options under exponential phase-type Levy models," Stoch. Process. Appl., vol. 109, no. 1, pp. 79­111, 2004.
+[10] M. Boyarchenko and S. Boyarchenko, "User's guide to pricing double barrier options. Part I: Kou's model and generalizations," 2008, Available at SSRN: http://dx.doi.org/10.2139/ssrn.1272081
+[11] N. Cai, N. Chen, and X. Wan, "Pricing double-barrier options under a flexible jump diffusion model," Oper. Res. Lett., vol. 37, no. 3, pp. 163­ 167, 2009.
+[12] N. Cai and S. Kou, "Option pricing under a mixed-exponential jump diffusion model," Manage. Sci., vol. 57, pp. 2067­2081, 2011.
+[13] J. Crosby, N. L. Saux, and A. Mijatovic, "Approximating Levy processes with a view to option pricing," Int. J. Theor. Appl. Finance, vol. 13, no. 1, pp. 63­91, 2010.
+[14] M. Jeannin and M. R. Pistorius, "A transform approach to calculate prices and greeks of barrier options driven by a class of Levy processes," Quantitative Finance, vol. 10, no. 6, pp. 629­644, 2010.
+[15] O. E. Barndorff-Nielsen, "Processes of normal inverse Gaussian type," Finance Stoch., vol. 2, pp. 41­68, 1997.
+[16] D. B. Madan and E. Seneta, "The variance gamma (V.G.) model for share market returns," J. Bus., vol. 63, no. 4, pp. 511­524, 1990.
+[17] Y. Miyahara, Option Pricing in Incomplete Markets: Modeling Based on Geometric Levy Processes and Minimal Entropy Martingale Measures (Series in Quantitative Finance). London, U.K.: Imperial College Press, 2012.
+[18] A. N. Shiryaev, Essentials of Stochastic Finance, Facts, Models, Theory. Singapore: World Scientific, 1999.
+[19] L. A. Zadeh, "Fuzzy sets," Inf. Control, vol. 8, pp. 338­353, 1965.
+
+416
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+[20] H. C. Wu, "Pricing European options based on the fuzzy pattern of BlackScholes formula," Comput. Oper. Res., vol. 31, pp. 1069­1081, 2004.
+[21] A. M. Gil-Lafuente, Fuzzy Logic in Financial Analysis. Berlin, Germany: Springer-Verlag, 2005.
+[22] H. C. Wu, "Using fuzzy sets theory and Black-Scholes formula to generate pricing boundaries of European options," Appl. Math. Comput., vol. 185, no. 1, pp. 136­146, 2007.
+[23] Y. Yoshida, "The valuation of European options in uncertain environment," Eur. J. Oper. Res., vol. 145, no. 1, pp. 221­229, 2003.
+[24] W. Xu, X. Peng, and W. Xiao, "The fuzzy jump-diffusion model to pricing European vulnerable options," Int. J. Fuzzy Syst., vol. 15, no. 3, pp. 317­ 325, 2013.
+[25] W. Xian-Dong and H. Jian-Min, "Reload option pricing in fuzzy framework," in Proc. Int. Conf. Manage. Sci. Eng., 2014, pp. 147­152.
+[26] K. A. Chrysafis and B. K. Papadopoulos, "On theoretical pricing of options with fuzzy estimators," J. Comput. Appl. Math., vol. 223, no. 2, pp. 552­ 566, 2009.
+[27] K. Thiagarajah, S. S. Appadoo, and A. Thavaneswaran, "Option valuation model with adaptive fuzzy numbers," Comput. Math. Appl., vol. 53, pp. 831­841, 2007.
+[28] Z. Zmeskal, "Generalised soft binomial American real option pricing model (fuzzy­stochastic approach)," Eur. J. Oper. Res., vol. 207, no. 2, pp. 1096­1103, 2010.
+[29] W. Q. Liu and S. H. Li, "European option pricing model in a stochastic and fuzzy environment," Appl. Math.-J. Chin. Univ., vol. 28, no. 3, pp. 321­334, 2013.
+[30] L. H. Zhang, W. G. Zhang, W. J. Xu, and W. L. Xiao, "The double exponential jump diffusion model for pricing European options under fuzzy environments," Econ. Model., vol. 29, no. 3, pp. 780­786, 2012.
+[31] P. Nowak, "Option pricing with Levy process in a fuzzy framework," in Recent Advances in Fuzzy Sets, Intuitionistic Fuzzy Sets, Generalized Nets and Related Topics, K. T. Atanassov, W. Homenda, O. Hryniewicz, J. Kacprzyk, M. Krawczak, Z. Nahorski, E. Szmidt, and S. Zadrozny, Eds. Warsaw, Poland: Systems Research Institute Polish Academy of Sciences, 2011, pp. 155­167.
+[32] P. Nowak and M. Romaniuk, "Application of Levy processes and Esscher transformed martingale measures for option pricing in fuzzy framework," J. Comput. Appl. Math., vol. 263, pp. 129­151, 2014.
+[33] H. C. Wu, "Optimality conditions for linear programming problems with fuzzy coefficients," Comput. Math. Appl., vol. 55, no. 12, pp. 2807­2822, 2008.
+[34] M. L. Puri and D. A. Ralescu, "Fuzzy random variables," J. Math. Anal. Appl., vol. 114, pp. 409­422, 1986.
+[35] L. A. Zadeh, "The concept of linguistic variable and its application to approximate reasoning I, II and III," Inf. Sci., vol. 8, 8, 9, pp. 199­249, 301­357, 43­80, 1975.
+[36] J. Jacod and A. N. Shiryaev, Limit Theorems for Stochastic Processes. Berlin, Germany: Springer-Verlag, 1987.
+[37] P. Nowak, "On Jacod-Grigelionis characteristics for Hilbert space valued semimartingales," Stoch. Anal. Appl., vol. 20, no. 5, pp. 963­998, 2002.
+[38] R. Cont and P. Tankov, Financial Modelling With Jump Processes. London, U.K.: Chapman & Hall, 2004.
+
+[39] F. Delbaen and W. Schachermayer, "A general version of the fundamental theorem of asset pricing," Math. Ann., vol. 300, no. 1, pp. 463­520, 1994.
+[40] J. J. Buckley and E. Eslami, "Pricing stock options using fuzzy sets," Iranian J. Fuzzy. Syst., vol. 4, no. 2, pp. 1­14, 2007.
+[41] P. Nowak and M. Romaniuk, "Catastrophe bond pricing for the two-factor Vasicek interest rate model with automatized fuzzy decision making," Soft Comput., pp. 1­23, 2015 doi: 10.1007/s00500-015-1957-1.
+[42] K. Piasecki, "On imprecise investment recommendations," Stud. Logic, GrammarRhetoric, vol. 37, no. 1, pp. 179­194, 2014.
+[43] M. Pawlowski and P. Nowak, "Modelling spot prices on the Polish energy market," in Intelligent Systems'2014, vol. 323 (Advances in Intelligent Systems and Computing Series), D. Filev, J. Jablkowski, J. Kacprzyk, M. Krawczak, I. Popchev, L. Rutkowski, V. Sgurev, E. Sotirova, P. Szynkarczyk, and S. Zadrozny, Eds. Berlin, Germany: Springer-Verlag, 2015, pp. 781­792.
+[44] M. Musiela and M. Rutkowski, Martingale Methods in Financial Modelling. Berlin, Germany: Springer-Verlag, 1997.
+Piotr Nowak received the M.Sc. degree in theoretical mathematics from the Faculty of Mathematics, Informatics and Mechanics, University of Warsaw, Warsaw, Poland, in 1993 and the Ph.D. degree in mathematics from the University of Warsaw, in 1999. His Ph.D. thesis concerned the theory of stochastic integrals.
+He has authored more than 40 papers in international journals, edited volumes, and conference proceedings. His current research at the Systems Research Institute, Polish Academy of Sciences include stochastic modeling in finance, insurance and mechanics, as well as financial mathematics, stochastic analysis, probability theory, statistics, and control theory.
+Michal Pawlowski received the M.Sc. degree in applied mathematics (probabilistic methods in finance) from the Faculty of Mathematics, Informatics and Mechanics, University of Warsaw, Warsaw, Poland, in 2012. He completed the doctoral studies at the Institute of Computer Science, Polish Academy of Sciences, in 2015.
+His main research interests include financial engineering, stochastic analysis, probability theory, statistics, econometrics, and machine learning.
+
+
+

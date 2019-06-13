@@ -1,0 +1,1045 @@
+IEEE TRANSACTIONS ON POWER SYSTEMS, VOL. 32, NO. 3, MAY 2017
+
+1839
+
+Purchase Bidding Strategy for a Retailer With Flexible Demands in Day-Ahead Electricity Market
+Meng Song, Student Member, IEEE, and Mikael Amelin, Member, IEEE
+
+Abstract--The paper aims to determine the day-ahead market bidding strategies for retailers with flexible demands to maximize the short-term profit. It proposes a short-term planning framework to forecast the load under dynamic tariffs and construct biding curves. Stochastic programming is applied to manage the uncertainties of spot price, regulating price, consumption behaviors, and responsiveness to dynamic tariffs. A case study based on data from Sweden is carried out. It demonstrates that a real-time selling price can affect the aggregate load of a residential consumer group and lead to load shift toward low-price periods. The optimal bidding curves for specific trading periods are illustrated. Through comparing the bidding strategies under different risk factors, the case study shows that a risk-averse retailer tends to adopt the strategies with larger imbalances. The benefit lies in the reduction of low-profit risk. However, the aversion to risk can only be kept in a certain level. A larger imbalance may lead to a quick reduction of profit in all scenarios.
+Index Terms--Bidding curve, day-ahead market, demand response, financial risk, imbalance settlement, retailer.
+
+NOMENCLATURE
+
+A. Indices
+
+
+
+Scenarios.
+
+z
+
+Time slots in the load model.
+
+h
+
+Households.
+
+i
+
+Load cycles.
+
+iW /D /S/V Load cycles of washing machine/ dryer/
+
+dishwasher/ EV charging.
+
+t
+
+Trading periods.
+
+c
+
+Nodes of the bidding curve.
+
+B. Sets
+
+h , 
+
+All flexible load cycles of household h in
+
+scenario . Wh,/D /S/V All washing/ drying/ dish washing/ charging
+cycles of household h in scenario .
+
+hP
+
+Responding subgroup in scenario .
+
+hN
+
+Non-responding subgroup in scenario .
+
+C. Optimization variables
+
+ui,h,z ,
+
+Optimal starting status of load cycle i in
+
+household h at time slot z in scenario .
+
+Manuscript received November 30, 2015; revised March 9, 2016, May 11, 2016, and August 17, 2016; accepted August 30, 2016. Date of publication September 12, 2016; date of current version April 17, 2017. This work was supported by the "Stockholm Royal Seaport, Urban Smart Grid Program." The program was funded by Swedish Energy Agency, Fortum, Ericsson, Electrolux, and ABB. Paper no. TPWRS-01708-2015.
+The authors are with the Department of Electric Power and Energy Systems, Royal Institute of Technology, Stockholm 11428, Sweden (e-mail: msong@ kth.se; amelin@kth.se).
+Digital Object Identifier 10.1109/TPWRS.2016.2608762
+
+Pt,c PtR,+ , PtR,- , 
+
+Volume value of node c on the bidding curve for trading period t. Auxiliary variables to determine the imbalance of trading period t in scenario . Auxiliary variables for calculating CVaR.
+
+PiR,h,z , PzF,
+PzN, Pz ,
+Eh , 
+Pt, PtA,
+PtR,
+
+D. Other variables Reference power demand of load cycle i in household h at time slot z in scenario . Reference aggregate flexible load at time slot z in scenario . Aggregate inflexible load at time slot z in scenario . New aggregate load after demand response at time slot z in scenario . Electricity cost of household h due to flexible loads in scenario . Power demand during trading period t in scenario . Purchased volume on day-ahead market for trading period t in scenario . Imbalance to be settled for trading period t in scenario .
+
+Z
+T
+H  z t  d IhW,/D /S/V
+Ji , h , 
+Pi , j , h , 
+S TiR, h , 
+S Ti1, h , 
+S Ti2, h , 
+SPi,h,z ,
+
+E. Parameters Number of time slots in the planning horizon. Number of trading periods in the planning horizon. Number of households in the customer group. Number of scenarios. Length of a time slot. Length of a trading period. Probability of scenario . DR participation rate in scenario .
+Number of washing/ drying/ dish washing/ charging cycles of household h in scenario . Number of time slots during the operation of load cycle i of household h in scenario . Power demand of load cycle i at time slot j of household h in scenario . Reference start time of load cycle i of household h in scenario . The beginning of preferred start time interval of load cycle i of household h in scenario . The end of preferred start time interval of load cycle i in household h in scenario . Start preference of load cycle i of household h at time slot z in scenario .
+
+0885-8950 Š 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
+
+1840
+
+IEEE TRANSACTIONS ON POWER SYSTEMS, VOL. 32, NO. 3, MAY 2017
+
+uiR,h,z ,
+PzR, e f
+zS, tS, tA, tR, Pt t,c
+ 
+
+Reference starting status of load cycle i of household h at time slot z in scenario . Reference aggregate load at time slot z in scenario . Selling price of time slot z in scenario .
+Selling price of trading period t in scenario .
+Spot price of trading period t in scenario .
+Regulating price of trading period t in scenario .
+Imbalance penalty of trading period t. Price value of node c on the bidding curve for trading period t. Confidential level of CVaR. Risk factor.
+
+I. INTRODUCTION
+I N A liberalized electricity market, retailers are active intermediaries to buy electricity from wholesale markets and sell to consumers. One of their major decision problems concerns the optimal electricity procurement plans. In current market frameworks where most residential and small commercial consumers are charged flat tariffs, retailers are exposed to quantity and price risks [1] due to the stochastic nature of demand and volatility of market price. Accurate load forecasts are important for retailers to reduce the risks. The demand is influenced by many factors such as time, weather and consumer classes. Traditionally it can be predicted with a high accuracy through statistical techniques or artificial intelligence algorithms such as regression, neural networks, fuzzy logic and expert systems [2]. Moreover, future market products such as forward contracts can be used to hedge against the risks in the medium term [1].
+The demand is inelastic when consumers are facing flat tariffs and are monthly (or less often) metered. The situation will change along with the transformation of power markets and the development of information and communication technologies in power systems. As shown in many demand response pilots e.g. [3]­[7], consumers tend to change their consumption time and magnitude in response to dynamic tariffs or financial incentives when smart metering and bidirectional communication are available. The aggregate load shift or load reduction provides flexibilities to the system and consequently brings notable benefits through the improvement of economic efficiency and reliability [8]. Dynamic pricing would help retailers to reduce the risks by sharing the price risk with consumers who potentially pay a lower average price [9], [10]. However, this also brings them challenges regarding load forecast and planning.
+A difficulty for quantifying the flexibility lies in the uncertainty about the responsiveness of consumers to the incentives in demand response programs. Different approaches have been examined for retailers with flexible demands to determine the procurement plan. Elasticity is a classic way to model the pricebased demand response driven by dynamic tariffs. It quantifies the demand sensitivity with respect to price changes as described in [11], [12], and [13]. Two types of elasticities are usually used: self-elasticity and cross elasticity. Self-elasticity indicates the relative demand change in response to the price change within a single period, while cross elasticity indicates the demand change
+
+of a period in response to the price changes in other periods [14]. Reward-based demand response on the other hand could be modelled by stepwise price-quota curves as described in [15] and [16]. A reward is offered to consumers if the demand in a period is reduced by a certain level or does not exceed an amount. Generally a higher reward requires larger flexibility. Using aforementioned methods, most studies briefly estimate the flexibility at a system level e.g. applying a set of elasticities on the aggregate load while the elasticities are extrapolated from empirical studies. This provides an approximation of the aggregate flexibility but overlooks the differences between the studied consumer group and those in empirical studies regarding appliance ownership, consumption habits and consumers' involvement in demand response. A more detailed approach would be necessary when a retailer needs to estimate the responsiveness of a specific consumer group in a certain demand response program. Bottom-up approaches are more suitable for this purpose by considering the source where the flexibility stems from. Such approaches generally consist of two principle components: identifying the flexible end uses and defining the levels at which each consumer responds to the incentives.
+For residential consumers, the controllable home appliances such as dishwasher, washing machine and dryers can contribute a flexibility approximately equaling to 5%-15% of the daily load as estimated in study [17]. Furthermore, a potential flexible end use in the residential sector is the charging of electric vehicles (EVs) even though the current ownership is still low. A few EVs would result in a large charging load compared with other home appliances and consequently may deliver a notable flexibility through coordinated charging [18]. Some studies e.g. [19]­[23] proposed optimal algorithms for scheduling the flexible end uses and investigated their impacts on load patterns or electricity cost. But they have seldom been considered in detail in retailers' procurement plan.
+The foreseeable increasing sensitivity to price and larger price volatility due to higher penetration of intermittent renewable sources in the future can level up the difficulty of load forecast and consequently imposes risks in short-term trading, even though the medium-term risks could be partially transferred to consumers through different dynamic tariff structures [9]. Deviations between the purchased volume on day-ahead market and the real-time consumption would be more likely to happen, leading to higher probabilities for retailers exposed to imbalance cost. So a well developed bidding strategy in short-term would be an important issue when more demand response applications emerge in the future.
+The main contribution of this paper is a new bottom-up load model to forecast the aggregate power demand of a residential customer group who may respond to dynamic tariffs. Moreover, this load model is applied to a stochastic planning problem for retailers with flexible demands to determine the bidding strategy on day-ahead market. Conditional Value-at-Risk (CVaR) is used to consider the risk. The application of the stochastic planning is demonstrated in a case study based on data from Sweden.
+In contrast to the methods used in [11]­[15], the bottomup load model allows retailers to quantify the uncertainties of consumers' behavior with respect to the reference consumption pattern and the willingness to participate in demand response.
+
+SONG AND AMELIN: PURCHASE BIDDING STRATEGY FOR A RETAILER WITH FLEXIBLE DEMANDS IN DAY-AHEAD ELECTRICITY MARKET
+
+1841
+
+It employs integer linear programming to minimize the electricity bill for individual households. Unlike the models such as [20]­[22] which focus on the charging algorithm of EVs or the scheduling of other appliances individually, the load model uses a simplified but generalized method to treat the flexibility of various controllable end uses such as washing machine, dryer, dishwasher and charging of EVs. It could be further extended to include other controllable appliances with similar load patterns such as cooking appliances, vacuum cleaner, etc. The model could also be utilized by other players in power market to simulate consumers behavior under different dynamic price structures and forecast the capacity and duration of the flexibility. The bidding strategies on day-ahead market have been investigated in studies such as [24]­[26]. But they only determine a constant energy bid for each trading period. Contrarily, this study applies the method proposed by [12] to construct piecewise bidding curves. Stochastic programming is deployed to tackle the uncertainties of prices and consumers behaviors. Besides the different load forecast approach, a different risk measure is applied in the study to model the risk compared to [12]. CVaR has been widely applied in the medium term procurement plan [27]. In this study, it is integrated in the planning model to allow the retailer to compare different bidding strategies by considering the trade-off between the expected profit and the low-profit risk in short term. The bidding curves under different risk factors are generated and compared in the case study.
+The paper is organized as follows. Section II describes the problem by explaining the market framework and the uncertainties involved in the decision making process. Section III and IV provides the detailed formulations of the load model and planning model, respectively. Section V explains the decision framework of the retailer which combines the two models. Section VI describes the data used in a specific case and presents the numerical results. A brief conclusion and discussion of future works are given in Section VII.
+II. PROBLEM DESCRIPTION
+The paper addresses the short-term trading plan of a retailer in a power pool. The retailer is considered as a price-taker i.e. its bids would not affect the market clearing prices. This assumption is in accordance with the situation in many liberalized electricity markets where the trading volume of most retailers is too small compared with the total turn-over of the market to influence the price.
+The trading in the market is divided into three steps according to chronological sequence. It is based on the Nordic power market [28] which is a typical electricity market structure in Europe. Firstly, in day-ahead trading, players submit price-volume bids to the pool to sell or buy electricity for each trading period on the next day. The length of trading periods could be an hour or shorter, varying among different markets. The pool compiles all buying and selling bids and calculates the spot price for each trading period. A certain volume is agreed for a player according to the cleared spot price and the bidding curve it has submitted.
+Secondly, the real-time trading happens within the trading period. Producers and consumers are expected to follow
+
+Fig. 1. One-price system for imbalance settlement.
+their agreements on the day-ahead market. A real-time balancing market exists at this stage. Up- or down-regulations are activated by the system operator when the frequency drops or rises outside the normal operation interval due to the deviation between supply and demand. The regulations can be provided by producers or consumers who have set bids on the real-time balancing market. They increase production or reduce consumption for up-regulation, whereas reduce production or increase consumption for down-regulation. The settlement of regulating price differs among systems. For example, marginal pricing is applied in Nordic market i.e. a uniform up-regulation price is paid for all activated up-regulation bids, while a uniform downregulation price is paid for all activated down-regulation bids. Generally, the regulating price is higher than the spot price during an up-regulation period, whereas lower than the spot price during a down-regulation period.
+The deviations between the actual generations/consumptions and the trading on day-ahead and real-time balancing markets lead to potential imbalance costs for all balance responsible players, who are responsible to financially achieve a balance between their own supply and demand. It is common that retailers take over the balance responsibilities of individual consumers. The imbalance settlement is carried out in the third step after a trading period ends. Taking the Nordic market as an example, consumers face a one-price settlement. As shown in Fig. 1, the same regulating price is used to settle both positive and negative imbalances. A retailer without generation capacity must settle the imbalance between the purchased volume in day-ahead trading and the actual extracted energy. If its customers use more electricity than the purchase on day-ahead market, it needs to buy the imbalance from the system operator by paying for the excess demand at the regulating price. Otherwise, it needs to sell the imbalance if the customers use less [28].
+The decision problem of a retailer in this paper is to construct piecewise linear bidding curves to submit on day-ahead market for maximizing the short-term profit. Even though the demand side could be a potential resource for providing upor down-regulations [29], the participation in the real-time balancing market is not in the scope of this paper. Therefore only day-ahead trading and balance settlement are considered as the interactions between the retailer and the pool. The decision problem associates with the uncertainties of spot price, actual power demand and regulating price. A scenario tree is constructed as Fig. 2 to represent possible realizations of these stochastic factors. The root node corresponds to the first stage at
+
+1842
+
+IEEE TRANSACTIONS ON POWER SYSTEMS, VOL. 32, NO. 3, MAY 2017
+
+Fig. 3. Example of a load cycle running for 3 time slots.
+
+Fig. 2. Scenario tree.
+which the bidding curves for all trading periods are determined. The branches leaving the root node represent different scenarios of spot price, reference consumption patterns and willingness to participate in demand response. The aggregate power demand is accordingly estimated at the second stage. The purchase of a trading period on day-ahead market in a scenario is determined by the bidding curve and the spot price. Imbalance would occur if it deviates from the actual power demand. Several regulating price scenarios are then generated based on each spot price scenario to calculate the imbalance cost at the third stage.
+III. LOAD MODEL
+The load model is developed to forecast the power demand of a residential consumer group in response to dynamic tariffs. In this study, the flexibilities of washing machine, dryer, dishwasher and EV charging are considered. The model consists of three steps. Firstly, given the usage of these end uses in reference condition, the aggregate flexible load in each time step is quantified. The reference condition is defined as the situation when the group is charged flat tariffs. Then, it estimates how the flexible loads would be shifted under dynamic tariffs through optimization. This is based on an assumption that some consumers tend to change the schedules of the controllable end uses to reduce their electricity bills and satisfy their demands of electricity simultaneously. At the end, the new aggregate load is generated as the output based on the reference load and the new schedules. Following is the detailed formulation of the model.
+A. Step 1: Identify and Quantify the Flexible Loads in Reference Condition
+The planning horizon is divided into Z time slots that are indexed by z  {1, ..., Z}. z is the length of one time slot. The flexible load lies in controllable home appliances including washing machine, dryer and dishwasher as well as charging of EVs. For household h  {1, ..., H} in scenario   {1, ..., }, load cycle i  h, stands for one of the times that the appliances are used or an EV is charged during the planning horizon. The load cycles could be further indexed by iW  Wh, , iD  hD, , iS  hS, or iV  Vh, , representing
+
+the type of load: washing, drying, dish washing or EV charging. The relationships between these sets are:
+
+Wh,  Dh,  Sh,  Vh, = h, (1)
+|xh, | = Ihx, , h, , x = W, D, S, V
+
+For simplification, load cycle i is assumed consecutively last-
+ing for Ji,h, time slots which are indexed by j. The power demand within each slot is assumed constant and symbolized
+as Pi,j,h, . Actually the operation of a load cycle could be interruptible. Delay function may exist in appliances, while EVs
+could be intermittently charged. However, they are not the focus
+of the study and are neglected hence.
+When the start time of a load cycle in the reference condition STiR,h, is known, the starting status uRi,h,z, could be determined from (2). uiR,h,z, is binary: 1 indicates the cycle starting from time slot z, 0 otherwise.
+
+uRi,h,z , =
+
+1, z = STiR,h, 0, else
+
+i, h, z, 
+
+(2)
+
+In time slot z, the reference power demand of load cycle i is determined as:
+
+Ji,h ,
+
+PiR,h,z , =
+
+Pi,j,h, uiR,h,z -j +1, , i, z, h, 
+
+(3)
+
+j=1
+
+This can be verified through the example in Fig. 3 which illustrates a load cycle lasting for 3 time slots. It starts from z = 3. Thus,
+
+uzR =
+
+1, z = 3 0, else
+
+(4)
+
+Taking z = 3 for instance, according to (3), the power demand in it is calculated as (5). The power demands of other z can be verified in the same way.
+
+PzR=3 = Pj =1 uRz =3 + Pj =2 uRz =2 + Pj =3 uzR=1 = Pj =1 (5)
+In the reference condition when households are charged flat tariffs, the aggregate flexible load of the group PzF, is the sum of power demands of all load cycles:
+
+H
+
+Ji,h ,
+
+PzF, =
+
+Pi,j,h, uRi,h,z -j +1, , z,  (6)
+
+h= 1 i h,  j = 1
+
+SONG AND AMELIN: PURCHASE BIDDING STRATEGY FOR A RETAILER WITH FLEXIBLE DEMANDS IN DAY-AHEAD ELECTRICITY MARKET
+
+1843
+
+B. Step 2: Determine the Optimal Schedules of the Controllable End Uses
+In price-based demand response, consumers tend to reschedule the controllable home appliances and EV charging in response to the dynamic tariffs for minimizing the electricity cost. The optimal schedules can be achieved in two ways in practice. It could either be computed and automatically set by an energy management system with an embedded scheduling program e.g. [30] and [31] or intuitively decided by consumers and set manually.
+The capability and willingness to respond can vary among consumers due to different sensitivities to the economic incentives and different life styles. Assuming a percentage d of the group would like to respond in a certain scenario, the customers are divided into two subgroups: the responding group hP and non-responding group hN . The number of households in each subgroup is d H and (1 - d )H, respectively.
+For the responding group, optimal schedules are provided for each household. Binary decision variables ui,h,z, are determined for the optimal schedule. It indicates the starting status of a load cycle. The electricity cost of a household due to the flexible load during the planning horizon, Eh, , is computed by summing up the costs of all load cycles:
+
+Z
+Eh, =
+
+J i , h, 
+zS, Pi,j,h, ui,h,z -j +1, z, h, 
+
+z = 1 i h,  j = 1
+(7)
+
+where zS, refers to the tariff in time slot z. The power demand of each load cycle in a time slot is expressed in a similar way as
+
+(3) in the reference condition.
+
+Several constraints are set for the operation of load cycles.
+
+Firstly, it is necessary to guarantee that each load cycle is started
+
+once during the planning horizon as in (8). This constraint en-
+
+sures that consumers' demands for washing, drying, dish wash-
+
+ing or EV charging are still satisfied even though the schedules
+
+would be altered.
+
+sequential constraint can be written as:
+
+z + Ji w, h ,  -1
+
+uiw,h,z , +
+
+uid,h,k,  1, z, h, 
+
+k=z
+
+(10)
+
+Thirdly, the level that a household would like to change the reference schedules is modeled through a time preference constraint. It is highly dependent on the need of intervention. For example, if it is necessary for consumers to turn on the washing machine manually, they probably would not like to infinitely delay the washing cycle even though the electricity price could be much lower after a long delay. Surveys show that most consumers would prefer to delay the appliances up to three hours [32]. On the other hand, higher flexibility could be possible if auto-delay functions are available. Similarly, the flexibility of EV charging is also dependent on the degree of automation. An upper limit of the delayed starting time should be considered if the charging is manually controlled. Otherwise, if the charging socket could be turned on/off automatically, a default allowed charging time can be set between the connected time and the next leaving time.
+The preferred start time of load cycle i is defined as a time interval [STi1,h, , STi2,h, ]. It implies that the cycle is allowed to start within the interval. The binary parameter, start preference SPi,h,z, , is determined according to (11). It denotes whether the load cycle is allowed to start or not in time slot z. The time preference constraint is written as (12).
+
+SPi,h,z , =
+
+1, z  [STi1,h, , STi2,h, ] 0, else
+
+i, h, z, 
+
+(11)
+
+ui,h,z ,  SPi,h,z , , i, h, z, 
+
+(12)
+
+For household h  hP , the scheduling problem is summarized as:
+
+Z
+
+ui,h,z, = 1, i, h, 
+
+(8)
+
+z=1
+
+Secondly, the household is assumed to own one equipment for each type of load. Thus, different load cycles of a same equipment should not overlap. The interval between the beginnings of two cycles should allow the first one to finish its operation at least. The non-simultaneous operation of load cycles for the same end use is managed by constraint (9):
+
+a
+
+uix,h,z , +
+
+uy ,h,k,  1
+
+y
+
+
+
+x h,
+
+
+
+\ix
+
+k=z
+
+(9)
+
+a = z + Jix,h, - 1, z, h, , ix , x = W, D, S, V,
+
+This constraint can also handle the sequential operation be-
+tween appliances such as that between a washing cycle and a drying cycle, denoted as iw and id as example. If the drying cycle should not start before the washing cycle has finished, the
+
+Min cost function (7)
+
+s.t. constraints (8), (9) and (12)
+
+ui,h,z,  {0, 1}, i, h, z, 
+
+(13)
+
+C. Step 3: Generate New Aggregate Load Profile Using the Optimal Schedules
+Assuming the reference aggregate load PzR,ef could be obtained based on historical measurements through statistical techniques such as regression, the inflexible load PzN, can be computed by subtracting the flexible loads from the total load:
+
+PzN, = PzR,ef - PzF, , z, 
+
+(14)
+
+The new aggregate load after demand response Pz, is calculated by summing up the non-flexible load, the rescheduled flexible loads of responding households and the reference flexible
+
+1844
+
+IEEE TRANSACTIONS ON POWER SYSTEMS, VOL. 32, NO. 3, MAY 2017
+
+Therefore an imbalance PtR, may happen due to the deviation between them as formulated in (18).
+
+PtR, = PtA, - Pt, , t, 
+
+(18)
+
+Fig. 4. Bidding curve with four nodes, the calculations of purchased volume on day-ahead market and imbalance.
+
+loads of non-responding households:
+
+J i , h, 
+
+Pz , = PzN, +
+
+Pi,j,h, ui,h,z -j +1,
+
+h
+
+h
+
+P 
+
+i h, 
+
+j=1
+
+Ji,h ,
+
++
+
+Pi,j,h, uiR,h,z -j +1, , z, 
+
+h
+
+h
+
+N 
+
+i h , 
+
+j=1
+
+(15)
+
+IV. SHORT-TERM PLANNING MODEL FOR RETAILERS
+
+The profit of a retailer is the difference between the income from selling electricity to customers and the cost of buying electricity from the wholesale market. Since a number of scenarios are involved as demonstrated in Fig. 2, the expected profit in the planning horizon is calculated as:
+
+
+
+T
+
+
+
+(St, Pt, - tA, PtA, + tR, PtR, - tP
+
+=1 t=1
+
+(PtR,+ + PtR,-))t
+
+(16)
+
+where  refers to the probability of scenario . The planning horizon consists of T trading periods indexed by t.
+The second term calculates the cost of buying electricity
+from day-ahead market. A bidding curve as illustrated in Fig. 4
+will be decided for each trading period and submitted on day-
+ahead market. Based on the method proposed in [12], it is a
+piecewise descending curve consisting of C nodes (Pt,1 , t,1 ), (Pt,2 , t,2 ), ..., (Pt,C , t,C ), where t,1  t,2  ...  t,C and Pt,1  Pt,2  ...  Pt,C . The curve is independent on scenarios. For scenario , the spot price tA, lies between t,c and t,c+1 , where c  {1, ..., C}. The purchase on day-ahead market PtA, is a linear interpolation between Pt,c+1 and Pt,c according to (17).
+
+PtA,
+
+=
+
+Pt , c + 1
+
++ (Pt,c
+
+-
+
+Pt,c+1 )
+
+t , c + 1 t , c + 1
+
+- -
+
+tA, t,c
+
+,
+
+t,
+
+
+
+(17)
+
+The price values of the nodes t,c are fixed to simplify the problem and to ensure the model linear, whereas the volume
+value Pt,c needs to be solved through optimization. The third term concerns the imbalance settlement. The actual
+power demand Pt, would probably not coincide with PtA, .
+
+The imbalance will be settled at the regulating price Rt, . If PtR, is negative, the retailer needs to pay a cost to buy the excess
+volume. Otherwise, the retailer earns by selling the imbalance back to the market when PtR, is positive.
+The last term in (16) is used to guarantee that the retailer
+fulfills most of the demand on day-ahead market by imposing a penalty tP for per unit imbalance. This complies with the policy of system operators that the day-ahead market should reflect the physical conditions. Two non-negative variables PtR,+ and PtR,- are used to calculate the absolute value of the imbalance while ensuring the problem linear. They could be determined by PtR, according to (19).
+
+PtR, = PtR,+ - PtR,-, t, 
+
+(19)
+
+A risk measure is included to consider the volatility of the profit for different bidding strategies. For a given confidential level , the CVaR is defined as the expected profit of the (1 - ) × 100 scenarios with the lowest profits. Using the expression in (16) for the profit of each scenario, the CVaR for a confidential level  is computed as:
+
+CVaR
+
+=
+
+Max
+
+
+
+-
+
+1
+
+1 -
+
+
+
+
+
+ 
+
+(20)
+
+=1
+
+T
+s.t.  - (tS, Pt, - tA, PtA, + Rt, PtR,
+t=1
+
+- Pt (PtR,+ + PtR,-))t   , 
+
+(21)
+
+  0, 
+
+(22)
+
+The optimal value of  represents the highest profit such that the probability of experiencing a profit not higher than  is less than or equal to 1 - . The auxiliary variable  equals to the excess of  over the profit in scenario  if the excess is positive [27].
+For a planning horizon T , the optimization problem of a retailer is formulated as (23). The overall objective function combines the profit function (16) and the CVaR risk measure (20). The latter is weighted using a risk factor   [0, ), indicating the trade-off between profit and risk.
+
+
+
+T
+
+Max
+
+
+
+(tS, Pt, - At, PtA, + tR, PtR,
+
+=1 t=1
+
+-
+
+Pt
+
+(PtR,+
+
++
+
+PtR,-))t
+
++
+
+(
+
+-
+
+1
+
+1 -
+
+
+
+ =1
+
+  )
+
+s.t. constraints (17)-(19), (21), (22)
+
+Pt,c  Pt,c+1 , t, c
+
+Pt,c , PtR,+ , PtR,-  0, t, c, 
+
+(23)
+
+SONG AND AMELIN: PURCHASE BIDDING STRATEGY FOR A RETAILER WITH FLEXIBLE DEMANDS IN DAY-AHEAD ELECTRICITY MARKET
+
+1845
+
+Fig. 5. Decision process of a retailer to determine the bidding strategy.
+
+V. DECISION FRAMEWORK OF RETAILERS
+For a planning horizon T , a decision framework is constructed for the retailer to determine bidding curves. It combines the aforementioned load model and short-term planning model. The flowchart of the framework which consists of three steps is illustrated in Fig. 5. The scenarios need to be generated at the beginning according to the scenario tree (Fig. 2).
+In the first step, the retailer determines the aggregate power demands Pz, for each spot price scenario using the load model. It is assumed that each household belonging to the responding group minimizes the electricity cost by rescheduling the controllable end uses. The new schedules subject to the operation constraints as explained in Section III B. Major equations in the step are summarized as following:
+
+H
+
+J i, h, 
+
+PzF, =
+
+Pi,j,h, uRi,h,z -j +1, , z, 
+
+h= 1 i h,  j = 1
+
+(24)
+
+PzN, = PzR,ef - PzF, , z, 
+
+(25)
+
+Ji,h ,
+
+Pz , = PzN, +
+
+Pi,j,h, ui,h,z -j +1,
+
+h
+
+h
+
+P 
+
+i h , 
+
+j=1
+
+Ji,h ,
+
++
+
+Pi,j,h, uRi,h,z -j +1, , z, 
+
+h
+
+h
+
+N 
+
+i h , 
+
+j=1
+
+(26)
+
+ui,h,z, = arg min{
+
+Z
+
+Ji,h ,
+
+Eh, =
+
+zS, Pi,j,h, ui,h,z -j +1, z
+
+z = 1 i h ,  j = 1
+
+, h  hP
+
+(27)
+
+Z
+
+s.t. ui,h,z, = 1, i, , h  hP
+
+(28)
+
+z=1
+
+a
+
+uix,h,z , +
+
+uy ,h,k,  1, z, , h  hP , ix
+
+y
+
+
+
+x h
+
+,
+
+\i
+
+x
+
+k=z
+
+a = z + Jix,h, - 1, x = W, D, S, V
+
+(29)
+
+ui,h,z ,  SPi,h,z , , i, z, , h  hP
+
+(30)
+
+ui,h,z,  {0, 1}, i, z, , h  hP }
+
+(31)
+
+The second step connects the load model and the planning
+model by transferring the outputs from the former Pz, into the inputs of the latter Pt, . The time slot of the load model z is usually shorter than the length of trading period t to manage
+the scheduling of different end uses. Thus, Pt, is the sum of Pz, in several time slots (32). Besides, the relationship between St, and Sz, is expressed as (33)
+
+Pt, =
+
+z t
+
+c
+
+Pz, , t, 
+
+z=b
+
+b=
+
+(t
+
+-
+
+1)
+
+t z
+
++
+
+1,
+
+c
+
+=
+
+t
+
+t z
+
+(32)
+
+tS, = Sz, , t, , b  z  c
+
+(33)
+
+In the third step, the retailer maximizes its short-term profit through a certain bidding strategy which is scenario independent. The equations involved are summarized as following:
+
+
+
+T
+
+Max
+
+
+
+(tS, Pt, - tA, PtA, + tR, PtR,
+
+=1 t=1
+
+(34)
+
+- Pt
+
+(PtR,+
+
++
+
+PtR,-))t
+
++
+
+(
+
+-
+
+1
+
+1 -
+
+
+
+ =1
+
+  )
+
+s.t.
+
+PtA,
+
+=
+
+Pt , c + 1
+
++ (Pt,c
+
+-
+
+Pt,c+1 )
+
+t , c + 1 t , c + 1
+
+- -
+
+At, t,c
+
+, t, 
+
+(35)
+
+Pt,c  Pt,c+1 , t, c
+
+(36)
+
+PtR, = PtA, - Pt, , t, 
+
+(37)
+
+PtR, = PtR,+ - PtR,-, t, 
+
+(38)
+
+T
+ - (St, Pt, - At, PtA, + tR, PtR, - Pt (PtR,+
+t=1
+
+- Pt (PtR,+ + PtR,-))t   , 
+
+(39)
+
+Pt,c , PtR,+ , PtR,-,   0, t, c, 
+
+(40)
+
+1846
+
+IEEE TRANSACTIONS ON POWER SYSTEMS, VOL. 32, NO. 3, MAY 2017
+
+TABLE I PARAMETERS IN THE PLANNING MODEL
+
+TABLE II PARAMETERS IN THE LOAD MODEL
+
+Parameters
+
+Value or method
+
+Parameters
+
+Washer Dishwasher
+
+Dryer
+
+EV
+
+T
+
+C
+ t [hour]
+ St ,  [EUR/MWh] tA,  [EUR/MWh] tR,  [EUR/MWh] tP,  [EUR/MWh] 
+
+24 60 13
+1 prob.(At ,  ) ˇ prob.(tR,  )
+150%ˇtA,  Estimated from SARIMA
+Estimated from SARIMA and Markov
+15
+95%
+
+VI. CASE STUDY
+A. Data
+A simulation is performed using the proposed planning framework to determine bidding strategies for a retailer on day-ahead market. The retailer is assumed to provide electricity to 10000 households with flexible power demands. The planning horizon is 24 hours with trading periods as 1 hour.
+As demonstrated in Fig. 2, spot price scenarios are generated at first. 500 24-hour spot price scenarios are generated using Seasonal Autoregressive Integrated Moving Average (SARIMA) model and then reduced to 20 scenarios with different probabilities using k-means clustering function in Matlab. The parameters of SARIMA model are estimated based on the spot price series from Nord Pool Spot in 2014. Assuming the customers are charged a real-time price for electricity consumption, the actual power demand due to demand response Pt, is estimated for each spot price scenario with the proposed load model. For simplification, the selling price tS, is assumed as 150% of the spot price tA, to reflect the volatility of spot price and keep a revenue margin for the retailer.
+Then, regulating price scenarios are generated using a combination of SARIMA and Markov process developed by [33]. The difference between the regulating price and the spot price in each hour is determined by SARIMA, while the regulation direction is determined by Markov process. Three regulating price scenarios are generated for each spot price scenario with different regulation directions for the first hour in the planning horizon: up-regulation, down-regulation or non-regulation. The parameters of SARIMA model and the transition probabilities of Markov process are estimated based on the regulating price series from Nord Pool Spot in 2014. Sixty scenarios are generated totally when applying the short-term planning model.  equals to the product of the probabilities of the spot price and the regulating price in scenario .
+A one-price system is applied for imbalance settlement i.e. a uniform regulating price is adopted for both positive and negative imbalance in an hour. A constant imbalance penalty Pt = 15 EUR/MWh is used for simplification. 13 nodes are used to construct bidding curves within the price interval between 0 and 90 EUR/MWh. The confidential level of CVaR is set as 95%. Table I lists the major parameters in the planning model.
+
+Ihx,  = 0 Ihx,  = 1 Ihx,  = 2 Ihx,  = 3
+
+S
+
+T
+
+R i, h,
+
+
+
+Ji, h,  [15min]
+
+P i, 1 , h,  [kW] P i, 2 , h,  [kW] P i , 3 , h,  [kW] P i , 4 , h,  [kW] P i , 5 , h,  [kW] P i , 6 , h ,  [kW] P i , 7 , h,  [kW] P i , 8 , h,  [kW] P i , 9 -1 4 , h,  [kW]
+
+S
+
+T
+
+1 i, h,
+
+
+
+S
+
+T
+
+2 i, h,
+
+
+
+H  z [min] Z [15 min] d
+
+x=W 49.3% 39.3% 10.6% 0.8%
+Fig. 5
+7
+0.1 2 0.9 0.1 0.1 0.3 0.05 ­ ­
+
+Probability distribution
+
+x=S 53.2% 39.5% 6.6% 0.7%
+
+x=D ­ ­ ­ ­
+
+Fig. 5 8
+
+S
+
+T
+
+R i W,
+
+h
+
++7
+
+6
+
+0.08
+
+2
+
+2
+
+2
+
+0.08
+
+2
+
+0.08
+
+1.6
+
+0.08
+
+1.3
+
+2
+
+0.94
+
+0.3
+
+­
+
+0.15
+
+­
+
+­
+
+­
+
+S
+
+T
+
+R i,h
+
+S
+
+T
+
+R i,h
+
++
+
+11
+
+10000 15 96
+Obtained from Fig. 6
+
+x=V 90% 10% ­ ­
+ N (64, 8)
+14
+2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3 2.3
+
+Fig. 6. Probability distributions of the reference start time STi,Rh, for dishwasher and washing machine.
+The length of time slot z is 15 minutes when applying the load model. Parameters regarding the stochastic reference consumption behaviors are randomly set for each spot price scenario. It is assumed that all households have a dishwasher, a washing machine and a tumble dryer. The numbers of daily washing and dish washing cycles, IhW, and IhS, , are respectively determined by the arbitrary probability distributions as shown in Table II. Their reference start time STiR,h, are subject to the probability distribution in Fig. 6. These distributions are based on data from Statistics Sweden [34] and a previous numerical study [35]. 70% of washing cycles are supposed immediately followed by a drying cycle [32]. Identical load patterns are adopted for all cycles of the same appliances in all households. The operation time and power demands of each load cycle, Ji,h, and Pi,j,h, , are based on an EU survey [32] as shown in Table II. The average power demands of a cycle are 0.89 kWh, 2.4 kWh and 1.19 kWh for washing machine, dryer and dishwasher, respectively.
+
+SONG AND AMELIN: PURCHASE BIDDING STRATEGY FOR A RETAILER WITH FLEXIBLE DEMANDS IN DAY-AHEAD ELECTRICITY MARKET
+
+1847
+
+effectiveness of the method. Examples of scenario reduction algorithms are described in [37] and [38].
+
+Fig. 7. The relationship between demand response participation rate d and peak/off-peak price ratio.
+10% of the households are supposed to own an EV. The parameters of EV charging are also listed in Table II. Each vehicle is charged once a day. Slow charging at 10 A and 230 V is used concerning the availability of charging infrastructures. Accordingly the required charging time is 3.5 hours based on the average driving distance and average energy consumption of EV in Sweden [20]. A charging cycle iV takes place when the car returns home and is connected to power until the battery is fully charged. The reference connecting time STiRV ,h, is determined by the sum of leaving time LiV ,h, and the away time AiV ,h, . LiV ,h, stands for the time when the car leaves home. AiV ,h, stands for the period during which the car stays away from home. They are subject to normal distributions, LiV ,h,  N (28, 8) and AiV ,h,  N (36, 8), according to a Swedish study about the driving habits of Swedes [36].
+The aggregate load in reference condition PzR,ef is estimated based on a measurement of a residential area in Stockholm which is 4561.4 kWh/householdˇ year on average. PzR,ef is obtained by adding the reference EV charging load to the data. The responsiveness to the dynamic tariff is assumed positively correlated to the peak/off-peak price ratio. Such a relationship is designed as Fig. 7, showing that a larger percentage of the group would like to participate in demand response when the peak/off-peak price ratio is higher. In this study, 10000d households are randomly selected to reschedule the flexible loads in each spot price scenario according to the peak/off-peak price ratio. To simulate the most probable situation, each responding household would delay appliances and EV charging by up to 3 hours to get a lower cost.
+The optimizations are addressed in GAMs on an Intel i72600K CPU @ 3.40GHz. Cplex is used to solve the linear and integer linear programs. Load forecasting is the most time consuming step in the decision process. In the case 3650 households need to be rescheduled on average in one spot price scenario. The average CPU time of a scenario is 283 s for the 24-hour planning horizon. The execution time of the whole process depends on the number of scenarios. For an implementation with a large number of scenarios, parallel computing can speed up the process by distributing the optimizations in different scenarios among multiple processors or cores. Furthermore, it is important to construct a scenario tree which can capture the stochastic properties with relatively few scenarios in order to improve the
+
+B. Results
+Fig. 8 shows the expected aggregate load for the planned 24 hours in both reference condition and after demand response. When the real-time pricing is applied, the peak of aggregate load is levelled down after demand response. Loads are mostly shifted to the afternoon (Hour 15-16) and evening (Hour 21-24) with relatively lower prices. The load change in each hour is caused by changing the time of controllable home appliances and EV charging. Only slight load increases are observed during Hour 3-6 even though the prices in the period are almost the lowest. It is due to the 3-hour-delay assumption and the reference consumption pattern in which only a few flexible loads exist during night.
+Fig. 9 demonstrates the influence of risk factor  on retailer's profit and risk for the planned 24 hours with a confidential level of 95%. The risk-neutral bidding strategy ( = 0) attains the highest expected profit and highest risk, which is measured as CVaR. When the retailer becomes more risk-averse with larger , it gets lower expected profit but also lower risk. The lower risk reflects in the increasing of CVaR which is the expected profit of the 5% worst scenarios.
+The purchase on day-ahead market and the corresponding imbalance for each  are shown in Figs. 10 and 11, respectively. When  becomes larger, the retailer tends to purchase less electricity on day-ahead market. This leads to a growing imbalance quantity with more negative imbalance and less positive imbalance (as defined in (18) and (19)). Making the bidding curves deviate more from the power demands would result in a reduction of the expected profit due to the growing imbalance penalty. But this could still be preferable for risk-averse retailers. In this case, the expected regulating price is lower than the expected spot price in all hours. Therefore, the retailer could buy electricity at a lower price on average during imbalance settlement through expanding the negative imbalance. The CVaR increases in this way, implying that the expected profit of the worst 5% scenarios becomes higher when there is more negative imbalance. But as shown in Fig. 8, the expected profit and CVaR do not change any more when  is greater than 1.25. The retailer can still enlarge the negative imbalance by further altering the bidding strategy. But it may lead to a quick reduction of profit in all scenarios due to the growing imbalance penalty.
+Figs. 12 and 13 provide two examples of the bidding curves and load scenarios in particular hours. Fig. 12 is for Hour 19. When  increases until  = 0.75, the lower part of the bidding curve gradually shifts towards left. For each scenario, shifting the curve towards left implies a reduction of the purchase on dayahead market. This complies with the trend shown in Fig. 10. The imbalance in each scenario is listed in Table III. It reflects the deviation between the curve and the load scenario. Positive imbalance happens when a load scenario locates on the left side of the curve, implying that the purchase on day-ahead market is larger than the actual power demand. Contrarily, negative imbalance occurs when a load scenario is on the right side of
+
+1848
+
+IEEE TRANSACTIONS ON POWER SYSTEMS, VOL. 32, NO. 3, MAY 2017
+
+Fig. 8. Spot price and the comparison of load patterns between reference condition and after demand response (expected values are used for price and load).
+
+Fig. 9. Comparison of bidding strategies regarding the expected profit and the low-profit risk.
+
+Fig. 12. Bidding curves under different risk factors and load scenarios in Hour 19.
+
+Fig. 10. Purchase on day-ahead market under different risk factors. Fig. 11. Imbalance under different risk factors.
+
+Fig. 13. Bidding curve and load scenarios in Hour 16.
+the curve, implying that the purchase on day-ahead market is smaller than actual power demand. The imbalance is 0 if a load scenario is just on the curve. As shown in Table III, the positive imbalances decrease and the negative imbalances increase when  becomes larger. This is in accordance with the indication of Fig. 11. The curve does not change further when  is larger than 0.75. This also complies with the inference of Fig. 9 that the retailer can only improve CVaR within limits.
+Fig. 13 shows the load scenarios and bidding curve for Hour 16. Compared with Hour 19, the load curve for Hour 16 displays lower sensitivity to the change of . An identical curve is obtained for all . The different sensitivity to  is due to the different spread of load scenarios to some extent. As observed on Figs. 12 and 13, a negative correlation -0.72 is found
+
+SONG AND AMELIN: PURCHASE BIDDING STRATEGY FOR A RETAILER WITH FLEXIBLE DEMANDS IN DAY-AHEAD ELECTRICITY MARKET
+
+1849
+
+TABLE III IMBALANCE IN DIFFERENT SCENARIOS [MWH]
+
+Scenario
+
+Hour 16
+
+Hour 19
+
+all   = 0  = 0.25  = 0.5   0.75
+
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 Expected imbalance
+
+-0.55 0.00 -1.39 -0.20 -0.04 -0.96 -0.55 0.24 0.59 0.30 -0.42 -0.45 0.50 0.72 0.55 -0.02 -0.12 -0.08 0.00 0.00 0.33
+
+0.00 0.00 0.00 0.00 0.00 0.00 0.13 -0.18 -0.18 -0.20 0.05 0.55 -0.29 -0.29 -0.17 0.00 0.23 0.05 0.20 0.40 0.17
+
+0.00 -0.16 0.00 0.00 -0.03 0.00 0.13 -0.27 -0.34 -0.24 0.05 0.39 -0.45 -0.45 -0.33 -0.06 0.06 0.00 0.04 0.24 0.20
+
+0.00 -0.32 0.00 -0.05 -0.16 0.00 0.12 -0.43 -0.49 -0.40 0.00 0.24 -0.61 -0.60 -0.49 -0.21 -0.09 -0.16 -0.12 0.08 0.28
+
+0.00 -0.40 0.00 -0.13 -0.24 0.00 0.07 -0.51 -0.57 -0.48 -0.08 0.16 -0.69 -0.68 -0.57 -0.29 -0.17 -0.24 -0.20 0.00 0.34
+
+between the price and the power demand among the load scenarios for Hour 19, whereas a positive correlation 0.72 is found for Hour 16. The positive correlation makes it more difficult for using a descending curve to maintain a limited imbalance in all scenarios for Hour 16. So the expected imbalance of Hour 16 is larger than that of Hour 19 in most cases.
+The positive correlation implies that the load change in an hour is not only influenced by the price change in the single hour. It is also affected by the relationship between the price in the hour and the prices in other hours. So there is no guarantee that a higher spot price in an hour must lead to a lower load. Taking Hour 16 as an example, an amount of load is shifted towards it when its price is lower than previous hours (similar as in Fig. 8 for the expected spot price). The load shift direction remains the same when its price increases if it is still lower than the previous hours. Moreover, a higher demand response participation rate d may occur if the peak/off-peak ratio also increases. This leads to more households responding to the dynamic tariffs by shifting loads towards low-price period which is Hour 16 in the example. It consequently results in the positive correlation between the price and the power demand in the hour.
+The retailer faces uncertainties of spot price when it needs to determine the bids. Thus, a number of scenarios have been generated to provide possible realizations of the price. The retailer can have two options in case the actual spot price is higher than the highest price value on bidding curves. One way is to extend the bidding curve. As shown in the two examples in Figs. 12 and 13, it is possible to extend the curves vertically for the price above 90 EUR/MWh. Another way is to keep the bidding curve unchanged so that nothing will be purchased on day-ahead market. All consumptions will be settled as imbalance instead. But generally, the retailer is assumed having a good knowledge about the market. So the actual spot price is considered within the range defined by the scenarios in this case.
+
+VII. CONCLUSION
+This paper develops a short-term planning framework for retailers to determine bidding strategies on day-ahead market. The tool consists of two parts: a load model for forecasting the aggregate power demand of a consumer group in demand response, and a planning model for constructing bidding curves to maximize the benefits of the retailer. The uncertainties of spot price, regulating price and power demand are tackled using stochastic programming. The study is based on a price-taker assumption that the bids have no influence on the market price. The interactions between the flexible demand of a price-maker retailer and the market clearing price can be studied in the future.
+The proposed load model looks into details of the flexible end uses in households including controllable home appliances and EV charging. It captures the stochastic characteristics of the flexibility regarding the reference consumption pattern and the responsiveness to dynamic tariffs. The case study shows that the real-time price affects the aggregate load of a residential consumer group in terms of the load shift towards low-price periods. The model can be further applied to simulate consumers' behavior under different dynamic price structures and forecast the capacity and duration of the flexibility. This is not only crucial for retailers to make the procurement plans, but also important for other players in the power market. For example, the model could be utilized by aggregators to estimate the flexibility of an aggregation of individual demand side resources. It could also help grid owners to learn about the responsiveness of customers to different economic incentives in order to set proper network tariffs for managing network congestions. The model involves a series of random parameters regarding the consumption pattern and willingness to respond. More sensitivity analysis could be performed in the future.
+The case study also shows that a risk-averse retailer tends to adopt the bidding strategies with larger imbalances. The benefit lies in the reduction of low-profit risk. However, the aversion to risk can only be kept in a certain level. A larger imbalance may lead to a quick reduction of profit due to the growing imbalance penalty. This allows retailers to comply with the policy of system operator and try to satisfy the demand from day-ahead market.
+REFERENCES
+[1] R. H. Boroumand and G. Zachmann, "`Retailers' risk management and vertical arrangements in electricity markets," Energy Policy, vol. 40, pp. 465­472, 2012.
+[2] E. A. Feinberg and D. Genethliou, "Load forecasting," in Mathematics for Restructured Electric Power Systems: Optimization Control, and Computational Intelligence. New York, NY, USA: Springer, 2005, pp. 269­285.
+[3] A. Faruqui and S. Sergici, "Household response to dynamic pricing of electricity: A survey of 15 experiments," J. Regul. Econ., vol. 38, no. 2, pp. 193­225, 2010.
+[4] D. Hammerstrom, "Pacific Northwest Gridwise Testbed Demonstration Projects," Pacific Northwest Nat. Lab., Richland, WA, USA, Tech. Rep. PNNL-17167, 2007.
+[5] IBM, "Ontario Energy board smart price pilot--Final report," Ontario Energy Board, Toronto, ON, Canada, Tech. Rep., 2007.
+[6] D. Violette, J. Erickson, and M. Klos, "Final report for the mypower pricing segments evaluation," Public Service Elect. Gas Company, Newark, NJ, USA, Tech. Rep., 2007.
+[7] C. Bartusch, F. Wallin, M. Odlare, I. Vassileva, and L. Wester, "Introducing a demand-based electricity distribution tariff in the residential sector: Demand response and customer perception," Energy Policy, vol. 39, no. 9, pp. 5008­5025, 2011.
+
+1850
+
+IEEE TRANSACTIONS ON POWER SYSTEMS, VOL. 32, NO. 3, MAY 2017
+
+[8] SEDC, "Mapping demand response in Europe today," Smart Energy Demand Coalition, Brussels, Belgium, Tech. Rep. SEDC-Mapping-DR-InEurope-2014 0411, Apr. 2014.
+[9] D. S. Kirschen and S. Member, "Demand-side view of electricity markets," IEEE Trans. Power Syst., vol. 18, no. 2, pp. 520­527, May 2003.
+[10] C. Triki and A. Violi, "Dynamic pricing of electricity in retail markets," 4OR--Quart. J. Oper. Res., vol. 7, no. 1, pp. 21­36, Oct. 2007.
+[11] A. Hatami, H. Seifi, and M. K. Sheikh-El-Eslami, "A stochastic-based decision-making framework for an electricity retailer: Time-of-use pricing and electricity portfolio optimization," IEEE Trans. Power Syst., vol. 26, no. 4, pp. 1808­1816, Nov. 2011.
+[12] S. E. Fleten and E. Pettersen, "Constructing bidding curves for a pricetaking retailer in the Norwegian electricity market," IEEE Trans. Power Syst., vol. 20, no. 2, pp. 701­708, May 2005.
+[13] A. Badri and H. Kashefi, "Optimal bidding strategy of retailers in a mixed pool-bilateral market considering demand response programs," in Proc. IEEE Smart Grid Conf., 2013, pp. 131­137.
+[14] H. A. Aalami, M. P. Moghaddam, and G. R. Yousefi, "Modeling and prioritizing demand response programs in power markets," Elect. Power Syst. Res., vol. 80, pp. 426­435, 2010.
+[15] N. Mahmoudi, M. Eghbal, and T. K. Saha, "Employing demand response in energy procurement plans of electricity retailers," Int. J. Elect. Power Energy Syst., vol. 63, pp. 455­460, 2014.
+[16] C. Gorria, J. Jimeno, I. Laresgoiti, M. Lezaun, and N. Ruiz, "Forecasting flexibility in electricity demand with price/consumption volume signals," Elect. Power Syst. Res., vol. 95, pp. 200­205, 2013.
+[17] M. Skillba¨ck and H. Ibrahim, "Evaluation methods for market models used in smart grids: An application for the Stockholm royal seaport," M.S. thesis, Dept. Elect. Power Syst., KTH, Stockholm, Sweden, 2012.
+[18] J. G. Kassakian et al., "The impact of distributed generation and electric vehicles," in The Future of the Electric Grid: An Interdisciplinary MIT Study, MIT, Cambridge, MA, USA, 2011, ch. 5, pp. 109­126.
+[19] S. Gottwalt, W. Ketter, C. Block, J. Collins, and C. Weinhardt, "Demand side management: A simulation of household behavior under variable prices," Energy Policy, vol. 39, no. 12, pp. 8163­8174, 2011.
+[20] P. Grahn, J. Rosenlind, P. Hilber, K. Alvehag, and L. So¨der, "A method for evaluating the impact of electric vehicle charging on transformer hotspot temperature," in Proc. IEEE PES Int. Conf. Exhib. Innov. Smart Grid Technol., 2011, pp. 1­8.
+[21] N. Jewell, L. Bai, J. Naber, and M. L. McIntyre, "Analysis of electric vehicle charge scheduling and effects on electricity demand costs," Energy Syst., vol. 5, pp. 767­786, 2014.
+[22] J. Lujano-Rojas, C. Monteiro, R. Dufo-Lopez, and J. Bernal-Agustin, "Optimum residential load management strategy for real time pricing demand response programs," Energy Policy, vol. 45, pp. 671­679, 2012.
+[23] C. Roe, S. Meliopoulos, R. Entriken, and S. Chhaya, "Simulated demand response of a residential energy management system," in Proc. IEEE Conf. Energytech, 2011, pp. 1­6.
+[24] H. Wu, M. Shahidehpour, A. Alabdulwahab, and A. Abusorrah, "A game theoretic approach to risk-based optimal bidding strategies for electric vehicle aggregators in electricity markets with variable wind energy resources," IEEE Trans. Sustain. Energy, vol. 7, no. 1, pp. 374­385, Jan. 2016.
+[25] M. G. Vaya´ and G. Andersson, "Optimal bidding strategy of a plug-in electric vehicle aggregator in day-ahead electricity market under uncertainty," IEEE Trans. Power Syst., vol. 30, no. 5, pp. 2375­2385, Sep. 2015.
+[26] S. I. Vagropoulos and A. G. Bakirtzis, "Optimal bidding strategy for electric vehicle aggregators in electricity markets," IEEE Trans. Power Syst., vol. 28, no. 4, pp. 4031­4041, Nov. 2013.
+[27] A. J. Conejo, M. Carrion, and J. M. Morales, "Risk management," in Decision Making Under Uncertainty in Electricity Markets. New York, NY, USA, Springer, 2010, ch. 4, pp. 121­152.
+
+[28] C. Bang, F. Fock, and M. Togeby, "The existing Nordic regulating power market," Energy Analysis, Copenhagen, Denmark, Tech. Rep. FlexPower WP1-Report 1, 2012.
+[29] B. Biegel, L. H. Hansen, J. Stoustrup, P. Andersen, and S. Harbo, "Value of flexible consumption in the electricity markets," Energy, vol. 66, pp. 354­362, 2014.
+[30] K. C. Sou, J. Weimer, H. Sandberg, and K. H. Johansson, "Scheduling smart home appliances using mixed integer linear programming," in Proc. IEEE Conf. Decision Control Eur. Control Conf., 2011, pp. 5144­5149.
+[31] K. C. Sou, K. Mikael, J. Wu, H. Sandberg, and K. H. Johansson, "Energy and CO2 efficient scheduling of smart home appliances," in Proc. IEEE Eur. Control Conf., 2013, pp. 4051­4058.
+[32] R. Stamminger, "Synergy potential of smart appliances," Univ. Bonn, Bonn, Germany, Tech. Rep. EIE/06/185/SI2.447477, 2008.
+[33] M. Olsson and L. So¨der, "Modeling real-time balancing power market prices using combined Sarima and Markov processes," IEEE Trans. Power Syst., vol. 23, no. 2, pp. 443­450, May 2008.
+[34] J. Zimmermann, "End-use metering campaign in 400 households in Sweden assessment of the potential electricity savings," Flines-Rimandoule, Enertech, Tech. Rep. 17-05-2743, vol. 17, 2009.
+[35] M. Song, K. Alvehag, J. Wide´n, and A. Parisio, "Estimating the impacts of demand response by simulating household behaviours under price and CO2 signals," Elect. Power Syst. Res., vol. 111, pp. 103­114, 2014.
+[36] L. Abramowski and A. Holmstro¨m, "Res 2005­2006 den nationella resvaneunderso¨kningen," Statens Institut Kommunikationsanalys, Stockholm, Sweden, Tech. Rep. TK1101BR0601, 2007.
+[37] J. Dupacoa´, N. Gro¨we-Kuska, and W. Ro¨misch, "Scenario reduction in stochastic programming: An approach using probability metrics," Math. Program. Ser. A, vol. 95, pp. 493­511, 2003.
+[38] H. Heitsch and W. Ro¨misch, "Scenario reduction algorithms in stochastic programming," Comput. Optim. Appl., vol. 24, pp. 187­206, 2003.
+Meng Song (S'14) was born in China in 1982. She received the B.Eng. degree from Tsinghua University, Beijing, China, in 2004 and the M.Sc. degree from Royal Institute of Technology (KTH), Stockholm, Sweden, in 2013. She has been working toward the Ph.D. degree at the School of Electrical Engineering in KTH since 2014. Her Ph.D. research topic concerns the controlling, planning, and operation of the demand side flexibility in smart grids.
+Mikael Amelin (M'07) received the Master's, Licentiate, and Ph.D. degrees from the Royal Institute of Technology (KTH), Stockholm, Sweden, in 1997, 2000, and 2004, respectively. He is an Associate Professor in the School of Electrical Engineering, KTH. His research interests include Monte Carlo techniques, analysis and modeling of electricity markets, and rural electrification in developing countries.
+
+
+

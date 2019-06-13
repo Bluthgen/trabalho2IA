@@ -1,0 +1,2330 @@
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+439
+
+Fuzzy Dynamical System Scenario Simulation-Based Cross-Border Financial Contagion Analysis: A Perspective From International Capital Flows
+Xinxin Xu, Member, IEEE, Ziqiang Zeng, Member, IEEE, Jiuping Xu, Senior Member, IEEE, and Mengxiang Zhang, Student Member, IEEE
+
+Abstract--This paper focuses on investigating the cross-border financial contagion based on a fuzzy dynamical system scenario simulation from a perspective of analyzing the volatility of international capital flows for a panel of 50 countries in emerging markets and advanced economies from 1980 to 2011. Increasing evidence has shown that financial globalization has developed into a complex nonlinear dynamical system made up of economic subsystems with extensive financial connections and linkages. The contagion effects of the spread of bonanzas in the 50 countries are identified and analyzed. The Hodrick­Prescott filter is employed to address the long-term net capital inflow trend. The comovement of financial contagion between the source country of financial turbulence and the volatility-affected country is described as a fuzzy dynamical system in which the driving and response systems are coupled. A fuzzy dynamical system scenario simulation model under a liberal economy is established by employing nonlinear differential equations to describe the contagion mechanism and the international capital flow volatility effects. The model is then extended to a dynamical system model with macroeconomic control. The coupling strength uncertainty is addressed by employing an interval type-2 fuzzy theory method. The properties of the volatility equilibrium point for the two models are discussed, and the volatility contagion principles based on locally asymptotic stability analysis are derived to explain the different volatility transmission patterns.
+Manuscript received August 1, 2015; revised October 22, 2015 and January 19, 2016; accepted April 20, 2016. Date of publication June 1, 2016; date of current version March 29, 2017. This work was supported by the Research Foundation of Ministry of Education for the Doctoral Program of Higher Education of China under Grant 20130181110063, the Youth Program of National Natural Science Foundation of China under Grant 71501137, the General Program of China Postdoctoral Science Foundation under Grant 2015M572470 and Grant 2015M572480, the International Postdoctoral Exchange Fellowship Program of China Postdoctoral Council under Grant 20150028, the project of Research Center for System Sciences and Enterprise Development under Grant Xq16B05, and Sichuan University under Grant skzx2015-sb04 and Grant skqy201647.
+X. Xu is with the School of Tourism and Economic Management, Chengdu University, Chengdu 610106, China, and also with the Uncertainty DecisionMaking Laboratory, Business School, Sichuan University, Chengdu 610065, China (e-mail: xinxinxu@scu.edu.cn).
+Z. Zeng is with the Uncertainty Decision-Making Laboratory, Business School, Sichuan University, Chengdu 610065, China, the School of Tourism and Economic Management, Chengdu University, Chengdu 610106, China, and also with the Department of Civil and Environmental Engineering, University of Washington, Seattle, WA 98195 USA (e-mail: zengziqiang@scu.edu.cn).
+J. Xu is with the Uncertainty Decision-Making Laboratory, Business SchoolSichuan University, Chengdu 610065, China (e-mail: xujiuping@scu.edu.cn).
+M. Zhang is with the Uncertainty Decision-Making Laboratory, Business School, Sichuan University, Chengdu 610065, China (e-mail: zhangmengxiang@stu.scu.edu.cn).
+Color versions of one or more of the figures in this paper are available online at http://ieeexplore.ieee.org.
+Digital Object Identifier 10.1109/TFUZZ.2016.2574928
+
+Policy suggestions are given in three situations for providing managerial insights for policymakers and the explorations of response strategies are also presented. The global financial crisis in 2008 is used as an experimental study to demonstrate the validity and effectiveness of the simulation and modeling method.
+Index Terms--Financial contagion, fuzzy dynamical systems, international capital flows, nonlinear differential equations, volatility transmission patterns.
+I. INTRODUCTION
+T HE current economic crisis illustrates a critical need for a new and fundamental understanding of the structure and dynamics of economic systems [1]­[3]. The global economic system, as any other complex systems, reflects a dynamic interaction of a large number of economic entities [4]. To facilitate policy designs that reduce conflict between individual interests and global efficiency, it is necessary to address the systemic complexity in the economic systems, in which the dynamics of financial contagion is one of the most important problems attracting attentions.
+The term "financial contagion" [5] was rarely used before 1995, and then only occasionally appeared in articles discussing the impact of the Mexican Peso crisis on other countries in Latin America. The events of the Thailand's 1997 devaluation, the Russia's 1998 devaluation, and the global financial crisis in 2008 have prompted a number of academic papers, which have attempted to measure, understand, predict, and prevent international financial contagion [6].
+Most financial contagion research has focused on studying the following three critical aspects [7]­[9]: 1) Why the contagion spreads and how it can be stopped? 2) How contagion can be measured? 3) What financial contagion channels there are? Studies focused on the first aspect have concentrated on the theory and empirics of contagion including the definitions and effects of contagion, how contagion arises, and the statistical evidence assessing the existence of contagion [10]. Research addressing the second aspect has focused on developing general strategies to measure contagion including probability analysis [11], cross-market correlations [12], VAR models, latent factor/GARCH models [13], and extreme value analysis [14]. Bae et al.'s measurement of financial contagion captured the coincidence of extreme return shocks across countries within a region and across regions [15]. Research on the third aspect has modeled and tested various contagion channels including real sector linkages (i.e., trade), financial market linkages, financial institu-
+
+1063-6706 Š 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
+
+440
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+tion linkages, and the interaction between financial institutions and financial markets [16]. Although significant improvements have been made in addressing the above aspects, much is still unknown about what makes countries vulnerable to contagion and through which mechanisms contagion occurs [17].
+The cross-border transmission of financial shocks has been the subject of rich literature [18]. While a large number of studies have focused on the strong comovements of asset prices, stock markets, and foreign exchange markets in the event of financial stress, very few have discussed contagion or volatility transmission patterns in terms of international capital flows [19], [20]. However, there have been some empirical results which indicated the existence of contagion effects in capital flow volatility [21]. Forbes and Warnock's [11] results also showed that contagion, whether through trade, banking, or geography, was also associated with stop and retrenchment episodes in international capital flows.
+The high volatility of international capital flows on financial markets, and the narrow capacity to handle this volatility by the markets, makes the "beneficiary" country of the contagion vulnerable to excessively large shocks and crises, frequently, and in a disturbing manner [22]. Developing domestic financial regulations and planning international financial architecture to prevent financial contagion has become a top priority for both domestic financial regulators and the international society. Therefore, understanding the reasons and mechanisms behind international financial contagion can assist policymakers improve the global financial regulatory system and thus make it more resistant to shocks and contagions.
+However, existing financial contagion theories are not sufficient to resolve the transmission characteristics, uncertainties, and nonlinear dynamics in international capital flow volatility. Therefore, it is necessary to develop methodologies to reveal the contagion mechanism and the volatility impact of international capital flows. This paper, based on current improvements in empirical studies on the transmission of international capital flow volatility, attempts to develop a fuzzy dynamical system scenario simulation model in which the source country of financial turbulence is coupled with the volatility-affected country through different financial linkages to analyze the contagion mechanism, the nonlinear dynamics, the coupling uncertainty, and the impact of the cross-border transmission of financial shocks.
+The concept of scenario simulation in this paper is defined as the modeling and simulation of different financial contagion situations through the establishment of a fuzzy dynamical system, the transformation to a crisp equivalent model, model calibration for initial value conditions and boundary value conditions, the identification of volatility transmission patterns, scenario analysis, policy suggestions, and an exploration of response strategies.
+The financial volatility contagion analysis has two potential advantages for policymakers in a real-world situation. First, it can assist policymakers to understand and identify the volatility contagion patterns that may occur under a liberal economy, and second, it can provide valuable information with macroeconomic control simulation analysis for the formulation of appropriate response strategies for the establishment of effective monetary and fiscal policies. Since different types of financial contagion volatility are ultimately reflected as international capital
+
+flow movements, the proposed method in this paper can clearly reveal the dynamical features and volatility transmission principles of financial contagion in a more essential way. Further, the extension of a dynamical system under a liberal economy to one with macroeconomic control could be helpful in understanding the financial contagion mechanism on a deeper theoretical level so as to support improvements in financial policy making.
+The outline of this paper is as follows. Section II presents the key problem description through a discussion of the comovements of international capital flow volatility, a contagion analysis based on capital flow bonanzas, the Hodrick­Prescott (H­P) filter which addresses long-term net capital inflow trends, and the dynamical system of financial contagion with interval type-2 fuzziness. In Section III, a fuzzy dynamical system scenario simulation model under a liberal economy is established to describe the contagion mechanism and the international capital flow volatility effects, which is then further extended to a dynamical system model with macroeconomic control. In Sections IV and V, the properties of the volatility equilibrium points in the above two models are discussed and volatility contagion principles based on the local asymptotic stability analysis are derived to explain the different volatility transmission patterns. Policy suggestions are given in three situations to provide managerial insights for policymakers and the exploration of response strategies are also presented in Section VI. The scenario simulation framework is explained in Section VII. The global financial crisis in 2008 is employed as an experimental study in Section VIII. Section IX ends this paper with conclusion and proposals for future research.
+II. KEY PROBLEM DESCRIPTION
+Financial contagion is used to refer to the spread of mostly negative market disturbances from one country to the other, a process observed through comovements in exchange rates, stock prices, sovereign spreads, and capital flows [6]. In this section, evidence of financial contagion caused by international capital flow volatility is first shown and analyzed. Then, a contagion analysis based on capital flow bonanzas is presented. The H­P filter is introduced to address long-term net capital inflow trends. Finally, the interval type-2 fuzziness of the coupling strengths between economies is discussed. The list of symbols used in this paper is summarized in Table I.
+A. Comovements of the International Capital Flow Volatility
+There has been significant evidence of comovements in international capital flow volatility. The 1997 East Asian financial crisis was linked to volatile short-term capital flows [23]. There also have been a few tests of capital flow comovements which have provided insights into the transmission channels of contagion. Lee et al.'s empirical results [21], based on a sample of 49 emerging and developing countries from 1980 to 2009, suggested that there were strong and significant contagion effects in the volatility of capital flows to individual economies. The magnitudes of contagion was found to vary depending on the type of capital flows, whether it is foreign direct investment or portfolio and other investments (mostly bank lending). The findings also suggested that the volatility dynamics of gross flows differed from that of the net flows in that the net inflow volatility was more exposed to intraregional contagion.
+
+XU et al.: FUZZY DYNAMICAL SYSTEM SCENARIO SIMULATION-BASED CROSS-BORDER FINANCIAL CONTAGION ANALYSIS
+
+441
+
+TABLE I LIST OF NOTATIONS USED IN THIS PAPER
+
+Item
+
+Definition
+
+Item
+
+Definition
+
+a b
+
+Bi (t)
+
+b
+
+k
+cl
+
+(
+
+(~~)
+
+)
+
+cr ((~~) )
+
+C~~ s-v
+
+C~~ v-s
+
+D
+
+dl ~~
+
+dr ~~
+
+FIT-2(R )
+
+GDPi (t)
+
+H
+
+((
+
+~~)
+
+U 
+
+)
+
+H
+
+((
+
+~~)
+
+L 
+
+)
+
+i k
+
+l~~ , r~~ m ~~ v (t)
+
+Inertial coefficient of the volatility-affected country Inertial coefficient of the source country of financial turbulence
+Indicator function for episode of a bonanza of net capital inflow for country i at time t Volatility transmission pattern indicator Left-centroid boundary of membership function of (~~) Right-centroid boundary of membership function of (~~) Fuzzy coupling coefficient for the impact from the source country of financial turbulence to the volatility-affected country Fuzzy coupling coefficient for the impact from the volatility-affected country to the source country of financial turbulence A simple connected region in the volatility contagion trend plane with boundary C Distance between the left boundary and the mean
+Distance between the right boundary and the mean
+Set of all IT-2 fuzzy numbers on R Nominal GDP for country i at time t Membership value of the element m ~~ in the upper triangular membership function
+Membership value of the element m ~~ in the lower triangular membership function Index of country Synthetic of the inertial coefficients and coupling
+coefficients
+Left and right boundaries of the preliminary estimated values of coupling coefficient
+Mean of the preliminary estimated values of
+coupling coefficient
+Macro-economic control input at time t by the governments and financial institutes of the volatilityaffected country
+
+N Fi (t) t T
+T Devi (t) T rendi (t)
+T rends (t)
+T rendv (t)
+T s0 , T v0 (x, y)
+    
+
+s , v
+T D ev i (t) ~~
+(~~)
+U M F( ~~)  (x) L M F( ~~)  (x)
+s (t)
+
+Net capital inflow for country i at time t Index of time Number of observations Deviation from the historical trend Historical trend of the net capital inflow for country i at time t
+Historical trend of the net capital inflow for the
+source country of financial turbulence
+Historical trend of the net capital inflow for the volatility-affected country Initial values of T r en ds (0) and T r en dv (0) Volatility equilibrium point Smoothing parameter of the H-P filter Cluster coefficient Crisp operator Ratio of inertial coefficients Ratio of the crisp fuzzy coupling coefficients
+Ratio of the exogenous coefficients between the
+volatility-affected country and the source country of financial turbulence
+Deviation rate of the left boundary and the right
+boundary
+Exogenous coefficients of the source country of
+financial turbulence and the volatility-affected country Standard deviation of detrended net capital inflows in country i at time t
+IT-2 fuzzy number of coupling coefficient
+ -level of the triangular IT-2 fuzzy number of coupling coefficient Upper membership function of (~~) Lower membership function of (~~) Macro-economic control input at time t by the governments and financial institutes of the source country of financial turbulence
+
+B. Contagion Analysis Based on Capital Flow Bonanzas
+To examine if the volatility of international capital flows around the world has comovements during different periods, data from 50 countries from 1980 to 2011 were collected and the capital flow fluctuations in each country in each year calculated. The country samples included 25 emerging and developing Asian (EDA) countries and 25 advanced economies for which data were available. The period samples ranged from 1980 to 2011, a period which covered several severe economic crises. Fig. 1 shows the number of countries which encountered international capital flow bonanzas from 1980 to 2011 for the EDA countries and the advanced economies.
+This paper employed the threshold method proposed by Mendoza and Terrones [24] to identify the capital flow fluctuations, from which several episodes of "surges" and "stops" (sharp increases and decreases in net capital inflows) were identified. A bonanza [25] or quantitative "surge" is defined as an episode in which the net capital inflows to a country increase by more than a threshold value during a typical business cycle. There are three steps in identifying a bonanza. The first step is the measure of net capital inflows. However, because there is no comparability in the absolute value of net capital inflows between different
+
+countries, the ratio of net capital inflows to nominal GDP is used. The second step is the detrending procedure. Since the overall volatility of net capital inflows can differ across countries, episodes were identified by sudden and large movements which were relative to not only each country's trend, but also the volatility the country experienced in general. To estimate the long-term net capital inflow trend, the H­P filter [26]­[28], was employed. The final step is the setting of the threshold value, which is defined as the standard deviation of the detrended net capital inflows in country i. Therefore, the episode of a bonanza in the net capital inflow for country i at time t was identified using the following equation:
+
+Bi(t) =
+
+1, 0,
+
+if T Devi (t) > T D evi (t)
+
+and
+
+N Fi (t) GDPi (t)
+
+> 1%
+
+otherwise
+
+(1)
+
+in which an episode of a bonanza of net capital inflows for
+
+country i at time t was identified when Bi(t) = 1; T Devi(t) =
+
+N Fi (t) GDPi (t)
+
+-
+
+T rendi(t)
+
+is
+
+the
+
+deviation
+
+from
+
+the
+
+historical
+
+trend
+
+and T D evi (t) is the standard deviation of detrended net capital
+
+inflows in country i at time t; N Fi(t) denotes the net capital
+
+inflow for country i at time t; GDPi(t) is the nominal gross
+
+442
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+This approach identified 198 episodes of bonanzas from 1980 to 2011, including 93 in EDA countries and 105 in advanced economies (See Fig. 1). With each financial crisis, there were comovements in episodes of bonanzas for net capital inflows between the EDA countries and the advanced economies. Take the global financial crisis in 2008 as an example. The global financial crisis arose from the 2007 U.S. subprime mortgage crisis. As shown in Fig. 1, net capital inflow bonanza episodes can be seen from 2004 with a sharp increase from 2007 to 2008, and a sharp decrease in 2009 in both EDA countries and advanced economies. Fig. 1 shows that 14 EDA countries suffered bonanzas over the two years, including Zimbabwe, Colombia, Congo, Bulgaria, Brazil, Botswana, Uruguay, Turkey, Tunisia, Mongolia, Honduras, Jamaica, Dominica Republic, and India, accounting for 67% of all EDA countries. At the same time, episodes of bonanzas of net capital inflows appeared in ten advanced economies. Based on the historical data for the banking and currency crisis episodes during the global financial crisis in 2008 [29], it was found that 7 of the 24 bonanzas-suffered countries (14 EDA countries and 10 advanced economies) were affected by the banking and currency crisis in 2008. This indicated that the comovements in international capital flow bonanzas have a heterogeneous contagion effect on cross-border financial shocks.
+There are two reasons for the occurrence of a heterogeneous contagion effect. First, stronger financial linkages with the source country of financial turbulence and the other volatilityaffected countries may make a country more vulnerable to be bonanzas suffered [30]. Second, the vulnerability of a country to a financial crisis depends on the immunity and resilience of the economic system, the strength of domestic macroeconomic fundamentals, government policy control, and investor confidence [31]. These reasons can explain why some countries that experience episodes of bonanzas of net capital inflows are vulnerable to financial crises, while others are not.
+
+Fig. 1. Number of countries encountering international capital flow bonanzas from 1980 to 2011 for EDA countries and advanced economies.
+domestic product for country i at time t; and T rendi(t) is the historical trend of the net capital inflow for country i at time t. Therefore, each episode of bonanza was identified as a sequence of the years in which these criteria were met.
+Forbes and Warnock [11] defined financial contagion as large changes in a country's gross capital inflows or outflows "resulting from circumstances in another country or group of countries (but not the entire world)." Here a mathematical definition for contagion from a bonanza perspective is given.
+Definition II.1: One or a group of markets, countries, or institutions can be affected by bonanza contagion during a financial shock, if and only if their discrimination function Bi(t) = 1.
+
+C. H­P Filter to Address Long-Term Net Capital Inflow Trends
+To estimate the net capital inflow historical trends for country i at time t [i.e., T rendi(t)], a filtering approach was employed. The approach advocated here is based on the H­P filter [26], which was built on the earlier work of Whittaker [32], and is a standard method in business cycle research for removing trend movements. The H­P filter was originally intended to decompose the GDP values series into a long-term growth component and a cyclical component. The mechanics of the filter splits the series into two parts, a smooth and a volatile one.
+In macroeconomics, the smooth part corresponds to long-term growth and the volatile part to the business cycle. In the context of net capital inflows, the smooth part could be interpreted as the long-term historical trend of the net capital inflow (i.e., T rendi(t)) and the volatile part as deviations from the historical trend (i.e., T Devi(t)). The complex factors that have shortterm impacts on the net capital inflows lead to the volatility uncertainty. The H­P filter can be helpful in eliminating the uncertain subordinate effect factors for the net capital inflow volatility by removing the volatile part to illuminate the longterm historical trends of the net capital inflow. Details for the
+
+XU et al.: FUZZY DYNAMICAL SYSTEM SCENARIO SIMULATION-BASED CROSS-BORDER FINANCIAL CONTAGION ANALYSIS
+
+443
+
+estimation of the long-term net capital inflow trend using the H­P filter are described in Section III.
+D. Dynamical System of Financial Contagion With Interval Type-2 Fuzziness
+To clearly examine the nonlinear interdependence and dynamics of the contagion effects between the source country of financial turbulence and the volatility-affected countries in a financial time series when a shock occurs, the global financial system is treated as a dynamic system with different international capital flow volatility levels and heterogeneous coupling relationships between the subsystems. Countries are regarded as being coupled through financial linkages with the coupling strength being determined based on the following factors: the degree of financial liberalization and capital account openness, real sector linkages, financial market linkages, financial institution linkages, the interaction between financial institutions and financial markets, and investor confidence. Cross-border transmission of financial shocks and financial contagion can be seen as fluctuations in the nonlinear interdependence between the nonlinear dynamic systems. The source country of financial turbulence is considered the driving system which drives the contagion effects to the volatility-affected countries, which, in turn, are regarded as the response systems, so also have feedback effects on the driving system. A financial shock in the source country raises the "energy" in its financial system, which is consequently spread to other financially linked countries.
+Due to the nonlinear complexity of the financial contagion system, there are uncertainties during the dynamic transmission process, especially for the dynamic coupling relationships between the different countries. In fact, as international capital flows are inherently involved with human decision making such as investments, loans, foreign exchange trading, and securities issuance, there is fuzziness in the coupling relationship between the source country of financial turbulence and the volatility-affected country. Further, the interactive financial contagion effects between the source country of financial turbulence and the volatility-affected country result in the fuzziness of a secondary membership function (MF) for the coupling relationship. Since the coupling relationship appears as interval-type data with second-order uncertainties, interval type-2 fuzzy sets (IT-2 FSs) are employed to describe the coupling coefficient uncertainties between the source country of financial turbulence and the volatility-affected country.
+The concept of type-2 fuzzy sets (T-2 FSs) was introduced by Zadeh [33] as an extension of the concept of type-1 fuzzy sets (T-1 FSs). T-2 FSs are useful in circumstances where it is difficult to specify a MF with precision [34] and have the potential to outperform T-1 FSs [35]. To handle the high-level uncertainty of data, Yager [36] proposed the first decision support system using T-2 FSs. Because the computational complexity when using general T-2 FSs is very high, to date, IT-2 FSs [37] have been the most widely used T-2 FSs, and have been successfully applied to many practical fields [38]­[40].
+In this paper, the mean (i.e., m~~), left boundary (i.e., l~~), and right boundary (i.e., r~~) of the preliminary estimated values for the coupling coefficient can be identified from a group of samples, the details for which are explained in Section VIII. Let
+
+dl~~ = m~~ - l~~ be the distance between the left boundary and the mean dr~~ = r~~ - m~~, the distance between the right boundary and the mean, , the deviation rate of the left boundary and the right boundary, and FIT-2(R), the set of all IT-2 fuzzy num-
+bers on R. The concept of -level of the triangular IT-2 fuzzy number ~~  FIT-2(R), 0    1, denoted by (~~) is introduced to address the IT-2 fuzziness of the coupling relationship and is
+defined as:
+
+(~~) =
+
+l~~ - dl~~ , l~~ + dl~~ , m~~, r~~ - dr~~ , r~~ + dr~~ (2)
+
+where [l~~ - dl~~ , l~~ + dl~~ ] and [r~~ - dr~~ , r~~ + dr~~ ] are the deviation intervals for the left-hand endpoint l~~ and the righthand endpoint r~~ of ~~under the  level deviation rate. The upper and lower MFs of (~~) are defined as:
+
+
+
+U M F(~~) (x) =
+
+ 
+
+0,
+
+x - (l~~ - dl~~ ) m~~ - (l~~ - dl~~ )
+
+,
+
+x - (r~~ + dr~~ m~~ - (r~~ + dr
+
+) )~~
+
+,
+
+0,
+
+x < l~~ - dl~~ l~~ - dl~~  x < m~~ m~~  x < r~~ + dr~~ x  r~~ + dr~~
+
+(3)
+
+
+
+LM F(~~) (x) =
+
+ 
+
+0,
+
+x - (l~~ + dl~~ ) m~~ - (l~~ + dl~~ )
+
+,
+
+x - (r~~ - dr~~ m~~ - (r~~ - dr
+
+) )~~
+
+,
+
+0,
+
+x < l~~ + dl~~ l~~ + dl~~  x < m~~ m~~  x < r~~ - dr~~ x  r~~ - dr~~
+
+(4)
+
+where U M F(~~) (x) denotes the upper membership function, and LM F(~~) (x) the lower membership function of (~~) , and the deviation rate  (0    1) reflects the decision maker's
+judgment regarding the inaccuracy of the collected data. Fig. 2 illustrates the triangular IT-2 fuzzy MF for (~~) . It should be noted that a more normal expression for (~~) can be defined as:
+
+(~~) = ((l~~ - dl~~ , m~~, r~~ + dr~~ ; H((~~)U ))
+
+(l~~ + dl~~ , m~~, r~~ - dr~~ ; H((~~)L )))
+
+(5)
+
+where H((~~)U ) denotes the membership value of the element m~~ in the upper triangular membership function (~~)U = U M F(~~) (x), and H((~~)L ) denotes the membership value of the element m~~ in the lower triangular membership function (~~)L = LM F(~~) (x). Since it is assumed H((~~)U ) =
+
+444
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+real sector and the resilience of the financial system to the shock. However, the fuzzy dynamic system simulation analysis on the international capital flow volatility in this paper may assist policymakers in identifying the financial shock effect in the early stages, thereby allowing them to anticipate the kind of influence the shock will have in the near future in the source country of financial turbulence and the volatility-affected countries so as to implement appropriate financial policies in advance.
+
+Fig. 2. Triangular IT-2 fuzzy MF of (~~) .
+
+Fig. 3. Dynamical system of financial contagion with fuzziness for coupled countries.
+
+H((~~)L ) = 1 when handling the coupling coefficient uncertainty, to simplify the expression, (2) is employed when per-
+forming the mathematical derivation in the following sections. Therefore, a -level of the triangular IT-2 fuzzy number ~~ to
+describe the coupling coefficient uncertainty can be identified
+using a parameterized quadruple:
+
+{(l~~, m~~, r~~, )|0    1}.
+
+(6)
+
+Let C~~s-v denote the fuzzy coupling coefficient for the impact from the source country of financial turbulence to the volatilityaffected country, and C~~-vs be the fuzzy coupling coefficient for the impact from the volatility-affected country to the source
+country of financial turbulence. Fig. 3 shows the dynamical
+system of financial contagion with triangular IT-2 fuzziness for
+the coupled countries.
+
+III. MODELING
+Even though there is a potential for a shock to be transmitted from one country to another, this does not mean it will definitively occur. Whether a shock is transmitted, and whether it has a large effect on the real sector depends on the resilience of the
+
+A. Related Research on Dynamical System for Financial Analysis
+Due to the global impact of the financial crisis, in recent years, the application of dynamical system theory has become a frontier issue in financial analysis to address financial contagion problems [41]. Several important contributions have been made in model development, theoretical testing, and financial policy establishment. Castellacci and Choi [4] built a multiagent dynamical system for the global economy to investigate and analyze financial crises based on cash flow data. They also conducted a follow-up study on modeling contagion in the Eurozone crisis using a wealth dynamical system [42]. Son and Park [43] investigated the effects of delayed feedback on the dynamical model of a financial system, which described the time variation in interest rates, investment demands, and price indices to establish fiscal policy. Hu and Chen [44] modeled macroeconomics using a novel discrete nonlinear fractional dynamical system which considered gross domestic product, inflation, and the unemployment rate. While these studies have significantly improved the financial systems modeling through the use of dynamical system theory based on the data of wealth, interest rate, investment demand, price indices, gross domestic product, inflation, and unemployment rate, international capital flows are still unexplored through establishing the dynamical system model for financial systems to reveal the dynamical features and volatility transmission principles of the financial contagion in a more essential way. In fact, the changes in variables (i.e., equity returns, interest rates, exchange rates, sovereign spreads) used to identify financial contagion are ultimately reflected as the movements of the international capital inflows and outflows, which is why financial contagion is analyzed from an international capital flow perspective in the dynamical system model proposed in this paper. Additionally, the model proposed in this paper extends the financial contagion analysis of a dynamical system under a liberal economy to a system that encompasses macroeconomic control, which may be more useful for policymakers seeking to identify volatility transmission patterns and develop response strategies to set financial policy.
+B. Model Formulation
+The use of fuzzy differential equations (FDE) has been a natural way to model dynamical systems under possibilistic uncertainty [45], [46]. Fuzzy dynamical systems based on FDEs have also been widely applied to fuzzy control systems [47], bifurcations of fuzzy nonlinear dynamical systems [48], and many other fields [49], [50].
+Based on the above analysis, this paper seeks to establish a fuzzy dynamical system scenario simulation model based on FDEs to simulate the dynamics of contagion of international
+
+XU et al.: FUZZY DYNAMICAL SYSTEM SCENARIO SIMULATION-BASED CROSS-BORDER FINANCIAL CONTAGION ANALYSIS
+
+445
+
+Fig. 4. Historical trends of the net capital inflows [i.e., T rendi (t)] for the U.S. and Ireland during the global financial crisis in 2008.
+
+capital flow volatility between the source country of financial
+
+turbulence and the volatility-affected country. Through the ob-
+
+servation of historical data focused on international capital flow
+
+volatility in different countries over several financial crisis, it
+
+was found that in most cases, the net capital inflows of the
+
+source country of financial turbulence gradually increased be-
+
+fore the financial shock occurred, and came to a "sudden stop"
+
+(i.e., sharp decrease in net capital inflows) after the shock. The
+
+Mexican Peso crisis, the Asian financial crisis in 1997, and the
+
+global financial crisis in 2008 are all salient examples. While the
+
+reasons for the increase in the net capital inflows to the source
+
+country of financial turbulence before the shock varied in the
+
+different crises due to government policy errors, international fi-
+
+nancial speculation, and improper long-term financial policies,
+
+the reasons for the "sudden stop" could be as simple as for-
+
+eign investors rapidly withdrawing their capital from the source
+
+country of financial turbulence because they had lost confidence
+
+in the financial markets after the shock. On the other hand, for
+
+most of the volatility-affected countries, net capital inflows in-
+
+creased (i.e., the global financial crisis in 2008 and the Mexican
+
+Peso crisis, see Fig. 4) due to the large capital outflows from
+
+the source country of financial turbulence. Fig. 4 illustrates the
+
+historical trends of the net capital inflows (i.e., T rendi(t)) for the U.S. (i.e., the source country of financial turbulence) and
+
+Ireland (i.e., the volatility-affected country) during the global
+
+financial crisis in 2008.
+
+To estimate the historical trends of the net capital inflows
+
+(i.e., T rendi(t)) for each country, the H­P filter was employed, which is a nonparametric method that returns a smoothed series
+
+T
+
+rendi (t)
+
+from
+
+a
+
+noisy
+
+(or
+
+volatile)
+
+input
+
+series
+
+N Fi(t) GDPi (t)
+
+.
+
+Val-
+
+ues T rendi(t) were chosen to solve the following minimization
+
+problem:
+
+
+
+
+
+t
+
+T =
+
+1
+
+N Fi(t) GDPi (t)
+
+- T rendi(t)
+
+2
+
+ 
+
+T
+
+min
+rendi (t
+
+)
+
+
+
+T -1
++ [(T rendi(t + 1)
+t=2
+-(T rendi(t) - T rendi
+
+- (t
+
+T -
+
+rendi 1))]2
+
+(t))
+
+
+
+(7)
+
+where T is the number of observations. The first sum is the punishment for deviating from the original series and the second is the punishment for roughness of the smoothed series. The larger the value of the smoothing parameter , the higher is the penalty
+
+for the latter. Since the number of input parameters for the minimization problem in (7) is T , the computational complexity of the above problem can be expressed as a function f (T ) (i.e., computation time, which is described as the number of steps a Turing machine performs for a given input) which reflects the growth speed of computation time along with the increased number of input parameters. To solve the minimization problem, the gradient of (8) for each T rendi(t) (t = 1, 2, . . . , T ) is set to be zero; therefore, there are T gradient linear equations to form a T × T square matrix equation which can be solved by Gaussian elimination. It is well known that the computational complexity of the Gaussian elimination for an n × n matrix is O(n3) [51]. This means the computational complexity of the minimization problem in (7) is f (T ) = O(T 3), which implies that it belongs to a P (polynomial-time solvable) class problem and has low computational complexity.
+Although most researchers have followed H­P [26] and used a value of 1600 for the smoothing parameter when using quarterly data, there is less agreement in the literature when moving to other frequencies. Backus and Kehoe [52] used a value of 100 for annual data, whereas Correia et al. [53] and Cooley and Ohanian [54] suggested a value of 400. Baxter and King [55] have shown that a value of around 10 for annual data is much more reasonable. Ravn and Uhlig [27] found that the filter smoothing parameter should be adjusted by multiplying it with the fourth power of the observation frequency ratios. This yielded a smoothing parameter value of 6.25 for annual data, which was close to the value of 10 given by Baxter and King [55]. This conclusion was further confirmed by Iacobucci and Noullez [56].
+To determine which  performed best for the datasets typically encountered in this study, the above four  candidate values (i.e., 6.25, 10, 100, 400) for annual data were compared based on the U.S. net capital inflow data from 1980 to 2010 in Fig. 5. Let F be the minimum value for (7), which shows the fitness of the group of data for T rendi(t) (t = 1, 2, . . . , T ) and is estimated using the smoothing parameter . By inputting the four groups of data for T rendi(t) (t = 1, 2, . . . , T ) with their corresponding smoothing parameter value into (7), respectively, the fitness values for F with  = 6.25, 10, 100, 400 were calculated as follows:
+
+F6.25 = 1.725 × 10-3 , F10 = 1.973 × 10-3 F100 = 3.908 × 10-3 , F400 = 4.877 × 10-3 .
+
+Since F6.25 < F10 < F100 < F400 , the test results showed that
+
+the
+
+T
+
+rendi (t)
+
+best
+
+fit
+
+the
+
+input
+
+series
+
+N Fi(t) GDPi (t)
+
+when
+
+
+
+=
+
+6.25.
+
+As a result,  = 6.25 was selected to calculate T rendi(t) for
+
+the annual data, and  = 1600 was selected for the quarterly
+
+data in this paper.
+
+By employing the H­P filter, the original noisy input se-
+
+ries
+
+N Fi(t) GDPi (t)
+
+can
+
+be
+
+decomposed
+
+into
+
+a
+
+trend
+
+component
+
+and
+
+a cyclical component. Evidence from empirical investigations
+
+has shown that a basic dynamical long-term trend for economic
+
+variables is more suitable to be estimated using a trend com-
+
+ponent [26]. Since the dynamical features of the financial sys-
+
+tem discussed in this paper correspond to a basic dynamical
+
+446
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+Fig. 5. Comparing of different smoothing parameters for annual data based on net capital inflow data of the U.S.
+long-term trend, it is reasonable to filter the short-term cyclical component by applying the H­P filter to reflect the essential basic trends in the financial contagion dynamics from an international capital flow perspective. In fact, the cointegration theory and error-correction theory indicate that if there are comovements of economic variables during a set of time series, they trend together to determine the long-term equilibrium, so disturbances from the cyclical component have no effect on long-term equilibrium convergence [57]. In the time series, the long-term comovements of economic variables can be analyzed by focusing on the trend component after the cycle component is filtered out. The contagion analysis based on capital flow bonanzas in this paper indicated that there were comovements in the international capital flows between the different countries that suffered from financial shock. These deviations from the longterm international capital flow trend feed back to the dependent variable changes to move toward a long-term equilibrium. As a result, the trend component decomposed by the H­P filter is able to reflect the essential characteristics of a basic dynamical long-term trend when discussing financial system stability.
+This study, inspired by the idea of the two-country model proposed by Stockman and Tesar [58], builds on several recent works on capital flow volatility by Forbes and Warnock [11], Neumann et al. [59], and Lee et al. [21]. To maintain the capital account balance, the net capital inflows of both the source country of financial turbulence and the volatility-affected country tend toward their equilibriums in normal years. Let T rends (t) denote the historical trend of the net capital inflow for the source country of financial turbulence, and T rendv (t), for the volatility-affected country. When the impact of the financial shock is felt, the net capital inflows in the source country of financial turbulence sharply decrease, adding to the driving force. Therefore, the source country of financial turbulence is
+
+considered the driving system, so T rends (t) is employed as a state indicator of the driving system. Let b (b > 0) denote the inertial coefficient of the source country of financial turbulence, and -bT rends (t) be the inertial momentum. It can be seen that the inertial momentum is linearly negatively correlated with the historical trend T rends (t). On the other hand, the net capital inflow for the volatility-affected country also deviates from
+the normal equilibrium value in response to the contagion ef-
+fects from the source country of financial turbulence. Here, the
+volatility-affected country is regarded as the response system, so T rendv (t) is applied as the state indicator of the response system. Let a be the inertial coefficient of the volatility-affected country, which reflects the inertial state of the rate of change for the value of T rendv (t) before the impact of the financial shock becomes effective. When a < 0 (see Fig. 4), this means the net capital inflow trend in the volatility-affected country has an iner-
+tial decreasing trend before the financial shock takes effect, and when a > 0, the inertial trend is increasing. Since a = 0 rarely happens, to simplify the theoretical proof in the following section, in this paper, it is assumed that a = 0. The driving system also has a contagion effect -C~~s-v T rendv (t)[T rends (t)]2 on the response system, so the term C~~v-s T rendv (t)[T rends (t)]2 describes the synthetic influence of the driving effect from
+the financial shock and the feedback effect from the response
+system.
+Since most source countries of financial turbulence have large
+net capital inflows before the financial shock, and in most cases,
+the net capital inflows for the volatility-affected countries could
+be negative or nonnegative when the shock spreads, this paper considers the initial value of T rends (0) to be positive, and the initial value of T rendv (0) to be either negative or nonnegative. Let T s0 and T v0 be the initial values for T rends (0) and T rendv (0), respectively, then the initial value (Cauchy) conditions for the fuzzy dynamical system scenario simulation model
+can be given as:
+
+T rendv (0) = T v0  R (8)
+T rends (0) = T s0 > 0.
+
+It should be noted that the triangular IT-2 fuzzy coupling coefficients C~~s-v and C~~v-s could be different because the source coun-
+try of financial turbulence and the volatility-affected country
+
+may have different contagion mechanisms on the coupled chan-
+
+nels. The inherent human involvement in international capital flows leads to the fuzziness in the coupling coefficients C~~s-v and C~~v-s , and the interactive financial contagion effects between the
+source country of financial turbulence and the volatility-affected
+
+country result in the fuzziness in the secondary MFs for the
+
+coupling coefficients, which can be regarded as the IT-2 fuzzy
+
+numbers. The physical meaning of the above two uncertain pa-
+
+rtwamoeotpeprsosreitsepceocutipvleilnygrdeiflreeccttisotnhse(fii.en.a,n -scvi,aflrcoomupthliensgosutrrceengcothunin-
+
+t-vrsy,
+
+of financial turbulence to the from the volatility-affected
+
+volatility-affected country, and country to the source country
+
+of financial turbulence) between the source country of financial
+
+turbulence and the volatility-affected country for a nonlinear
+
+financial system, where the coupling strength shows the im-
+
+pact level of the volatility transmission from the source country
+
+XU et al.: FUZZY DYNAMICAL SYSTEM SCENARIO SIMULATION-BASED CROSS-BORDER FINANCIAL CONTAGION ANALYSIS
+
+447
+
+of financial turbulence or the volatility-affected country, and is
+
+determined by the degree of financial liberalization, capital ac-
+
+count openness, capital structure, real sector linkages, financial
+
+linkages, and investor confidence in the two countries. Based on
+
+the above analysis, the following initial value (Cauchy) prob-
+
+lem for the fuzzy dynamic system scenario simulation model is
+
+established:
+
+ddTTTTrrrreeenneddnnddttddsvs(v((00(t)t)))====-TTasbvT0-0 r>Ce~~nR-s0vdTs (rte)n+dvC~~(v-t)s[TTrreennddvs((tt))[]T2 rends (t)]2
+
+
+
+a=
+b> C~~-sv C~~-vs
+
+0 0  
+
+FI FI
+
+T T
+
+-2 -2
+
+(R) (R)
+
+(9)
+
+where T rends (t) is the historical trend of the net capital inflow for the source country of financial turbulence; T rendv (t) is the historical trend of the net capital inflow for the volatility-
+affected country; a is the inertial coefficient of the volatility-
+affected country; b denotes the inertial coefficient of the source country of financial turbulence; C~~s-v denotes the fuzzy coupling coefficient for the impact from the source country of financial turbulence to the volatility-affected country; and C~~v-s is the fuzzy coupling coefficient for the impact from the volatility-affected
+country to the source country of financial turbulence.
+
+C. Crisp Equivalent Model Under Boundary Value Conditions
+
+Since it is not possible to describe the solution to the Model (9) unless the fuzzy coefficients C~~s-v and C~~v-s are transferred into a parameter cluster, here, a "crisp operator"  is intro-
+duced, which transfers the -level of the triangular IT-2 fuzzy number (~~) into a parameter spectrum within the interval [cl ((~~) ), cr ((~~) )], where cl ((~~) ) and cr ((~~) ) are the leftand right-centroid boundaries [60] of the MF of (~~) respectively.
+Based on the idea of the enhanced Karnik­Mendel (EKM) al-
+gorithms [61], since the fuzzy coupling coefficients considered
+in this paper are specific triangular IT-2 fuzzy numbers, the com-
+putation of the centroid boundaries can be significantly reduced by employing the following equations to calculate cl((~~) ) and cr ((~~) ):
+
+cl ((~~) )
+
+=
+
+m ~~ l~~ - dl ~~
+
+xU M F(~~)
+
+(x)dx
+
++
+
+m ~~ l~~ - dl ~~
+
+U M F(~~)
+
+(x)dx
+
++
+
+r~~ - dr ~~ m ~~
+
+xLM F(~~)
+
+(x)dx
+
+r~~ - dr ~~ m ~~
+
+LM F(~~)
+
+(x)dx
+
+(10)
+
+cr ((~~) )
+
+=
+
+m ~~ l~~ +  dl ~~
+
+xLM F(~~)
+
+(x)dx
+
++
+
+m ~~ l~~ +  dl ~~
+
+LM F(~~)
+
+(x)dx
+
++
+
+r~~ +  dr ~~ m ~~
+
+xU M F(~~)
+
+(x)dx
+
+r~~ +  dr ~~ m ~~
+
+U M F(~~)
+
+(x)dx
+
+.
+
+(11)
+
+According to (2), (6), (10), and (11), for a -level of the triangular IT-2 fuzzy number (~~) considered in this paper, the "crisp operator"  is defined as:
+
+((~~) , ) = (1 - )cl ((~~) ) + cr ((~~) )
+
+(12)
+
+where  is a cluster coefficient, and 0    1. When the values
+
+ and  are fixed, i.e.,  = 0 and  = 0, the Model (9) can be
+
+transferred into a crisp equivalent model as:
+
+ 
+
+dT rendv (t) dt
+
+=
+
+a
+
+-
+
+((C~~-sv ) , )T rendv (t)[T rends (t)]2
+
+dT rends (t) dt
+
+= -bT rends (t) +((C~~-vs ) , )T rendv (t)[T rends (t)]2
+
+T rendv (0) = T v0  R
+
+
+
+T a b  
+
+rends (0) = T s0 > =0 >0 = 0 , 0    1 = 0 , 0    1
+
+0
+
+(13)
+
+where  = 0 and  = 0 are regarded as the boundary value conditions, and the above Model (13) is actually a boundary value problem of the fuzzy dynamical system scenario simulation model. When the cluster coefficient  varies in the interval [0, 1], the Model (13) derives a cluster of crisp equivalent models for the fuzzy dynamical system scenario simulation model. It should be noted that the selected value  may be different for different coupling coefficients. However, for simplicity, this paper assumes that all fuzzy coefficients in the model have the same value . Since control inputs (i.e., investment or management policies) from governments and financial institutes are not considered in Model (13), it is regarded as a dynamical system model under a liberal economy, which simulates a free financial system with no macroeconomic interventions. However, when a financial crisis occurs, it is necessary for governments and financial institutes to take macroeconomic control to reduce the financial contagion impact. For the potential usage for policymakers, the next part extends the dynamical system model under a liberal economy to a model with macroeconomic control to establish effective financial policies.
+
+D. Dynamical System Model With Macroeconomic Control
+During the global financial crisis in 2008, the U.S. Federal Reserve (FDR) and central banks around the world took a series of emergency actions to expand money supply so as to avoid the financial contagion impact [62]. These government and
+
+448
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+financial institution capital injections and the associated management policies could be seen as macroeconomic control inputs into the financial system. Let v (t) and s (t) be the government and financial institution macroeconomic control inputs at time t for the volatility-affected country and the source country of financial turbulence. Then Model (13), which reflects the situation under a liberal economy, can be extended to a dynamical system model with macroeconomic control as
+
+
+
+
+
+dT rendv (t) dt
+dT rends (t) dt
+
+= =
+
+a - ((C~~s-v ) , )T rendv (t)[T rends (t)]2 +v (t)
+-bT rends (t) +((C~~v-s ) , )T rendv (t)[T rends (t)]2 +
+
+s (t)
+
+
+
+T T a b  
+
+rendv (0) = T v0  rends (0) = T s0 > =0 >0 = 0 , 0    1 = 0 , 0    1
+
+R 0
+
+(14)
+
+where v (t) and s (t) are regarded as the control impulses at time t and are measured as net capital inflows per unit time. When a financial crisis occurs, the government and financial institution capital injections and management policies in the volatility-affected country and the source country of financial turbulence ultimately reflect the changes in net capital inflows per unit time in the financial system; therefore, the macroeconomic control effect is relevant to the government and financial institution control impulses (i.e., v (t) and s (t)) from the volatility-affected country and the source country of financial turbulence. When v (t) = 0 and s (t) = 0 for all time t, Model (14) is reduced to a dynamical system model under a liberal economy, as shown in Model (13).
+The computational complexity of the simulation for both Models (13) and (14) depends on the number of simulation iterations (i.e., m). The time complexity for simulating Models (13) and (14) is O(m), which indicates a low computational complexity and implies that it belongs to a P (polynomial-time solvable) class problem.
+
+IV. MODEL ANALYSIS UNDER A LIBERAL ECONOMY
+Since it is the dynamical system model under a liberal economy that shows the essential features of a financial system without macroeconomic interventions, this section discusses the types of volatility equilibrium points for Model (13), analyzes the asymptotic stability of the volatility equilibrium point in different situations to form a series of volatility contagion principles, and conducts a sensitivity analysis on the initial value conditions and boundary value conditions. It should be noted that all analyses are based on the boundary value problem for the fuzzy dynamical system scenario simulation model with the initial value conditions T rendv (0) = T v0  R and T rends (0) = T s0 > 0, and the boundary value conditions
+
+ = 0 and  = 0 . It is also assumed that ((C~~-sv ) , ) > 0 and ((C~~v-s ) , ) > 0, which reflects a practical situation.
+
+A. Volatility Equilibrium Point of the Model Under a Liberal Economy
+
+The volatility equilibrium points for the Model (13) are de-
+fined as the points at which the rate of change for both T rendv (t) and T rends (t) is zero. To analyze the asymptotic stability of the model, the volatility equilibrium points for the model need to be determined first. Let  = a be the ratio of inertial coefficients,
+b
+
+
+
+=
+
+((C~~s-v ) , ) ((C~~v-s ) , )
+
+be the ratio of the crisp fuzzy coupling coefficients,
+
+s
+
+=
+
+b ((C~~v-s ) , )
+
+denote the exogenous coefficient of the source country of financial turbulence, which is the ratio of the inertial coefficient and the crisp fuzzy coupling coefficient of the source country, and
+
+v
+
+=
+
+a ((C~~s-v ) , )
+
+denote the exogenous coefficient of the volatility-affected country, which is the ratio of the inertial coefficient and the crisp fuzzy coupling coefficient of the volatility-affected country. Therefore, the ratio of the exogenous coefficients between the volatility-affected country and the source country of financial turbulence is = v =  . The following lemma is given.
+s  Lemma IV.1: (Exogenous position of the volatility equilibrium point) There is a unique volatility equilibrium point for Model (13) located at ( s , ), the position of which depends
+
+on the exogenous coefficient of the source country of financial
+
+turbulence, and the ratio of the exogenous coefficients.
+
+Proof: Let
+
+ 
+
+dT rendv (t)
+
+=
+
+0
+
+dt
+
+ dT rends (t) = 0.
+
+dt
+
+Therefore,
+
+ a
+
+-
+
+((C~~s-v ) , )T rendv (t)[T rends (t)]2
+
+=
+
+0
+
+ -bT rends (t) + ((C~~-vs ) , )T rendv (t)[T rends (t)]2 = 0.
+
+By solving the above equations, the following unique solution
+
+is determined:
+
+  T rendv (t) =  T rends (t) =
+
+aabb2((2((((CC((~~~~CC-s~~v-~~vss-v-)v)s)),, ,, ))))===s
+
+= .
+
+s
+
+XU et al.: FUZZY DYNAMICAL SYSTEM SCENARIO SIMULATION-BASED CROSS-BORDER FINANCIAL CONTAGION ANALYSIS
+
+449
+
+The volatility equilibrium point for Model (13), therefore, is located at ( s , ), which implies that the position is dependent
+on the exogenous coefficient of the source country of financial turbulence (i.e., s), and the ratio of the exogenous coefficients (i.e., ).
+
+B. Volatility Contagion Principles Under a Liberal Economy Based on a Local Asymptotic Stability Analysis
+
+To address the nonlinearity of Model (13) before analyzing
+
+the asymptotic stability of the volatility equilibrium point, a
+
+typical approach has been local linearization. According Brauer
+
+et al.[63], an asymptotic stability of the equilibrium point for
+
+linearization implies an asymptotic stability of the equilibrium
+
+for a nonlinear system. Conversely, instability of the equilibrium
+
+point for the linearization implies instability of the equilibrium
+
+for a nonlinear system. However, as each local model is known
+
+to be valid for only a certain range of operating conditions, these
+
+results only guarantee the local properties for nonlinear dynam-
+
+ical systems. Nonetheless, since the fuzzy dynamical system
+
+scenario simulation model in this paper is only for short-term
+
+study, and Model (13) has good differentiability, continuity, and
+
+convexity, the local asymptotic stability theory still has signifi-
+
+cance when handling the cases in this paper. Future research on
+
+a more complex global asymptotic stability theory is discussed
+
+in Section IX.
+
+According to Lemma IV.1, let x = T rendv (t), y =
+
+T rends (t), x = s , y =
+
+, dx = F (x, y), dy = G(x, y),
+
+dt
+
+dt
+
+the asymptotic stability or instability of the volatility equilib-
+
+rium point for Model (13) is determined by the eigenvalues of
+
+the following matrix A:
+
+ F (x, y) F (x, y) 
+
+A=
+
+
+
+x G(x,
+
+y)
+
+,
+
+y G(x,
+
+y)
+
+
+
+,
+
+x
+
+y
+
+=
+
+ 
+
+-((C~~s-v )
+
+,
+
+)
+
+2 , -2((C~~-sv ) , )s
+
+ 
+
+((C~~-vs ) , ) 2 , -b + 2((C~~v-s ) , )s
+
+where F (x, y) = a - ((C~~-sv ) , )xy2 and G(x, y) = -by +
+
+((C~~v-s ) , )xy2 . Let k = ((C~~-sv ) , ) 2 , since s =
+
+b ((C~~-vs ) , ) ,
+
+and
+
+
+
+=
+
+((C~~s-v ((C~~-vs
+
+) )
+
+, ,
+
+) )
+
+,
+
+thus
+
+matrix
+
+A
+
+could
+
+be
+
+deduced as:
+
+ -k, -2b 
+
+A= k, 
+
+ b
+
+where
+
+k=
+
+a 2 2 ((C~~-vs ) , ) b ((C~~-sv ) , )
+
+is a synthetic of the inertial coefficients and coupling coefficients which reflects the inertia states of the initial net capital inflow volatility trend and the coupling strengths for both the source
+
+country of financial turbulence and the volatility-affected country. The trace, determinant, and  of matrix A can be expressed as
+trA(x, y) = b - k, detA(x, y) = bk
+ = [trA(x, y)]2 - 4 detA(x, y) = b2 - 6bk + k2 .
+
+Based on the above analysis, the following principles are
+
+given.
+
+Principle IV.2: (Contractive volatility contagion) The
+
+volatility equilibrium point for Model (13) is locally asymp-
+
+totically stable, which implies a contractive volatility conta-
+
+gion between the source country of financial turbulence and the
+
+volatility-affected country, if b < 1. k
+Proof: Based on the local asymptotic stability theory, if trA(x, y) = b - k < 0, and detA(x, y) = bk > 0, then the
+
+volatility equilibrium point for Model (13) is locally asymptotically stable. Since k = ((C~~s-v ) , ) 2 > 0, and b > 0, this indicates that bk > 0 always holds. Therefore, if b < 1, then the
+k volatility equilibrium point for Model (13) is locally asymptoti-
+
+cally stable. Based on an analysis of the phase portraits in this sit-
+
+uation, the locally asymptotically stability of the volatility equi-
+
+librium point implies a contractive volatility contagion between
+
+the source country of financial turbulence and the volatility-
+
+affected country.
+
+Principle IV.3: (Steady contractive volatility contagion) The
+
+volatility equilibrium point for Model (13) is a locally asymptot-
+
+ically stable node, which implies a steady contractive volatility
+
+contagion between the source country of financial turbulence
+
+and
+
+the
+
+volatility-affected
+
+country,
+
+if
+
+b
+
+
+
+ 3 - 2 2.
+
+Proof:
+
+According
+
+to
+
+Principle
+
+k IV.2,
+
+since
+
+b k
+
+
+
+3
+
+-
+
+ 22
+
+<
+
+1, the volatility equilibrium point for Model (13) is locally
+
+asymptotically stable, which implies a contractive volatility con-
+
+tagion between the source country of financial turbulence and
+
+the volatility-affected country. Based on local asymptotic stabil-
+ity theory, if trA(x, y) = b - k < 0, detA(x, y) = bk > 0, and  = b2 - 6bk + k2  0, then the volatility equilibrium
+
+point for Model (13) is a locally asymptotically stable node. Since k2 > 0, thus,
+
+ = b2
+
+- 6bk + k2
+
+0
+
+ k2
+
+= ( b )2 k
+
+- 6( b ) + 1  0 k
+
+
+
+(b
+
+- 3)2
+
+
+
+8
+
+
+
+b
+
+  3 - 2 2 or
+
+b
+
+
+
+ 3 + 2 2.
+
+k
+
+k
+
+k
+
+Since
+
+b
+
+ 3+2 2>1
+
+does
+
+not
+
+meet
+
+the
+
+requirements
+
+of
+
+k
+
+trA(x, y) = b - k < 0, it can be known that only when b 
+
+
+
+k
+
+3 - 2 2, the volatility equilibrium point for Model (13) is a
+
+locally asymptotically stable node. Based on the analysis on
+
+the phase portraits in this situation, a locally asymptotically
+
+stable node implies that there is a steady contractive volatility
+
+contagion between the source country of financial turbulence
+
+and the volatility-affected country.
+
+Principle IV.4: (Fluctuated contractive volatility contagion)
+
+The volatility equilibrium point for Model (13) is a locally
+
+450
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+asymptotically stable spiral point, which implies a fluctuated
+
+contractive volatility contagion between the source country of
+
+financial turbulence and the volatility-affected country, if 3 -
+
+ 2<
+
+b
+
+<
+
+1.
+
+k
+
+Proof: According to local asymptotic stability theory, the
+
+volatility equilibrium point for Model (13) is a locally
+asymptotically stable spiral point, if trA(x, y) = b - k < 0, detA(x, y) = bk > 0, and  = b2 - 6bk + k2 < 0. Based on
+
+the proofs 
+3- 2<
+
+in Principle IV.2 and IV.3,
+
+b k
+
+<
+
+3
+
++
+
+ 2.
+
+Since
+
+3
+
++
+
+ 2
+
+this
+
+means
+
+b k
+
+<
+
+1,
+
+and
+
+> 1, the volatility equi-
+
+librium point for Model (13) is a locally asymptotically sta-
+
+ble
+
+spiral
+
+point
+
+if
+
+ 3- 2
+
+<
+
+b k
+
+<
+
+1.
+
+By
+
+analyzing
+
+the
+
+phase
+
+portraits in this situation, the locally asymptotically stable spi-
+
+ral point implies a fluctuated contractive volatility contagion
+
+between the source country of financial turbulence and the
+
+volatility-affected country.
+
+Principle IV.5: (Steady expansile volatility contagion) The
+
+volatility equilibrium point for Model (13) is a locally unsta-
+
+ble node, which implies a steady expansile volatility conta-
+
+gion between the source country of financial turbulence and the
+
+volatility-affected
+
+country,
+
+if
+
+b
+
+
+
+ 3 + 2 2.
+
+k
+
+Proof: Similar to the proof in Principle IV.4, the volatility
+
+equilibrium point for Model (13) is a locally unstable node,
+
+if trA(x, y) = b - k > 0, detA(x, y) = bk > 0, and  =
+
+b2 - 6bk + k2  0. This
+
+means
+
+b > 1,
+
+and
+
+b
+
+
+
+ 3 - 2 2,
+
+or
+
+b
+
+  3 + 2 2.
+
+Since
+
+k 3 - 2 2 < 1,
+
+the
+
+k volatility
+
+equilib-
+
+k
+
+rium point for Model (13) is a locally unstable node, only if
+
+b
+
+
+
+ 3 + 2 2.
+
+The
+
+analysis
+
+of
+
+the
+
+phase
+
+portraits
+
+in
+
+this
+
+situ-
+
+k
+
+ation indicates that the locally unstable node implies a steady
+
+expansile volatility contagion between the source country of
+
+financial turbulence and the volatility-affected country.
+
+Principle IV.6: (Fluctuated expansile (FE) volatility conta-
+
+gion) The volatility equilibrium point for Model (13) is a lo-
+
+cally unstable spiral point, which implies an FE volatility con-
+
+tagion between the source country of financial turbulence and
+
+the
+
+volatility-affected
+
+country,
+
+if
+
+1
+
+<
+
+b
+
+<
+
+3
+
++
+
+ 2 2.
+
+Proof: Since when trA(x, yk) = b - k > 0, detA
+
+(x, y) = bk > 0, and  = b2 - 6bk + k2 < 0, the volatility
+
+equilibrium point for Model (13) is a locally unstable spiral
+
+point.
+
+This
+
+implies
+
+b > 1,
+
+and
+
+ 3- 2
+
+<
+
+b
+
+<
+
+ 3 + 2 2.
+
+
+
+k
+
+k
+
+Because 3 - 2 < 1, the volatility equilibrium point for Model
+
+(13)
+
+is
+
+a
+
+locally
+
+unstable
+
+spiral
+
+point
+
+if
+
+1<
+
+b k
+
+<
+
+ 3 + 2 2.
+
+By analyzing the phase portraits in this situation, the locally
+
+unstable spiral point implies an FE volatility contagion
+
+between the source country of financial turbulence and the
+
+volatility-affected country.
+
+Principle IV.7: (Fluctuated stationary volatility contagion)
+
+The volatility equilibrium point for Model (13) is a center
+
+point, which implies a fluctuated stationary volatility conta-
+
+gion between the source country of financial turbulence and the
+
+volatility-affected country, if b = 1. k
+
+Fig. 6. Phase portraits for different types of volatility transmission patterns under a liberal economy.
+Proof: When trA(x, y) = b - k = 0 and detA(x, y) = bk > 0, the volatility equilibrium point for Model (13) is a center point. This means b = 1. By observing the phase portraits
+k in this situation, it can be seen that the point near the volatility equilibrium point follows a circular movement and periodically surrounds the center which implies a fluctuated stationary volatility contagion between the source country of financial turbulence and the volatility-affected country.
+The above principles indicate that in this paper b could be k
+regarded as a volatility transmission pattern indicator of the financial contagion which reflects the fluctuation behavior (i.e., steady or fluctuated) and the trend directions (i.e., contractive, expansile, or stationary). These volatility contagion principles describe six types of volatility transmission patterns for international capital flows, in which the contractive and expansile volatility contagions show a strong similarity to the volatility transmission patterns in stock markets [20] and the "heat-wave" and "meteor-shower" effects in foreign exchange markets [19]. The steady or fluctuated contractive and expansile volatility contagions are extensions of the basic volatility transmission patterns and give more details about the fluctuation behavior. The fluctuated stationary volatility contagion is a specific case and rarely happens in practical situations. It should be noted, however, that all the above principles are only applicable to the local area that contains the volatility equilibrium point.
+Based on the above analysis, all possible phase portraits for the different volatility transmission patterns for Model (13) are illustrated in Fig. 6, where the boundary value conditions are set as:  = 0.1,  = 0.5. Table II shows the parameter settings for the initial value conditions, inertial coefficients, and triangular
+
+XU et al.: FUZZY DYNAMICAL SYSTEM SCENARIO SIMULATION-BASED CROSS-BORDER FINANCIAL CONTAGION ANALYSIS
+
+451
+
+TABLE II PARAMETER SETTINGS FOR DIFFERENT TYPES OF VOLATILITY
+TRANSMISSION PATTERNS
+
+rium point for Model (13) in D, the volatilities in both countries will increase without restriction in D, which implies a local expansivity of expansile volatility contagion.
+
+Parameter Settings
+
+Pattern Type indicator
+
+Inertial coefficient
+
+Initial value condition
+
+b k
+
+b
+
+a
+
+T rendv (0) T rends (0)
+
+SC
+
+0.022 0.106 0.223
+
+FC
+
+0.796 0.446 0.323
+
+SE
+
+6.128 0.546 0.223
+
+FE
+
+1.480 0.458 0.285
+
+FS
+
+1.000 0.666 0.203
+
+0.092 1.120 2.150 0.092 0.320
+
+1.610 0.420 0.350 0.064 0.320
+
+ -level of triangular IT-2 fuzzy coupling coefficient
+
+(C~~s-v )
+
+(C~~-vs )
+
+SC ([0.73,0.74], 0.98, [1.39,1.41]) ([0.87,0.89],1.03,[1.24,1.27])
+
+FC ([1.04,1.05], 1.19, [1.32,1.33]) ([0.89,0.92],1.12,[1.35,1.39])
+
+SE ([0.74,0.76], 0.98, [1.21,1.23]) ([0.58,0.61],0.72,[0.96,0.99])
+
+FE ([0.64,0.68], 0.75, [0.81,0.84]) ([0.68,0.71],0.77,[0.84,0.89])
+
+FS
+
+([9.40,9.48], 9.61, [9.74,9.81]) ([7.79,7.83],7.91,[7.99,8.07])
+
+SC=Steady contractive, FC=Fluctuated contractive, SE=Steady expansile, FE=Fluctuated expansile, FS=Fluctuated Stationary
+
+IT-2 fuzzy coupling coefficients for the above five different
+
+situations.
+
+Let D be a simple connected region in the volatility contagion trend plane with a boundary C, then the following principle can be obtained.
+
+Principle IV.8: (Local expansivity of expansile volatility
+
+contagion)
+
+If
+
+b k
+
+>
+
+1,
+
+then
+
+there
+
+is
+
+a
+
+simple
+
+connected
+
+region
+
+D such that there is no limit cycle for the volatility equilibrium
+
+point for Model (13) in D, where D is the neighborhood of the
+
+volatility equilibrium point, and F (x, y) and G(x, y) are both
+
+continuously differentiable near the volatility equilibrium point
+
+in D, which implies a local expansivity of expansile volatility
+
+contagion.
+
+Proof:
+
+Since
+
+b k
+
+>
+
+1,
+
+this
+
+implies
+
+trA(x, y) = b - k = F (x, y) + G(x, y) > 0.
+
+x
+
+y
+
+Because F (x, y) and G(x, y) are both continuously differen-
+
+tiable near the volatility equilibrium point, there must be a sim-
+
+ple connected region D such that F (x, y) + G(x, y) > 0
+
+x
+
+y
+
+for any (x, y)  D. According to Bendixson's theorem [64], if
+
+F (x, y) + G(x, y) is either strictly positive or strictly neg-
+
+x
+
+y
+
+ative in a simply connected region D, then there is no periodic
+
+orbit for dx = F (x, y), dy = G(x, y) in D, which means there
+
+dt
+
+dt
+
+is no limit cycle for the volatility equilibrium point for Model
+
+(13) in D. According to Principles IV.5 and IV.6, if b > 1, k
+this implies an expansile volatility contagion between the
+
+source country of financial turbulence and the volatility-affected
+
+country. Since there is no limit cycle for the volatility equilib-
+
+C. Sensitivity Analysis on Initial Value Conditions for Model Calibration Under a Liberal Economy
+
+It is important to explore what happens if the volatility-
+
+affected countries have different initial net capital inflow con-
+
+ditions when a financial shock takes effect. Based on historical
+
+data, it can be seen that FE volatility contagion
+
+most real situation,
+
+financial i.e., 1 <
+
+crises b <3
+
+fall into + 2 2.
+
+an As
+
+k
+
+a result, the sensitivity analysis on the initial value conditions
+
+is focused on an FE volatility contagion situation. The bound-
+
+ary value conditions are set as:  = 0.1,  = 0.5. These results
+
+could provide managerial insights to policymakers.
+
+In this analysis, the sensitivity of the initial value conditions
+
+for the volatility-affected country and the source country of fi-
+
+nancial turbulence are, respectively, tested. To test the sensitivity
+
+of the initial value condition for the volatility-affected country,
+
+the initial value of T rends (0) for the source country of financial turbulence is fixed at 0.064, and the three initial values
+
+of T rendv (0) for the volatility-affected country, i.e., 0.0915, 0.0920, 0.0925, are selected for the fuzzy dynamical system
+
+scenario simulation testing. To test the sensitivity of the initial
+
+value condition for the source country of financial turbulence,
+
+the initial value T rendv (0) for the volatility-affected country is fixed at 0.0920, and the three initial values for T rends (0) for
+the source country of financial turbulence, i.e., 0.0635, 0.0640,
+
+0.0645, are selected for the fuzzy dynamical system scenario
+
+simulation testing. The parameter settings for the inertial co-
+
+efficients and the -level of the triangular IT-2 fuzzy coupling
+
+coefficients for the FE volatility contagion in Table II were
+
+employed. The simulation results are shown in Fig. 7. Both
+
+the net capital inflow simulated trend results for the volatility-
+
+affected country and the source country of financial turbulence
+
+from the above two test groups shown in Fig. 7 indicate a high
+
+sensitivity level to the initial value conditions. A very small
+
+deviation in the initial value of T rendv (0) can lead to significant capital inflow trend deviations for the volatility-affected
+
+country and the source country of financial turbulence which
+
+seriously impacts the financial system. The testing on the initial
+
+value of T rends (0) shows an even higher sensitivity compared with T rendv (0). The simulated tracks for the trends of capital
+inflow for the source country of financial turbulence and the
+
+volatility-affected country in the two test groups imply that the
+
+net capital inflow trends in the two countries fluctuate in the
+
+early stages, then the vibration amplitude gradually increases,
+
+and finally, the net capital inflow trend in the volatility-affected
+
+country increases sharply, while the net capital inflow trend in
+
+the source country of financial turbulence first decreases sharply
+
+and then gradually slows down. The results in Fig. 7 also imply
+
+that a volatility-affected country with a lower initial value for
+
+T rendv (0) would suffer more significant capital inflow deviations, while a source country of financial turbulence with a lower
+
+initial value for T rends (0) would have a stronger volatility contagion effect on the volatility-affected country. Therefore, it is
+
+important for governments and financial institutions to control
+
+452
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+Fig. 7. Simulation results for sensitivity analysis on initial value conditions under the situation of FE volatility contagion.
+
+the volatility in the early stages, as deviations sharply increase after the early fluctuations.
+D. Sensitivity Analysis on Boundary Value Conditions for Model Calibration Under a Liberal Economy
+A sensitivity analysis on the boundary value conditions was also conducted to check the robustness of the deviation rate  and the cluster coefficient  on Model (13). The parameter settings for the FE volatility contagion in Table II were employed. To test the robustness of the cluster coefficient , the deviation rate  was set as  = 0.1, and the three cluster coefficients, i.e.,  = 0.25,  = 0.5, and  = 0.75, were selected for the simulation testing. To test the robustness of the deviation rate , the cluster coefficient  was set to  = 0.5, and the three deviation rates, i.e.,  = 0.05,  = 0.1, and  = 0.15, were selected. The simulation results for the above two test groups shown in Fig. 8 illustrate the simulated trends of the net capital inflows for the volatility-affected country and the source country of financial turbulence, and the simulated tracks for the trends of capital inflows for the source country of financial turbulence and the volatility-affected country. The simulated trends of the net capital inflows for the volatility-affected country and the source country of financial turbulence shown in Fig. 8 indicate a relatively high level of stability in the early stage for both the cluster coefficient  and the deviation rate , as a small deviation in the cluster coefficient  or the deviation rate  does not lead to a significant difference in the simulated trends for the net capital inflows for both the volatility-affected country and the
+
+source country of financial turbulence. It also implies that the vibration amplitude under different boundary value conditions is linearly negatively correlated with the cluster coefficient . This phenomenon also applies to the deviation rate . While there are some fluctuations in the capital inflow trends for both two countries over time, the simulated tracks under different boundary value conditions have nearly the same trend as the track in the early stage. Therefore, the simulated tracks for the capital inflow trends for the source country of financial turbulence and the volatility-affected country confirm the stability of the boundary value conditions in the early stage for Model (13). This property of the boundary value conditions for Model (13) indicates that the fuzzy dynamical system scenario simulation analysis on financial contagion through the perspective of international capital flow volatility is feasible, as small deviations in the estimated parameters do not lead to misleading results.
+
+V. MODEL ANALYSIS WITH MACROECONOMIC CONTROL
+This section discusses the properties of Model (14) under a macroeconomic control situation. Since Model (14) can be regarded as an extension of Model (13), based on the Lemma IV.1, and the Principles IV.2­IV.7 proved in the model analysis under a liberal economy, similar conclusion can be derived for Model (14), as shown in Principle V.1. To simplify the expression, the following variables are introduced and defined:
+
+ (t)
+
+=
+
+((C~~-sv ) ,
+
+) s (t) b
+
++
+
+((C~~v-s ) , )
+
+a + v (t) bb
+
+XU et al.: FUZZY DYNAMICAL SYSTEM SCENARIO SIMULATION-BASED CROSS-BORDER FINANCIAL CONTAGION ANALYSIS
+
+453
+
+Fig. 8. Simulation results for sensitivity analysis on boundary value conditions under the situation of FE volatility contagion.
+
+(t)
+
+=
+
+2((C~~-vs ) , )(a  (t)
+
++
+
+v (t)) ,
+
+(t)
+
+=
+
+ 2 (t) ((C~~s-v ) , ) .
+
+Principle V.1: (Volatility contagion principle with macroeconomic control) There is a unique volatility equilibrium point for Model (14) located at
+
+a
+
++ v (t) (t)
+
+,
+
+ (t) ((C~~-sv )
+
+,
+
+)
+
+at time t, which implies five different volatility contagion pat-
+terns between the source country of financial turbulence and
+the volatility-affected country at time t as described below: 1) when (t) < (t) + b and [(t) + b + (t)]2  2[2 (t) + b2 + 2(t)], this is a locally asymptotically stable node which
+implies a steady contractive volatility contagion at time t; 2) when (t) < (t) + b and [(t) + b + (t)]2 < 2[2 (t) + b2 + 2(t)], this is a locally asymptotically stable spiral point which
+implies a fluctuated contractive volatility contagion at time t; 3) when (t) > (t) + b and [(t) + b + (t)]2  2[2 (t) + b2 + 2(t)], this is a locally unstable node which implies a steady expansile volatility contagion at time t; 4) when (t) > (t) + b and [(t) + b + (t)]2 < 2[2 (t) + b2 + 2 (t)], this is a locally
+unstable spiral point which implies an FE volatility contagion
+at time t; 5) when (t) = (t) + b, this is a center point which
+implies a fluctuated stationary volatility contagion at time t.
+Due to length limitations, the proof for Principle V.1 is omit-
+ted. Note that the volatility equilibrium point for Model (14) is
+
+time varying, which implies that the macroeconomic control input (i.e., v (t) and s (t)) at time t changes the original volatility contagion pattern between the source country of financial turbulence and the volatility-affected country. If the strength of the macroeconomic control input is appropriate, it may be possible for governments and financial institutions in the source country of financial turbulence and the volatility-affected countries to reduce the financial crisis impact by breaking the original volatility contagion pattern and change the financial situation from an economic recession to a better economic equilibrium trend.
+VI. POLICY SUGGESTIONS AND EXPLORATION OF RESPONSE STRATEGIES
+In this section, policy suggestions are summarized based on the model analysis under a liberal economy, and financial crisis response strategies are presented based on the macroeconomic control model analysis for potential usage in the establishment of financial policy.
+A. Policy Suggestions
+Based on the model analysis under a liberal economy, from the perspective of the international capital flow analysis, the following dynamical system mechanisms of financial contagion are concluded in three different situations, which may provide insightful suggestions for policymakers in governments and financial institutions.
+
+454
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+Situation 1: When the pattern indicator of the volatility conta-
+
+gion is b < 1, according to Principles IV.2, IV.3, and IV.4, this k
+implies a contractive volatility contagion between the source
+
+country of financial turbulence and the volatility-affected coun-
+
+try;
+
+when
+
+b
+
+<
+
+ 3 - 2 2,
+
+there
+
+is
+
+a
+
+steady
+
+contractive
+
+volatility
+
+k contagion; and
+
+when
+
+ 3-2 2
+
+<
+
+b
+
+<
+
+1,
+
+there
+
+is
+
+a
+
+fluctuated
+
+k
+
+contractive volatility contagion. If the volatility equilibrium
+
+point (i.e., (x, y)) is located in a position close to the initial
+
+position (i.e., (T rendv (0), T rends (0))) along the trend track, the fluctuations of the trends of the net capital inflows for the
+
+source country of financial turbulence and the volatility-affected
+
+countries are controllable, and the financial volatility contagion
+
+does not infinitely increase. The spread of the financial shock
+
+is limited due to the economic immunity and resilience of the
+
+source country of financial turbulence and the volatility-affected
+
+countries.
+
+On the other hand, if the volatility equilibrium point (i.e., (x, y)) is located far from the initial position [i.e.,
+
+(T rendv (0), T rends (0))] along the trend track, the local theory of the fuzzy dynamical system is not sufficient to solve
+
+the problem, so a global theory of the fuzzy dynamical system
+
+should be employed. However, since Model (13) has good differ-
+
+entiability, continuity, and convexity, local theory is applicable
+
+to a relatively large region in the plane, and a financial shock
+
+may lead to serious net capital inflow volatilities for both the
+
+source country of financial turbulence and the volatility-affected
+
+countries. Efficient monetary policies and fiscal policies must
+
+be implemented by the governments and financial institutions
+
+to control the situation so as to slow down the spread of the
+
+financial shock and reduce financial loss.
+
+Situation 2: When the pattern indicator of the volatility conta-
+
+gion is b > 1, according to Principles IV.5 and IV.6, this implies
+
+k a steady expansile
+
+volatility
+
+contagion (when
+
+b
+
+
+
+3
+
++
+
+ 2 2) or
+
+a
+
+FE
+
+volatility
+
+contagion
+
+(when
+
+1
+
+<
+
+b
+
+k < 3 + 2 2).
+
+Since
+
+it
+
+k
+
+has been proved in Principle IV.8 that no matter whether the
+
+initial position (i.e., (T rendv (0), T rends (0))) is far from or near to the volatility equilibrium point (i.e., (x, y)), because
+
+b > 1 and F (x, y) and G(x, y) are both continuously differenk tiable in the whole plane space (i.e., R2), a simple connected
+
+region D can be found where both the initial position and the
+
+volatility equilibrium point are in D, so there is no limit cy-
+
+cle for the volatility equilibrium point or the initial position for
+
+Model (13) in D, which implies a local expansivity of expansile
+
+volatility contagion. This is the worst financial contagion situ-
+
+ation, as there is no limit to the spread of the financial shock.
+
+The net capital flow trends for both the source country of finan-
+
+cial turbulence and the volatility-affected country may sharply
+
+fluctuate and lead to an extensive spread of the financial crisis.
+
+The nonlinear contagion effects between the source country of
+
+financial turbulence and the volatility-affected country become
+
+increasingly stronger over a short time and have a serious im-
+
+pact on the financial markets and trade exports. Governments
+
+and financial institutes need to implement decisive and effective
+
+economic policies before and after the financial shock.
+
+Situation 3: When the pattern indicator of the volatility con-
+
+tagion is
+
+b k
+
+= 1, according to Principle IV.7, this implies a fluc-
+
+tuated stationary volatility contagion. In this situation, the net
+
+capital flow trends for both the source country of financial turbu-
+
+lence and the volatility-affected country periodically fluctuate
+
+within a limited range; however, a small disturbance or shock
+
+may result in greater fluctuation amplitude. As this situation
+
+usually occurs in the early stages of the financial shock spread,
+
+the potential risk of a financial crisis is usually ignored. How-
+
+ever, for governments and financial institutions, this is the best
+
+time to control an extensive spread of the financial shock, as the
+
+financial contagion in this situation is suppressed and unstable
+
+under a relatively weak transmission mechanism.
+
+B. Exploration of Response Strategies
+
+Based on the macroeconomic control model analysis, a ten-
+
+tative exploration of possible financial crisis response strategies
+
+is presented to guide financial policy. Before a financial crisis
+
+occurs, Principles IV.2-IV.7, which were proven in the model
+
+analysis under a liberal economy, can be employed to identify
+
+the situation using the pattern indicator of the volatility conta-
+
+gion
+
+b k
+
+.
+
+If
+
+a
+
+financial
+
+shock
+
+occurs,
+
+governments
+
+and
+
+financial
+
+institutions in the source country of financial turbulence and the
+
+volatility-affected country must take timely action to implement
+
+financial policy for reducing the financial crisis impact.
+
+According to Principle V.1, discussed in the macroeconomic
+
+control model analysis, the following considerations may be
+
+useful for the development of appropriate response strategies.
+
+To reduce the financial shock impact, the best strategy for the
+
+governments and financial institutions in the source country
+
+of financial turbulence and the volatility-affected country is to
+
+break the current volatility contagion pattern at time t0 and converge to a new volatility equilibrium point (i.e., (x, y))
+
+near to the current position (i.e., (T rendv (t0 ), T rends (t0 ))). This would result in a more stable economic state following a
+
+contractive volatility contagion (steady or fluctuated) pattern by
+
+continuously implementing macroeconomic control from time
+
+t0. Due to the huge data quantities of international capital inflows and outflows and data restrictions from governments and
+
+financial institutions, rather than presenting a real-world case
+
+study, a numerical experiment is presented, as shown in Fig. 9.
+
+In this experiment, the parameter settings for the inertial coeffi-
+
+cients, initial value condition, and -level of the triangular IT-2
+
+fuzzy coupling coefficients for the FE volatility contagion in
+
+Table II are employed, in which the boundary value conditions
+
+are set as:  = 0.1,  = 0.5. To enable the readers to have a
+
+better understanding of the macroeconomic control effect, the
+
+input control variables (i.e., v (t) and s (t)) are defined as continuous fixed control impulses from time t0, which lead to a fluctuated contractive volatility contagion pattern as expressed
+
+below:
+
+v (t) =
+
+0, -0.02,
+
+t < t0 ,
+t  t0
+
+s (t) =
+
+0, 0.08,
+
+t < t0 t  t0 .
+
+As shown in Fig. 9, after macroeconomic control is taken from time t0, the net capital inflow simulated trends for the volatility-affected country and the source country of financial turbulence change from the original FE volatility contagion pattern into a fluctuated contractive volatility
+
+XU et al.: FUZZY DYNAMICAL SYSTEM SCENARIO SIMULATION-BASED CROSS-BORDER FINANCIAL CONTAGION ANALYSIS
+
+455
+
+Fig. 9. Simulation results for dynamical system model with macroeconomic control.
+
+contagion pattern. The simulated track of the trend of net capital inflows for the source country of financial turbulence and the volatility-affected country also shows that the macroeconomic control breaks the current volatility contagion pattern since from t0 and drives the point (T rendv (t), T rends (t)) following a fluctuated contractive volatility contagion pattern to a new volatility equilibrium point near to the current position (i.e., (T rendv (t0 ), T rends (t0 ))) to avoid sharp financial fluctuations and the extensive spread of the financial shock. Since the volatility-affected country usually encounters large net capital inflows during a financial crisis, its corresponding macroeconomic control value is set at a negative value (i.e., v (t) = -0.02, when t  t0), and similarly, the corresponding macroeconomic control value for the source country of financial turbulence is set at a positive value (i.e., s(t) = 0.08, when t  t0) to offset the drastic net capital outflows.
+By adjusting the macroeconomic control input values, different volatility contagion patterns between the source country of financial turbulence and the volatility-affected country can be simulated, which can be useful references for policymakers when seeking to develop effective response strategies. The numerical experiment also indicates that appropriate response strategies depend on cooperative macroeconomic control policies in both the source country of financial turbulence and the volatility-affected country. Any poor decision from either country may lead to disordered financial fluctuations and serious impacts on the financial markets in both countries. Therefore, the cross-border cooperative macroeconomic control strategies among governments and financial institutions in different countries may be an important trend for future research. Chaotic behavior of the governments and financial institutions in the dynamical system model of the financial system is the next step of this study.
+VII. SCENARIO SIMULATION FRAMEWORK
+To show the complete modeling and simulation process for different financial contagion situations, a scenario simulation framework was developed as shown in Fig. 10. There are seven main procedures in the scenario simulation in this paper, including the establishment of the fuzzy dynamical system, crisp equivalent model transformation, model calibration for initial value conditions and boundary value conditions, volatility
+
+transmission pattern identification, scenario analysis, policy suggestions, and the exploration of response strategies.
+The technologies involved in the establishment of the fuzzy dynamical system are the H­P filter to address long-term net capital inflow trends, IT-2 fuzzy numbers to express the coupling coefficient uncertainties, and FDEs to describe the dynamics of the driving and response systems in the financial contagion. In the crisp equivalent model transformation, the idea of EKM algorithms is employed, and the boundary value conditions are formulated by defining the clustering coefficient and the deviation rate, which allow for the IT-2 fuzzy simulation of the fuzzy dynamical system. The model calibration for the initial value conditions and the boundary value conditions tests the stability of the fuzzy dynamical system scenario simulation model. After volatility transmission pattern identification, scenario analyses and policy suggestions under a liberal economy can be developed for different financial contagion situations according to the principles derived in Sections IV and VI. The exploration of response strategies can be used as references for the establishment of financial policy by employing the principle of model analysis with macroeconomic control, as discussed in Sections V and VI.
+VIII. EXPERIMENTAL STUDY
+To test the effectiveness of the fuzzy dynamical system scenario simulation model, the global financial crisis in 2008 was employed as an experimental study. All data for estimating the model parameters were collected from CEIC's global database [65].
+A. Identification of Source Country of Financial Turbulence and Volatility-Affected Countries
+In the experimental study, the source country of the financial turbulence and volatility-affected countries were determined according to the real-world situation. In fact, there has been evidence showing that the United States was the epicentre of the global financial crisis which originated from the subprime mortgage crisis in August 2007 [62]. Financial institutions in other advanced economies were affected because of their exposure to structured credits and because of weaknesses in prudential supervision and the financial institution risk-management systems. Barclays Capital pointed out that the exposure of banks in the
+
+456
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+TABLE III PARAMETER ESTIMATIONS FOR THE FIVE SELECTED COUNTRIES
+
+Country
+
+Parameter Estimation
+
+Name
+
+b
+
+a
+
+T rendv (0) T rends (0)
+
+Ireland Italy Spain Denmark Belgium
+Ireland Italy Spain Denmark Belgium
+
+0.318 0.318 0.318 0.318 0.318
+
+-0.385 -0.413 -0.113 -0.407 -0.419
+
+-0.018 -0.013 -0.081 0.034 0.026
+
+0.052 0.052 0.052 0.052 0.052
+
+ -level of triangular IT-2 fuzzy coupling coefficient
+
+(C~~-sv )
+
+(C~~v-s )
+
+([2.82,2.93], 3.25, [3.69,3.77]) ([2.63,2.71], 2.97, [3.24,3.32]) ([0.91,1.02], 1.27, [1.61,1.69]) ([1.61,1.69], 1.94, [2.34,2.53]) ([1.43,1.51], 1.75, [1.97,2.11])
+
+([0.41,0.48],0.67,[0.89,0.95]) ([0.35,0.39],0.49,[0.61,0.68]) ([0.62,0.69],0.83,[1.02,1.09]) ([0.32,0.39],0.51,[0.75,0.82]) ([0.31,0.38],0.43,[0.57,0.61])
+
+were selected as the volatility-affected countries as they were identified as both bonanzas-suffered and crisis-affected during the global financial crisis in 2008.
+
+Fig. 10. Scenario simulation framework of the financial contagion.
+United States to Greece, Ireland, Portugal, and Spain achieved 17.6 billion dollar. Cross-sectional exposure also played an important role in the contagion through direct borrowing and parent funding. From the end of 2009, some European countries had experienced a debt crisis as a ratio of debt to GDP that significantly exceeded the specified value set by the Maastricht Treaty. A 750 billion Euro rescue plan was consequently approved by the European Union to prevent the debt crisis spreading. Based on the above analysis and through an investigation of the historical data, the U.S. was regarded as the source country of the financial turbulence in this experimental study, and five countries, including Ireland, Italy, Spain, Denmark, and Belgium,
+
+B. Parameter Estimation
+The long-term net capital inflow trends for each country were estimated by employing the H­P filter on the historical data. The inertial coefficient of the source country of financial turbulence b and the inertial coefficient of the volatility-affected country a were estimated based on the historical net capital inflows and the GDP trend data in the selected countries. It should be noted that the ratio of net capital inflows to the nominal GDP of a country is employed in this paper, since a country with a much higher nominal GDP is more resilient to net capital inflow volatility.
+The -level of the triangular IT-2 fuzzy coupling coefficients (C~~s-v ) and (C~~-vs ) were estimated for each country using the following steps. First, a group of preliminary estimated values for each of the two parameters were determined by employing a multivariate nonlinear regression method based on a group of samples from the net capital inflow historical trend data according to the differential equations in Model (13), in which the inertial coefficients b and a had already been estimated and were regarded as known parameters. The historical trend data for the group of samples were taken from different time series. Then, the mean (i.e., m~~), left boundary (i.e., l~~), and right boundary (i.e., r~~) for the preliminary estimated values were integrated and transferred into the -level of the triangular IT2 fuzzy numbers (i.e., (~~) = ([l~~ - dl~~ , l~~ + dl~~ ], m~~, [r~~ - dr~~ , r~~ + dr~~ ])) for each of the two parameters, where the deviation rate  was set within the interval [0, 1], dl~~ = m~~ - l~~, and dr~~ = r~~ - m~~. Table III shows the parameter estimations for the five selected countries.
+C. Scenario Simulation for Verification
+Based on the above estimated parameters, the fuzzy dynamical system scenario simulation was implemented for each country. To maintain consistent comparisons between the different
+
+XU et al.: FUZZY DYNAMICAL SYSTEM SCENARIO SIMULATION-BASED CROSS-BORDER FINANCIAL CONTAGION ANALYSIS
+
+457
+
+D. Results Analysis and Discussions
+In Fig. 11, the simulated net capital inflow trends had a significantly greater variation trend than the historical long-term net capital inflow trends. This was considered reasonable as the FDR and most central banks continuously implemented bailout measures, monetary policies, and fiscal policies to efficiently weaken the financial shock spread during the financial crisis.
+The historical long-term net capital inflow trends for each country in Fig. 11 also imply that a financial contagion may spread before a financial shock occurs. There may be an accumulative effect during the early stages of a financial contagion which may bring the volatility-affected countries into bonanzassuffered, and a dramatic trend change of the net capital inflow will occur for the volatility-affected countries when the financial shock happens and may finally lead them to be crisis-affected. This explains the dynamical mechanism of the financial contagion from the perspective of international capital flows.
+
+Fig. 11. Results of the fuzzy dynamical system scenario simulation for the selected five countries.
+countries, the boundary value conditions for Model (13) for each country were set at the same value, the deviation rate was set at  = 0.1, and the cluster coefficient was selected as  = 0.50. The initial value conditions for each country were determined according to the estimated long-term net capital inflow trends. The simulation start time for each country was set at the year the country first suffered bonanzas before the financial crisis occurred. The results for the fuzzy dynamical system scenario simulation for the selected five countries are shown in Fig. 11 and compared with the historical long-term net capital inflow trends.
+
+IX. CONCLUSION AND FUTURE WORK
+Financial globalization has accelerated the formulation of a complex nonlinear dynamical system constituted by an extensive financial linkage coupling of economic subsystems. This paper investigated financial contagion based on a fuzzy dynamical system scenario simulation to analyze the volatility of international capital flows for a panel of 50 countries in emerging markets and advanced economies from 1980 to 2011. The method proposed in this paper may assist policymakers who identify volatility transmission patterns of a financial shock in early stages to allow for the formulation of appropriate response strategies that can be used as references for the establishment of effective monetary and fiscal policies.
+The contagion effects of the bonanza spread in the 50 countries were identified and analyzed. The results indicated that the comovements of international capital flow bonanzas have heterogeneous contagion effects for financial shock across countries. The H­P filter was employed to address the long-term net capital inflow trends. The comovement of financial contagion between the source country of financial turbulence and the volatility-affected country was described as a fuzzy dynamical system in which the driving and response systems were coupled. A fuzzy dynamical system scenario simulation model under a liberal economy was established to describe the contagion mechanism and the effects on the international capital flow volatility, which was then extended to a dynamical system model with macroeconomic control.
+The uncertainty of the coupling strength was addressed by employing the IT-2 fuzzy theory method. The properties of the volatility equilibrium point for the above two models, as well as the volatility contagion principles based on locally asymptotic stability analysis, were discussed for explaining the different volatility transmission patterns. Policy suggestions were made in three situations for providing managerial insights for policymakers and an exploration of possible response strategies was also presented. A scenario simulation framework was built to illustrate the simulation and modeling method. The global financial crisis in 2008 was employed as an empirical study, in which the dynamical mechanism of the financial contagion was explained.
+
+458
+
+IEEE TRANSACTIONS ON FUZZY SYSTEMS, VOL. 25, NO. 2, APRIL 2017
+
+The future work will focus on the following five directions: 1) considering the comovements of the financial contagion between multiple countries coupled through extensive financial connections and linkages; 2) extending the local theory of fuzzy dynamical system scenario simulation to a global theory which can be applied to wider range of situations; 3) exploring the uncertainty of the financial contagion more comprehensively by employing the fuzzy-rough theory method; 4) considering the time-delay effect of the response for the volatility-affected countries during a financial shock; 5) analyzing the chaotic behavior of the governments and financial institutions in the dynamical system model of the financial system.
+ACKNOWLEDGMENT
+The authors would like to appreciate the editors and anonymous referees for their helpful and constructive comments and suggestions, which have helped to improve this article.
+REFERENCES
+[1] F. Schweitzer, G. Fagiolo, D. Sornette, F. Vega-Redondo, A. Vespignani, and D. R. White, "Economic networks: The new challenges," Science, vol. 325, no. 5939, pp. 422­425, 2009.
+[2] Y. Leitner, "Financial networks: Contagion, commitment, and private sector bailouts," J. Finance, vol. 60, no. 6, pp. 2925­2953, 2005.
+[3] P. Glasserman and B. P. Young, "How likely is contagion in financial networks?" J. Banking Finance, vol. 50, pp. 383­399, 2015.
+[4] G. Castellacci and Y. Choi, "Financial instability contagion: A dynamical systems approach," Quant. Finance, vol. 14, no. 7, pp. 1243­1255, 2014.
+[5] F. Allen and D. Gale, "Financial contagion," J. Political Econ., vol. 108, no. 1, pp. 1­33, 2000.
+[6] S. Claessens and K. J. Forbes, Eds, International Financial Contagion. New York, NY, USA: Springer-Verlag, 2001.
+[7] K. J. Forbes and R. Rigobon, "Measuring contagion: Conceptual and empirical issues," International Financial Contagion, S. Claessens and K. J. Forbes. New York, NY, USA: Springer-Verlag, 2001.
+[8] S. Claessens, R. Dornbusch, and Y. C. Park, "Contagion: Why crises spread and how this can be stopped?" in International Financial Contagion, S. Claessens and K. J. Forbes, Eds. New York, NY, USA: Springer-Verlag, 2001.
+[9] M. Pritsker, "The channels for financial contagion," in International Financial Contagion, S. Claessens and K. J. Forbes, Eds. New York, NY, USA: Springer-Verlag, 2001.
+[10] M. Elliott, B. Golub, and M. O. Jackson, "Financial networks and contagion," Amer. Econ. Rev., vol. 104, no. 10, pp. 3115­3153, 2014.
+[11] K. J. Forbes and F. E. Warnock, "Capital flow waves: Surges, stops, flight, and retrenchment," J. Int. Econ., vol. 88, no. 2, pp. 235­251, 2012.
+[12] M. Bordo and A. Murshid, "Are financial crises becoming more contagious? What is the Historical Evidence on Contagion?" in International Financial Contagion, S. Claessens and K. J. Forbes, Eds. New York, NY, USA: Springer-Verlag, 2001.
+[13] M. Dungey, R. A. Fry, B. Gonza´lez-Hermosillo, and V. Martin, Transmission of Financial Crises and Contagion: A Latent Factor Approach. New York, NY, USA: Oxford Univ. Press, 2010.
+[14] N. Boyson, C. Stahel, and R. Stulz, "Hedge fund contagion and liquidity shocks," J. Finance, vol. 65, no. 5, pp. 1789­1816, 2010.
+[15] K. H. Bae, G. A. Karolyi, and R. M. Stulz, "A new approach to measuring financial contagion," Rev. Financial Stud., vol. 16, no. 3, pp. 717­763, 2003.
+[16] D. Collins and S. Gavron, "Channels of financial market contagion," Appl. Econ., vol. 36, no. 21, pp. 2461­2469, 2004.
+[17] R. Dornbusch, Y. C. Park, and S. Claessens, "Contagion: Understanding how it spreads," World Bank Res. Obs., vol. 15, no. 2, pp. 177­197, 2000.
+[18] C. Raddatz and S. L. Schmulder, "On the international transmission of shocks: Micro-evidence from mutual fund portfolios," J. Int. Econ., vol. 88, no. 2, pp. 357­374, 2012.
+[19] M. Melvin and B. P. Melvin, "The global transmission of volatility in the foreign exchange market," Rev. Econ. Statist., vol. 85, no. 3, pp. 670­679, 2003.
+
+[20] N. Nomikos and E. Salvador, "The role of volatility regimes on volatility transmission patterns," Quant. Finance, vol. 14, no. 1, pp. 1­13, 2014.
+[21] H. H. Lee, C. Y. Park, and H. S. Byun, "Do contagion effects exist in capital flow volatility?" J. Jpn. Int. Econ., vol. 30, pp. 76­95, 2013.
+[22] R. D. Vilag, G. H. Ionescu, M. D. Ungureanu, and I. Vasile, "Contagion causes-rational or irrational behavior," in Proc. Ind. Revolutions Globalization Post-Globalization Perspect. Vol IV: Bank. Account. Financial Syst. 21st Century Perspect., 2009, pp. 669­678.
+[23] S. Griffith-Jones, "Stabilising capital flows to developing countries," IDS Bull., vol. 30, no. 1, pp. 33­49, 1999.
+[24] E. G. Mendoza and M. E. Terrones, "An anatomy of credit booms: Evidence from macro aggregates and micro data," Nat. Bureau Econom. Res., Working Paper 14049, 2008.
+[25] C. M. Reinhart and V. R. Reinhart, "Capital flow bonanzas: An encompassing view of the past and present," Nat. Bureau Econom. Res., Working Paper 14321, 2008.
+[26] R. J. Hodrick and E. C. Prescott, "Postwar U.S. business cycles: An empirical investigation," J. Money Credit Banking, vol. 29, no. 1, pp. 1­16, 1997.
+[27] M. O. Ravn and H. Uhlig, "On adjusting the Hodrick-Prescott filter for the frequency of observations," Rev. Econ. Statist., vol. 84, no. 2, pp. 371­376, 2002.
+[28] R. Weron and M. Zator, "A note on using the Hodrick-Prescott filter in electricity markets," Energy Econ., vol. 48, pp. 1­6, 2015.
+[29] L. Laeven and F. Valencia, "Systemic banking crises database: An update," IMF Working Paper 12/163, 2012.
+[30] M. Fratzscher, "Capital flows, push versus pull factors and the global financial crisis," J. Int. Econ., vol. 88, no. 2, pp. 341­356, 2012.
+[31] G. Fazio, "Extreme interdependence and extreme contagion between emerging markets," J. Int. Money Finance, vol. 26, no. 8, pp. 1261­1291, 2007.
+[32] E. T. Whittaker, "On a new method of graduation," Proc. Edinburgh Math. Soc., vol. 41, pp. 63­75, 1922.
+[33] L. A. Zadeh, "The concept of a linguistic variable and its application to approximate reasoning-1," Inf. Sci., vol. 8, pp. 199­249, 1975.
+[34] J. M. Mendel and X. W. Liu, "Simplified interval type-2 fuzzy logic systems," IEEE Trans. Fuzzy Syst., vol. 21, no. 6, pp. 1056­1069, Dec. 2013.
+[35] J. M. Mendel and R. I. John, "Type-2 fuzzy sets made simple," IEEE Trans. Fuzzy Syst., vol. 10, no. 2, pp. 117­127, Apr. 2002.
+[36] R. R. Yager, "Fuzzy Subsets of Type II in Decisions," J. Cybern., vol. 10, nos. 1­3, pp. 137­159, 1980.
+[37] J. M. Mendel, R. I. John, and F. Liu, "Interval type-2 fuzzy logic systems made simple," IEEE Trans. Fuzzy Syst., vol. 14, no. 6, pp. 808­821, Dec. 2006.
+[38] E. A. Jammeh, M. Fleury, C. Wagner, H. Hagras, and M. Ghanbari, "Interval type-2 fuzzy logic congestion control for video streaming across IP networks," IEEE Trans. Fuzzy Syst., vol. 17, no. 5, pp. 1123­1142, Oct. 2009.
+[39] J. M. Mendel and H. W. Wu, "Type-2 fuzzistics for symmetric interval type-2 fuzzy sets: Part 1, forward problems," IEEE Trans. Fuzzy Syst., vol. 14, no. 6, pp. 781­792, Dec. 2006.
+[40] J. M. Mendel and H. W. Wu, "Type-2 fuzzistics for symmetric interval type-2 fuzzy sets: Part 2, inverse problems," IEEE Trans. Fuzzy Syst., vol. 15, no. 2, pp. 301­308, Apr. 2007.
+[41] Y. Choi and R. Douady, "Financial crisis dynamics: Attempt to define a market instability indicator," Quant. Finance, vol. 12, no. 9, pp. 1351­ 1365, 2012.
+[42] G. Castellacci and Y. Choi, "Modeling contagion in the Eurozone crisis via dynamical systems," J. Banking Finance, vol. 50, pp. 400­410, 2015.
+[43] W. S. Son and Y. J. Park, "Delayed feedback on the dynamical model of a financial system," Chaos Solitons Fractals, vol. 44, nos. 4/5, pp. 208­217, 2011.
+[44] Z. H. Hu and W. Chen, "Modeling of macroeconomics by a novel discrete nonlinear fractional dynamical system," Discrete Dyn. Nature Soc., vol. 2013, p. 9, 2013, Art. no. 275134.
+[45] B. Bede, I. J. Rudas, and A. L. Bencsik, "First order linear fuzzy differential equations under generalized differentiability," Inf. Sci., vol. 177, pp. 1648­ 1662, 2007.
+[46] M. Chen, Y. Fu, X. Xue, and C. Wu, "Two-point boundary value problems of undamped uncertain dynamical systems," Fuzzy Sets Syst., vol. 159, pp. 2077­2089, 2008.
+[47] B. Chen and X. Liu, "Reliable control design of fuzzy dynamical systems with time-varying delay," Fuzzy Sets Syst., vol. 146, pp. 349­374, 2004.
+
+XU et al.: FUZZY DYNAMICAL SYSTEM SCENARIO SIMULATION-BASED CROSS-BORDER FINANCIAL CONTAGION ANALYSIS
+
+459
+
+[48] L. Hong and J. Sun, "Bifurcations of fuzzy nonlinear dynamical systems," Commun. Nonlinear Sci. Numer. Simul., vol. 11, no. 1, pp. 1­12, 2006.
+[49] J. P. Xu, Z. G. Liao, and Z. N. Hu, "A class of linear differential dynamical systems with fuzzy initial condition," Fuzzy Sets Syst., vol. 158, no. 21, pp. 2339­2358, 2007.
+[50] J. P. Xu, Z. G. Liao, and J. J. Nieto, "A class of linear differential dynamical systems with fuzzy matrices," J. Math. Anal. Appl., vol. 368, no. 1, pp. 54­68, 2010.
+[51] S. Arora and B. Barak, Computational Complexity: A Modern Approach. London, U.K.: Cambridge Univ. Press, 2009.
+[52] D. K. Backus and P. J. Kehoe, "International evidence on the historical properties of business cycles," Amer. Econ. Rev., vol. 88, no. 4, pp. 864­ 888, 1992.
+[53] I. H. Correia, J. L. Neves, and S. T. Rebelo, "Business cycles from 1850C1950: New facts about old data," Eur. Econ. Rev., vol. 36, nos. 2/3, pp. 459­467, 1992.
+[54] T. J. Cooley and L. E. Ohanian, "The cyclical behavior of prices," J. Monetary Econ., vol. 28, no. 1, pp. 25­60, 1991.
+[55] M. Baxter and R. King, "Measuring business cycles: Approximate bandpass filters for economic time series," Rev. Econ. Statist., vol. 81, no. 4, pp. 575­593, 1999.
+[56] A. Iacobucci and A. Noullez, "A frequency selective filter for short-length time series," Comput. Econ., vol. 25, nos. 1/2, pp. 75­102, 2005.
+[57] R. F. Engle and C. W. J. Granger, "Co-integration and error correction: Representation, estimation, and testing," Econometrica, vol. 55, no. 2, pp. 251­276, 1987.
+[58] A. C. Stockman and L. L. Tesar, "Tastes and technology in a 2-country model of the business cycle: Explainning international comovements," Amer. Econ. Rev., vol. 85, no. 1, pp. 168­185, 1995.
+[59] R. M. Neumann, R. Penl, and A. Tanku, "Volatility of capital flows and financial liberalization: Do specific flows respond differently?" Int. Rev. Econ. Finance, vol. 18, no. 3, pp. 488­501, 2009.
+[60] H. W. Wu and J. M. Mendel, "Uncertainty bounds and their use in the design of interval type-2 fuzzy logic systems," IEEE Trans. Fuzzy Syst., vol. 10, no. 5, pp. 622­639, Oct. 2002.
+[61] D. R. Wu and J. M. Mendel, "Enhanced Karnik­Mendel algorithms," IEEE Trans. Fuzzy Syst., vol. 17, no. 4, pp. 923­934, Aug. 2009.
+[62] D. Kenourgios and D. Dimitriou, "Contagion of the global financial crisis and the real economy: A regional analysis," Econ. Model., vol. 44, pp. 283­293, 2015.
+[63] F. Brauer and C. Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology. New York, NY, USA: Springer-Verlag, 2001.
+[64] T. Bendixson, "Sus les courbes de´finies par des e´quations differentielles," Acta Math., vol. 24, pp. 1­88, 1901.
+[65] CEIC, Global Database, 2015. [Online]. Available: http:/www. ceicdata.com/en/products/global
+
+Ziqiang Zeng (S'11­M'15) received the B.S. degree in applied mathematics and the Ph.D. degree in management science and engineering from Sichuan University, Chengdu, China, in 2009 and 2014, respectively, and was a Visiting Scholar at the University of Florida, Gainesville, FL, USA, from 2012 to 2013.
+He is currently a Postdoctoral Fellow with Sichuan University, and is supported by the China Postdoctoral Science Foundation to be a Postdoctoral Fellow working with the University of Washington, Seattle, WA, USA, from 2016 to 2018. He also acts as an Adjunct Distinguished Associate Research Fellow at Chengdu University, Chengdu, China, since 2015. He has published more than 20 peer-reviewed papers in international journals and conferences, and two books by Springer and Sichuan University Press. He received the Youth Program of National Natural Science Foundation of China (Grant No. 71501137), the General Program of China Postdoctoral Science Foundation (Grant No. 2015M572480) in 2015, the project of Research Center for System Sciences and Enterprise Development (Grant No. Xq16B05) and the research fund of Sichuan University (Grant No. skqy201647) in 2016. His current research interest includes multistage decision making, financial contagion, fuzzy theory, and engineering optimization. Dr. Zeng is a Member of the IEEE Control Systems Society, a Member of the IEEE Systems, Man, and Cybernetics Society, and an Associate Member of American Society of Civil Engineers.
+Jiuping Xu (M'11­SM'14) received the first Ph.D. degree in applied mathematics from Tsinghua University, Beijing, China, in 1995, and the second Ph.D. degree in physical chemistry from Sichuan University, Chengdu, China, in 1999.
+He is currently a Distinguished Professor of "Chang Jiang Scholars Program" with Sichuan University. He has published more than 40 books by Springer, Taylor & Francis, and more than 400 international peer-reviewed journal papers in areas of uncertainty decision making, systems engineering, economic theorem, and information science. His current research interests include uncertainty decision making, financial engineering, fuzzy dynamical systems, and complex systems with applications. Prof. Xu has been appointed as an Academician of the International Academy of Systems and Cybernetic Sciences since 2010. He is also a Lifetime Academician of the Lotfi Zadeh International Academy of Sciences in recognition of his contribution to the development of science and organization of scientific forums since 2014. He is currently the President of the International Society for Management Science and Engineering Management, the Vice President of the Chinese Society of Optimization & Overall Planning and Economical Mathematics, and the Vice President of the Management Science and Engineering Society of China. At present, He is a Member of the IEEE Control Systems Society, a Member of the IEEE Systems, Man, and Cybernetics Society, and a Member of the American Society of Civil Engineers.
+
+Xinxin Xu (M'15) received the Ph.D degree in economics from Sichuan University, Chengdu, China, in 2014, and was a Visiting Scholar at National University of Singapore, Singapore, from 2012 to 2013.
+She is currently a Postdoctoral Fellow at Sichuan University, and an Adjunct Distinguished Associate Research Fellow with Chengdu University, Chengdu. She received the General Program of China Postdoctoral Science Foundation (Grant No. 2015M572470) and the research fund of Sichuan University (Grant No. skzx2015-sb04) in 2015. Her research interests include financial engineering, macroeconomics, world economics, and dynamical systems. Dr. Xu is a Member of the IEEE Control Systems Society and a Member of the IEEE Systems, Man, and Cybernetics Society.
+
+Mengxiang Zhang (S'14) received the B.S. and the M.S. degrees in system science from Sichuan University, Chengdu, China, in 2012 and 2015, respectively, where he is currently working toward the Ph.D. degree in management science and engineering.
+He has published several peer-reviewed papers in international journals. His areas of research interests mainly focus on dynamical system, uncertain decision making, and system engineering.
+Mr. Zhang is a Member of the IEEE Control Systems Society and a Student Member of the American Society of Civil Engineers.
+
+
+
