@@ -259,7 +259,6 @@ def printaGrafos(grafo, vertices, edges, titulo, arquivo):
                              ),
                text=vertices,
                hoverinfo='text')
-    axis=dict(showbackground=False, showline=False, zeroline=False, showgrid=False, showticklabels=False, title='')
 
     trace12d= plotly.graph_objs.Scatter(x= Xe2, y= Ye2, mode= "lines", line= dict(color= "rgb(125,125,125)", width= 1))
     trace22d= plotly.graph_objs.Scatter(x= Xn2, y= Yn2, mode= "markers", name="Artigos", marker=dict(symbol='circle',
@@ -270,34 +269,26 @@ def printaGrafos(grafo, vertices, edges, titulo, arquivo):
                              ),
                text=vertices,
                hoverinfo='text')
-    axis=dict(showbackground=False, showline=False, zeroline=False, showgrid=False, showticklabels=False, title='')
-    
-    plotLayout2d= plotly.graph_objs.Layout(title=titulo,
-         width=1000,
-         height=1000,
-         showlegend=False,
-         scene=dict(
-             xaxis=dict(axis),
-             yaxis=dict(axis)
-            ),
-        margin=dict(
-        t=100
-            ),
-        hovermode='closest')
 
+    axis = dict(showline=False, zeroline=False, showgrid=False, showticklabels=False, title='')
+    plotLayout2d= plotly.graph_objs.Layout(title=titulo,
+                            width=1000, height=1000,
+                            showlegend=False,
+                            xaxis=dict(axis),
+                            yaxis=dict(axis),
+                            margin=dict(t=100),
+                            hovermode='closest')
+
+    axis = dict(showbackground=False, showline=False, zeroline=False, showgrid=False, showticklabels=False, title='')
     plotLayout3d= plotly.graph_objs.Layout(title=titulo,
-         width=1000,
-         height=1000,
-         showlegend=False,
-         scene=dict(
-             xaxis=dict(axis),
-             yaxis=dict(axis),
-             zaxis=dict(axis)
-            ),
-        margin=dict(
-        t=100
-            ),
-        hovermode='closest')
+                                           width=1000, height=1000,
+                                           showlegend=False,
+                                           scene=dict(
+                                               xaxis=dict(axis),
+                                               yaxis=dict(axis),
+                                               zaxis=dict(axis)),
+                                           margin=dict(t=100),
+                                           hovermode='closest')
 
     fig2d= plotly.graph_objs.Figure(data= [trace12d, trace22d], layout= plotLayout2d)
     fig3d= plotly.graph_objs.Figure(data= [trace13d, trace23d], layout= plotLayout3d)
@@ -336,9 +327,17 @@ def montaGrafos(referencias, frequencias):
             for a in autor:
                 verticesAR1.append(a)
         for titulo in referencia[1][1]:
-            if titulo.endswith("\r"):
-                temp.append(titulo[:-1])
-                verticesAR1.append(titulo[:-1])
+            if re.search(r"\[Online]", titulo):
+                temp22= re.split(r"\[Online]", titulo)
+                titulo = temp22[0]
+            if titulo.endswith("\r") or titulo.endswith(",") or titulo.endswith(" ") or titulo.startswith(" "):
+                aux= titulo
+                while aux.endswith("\r") or aux.endswith(",") or aux.endswith(" "):
+                    aux= aux[:-1]
+                while aux.startswith(" "):
+                    aux= aux[1:]
+                temp.append(aux)
+                verticesAR1.append(aux)
             else:
                 temp.append(titulo)
                 verticesAR1.append(titulo)
@@ -350,8 +349,16 @@ def montaGrafos(referencias, frequencias):
     for grupo in citados:
         #temp.extend(grupo)
         for titulo in grupo:
-            if titulo.endswith("\r"):
-                temp.append(titulo[:-1])
+            if re.search(r"\[Online]", titulo):
+                temp22= re.split(r"\[Online]", titulo)
+                titulo = temp22[0]
+            if titulo.endswith("\r") or titulo.endswith(",") or titulo.endswith(" ") or titulo.startswith(" "):
+                aux= titulo
+                while aux.endswith("\r") or aux.endswith(",") or aux.endswith(" "):
+                    aux= aux[:-1]
+                while aux.startswith(" "):
+                    aux= aux[1:]
+                temp.append(aux)
             else:
                 temp.append(titulo)
     verticesC= []
@@ -398,8 +405,13 @@ def montaGrafos(referencias, frequencias):
         for i in range(len(referencia[1][0])):
             nome= referencia[1][1][i]
             listaAutores= referencia[1][0][i]
-            if nome.endswith("\r"):
+            if re.search(r"\[Online]", nome):
+                temp22= re.split(r"\[Online]", nome)
+                nome = temp22[0]
+            while nome.endswith("\r") or nome.endswith(",") or nome.endswith(" "):
                 nome= nome[:-1]
+            while nome.startswith(" "):
+                nome= nome[1:]
             indice1= verticesAR.index(nome)
             for autor in listaAutores:
                 indice2= verticesAR.index(autor)
@@ -425,6 +437,7 @@ def montaGrafos(referencias, frequencias):
     grafoC.add_edges(edgesC)
     grafoAR.add_edges(edgesAR)
     #print(verticesA)
+    
     #printaGrafos(grafoC, verticesC, edgesC, "Grafo das relações de citação entre os Artigos", "Citacoes")
     #printaGrafos(grafoA, verticesA, edgesA, "Grafo das relações de autoria entre os Artigos", "Autoria")
     #printaGrafos(grafoAR, verticesAR, edgesAR, "Grafo das relações de autoria entre os Artigos referenciados", "AutoriaRef")
