@@ -197,13 +197,19 @@ def retiraAutorTitulo(texto):
                     break
             if flag:
                 continue
-            if not parte.startswith("and "):
+            if parte.count("and ") == 0:
                 autores.append(parte)
-            else:
+            elif parte.count(" and ") == 0:
                 partes= parte.split("and ")
                 for parcial in partes:
                     if len(parcial) > 1:
                         autores.append(parcial)
+            else:
+                partes= parte.split(" and ")
+                for parcial in partes:
+                    if len(parcial) > 1:
+                        autores.append(parcial)
+
     elif linhaAutores.count(" and ") > 0:
         partes= linhaAutores.split(" and ")
         for parcial in partes:
@@ -216,15 +222,98 @@ def retiraAutorTitulo(texto):
         autoresFinal.append(autor)
     return (autoresFinal, linhaTitulo)
 
-def montaGrafo(referencias):
+def printaGrafos(grafo, vertices, edges, titulo, arquivo):
+    layout2d= grafo.layout("fr")
+    layout3d= grafo.layout("kk", dim= 3)
+    Xn2= [layout2d[k][0] for k in range(len(vertices))]
+    Yn2= [layout2d[k][1] for k in range(len(vertices))]
+    Xe2= []
+    Ye2= []
+    for e in edges:
+        Xe2+= [layout2d[e[0]][0], layout2d[e[1]][0], None]
+        Ye2+= [layout2d[e[0]][1], layout2d[e[1]][1], None]
+
+    Xn3= [layout3d[k][0] for k in range(len(vertices))]
+    Yn3= [layout3d[k][1] for k in range(len(vertices))]
+    Zn3= [layout3d[k][2] for k in range(len(vertices))]
+    Xe3= []
+    Ye3= []
+    Ze3= []
+    for e in edges:
+        Xe3+= [layout3d[e[0]][0], layout3d[e[1]][0], None]
+        Ye3+= [layout3d[e[0]][1], layout3d[e[1]][1], None]
+        Ze3+= [layout3d[e[0]][2], layout3d[e[1]][2], None]
+    #grafo.es["Titulos"]= titulos
+    
+    trace13d= plotly.graph_objs.Scatter3d(x= Xe3, y= Ye3, z= Ze3, mode= "lines", line= dict(color= "rgb(125,125,125)", width= 1))
+    trace23d= plotly.graph_objs.Scatter3d(x= Xn3, y= Yn3, z= Zn3, mode= "markers", name="Artigos", marker=dict(symbol='circle',
+                             size=6,
+                             color=[],
+                             colorscale='Viridis',
+                             line=dict(color='rgb(50,50,50)', width=0.5)
+                             ),
+               text=vertices,
+               hoverinfo='text')
+    axis=dict(showbackground=False, showline=False, zeroline=False, showgrid=False, showticklabels=False, title='')
+
+    trace12d= plotly.graph_objs.Scatter(x= Xe2, y= Ye2, mode= "lines", line= dict(color= "rgb(125,125,125)", width= 1))
+    trace22d= plotly.graph_objs.Scatter(x= Xn2, y= Yn2, mode= "markers", name="Artigos", marker=dict(symbol='circle',
+                             size=6,
+                             color=[],
+                             colorscale='Viridis',
+                             line=dict(color='rgb(50,50,50)', width=0.5)
+                             ),
+               text=vertices,
+               hoverinfo='text')
+    axis=dict(showbackground=False, showline=False, zeroline=False, showgrid=False, showticklabels=False, title='')
+    
+    plotLayout2d= plotly.graph_objs.Layout(title=titulo,
+         width=1000,
+         height=1000,
+         showlegend=False,
+         scene=dict(
+             xaxis=dict(axis),
+             yaxis=dict(axis)
+            ),
+        margin=dict(
+        t=100
+            ),
+        hovermode='closest')
+
+    plotLayout3d= plotly.graph_objs.Layout(title=titulo,
+         width=1000,
+         height=1000,
+         showlegend=False,
+         scene=dict(
+             xaxis=dict(axis),
+             yaxis=dict(axis),
+             zaxis=dict(axis)
+            ),
+        margin=dict(
+        t=100
+            ),
+        hovermode='closest')
+
+    fig2d= plotly.graph_objs.Figure(data= [trace12d, trace22d], layout= plotLayout2d)
+    fig3d= plotly.graph_objs.Figure(data= [trace13d, trace23d], layout= plotLayout3d)
+    
+    plotly.offline.plot(fig2d, filename= arquivo + ".html")
+    plotly.offline.plot(fig3d, filename= arquivo + "3d.html")
+
+def montaGrafos(referencias):
     trabalhos= []
+    autores= []
     citados= []
     for referencia in referencias:
+        #print(referencia[0][0])
         if referencia[0][1].endswith("\r"):
             trabalhos.append(referencia[0][1][:-1])
         else:
             trabalho.append(referencia[0][1])
         temp= []
+        for autor in referencia[0][0]:
+            #print(autor)
+            autores.append(autor)
         for titulo in referencia[1][1]:
             if titulo.endswith("\r"):
                 temp.append(titulo[:-1])
@@ -242,63 +331,47 @@ def montaGrafo(referencias):
                 temp.append(titulo[:-1])
             else:
                 temp.append(titulo)
-    vertices= []
-    [vertices.append(x) for x in temp if x not in vertices]
+    verticesC= []
+    [verticesC.append(x) for x in temp if x not in verticesC]
+    verticesA= []
+    #print(autores)
+    verticesA.extend(autores)
+    verticesA.extend(trabalhos)
     #print(trabalhos)
     #print(citados)
     #print(vertices)
-    grafo= igraph.Graph()
-    grafo.add_vertices(len(vertices))
-    grafo.vs["Autores"]= vertices
-    edges= []
+    
+    grafoC= igraph.Graph()
+    grafoC.add_vertices(len(verticesC))
+    edgesC= []
+
+    grafoA= igraph.Graph()
+    grafoA.add_vertices(len(verticesA))
+    edgesA= []
+    
+    
+    
     for trabalho in trabalhos:
         indice= trabalhos.index(trabalho)
+        for autor in autores:
+            if autor in referencias[indice][0][0]:
+                indice1= verticesA.index(trabalho)
+                indice2= verticesA.index(autor)
+                edgesA.append((indice1, indice2))
         for citado in citados[indice]:
-            indice1= vertices.index(trabalho)
-            indice2= vertices.index(citado)
-            edges.append((indice1, indice2))
-    grafo.add_edges(edges)
+            indice1= verticesC.index(trabalho)
+            indice2= verticesC.index(citado)
+            edgesC.append((indice1, indice2))
     
-    layout= grafo.layout("kk")
-    #igraph.plot(grafo, layout= layout)
-    Xn= [layout[k][0] for k in range(len(vertices))]
-    Yn= [layout[k][1] for k in range(len(vertices))]
-    Xe= []
-    Ye= []
-    for e in edges:
-        Xe+= [layout[e[0]][0], layout[e[1]][0], None]
-        Ye+= [layout[e[0]][1], layout[e[1]][1], None]
-    #grafo.es["Titulos"]= titulos
-    
-    trace1= plotly.graph_objs.Scatter(x= Xe, y= Ye, mode= "lines", line= dict(color= "rgb(125,125,125)", width= 1))
-    trace2= plotly.graph_objs.Scatter(x= Xn, y= Yn, mode= "markers", name="Artigos", marker=dict(symbol='circle',
-                             size=6,
-                             color=[],
-                             colorscale='Viridis',
-                             line=dict(color='rgb(50,50,50)', width=0.5)
-                             ),
-               text=vertices,
-               hoverinfo='text')
-    axis=dict(showbackground=False, showline=False, zeroline=False, showgrid=False, showticklabels=False, title='')
-    
-    plotLayout= plotly.graph_objs.Layout(title="Grafo das relações de citação entre os Artigos analizados",
-         width=1000,
-         height=1000,
-         showlegend=False,
-         scene=dict(
-             xaxis=dict(axis),
-             yaxis=dict(axis),
-            ),
-        margin=dict(
-        t=100
-            ),
-        hovermode='closest')
+    grafoA.add_edges(edgesA)
+    grafoC.add_edges(edgesC)
 
-    fig= plotly.graph_objs.Figure(data= [trace1, trace2], layout= plotLayout)
+    #print(verticesA)
+    printaGrafos(grafoC, verticesC, edgesC, "Grafo das relações de citação entre os Artigos", "Citacoes")
+    printaGrafos(grafoA, verticesA, edgesA, "Grafo das relações de autoria entre os Artigos", "Autoria")
     
-    plotly.offline.plot(fig, filename= "Citacoes.html")
 
-    return grafo
+    return grafoC
 
 path= os.path.realpath(__file__)[:-12] + "Artigos\\"
 pdfs= [arq for arq in glob.glob(path + "*.txt")]
@@ -345,7 +418,7 @@ for pdf in pdfs:
     #print(artigos)
     break
     '''
-montaGrafo(referencias)
+montaGrafos(referencias)
 exit()
 tudoRelevante= [y for x in artigos for y in x if not y in stopwords and len(y)>2]
 tudo= [y for x in artigosFull for y in x]
