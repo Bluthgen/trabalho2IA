@@ -3,14 +3,16 @@
 
 from __future__ import division
 
-import textract
+#import textract
 import glob
 import os
+import re
 from StringIO import StringIO
 
+import igraph
 import numpy
+import plotly
 from nltk import *
-import re
 
 #import ply.lex as lex
 #import ply.yacc as yacc
@@ -100,12 +102,12 @@ def retiraRef(preLinhas):
                 aux2 = []
                 aux2.extend(re.split("and",aux[0]))
                 autor.append(aux2)
-                print(aux2)
+            #    print(aux2)
 
                 if re.search(r"^[Online]. Available: ", str(aux)):
                     aux[1] = re.sub(r"\[Online]. Available:","", str(aux[1]))
                     titulo.append(aux[1])
-                    print(aux[1])
+            #        print(aux[1])
                 else:
                     aux2 = []
                     i=1
@@ -113,7 +115,7 @@ def retiraRef(preLinhas):
                        i=i+1
                     aux2.extend(re.split("\.",aux[i]))
                     titulo.append(aux2[0])
-                    print(aux2[0])
+            #        print(aux2[0])
             else:
                 i=0
                 aux3 = []
@@ -124,30 +126,30 @@ def retiraRef(preLinhas):
                         aux4.extend(re.split("and",aux2))
                         aux3.append(aux4[1])
                         autor.append(aux3)
-                        print(aux3)
+            #            print(aux3)
                         
                         if re.search(r"\[Online]. Available: ", str(aux2)) is not None:
                             titulo.append([])
-                            print("[]")
+            #                print("[]")
                         else:
                             auxT = []
                             if re.search("^ Eds.", aux2):
                                 i=i+1
                             auxT.extend(re.split("\.",aux[i]))
                             titulo.append(auxT[0])
-                            print(auxT[0])
+            #                print(auxT[0])
                         break
                     elif re.search(r"^ Eds.", aux2) is not None:
                         if re.search(r"\[Online]. Available: ", str(aux)) is not None:
                             titulo.append([])
-                            print("[]")
+            #                print("[]")
                         else:
                             auxT = []
                             auxT.extend(re.split("\.",aux[i]))
                             titulo.append(auxT[0])
                         autor.append(aux3)
-                        print(aux3)
-                        print(auxT[0])
+            #            print(aux3)
+            #            print(auxT[0])
                         break
                         
                     if len(aux2) > 20:
@@ -156,16 +158,16 @@ def retiraRef(preLinhas):
                         aux3 = []
                         aux3.append(aux[0])
                         autor.append(aux3)
-                        print(aux3)
+            #            print(aux3)
 
                         if re.search(r"^[Online]. Available: ", str(aux[1])) is not None:
                             titulo.append([])
-                            print("[]")
+            #                print("[]")
                         else:
                             auxT = []
                             auxT.extend(re.split("\.",aux[1]))
                             titulo.append(auxT[0])
-                            print(auxT[0])
+            #                print(auxT[0])
 
                         
                         break
@@ -173,22 +175,153 @@ def retiraRef(preLinhas):
                         aux3.append(aux2)
                         
                     
-    print(autor)
-    print(titulo)
+    #print(autor)
+    #print(titulo)
+    return (autor, titulo)
         
+def retiraAutorTitulo(texto):
+    autorStopWords= ["IEEE", "Fellow", "Member", "Student", "Senior"]
+    linhas= re.split("\n", text)
+    linhaTitulo= linhas[4]
+    linhaAutores= linhas[5]
+    autores= []
+    if linhaAutores.count(", ") > 0:
+        autoresQuebrado= linhaAutores.split(", ")
+        for parte in autoresQuebrado:
+            if len(parte) < 2:
+                continue
+            flag= False
+            for stopWord in autorStopWords:
+                if parte.count(stopWord) > 0:
+                    flag= True
+                    break
+            if flag:
+                continue
+            if not parte.startswith("and "):
+                autores.append(parte)
+            else:
+                partes= parte.split("and ")
+                for parcial in partes:
+                    if len(parcial) > 1:
+                        autores.append(parcial)
+    elif linhaAutores.count(" and ") > 0:
+        partes= linhaAutores.split(" and ")
+        for parcial in partes:
+            if len(parcial) > 1:
+                autores.append(parcial)
+    autoresFinal= []
+    for autor in autores:
+        if autor.endswith("\r"):
+            autor= autor[:-1]
+        autoresFinal.append(autor)
+    return (autoresFinal, linhaTitulo)
+
+def montaGrafo(referencias):
+    trabalhos= []
+    citados= []
+    for referencia in referencias:
+        if referencia[0][1].endswith("\r"):
+            trabalhos.append(referencia[0][1][:-1])
+        else:
+            trabalho.append(referencia[0][1])
+        temp= []
+        for titulo in referencia[1][1]:
+            if titulo.endswith("\r"):
+                temp.append(titulo[:-1])
+            else:
+                temp.append(titulo)
+        citados.append(temp)
+    #print(trabalhos)        
+    temp= []
+    for grupo in trabalhos:
+        temp.append(grupo)
+    for grupo in citados:
+        #temp.extend(grupo)
+        for titulo in grupo:
+            if titulo.endswith("\r"):
+                temp.append(titulo[:-1])
+            else:
+                temp.append(titulo)
+    vertices= []
+    [vertices.append(x) for x in temp if x not in vertices]
+    #print(trabalhos)
+    #print(citados)
+    #print(vertices)
+    grafo= igraph.Graph()
+    grafo.add_vertices(len(vertices))
+    grafo.vs["Autores"]= vertices
+    edges= []
+    for trabalho in trabalhos:
+        indice= trabalhos.index(trabalho)
+        for citado in citados[indice]:
+            indice1= vertices.index(trabalho)
+            indice2= vertices.index(citado)
+            edges.append((indice1, indice2))
+    grafo.add_edges(edges)
+    
+    layout= grafo.layout("kk")
+    #igraph.plot(grafo, layout= layout)
+    Xn= [layout[k][0] for k in range(len(vertices))]
+    Yn= [layout[k][1] for k in range(len(vertices))]
+    Xe= []
+    Ye= []
+    for e in edges:
+        Xe+= [layout[e[0]][0], layout[e[1]][0], None]
+        Ye+= [layout[e[0]][1], layout[e[1]][1], None]
+    #grafo.es["Titulos"]= titulos
+    
+    trace1= plotly.graph_objs.Scatter(x= Xe, y= Ye, mode= "lines", line= dict(color= "rgb(125,125,125)", width= 1))
+    trace2= plotly.graph_objs.Scatter(x= Xn, y= Yn, mode= "markers", name="Artigos", marker=dict(symbol='circle',
+                             size=6,
+                             color=[],
+                             colorscale='Viridis',
+                             line=dict(color='rgb(50,50,50)', width=0.5)
+                             ),
+               text=vertices,
+               hoverinfo='text')
+    axis=dict(showbackground=False, showline=False, zeroline=False, showgrid=False, showticklabels=False, title='')
+    
+    plotLayout= plotly.graph_objs.Layout(title="Grafo das relações de citação entre os Artigos analizados",
+         width=1000,
+         height=1000,
+         showlegend=False,
+         scene=dict(
+             xaxis=dict(axis),
+             yaxis=dict(axis),
+            ),
+        margin=dict(
+        t=100
+            ),
+        hovermode='closest')
+
+    fig= plotly.graph_objs.Figure(data= [trace1, trace2], layout= plotLayout)
+    
+    plotly.offline.plot(fig, filename= "Citacoes.html")
+
+    return grafo
 
 path= os.path.realpath(__file__)[:-12] + "Artigos\\"
-pdfs= [arq for arq in glob.glob(path + "50.pdf")]
+pdfs= [arq for arq in glob.glob(path + "*.txt")]
 artigos= []
 artigosFull= []
 referencias= []
 count= 0
 stopwords= corpus.stopwords.words('english')
+referencias= []
 for pdf in pdfs:
-    text = textract.process(pdf)
+    #text = textract.process(pdf)
+    text= []
+    with open(pdf, "r") as arquivo:
+        text= arquivo.read()
+    #print(text) 
+    retiraAutorTitulo(text)
     preLinhas = re.split("REFERENCES",text)
     linhas= preLinhas[0].splitlines()
-    retiraRef(preLinhas[1])
+    temp1= retiraRef(preLinhas[1])
+    temp2= retiraAutorTitulo(text)
+    referencias.append((temp2, temp1))
+    continue
+    '''
     separadas= []
     #print(linhas)
     separadas.extend(re.split("\s|,|;|\.|\(|\)",linha) for linha in linhas)
@@ -211,6 +344,9 @@ for pdf in pdfs:
     artigosFull.append(atual)
     #print(artigos)
     break
+    '''
+montaGrafo(referencias)
+exit()
 tudoRelevante= [y for x in artigos for y in x if not y in stopwords and len(y)>2]
 tudo= [y for x in artigosFull for y in x]
 frequenciaRelevante= FreqDist(tudoRelevante)
