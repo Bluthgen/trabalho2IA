@@ -300,7 +300,7 @@ def printaGrafos(grafo, vertices, edges, titulo, arquivo):
     plotly.offline.plot(fig2d, filename= arquivo + ".html")
     plotly.offline.plot(fig3d, filename= arquivo + "3d.html")
 
-def montaGrafos(referencias):
+def montaGrafos(referencias, frequencias):
     trabalhos= []
     autores= []
     citados= []
@@ -309,7 +309,7 @@ def montaGrafos(referencias):
         if referencia[0][1].endswith("\r"):
             trabalhos.append(referencia[0][1][:-1])
         else:
-            trabalho.append(referencia[0][1])
+            trabalhos.append(referencia[0][1])
         temp= []
         for autor in referencia[0][0]:
             #print(autor)
@@ -337,6 +337,15 @@ def montaGrafos(referencias):
     #print(autores)
     verticesA.extend(autores)
     verticesA.extend(trabalhos)
+
+    verticesF= []
+    edgesF= []
+    for freq in frequencias:
+        verticesF.append(freq[0])
+        for palavra in freq[1]:
+            if verticesF.count(palavra[0]) == 0:
+                verticesF.append(palavra[0])
+            edgesF.append((verticesF.index(freq[0]), verticesF.index(palavra[0])))
     #print(trabalhos)
     #print(citados)
     #print(vertices)
@@ -349,7 +358,9 @@ def montaGrafos(referencias):
     grafoA.add_vertices(len(verticesA))
     edgesA= []
     
-    
+    grafoF= igraph.Graph()
+    grafoF.add_vertices(len(verticesF))
+    grafoF.add_edges(edgesF)
     
     for trabalho in trabalhos:
         indice= trabalhos.index(trabalho)
@@ -367,11 +378,11 @@ def montaGrafos(referencias):
     grafoC.add_edges(edgesC)
 
     #print(verticesA)
-    printaGrafos(grafoC, verticesC, edgesC, "Grafo das relações de citação entre os Artigos", "Citacoes")
-    printaGrafos(grafoA, verticesA, edgesA, "Grafo das relações de autoria entre os Artigos", "Autoria")
-    
+    #printaGrafos(grafoC, verticesC, edgesC, "Grafo das relações de citação entre os Artigos", "Citacoes")
+    #printaGrafos(grafoA, verticesA, edgesA, "Grafo das relações de autoria entre os Artigos", "Autoria")
+    #printaGrafos(grafoF, verticesF, edgesF, "Grafo dos termos mais frequentes em cada Artigo", "Frequentes")
 
-    return grafoC
+    return
 
 path= os.path.realpath(__file__)[:-12] + "Artigos\\"
 pdfs= [arq for arq in glob.glob(path + "*.txt")]
@@ -381,6 +392,7 @@ referencias= []
 count= 0
 stopwords= corpus.stopwords.words('english')
 referencias= []
+frequencias=[]
 for pdf in pdfs:
     #text = textract.process(pdf)
     text= []
@@ -393,8 +405,7 @@ for pdf in pdfs:
     temp1= retiraRef(preLinhas[1])
     temp2= retiraAutorTitulo(text)
     referencias.append((temp2, temp1))
-    continue
-    '''
+    #continue
     separadas= []
     #print(linhas)
     separadas.extend(re.split("\s|,|;|\.|\(|\)",linha) for linha in linhas)
@@ -415,12 +426,14 @@ for pdf in pdfs:
     #print(atual)
     artigos.append([palavra.lower() for palavra in atual if palavra.isalpha()])
     artigosFull.append(atual)
+    relevante= [x for x in atual if not x.lower() in stopwords and len(x) > 2]
+    frequencias.append((temp2[1], FreqDist(relevante).most_common(10)))
     #print(artigos)
-    break
-    '''
-montaGrafos(referencias)
-exit()
-tudoRelevante= [y for x in artigos for y in x if not y in stopwords and len(y)>2]
+    #break
+    
+#montaGrafos(referencias, frequencias)
+#exit()
+tudoRelevante= [y for x in artigos for y in x if not y in stopwords and len(y)>2 and y.count("references") == 0]
 tudo= [y for x in artigosFull for y in x]
 frequenciaRelevante= FreqDist(tudoRelevante)
-print(frequenciaRelevante.most_common(10))
+#print(frequenciaRelevante.most_common(10))
