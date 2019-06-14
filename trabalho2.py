@@ -182,6 +182,11 @@ def retiraRef(preLinhas):
 def retiraAutorTitulo(texto):
     autorStopWords= ["IEEE", "Fellow", "Member", "Student", "Senior"]
     linhas= re.split("\n", text)
+    publicado= ""
+    if linhas[0].startswith("IEEE"):
+        publicado= linhas[0].split(",")[0]
+    else:
+        publicado= linhas[2].split(",")[0]
     linhaTitulo= linhas[4]
     linhaAutores= linhas[5]
     autores= []
@@ -220,7 +225,7 @@ def retiraAutorTitulo(texto):
         if autor.endswith("\r"):
             autor= autor[:-1]
         autoresFinal.append(autor)
-    return (autoresFinal, linhaTitulo)
+    return (autoresFinal, linhaTitulo, publicado)
 
 def printaGrafos(grafo, vertices, edges, titulo, arquivo):
     layout2d= grafo.layout("fr")
@@ -305,13 +310,22 @@ def montaGrafos(referencias, frequencias):
     autores= []
     autoresRef= []
     citados= []
+    publicacoes= []
     verticesAR1= []
+    verticesP= []
+    edgesP= []
     for referencia in referencias:
         #print(referencia[0][0])
+        if referencia[0][2] not in publicacoes:
+            publicacoes.append(referencia[0][2])
+            verticesP.append(referencia[0][2])
         if referencia[0][1].endswith("\r"):
             trabalhos.append(referencia[0][1][:-1])
+            verticesP.append(referencia[0][1][:-1])
         else:
             trabalhos.append(referencia[0][1])
+            verticesP.append(referencia[0][1])
+        edgesP.append((verticesP.index(referencia[0][2]), len(verticesP) - 1))
         temp= []
         for autor in referencia[0][0]:
             #print(autor)
@@ -363,6 +377,8 @@ def montaGrafos(referencias, frequencias):
     #print(citados)
     #print(vertices)
     
+    
+
     grafoC= igraph.Graph()
     grafoC.add_vertices(len(verticesC))
     edgesC= []
@@ -373,6 +389,10 @@ def montaGrafos(referencias, frequencias):
 
     grafoAR= igraph.Graph()
     grafoAR.add_vertices(len(verticesAR))
+
+    grafoP= igraph.Graph()
+    grafoP.add_vertices(len(verticesP))
+    grafoP.add_edges(edgesP)
 
     for referencia in referencias:
         for i in range(len(referencia[1][0])):
@@ -409,6 +429,7 @@ def montaGrafos(referencias, frequencias):
     #printaGrafos(grafoA, verticesA, edgesA, "Grafo das relações de autoria entre os Artigos", "Autoria")
     #printaGrafos(grafoAR, verticesAR, edgesAR, "Grafo das relações de autoria entre os Artigos referenciados", "AutoriaRef")
     #printaGrafos(grafoF, verticesF, edgesF, "Grafo dos termos mais frequentes em cada Artigo", "Frequentes")
+    #printaGrafos(grafoP, verticesP, edgesP, "Grafo das relações das publicação dos Artigos", "Publicacao")
 
     return
 
