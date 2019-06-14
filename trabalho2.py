@@ -303,7 +303,9 @@ def printaGrafos(grafo, vertices, edges, titulo, arquivo):
 def montaGrafos(referencias, frequencias):
     trabalhos= []
     autores= []
+    autoresRef= []
     citados= []
+    verticesAR1= []
     for referencia in referencias:
         #print(referencia[0][0])
         if referencia[0][1].endswith("\r"):
@@ -314,11 +316,18 @@ def montaGrafos(referencias, frequencias):
         for autor in referencia[0][0]:
             #print(autor)
             autores.append(autor)
+            autoresRef.append(autor)
+        for autor in referencia[1][0]:
+            autoresRef.append(autor)
+            for a in autor:
+                verticesAR1.append(a)
         for titulo in referencia[1][1]:
             if titulo.endswith("\r"):
                 temp.append(titulo[:-1])
+                verticesAR1.append(titulo[:-1])
             else:
                 temp.append(titulo)
+                verticesAR1.append(titulo)
         citados.append(temp)
     #print(trabalhos)        
     temp= []
@@ -337,6 +346,10 @@ def montaGrafos(referencias, frequencias):
     #print(autores)
     verticesA.extend(autores)
     verticesA.extend(trabalhos)
+
+    verticesAR= []
+    [verticesAR.append(x) for x in verticesAR1 if x not in verticesAR]
+    edgesAR= []
 
     verticesF= []
     edgesF= []
@@ -357,6 +370,20 @@ def montaGrafos(referencias, frequencias):
     grafoA= igraph.Graph()
     grafoA.add_vertices(len(verticesA))
     edgesA= []
+
+    grafoAR= igraph.Graph()
+    grafoAR.add_vertices(len(verticesAR))
+
+    for referencia in referencias:
+        for i in range(len(referencia[1][0])):
+            nome= referencia[1][1][i]
+            listaAutores= referencia[1][0][i]
+            if nome.endswith("\r"):
+                nome= nome[:-1]
+            indice1= verticesAR.index(nome)
+            for autor in listaAutores:
+                indice2= verticesAR.index(autor)
+                edgesAR.append((indice2, indice1))
     
     grafoF= igraph.Graph()
     grafoF.add_vertices(len(verticesF))
@@ -376,10 +403,11 @@ def montaGrafos(referencias, frequencias):
     
     grafoA.add_edges(edgesA)
     grafoC.add_edges(edgesC)
-
+    grafoAR.add_edges(edgesAR)
     #print(verticesA)
     #printaGrafos(grafoC, verticesC, edgesC, "Grafo das relações de citação entre os Artigos", "Citacoes")
     #printaGrafos(grafoA, verticesA, edgesA, "Grafo das relações de autoria entre os Artigos", "Autoria")
+    #printaGrafos(grafoAR, verticesAR, edgesAR, "Grafo das relações de autoria entre os Artigos referenciados", "AutoriaRef")
     #printaGrafos(grafoF, verticesF, edgesF, "Grafo dos termos mais frequentes em cada Artigo", "Frequentes")
 
     return
@@ -432,7 +460,7 @@ for pdf in pdfs:
     #break
     
 #montaGrafos(referencias, frequencias)
-#exit()
+exit()
 tudoRelevante= [y for x in artigos for y in x if not y in stopwords and len(y)>2 and y.count("references") == 0]
 tudo= [y for x in artigosFull for y in x]
 frequenciaRelevante= FreqDist(tudoRelevante)
