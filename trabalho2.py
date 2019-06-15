@@ -514,17 +514,15 @@ for pdf in pdfs:
         i= i+1
     #separadas= word_tokenize(buffer.getvalue())
     atual= [y for x in separadas for y in x]
-    #print(atual)
-    artigos.append([palavra.lower() for palavra in atual if palavra.isalpha()])
     artigosFull.append(atual)
-    relevante= [x for x in atual if not x.lower() in stopwords and len(x) > 2]
+    relevante= [x.lower() for x in atual if not x.lower() in stopwords and len(x) > 2 and x.isalpha()]
+    artigos.append(relevante)
     frequencias.append((temp2[1], FreqDist(relevante).most_common(10)))
-    #print(artigos)
+    #print(relevante)
     #break
     
-#montaGrafos(referencias, frequencias)
-exit()
-tudoRelevante= [y for x in artigos for y in x if not y in stopwords and len(y)>2 and y.count("references") == 0]
+montaGrafos(referencias, frequencias)
+tudoRelevante= [y for x in artigos for y in x]
 tudo= [y for x in artigosFull for y in x]
 frequenciaRelevante= FreqDist(tudoRelevante)
 #print(frequenciaRelevante.most_common(10))
