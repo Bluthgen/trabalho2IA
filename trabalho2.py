@@ -420,12 +420,12 @@ def montaGrafos(referencias, frequencias):
     grafoAR.add_edges(edgesAR)
     grafoAL.add_edges(edgesAL)
     
-    #printaGrafos(grafoC, verticesC, edgesC, "Grafo das relações de citação entre os Artigos", "Citacoes")
-    #printaGrafos(grafoA, verticesA, edgesA, "Grafo das relações de autoria entre os Artigos", "Autoria")
-    #printaGrafos(grafoAR, verticesAR, edgesAR, "Grafo das relações de autoria entre os Artigos referenciados", "AutoriaRef")
-    #printaGrafos(grafoF, verticesF, edgesF, "Grafo dos termos mais frequentes em cada Artigo", "Frequentes")
-    #printaGrafos(grafoP, verticesP, edgesP, "Grafo das relações das publicação dos Artigos", "Publicacao")
-    #printaGrafos(grafoAL, verticesAL, edgesAL, "Grafo das relações de citação autoral entre os Artigos", "AutoriaAl")
+    printaGrafos(grafoC, verticesC, edgesC, "Grafo das relações de citação entre os Artigos", "Citacoes")
+    printaGrafos(grafoA, verticesA, edgesA, "Grafo das relações de autoria entre os Artigos", "Autoria")
+    printaGrafos(grafoAR, verticesAR, edgesAR, "Grafo das relações de autoria entre os Artigos referenciados", "AutoriaRef")
+    printaGrafos(grafoF, verticesF, edgesF, "Grafo dos termos mais frequentes em cada Artigo", "Frequentes")
+    printaGrafos(grafoP, verticesP, edgesP, "Grafo das relações das publicação dos Artigos", "Publicacao")
+    printaGrafos(grafoAL, verticesAL, edgesAL, "Grafo das relações de citação autoral entre os Artigos", "AutoriaAl")
     return
 
 def retiraInstituicao(texto):
@@ -497,8 +497,8 @@ for pdf in pdfs:
     temp2= retiraAutorTitulo(text)
     referencias.append((temp2, temp1))
     #continue
-    separadas= []
     #print(linhas)
+    separadas= []
     separadas.extend(re.split("\s|,|;|\.|\(|\)",linha) for linha in linhas)
     i= 1
     separadas= [linhaSeparada for linhaSeparada in separadas if len(linhaSeparada) > 0]
@@ -515,14 +515,14 @@ for pdf in pdfs:
     #separadas= word_tokenize(buffer.getvalue())
     atual= [y for x in separadas for y in x]
     artigosFull.append(atual)
-    relevante= [x.lower() for x in atual if not x.lower() in stopwords and len(x) > 2 and x.isalpha()]
+    relevante= [x.lower() for x in atual if x not in stopwords and len(x) > 3 and x.isalpha()]
     artigos.append(relevante)
     frequencias.append((temp2[1], FreqDist(relevante).most_common(10)))
     #print(relevante)
     #break
-    
-montaGrafos(referencias, frequencias)
+
+#montaGrafos(referencias, frequencias)
 tudoRelevante= [y for x in artigos for y in x]
 tudo= [y for x in artigosFull for y in x]
 frequenciaRelevante= FreqDist(tudoRelevante)
-#print(frequenciaRelevante.most_common(10))
+print(frequenciaRelevante.most_common(10))
