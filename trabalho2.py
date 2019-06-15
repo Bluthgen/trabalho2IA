@@ -428,6 +428,52 @@ def montaGrafos(referencias, frequencias):
     #printaGrafos(grafoAL, verticesAL, edgesAL, "Grafo das relações de citação autoral entre os Artigos", "AutoriaAl")
     return
 
+def retiraInstituicao(texto):
+    novoTexto=""
+    quebrado= texto.split("\n")
+    flag= False
+    inicio= 0
+    fim= 0
+    rodape= []
+    instituicoes= []
+    for i in range(1000):
+        linha= quebrado[i]
+        if not flag and not linha.startswith("Manuscript"):
+            continue
+        elif linha.startswith("Manuscript"):
+            inicio= i
+            flag= True
+        elif flag and not linha.startswith("Digital Object"):
+            rodape.append(linha)
+            fim= i
+        else:
+            break
+    novoTexto= texto[:inicio] + texto[fim+1:]
+    if rodape[-1].startswith("Color"):
+        rodape= rodape[:-1]
+    if rodape[-1].startswith("This paper"):
+        rodape= rodape[:-1]
+
+    for linha in rodape:
+        temp= linha.split(" with the ")
+        #print(temp)
+        #print(temp)
+        quem= temp[0]
+        if quem.endswith(" are"):
+            quem= quem[:-4]
+        elif quem.endswith(" is"):
+            quem= quem[:-3]
+        temp2= temp[1].split(" (")
+        temp2= temp2[0]
+        onde= temp2.split(" and")[0]
+        if onde.endswith("\r") or onde.endswith(" ") or onde.endswith(","):
+            onde= onde[:-1]
+        instituicoes.append((quem, onde))
+        
+
+    return (novoTexto, instituicoes)
+
+
 path= os.path.realpath(__file__)[:-12] + "Artigos\\"
 pdfs= [arq for arq in glob.glob(path + "*.txt")]
 artigos= []
@@ -443,6 +489,7 @@ for pdf in pdfs:
     with open(pdf, "r") as arquivo:
         text= arquivo.read()
     #print(text) 
+    (text, instituicoes)= retiraInstituicao(text)
     retiraAutorTitulo(text)
     preLinhas = re.split("REFERENCES",text)
     linhas= preLinhas[0].splitlines()
