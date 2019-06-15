@@ -20,26 +20,6 @@ from nltk import *
 #import nltk
 #nltk.download('stopwords')
 
-#erro citação com et all aquivo 120 erro, 120 com lixo
-
-#titulo e autor sujo nao arrumar com split ,' espaço
-#50 algumas referencias tem a palavra [online] acho melhor arrumar quando acabar tudo
-
-#erros
-#13 referencia 22 virgula no titulo
-#20 referencia 30 com ponto
-#21 referencia 3 e 7 virgula no titulo
-#22 referencia 13 titulo e autor errado, não mude isso para tratar pois da outro erro len(aux2) > 20
-#29 referencia 13 titulo com ponto
-#29 referencia 36 virgula no titulo
-#29 varias referencias o titulo é pego como o nome da sigla, mas as vezes não
-#48 referencia 7 virgula no titulo
-#49 referencia 38 () não lidos no titulo
-#49 referencia 41 e 42 idiota inverteu os campos de titulo e autor
-#Parei de ver erros que não se destacao 
-#98 referencia 98 titulo com virgula
-#118 mexi na verificação do And não sei se ferrou algo
-
 def retiraRef(preLinhas):
     linhasP = re.sub(r"\. \(.*\d*\)." and r"\(.*\d*\).", "," ,preLinhas)
     linhasP = re.split("\n|\r", linhasP)
@@ -50,8 +30,6 @@ def retiraRef(preLinhas):
     jaAdd=0
     posb=0
     linhasP = [linha for linha in linhasP if len(linha) > 0]
-    #print(linhasP)
-    #print(linhasP)
     for linhass in linhasP:
         i=i+1
         if len(linhass)>0 and linhass[0] == "[" and re.search(r"\d", linhass[1]):
@@ -63,14 +41,12 @@ def retiraRef(preLinhas):
                     if jaAdd==0:
                         linhassP.append(re.sub(r"\[\d*\]","", linhasP[posb-1]))
                     jaAdd=0
-                    #print(linhasP[posb-1])
                     posb=i
                 else:
                     new = ""
                     for k in range(posb, i):
                         new = new + " " + linhasP[k-1]
                     linhassP.append(re.sub(r"\[\d*\]","", new))
-                    #print(new)
                     jaAdd=0
                     posb=i
     if linhasP[posb-1] != linhasP[-1]:
@@ -78,12 +54,10 @@ def retiraRef(preLinhas):
     linhasP= [linha for linha in linhassP]
     linhas = []
     linhas.extend(re.split("\"",linha) for linha in linhasP)
-    #print(linhas)
     autor = []
     titulo = []
 
     for linha in linhas:
-        #print(linha)
         if len(linha)>1:
             titulo.append(linha[1])
             aux = []
@@ -93,8 +67,6 @@ def retiraRef(preLinhas):
                 if len(aux2) > 1:
                     autores.append(aux2)
             autor.append(autores)
-            #print(autores)
-            #print(linha[1])
         else:
             aux = []
             aux.extend(re.split("\,",linha[0]))
@@ -102,12 +74,10 @@ def retiraRef(preLinhas):
                 aux2 = []
                 aux2.extend(re.split("and",aux[0]))
                 autor.append(aux2)
-            #    print(aux2)
 
                 if re.search(r"^[Online]. Available: ", str(aux)):
                     aux[1] = re.sub(r"\[Online]. Available:","", str(aux[1]))
                     titulo.append(aux[1])
-            #        print(aux[1])
                 else:
                     aux2 = []
                     i=1
@@ -115,7 +85,6 @@ def retiraRef(preLinhas):
                        i=i+1
                     aux2.extend(re.split("\.",aux[i]))
                     titulo.append(aux2[0])
-            #        print(aux2[0])
             else:
                 i=0
                 aux3 = []
@@ -126,57 +95,41 @@ def retiraRef(preLinhas):
                         aux4.extend(re.split("and",aux2))
                         aux3.append(aux4[1])
                         autor.append(aux3)
-            #            print(aux3)
                         
                         if re.search(r"\[Online]. Available: ", str(aux2)) is not None:
                             titulo.append([])
-            #                print("[]")
                         else:
                             auxT = []
                             if re.search("^ Eds.", aux2):
                                 i=i+1
                             auxT.extend(re.split("\.",aux[i]))
                             titulo.append(auxT[0])
-            #                print(auxT[0])
                         break
                     elif re.search(r"^ Eds.", aux2) is not None:
                         if re.search(r"\[Online]. Available: ", str(aux)) is not None:
                             titulo.append([])
-            #                print("[]")
                         else:
                             auxT = []
                             auxT.extend(re.split("\.",aux[i]))
                             titulo.append(auxT[0])
                         autor.append(aux3)
-            #            print(aux3)
-            #            print(auxT[0])
                         break
                         
                     if len(aux2) > 20:
-                        #linha mudada do et al que citei
                         aux[0]=re.sub(r"et al.","", aux[0])
                         aux3 = []
                         aux3.append(aux[0])
                         autor.append(aux3)
-            #            print(aux3)
 
                         if re.search(r"^[Online]. Available: ", str(aux[1])) is not None:
                             titulo.append([])
-            #                print("[]")
                         else:
                             auxT = []
                             auxT.extend(re.split("\.",aux[1]))
                             titulo.append(auxT[0])
-            #                print(auxT[0])
-
-                        
                         break
                     else:
                         aux3.append(aux2)
-                        
-                    
-    #print(autor)
-    #print(titulo)
     return (autor, titulo)
         
 def retiraAutorTitulo(texto):
@@ -248,7 +201,6 @@ def printaGrafos(grafo, vertices, edges, titulo, arquivo):
         Xe3+= [layout3d[e[0]][0], layout3d[e[1]][0], None]
         Ye3+= [layout3d[e[0]][1], layout3d[e[1]][1], None]
         Ze3+= [layout3d[e[0]][2], layout3d[e[1]][2], None]
-    #grafo.es["Titulos"]= titulos
     
     trace13d= plotly.graph_objs.Scatter3d(x= Xe3, y= Ye3, z= Ze3, mode= "lines", line= dict(color= "rgb(125,125,125)", width= 1))
     trace23d= plotly.graph_objs.Scatter3d(x= Xn3, y= Yn3, z= Zn3, mode= "markers", name="Artigos", marker=dict(symbol='circle',
@@ -299,6 +251,7 @@ def printaGrafos(grafo, vertices, edges, titulo, arquivo):
 def montaGrafos(referencias, frequencias):
     trabalhos= []
     autores= []
+    autores2= []
     autoresRef= []
     citados= []
     publicacoes= []
@@ -306,7 +259,6 @@ def montaGrafos(referencias, frequencias):
     verticesP= []
     edgesP= []
     for referencia in referencias:
-        #print(referencia[0][0])
         if referencia[0][2] not in publicacoes:
             publicacoes.append(referencia[0][2])
             verticesP.append(referencia[0][2])
@@ -319,7 +271,6 @@ def montaGrafos(referencias, frequencias):
         edgesP.append((verticesP.index(referencia[0][2]), len(verticesP) - 1))
         temp= []
         for autor in referencia[0][0]:
-            #print(autor)
             autores.append(autor)
             autoresRef.append(autor)
         for autor in referencia[1][0]:
@@ -342,12 +293,41 @@ def montaGrafos(referencias, frequencias):
                 temp.append(titulo)
                 verticesAR1.append(titulo)
         citados.append(temp)
-    #print(trabalhos)        
+
+        temp= []
+        for autoress in referencia[1][0]:
+            if type(autoress) is list:
+                for autor in autoress:
+                    if autor.endswith(" "):
+                        temp.append(autor[:-1])
+                    elif autor.startswith(" "):
+                        temp.append(autor[1:])
+                    else:
+                        temp.append(autor)
+            else:
+                if autoress.endswith(" "):
+                    temp.append(autoress[:-1])
+                elif autoress.startswith(" "):
+                    temp.append(autoress[1:])
+                else:
+                    temp.append(autoress)
+        autores2.append(temp)
+
+    temp= []
+    for grupo in autores2:
+        if type(grupo) is list:
+            for autor in grupo:
+                temp.append(autor)
+        else:
+            temp.append(autor)
+    verticesAL= []
+    [verticesAL.append(x) for x in temp if x not in verticesAL]
+    verticesAL.extend(trabalhos)
+    
     temp= []
     for grupo in trabalhos:
         temp.append(grupo)
     for grupo in citados:
-        #temp.extend(grupo)
         for titulo in grupo:
             if re.search(r"\[Online]", titulo):
                 temp22= re.split(r"\[Online]", titulo)
@@ -364,7 +344,6 @@ def montaGrafos(referencias, frequencias):
     verticesC= []
     [verticesC.append(x) for x in temp if x not in verticesC]
     verticesA= []
-    #print(autores)
     verticesA.extend(autores)
     verticesA.extend(trabalhos)
 
@@ -380,12 +359,7 @@ def montaGrafos(referencias, frequencias):
             if verticesF.count(palavra[0]) == 0:
                 verticesF.append(palavra[0])
             edgesF.append((verticesF.index(freq[0]), verticesF.index(palavra[0])))
-    #print(trabalhos)
-    #print(citados)
-    #print(vertices)
     
-    
-
     grafoC= igraph.Graph()
     grafoC.add_vertices(len(verticesC))
     edgesC= []
@@ -400,6 +374,10 @@ def montaGrafos(referencias, frequencias):
     grafoP= igraph.Graph()
     grafoP.add_vertices(len(verticesP))
     grafoP.add_edges(edgesP)
+
+    grafoAL= igraph.Graph()
+    grafoAL.add_vertices(len(verticesAL))
+    edgesAL= []
 
     for referencia in referencias:
         for i in range(len(referencia[1][0])):
@@ -432,18 +410,22 @@ def montaGrafos(referencias, frequencias):
             indice1= verticesC.index(trabalho)
             indice2= verticesC.index(citado)
             edgesC.append((indice1, indice2))
+        for autor in autores2[indice]:
+            indice1= verticesAL.index(trabalho)
+            indice2= verticesAL.index(autor)
+            edgesAL.append((indice1, indice2))
     
     grafoA.add_edges(edgesA)
     grafoC.add_edges(edgesC)
     grafoAR.add_edges(edgesAR)
-    #print(verticesA)
+    grafoAL.add_edges(edgesAL)
     
     #printaGrafos(grafoC, verticesC, edgesC, "Grafo das relações de citação entre os Artigos", "Citacoes")
     #printaGrafos(grafoA, verticesA, edgesA, "Grafo das relações de autoria entre os Artigos", "Autoria")
     #printaGrafos(grafoAR, verticesAR, edgesAR, "Grafo das relações de autoria entre os Artigos referenciados", "AutoriaRef")
     #printaGrafos(grafoF, verticesF, edgesF, "Grafo dos termos mais frequentes em cada Artigo", "Frequentes")
     #printaGrafos(grafoP, verticesP, edgesP, "Grafo das relações das publicação dos Artigos", "Publicacao")
-
+    #printaGrafos(grafoAL, verticesAL, edgesAL, "Grafo das relações de citação autoral entre os Artigos", "AutoriaAl")
     return
 
 path= os.path.realpath(__file__)[:-12] + "Artigos\\"
