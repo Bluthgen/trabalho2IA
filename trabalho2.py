@@ -10,9 +10,9 @@ import re
 from StringIO import StringIO
 
 import igraph
+import nltk
 import numpy
 import plotly
-from nltk import *
 
 #import ply.lex as lex
 #import ply.yacc as yacc
@@ -132,14 +132,23 @@ def retiraRef(preLinhas):
                         aux3.append(aux2)
     return (autor, titulo)
         
-def retiraAutorTitulo(texto):
+def retiraAutorTitulo(linhas):
     autorStopWords= ["IEEE", "Fellow", "Member", "Student", "Senior"]
-    linhas= re.split("\n", text)
+    #print(linhas[0:3])
+    #print(texto.split("\n")[0:3])
+    #linhas= re.split("\n", text)
     publicado= ""
     if linhas[0].startswith("IEEE"):
+        #print(linhas[0])
+        #print(linhas[0].split(","))
         publicado= linhas[0].split(",")[0]
+        #print(publicado)
     else:
+        #print(linhas[2])
+        #print(linhas[2].split(","))
         publicado= linhas[2].split(",")[0]
+        #print(publicado)
+    #print(publicado)
     linhaTitulo= linhas[4]
     linhaAutores= linhas[5]
     autores= []
@@ -178,6 +187,8 @@ def retiraAutorTitulo(texto):
         if autor.endswith("\r"):
             autor= autor[:-1]
         autoresFinal.append(autor)
+    #print(autoresFinal)
+    #print(linhaTitulo)
     return (autoresFinal, linhaTitulo, publicado)
 
 def printaGrafos(grafo, vertices, edges, titulo, arquivo):
@@ -249,6 +260,7 @@ def printaGrafos(grafo, vertices, edges, titulo, arquivo):
     plotly.offline.plot(fig3d, filename= arquivo + "3d.html")
 
 def montaGrafos(referencias, frequencias):
+    #exit()
     trabalhos= []
     autores= []
     autores2= []
@@ -258,6 +270,8 @@ def montaGrafos(referencias, frequencias):
     verticesAR1= []
     verticesP= []
     edgesP= []
+    #print(referencias)
+    #exit()
     for referencia in referencias:
         if referencia[0][2] not in publicacoes:
             publicacoes.append(referencia[0][2])
@@ -431,6 +445,7 @@ def montaGrafos(referencias, frequencias):
 def retiraInstituicao(texto):
     novoTexto=""
     quebrado= texto.split("\n")
+    #print(quebrado[0:3])
     flag= False
     inicio= 0
     fim= 0
@@ -449,6 +464,7 @@ def retiraInstituicao(texto):
         else:
             break
     novoTexto= texto[:inicio] + texto[fim+1:]
+    
     if rodape[-1].startswith("Color"):
         rodape= rodape[:-1]
     if rodape[-1].startswith("This paper"):
@@ -469,9 +485,95 @@ def retiraInstituicao(texto):
         if onde.endswith("\r") or onde.endswith(" ") or onde.endswith(","):
             onde= onde[:-1]
         instituicoes.append((quem, onde))
-        
+    #print(novoTexto.split("\n")[0:3])
+    return (texto, instituicoes)
 
-    return (novoTexto, instituicoes)
+def preProcessamento(texto):
+    frases= nltk.sent_tokenize(texto.decode('utf-8'))
+    frases= [nltk.word_tokenize(frase) for frase in frases]
+    frases= [nltk.pos_tag(frase) for frase in frases]
+    return frases
+
+def tags_since_dt(sentence, i):
+    tags = set()
+    for word, pos in sentence[:i]:
+        if pos == 'DT':
+            tags = set()
+        else:
+            tags.add(pos)
+    return '+'.join(sorted(tags))
+
+def npchunk_features(sentence, i, history):
+    word, pos = sentence[i]
+    if i == 0:
+        prevword, prevpos = "<START>", "<START>"
+    else:
+        prevword, prevpos = sentence[i-1]
+    if i == len(sentence)-1:
+        nextword, nextpos = "<END>", "<END>"
+    else:
+        nextword, nextpos = sentence[i+1]
+    return {"pos": pos,
+            "word": word,
+            "prevpos": prevpos,
+            "nextpos": nextpos,
+            "prevpos+pos": "%s+%s" % (prevpos, pos),
+            "pos+nextpos": "%s+%s" % (pos, nextpos),
+            "tags-since-dt": tags_since_dt(sentence, i)}
+
+
+class ConsecutiveNPChunkTagger(nltk.TaggerI):
+
+    def __init__(self, train_sents):
+        train_set = []
+        for tagged_sent in train_sents:
+            untagged_sent = nltk.tag.untag(tagged_sent)
+            history = []
+            for i, (word, tag) in enumerate(tagged_sent):
+                featureset = npchunk_features(untagged_sent, i, history)
+                train_set.append( (featureset, tag) )
+                history.append(tag)
+        self.classifier = nltk.MaxentClassifier.train(
+            train_set, trace=0)
+
+    def tag(self, sentence):
+        history = []
+        for i, word in enumerate(sentence):
+            featureset = npchunk_features(sentence, i, history)
+            tag = self.classifier.classify(featureset)
+            history.append(tag)
+        return zip(sentence, history)
+
+class ConsecutiveNPChunker(nltk.ChunkParserI):
+    def __init__(self, train_sents):
+        tagged_sents = [[((w,t),c) for (w,t,c) in
+                         nltk.chunk.tree2conlltags(sent)]
+                        for sent in train_sents]
+        self.tagger = ConsecutiveNPChunkTagger(tagged_sents)
+
+    def parse(self, sentence):
+        tagged_sents = self.tagger.tag(sentence)
+        conlltags = [(w,t,c) for ((w,t),c) in tagged_sents]
+        return nltk.chunk.conlltags2tree(conlltags)
+
+
+def temObjetivo(arvore):
+    try:
+        arvore.label()
+    except AttributeError:
+        print(arvore, end=" ")
+    else:
+        palavra= arvore.label().lower()
+        #Fazer algo
+        for child in t:
+            #Recursão
+            if temObjetivo(child):
+                return True
+    return False;
+
+test_sents = nltk.corpus.conll2000.chunked_sents('test.txt', chunk_types=['NP'])
+train_sents = nltk.corpus.conll2000.chunked_sents('train.txt', chunk_types=['NP'])
+chunker = ConsecutiveNPChunker(train_sents)
 
 
 path= os.path.realpath(__file__)[:-12] + "Artigos\\"
@@ -480,21 +582,35 @@ artigos= []
 artigosFull= []
 referencias= []
 count= 0
-stopwords= corpus.stopwords.words('english')
+stopwords= nltk.corpus.stopwords.words('english')
 referencias= []
 frequencias=[]
+arvores= []
+objetivos= []
 for pdf in pdfs:
     #text = textract.process(pdf)
     text= []
     with open(pdf, "r") as arquivo:
-        text= arquivo.read()
-    #print(text) 
+        text= arquivo.read() 
+    quebrado= preProcessamento(text)
+    chunks= []
+    flag= False
+    for queb in quebrado:
+        arvore= chunker.parse(queb)
+        chunks.append()
+        if not flag:
+            if queb[0].startswith("IV"):
+                flag= True
+                continue
+
+    arvores.append(chunks)
+    continue
+    temp2= retiraAutorTitulo(text.split("\n")[:10])
     (text, instituicoes)= retiraInstituicao(text)
-    retiraAutorTitulo(text)
     preLinhas = re.split("REFERENCES",text)
     linhas= preLinhas[0].splitlines()
     temp1= retiraRef(preLinhas[1])
-    temp2= retiraAutorTitulo(text)
+    #temp2= retiraAutorTitulo(text)
     referencias.append((temp2, temp1))
     #continue
     #print(linhas)
@@ -517,12 +633,13 @@ for pdf in pdfs:
     artigosFull.append(atual)
     relevante= [x.lower() for x in atual if x not in stopwords and len(x) > 3 and x.isalpha()]
     artigos.append(relevante)
-    frequencias.append((temp2[1], FreqDist(relevante).most_common(10)))
+    frequencias.append((temp2[1], nltk.FreqDist(relevante).most_common(10)))
     #print(relevante)
     #break
-
+print(arvores[5][46])
+exit()
 #montaGrafos(referencias, frequencias)
 tudoRelevante= [y for x in artigos for y in x]
 tudo= [y for x in artigosFull for y in x]
-frequenciaRelevante= FreqDist(tudoRelevante)
+frequenciaRelevante= nltk.FreqDist(tudoRelevante)
 print(frequenciaRelevante.most_common(10))
