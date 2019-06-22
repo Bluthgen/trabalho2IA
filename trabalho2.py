@@ -6,6 +6,7 @@ from __future__ import division
 #import textract
 import glob
 import os
+import random
 import re
 from StringIO import StringIO
 
@@ -561,20 +562,56 @@ def temObjetivo(arvore):
     try:
         arvore.label()
     except AttributeError:
-        print(arvore, end=" ")
+        return False
     else:
-        palavra= arvore.label().lower()
-        #Fazer algo
-        for child in t:
-            #Recursão
-            if temObjetivo(child):
-                return True
+        label= arvore.label()
+        #print(label)
+        tupla= arvore[0]
+        #print(tupla)
+        #print(type(tupla[0]))
+        if type(tupla[0]) == unicode:
+            palavra= tupla[0].lower()
+            tipo= tupla[1]
+            #print("Palavra: "+ palavra)
+            #print("Tipo: " + tipo)
+            if tipo.startswith("VB"):
+                #print(palavra)
+                for temp in ["introduce", "demonstrate", "aim", "provide", "propose", "find", "found", "present", "estimate", "show"]:
+                    if palavra.startswith(temp):
+                        return True
+            elif tipo.startswith("PRP"):
+                for temp in ["we", "our"]:
+                    if palavra == temp:
+                        return True
+            elif tipo.endswith("NP"):
+                flagT= False
+                for filho in arvore:
+                    if type(filho) == tuple:
+                        if temObjetivo(filho):
+                            return True
+                    else:
+                        label= filho.label()
+                        palavra= arvore[0][0]
+                        print("Palavra: "+palavra)
+                        if label.startswith("this"):
+                            flagT= True
+                        if flagT:
+                            print(palavra)
+                            for temp in ["paper", "brief", "article", "study"]:
+                                if palavra.startswith(temp):
+                                    return True
+                            flagT= False
+        else:
+            for filho in arvore:
+                if temObjetivo(filho):
+                    return True
     return False;
 
 test_sents = nltk.corpus.conll2000.chunked_sents('test.txt', chunk_types=['NP'])
 train_sents = nltk.corpus.conll2000.chunked_sents('train.txt', chunk_types=['NP'])
+print("Comecou a treinar!")
 chunker = ConsecutiveNPChunker(train_sents)
-
+print("Terminou de treinar!")
 
 path= os.path.realpath(__file__)[:-12] + "Artigos\\"
 pdfs= [arq for arq in glob.glob(path + "*.txt")]
@@ -597,13 +634,16 @@ for pdf in pdfs:
     flag= False
     for queb in quebrado:
         arvore= chunker.parse(queb)
-        chunks.append()
+        chunks.append(arvore)
         if not flag:
-            if queb[0].startswith("IV"):
+            if queb[0][0].startswith("IV"):
                 flag= True
                 continue
-
+            if temObjetivo(arvore):
+                #print(arvore.leaves())
+                objetivos.append(arvore)
     arvores.append(chunks)
+    print(type(arvore.leaves()[0][0]))
     continue
     temp2= retiraAutorTitulo(text.split("\n")[:10])
     (text, instituicoes)= retiraInstituicao(text)
@@ -636,7 +676,10 @@ for pdf in pdfs:
     frequencias.append((temp2[1], nltk.FreqDist(relevante).most_common(10)))
     #print(relevante)
     #break
-print(arvores[5][46])
+with open("objetivos.txt", "w") as arquivoO:
+    for arvore in objetivos:
+        [arquivoO.write(leaf[0].encode("utf-8")+" ") for leaf in arvore.leaves()]
+        arquivoO.write("\n\n")
 exit()
 #montaGrafos(referencias, frequencias)
 tudoRelevante= [y for x in artigos for y in x]
