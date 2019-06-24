@@ -150,11 +150,12 @@ def retiraAutorTitulo(linhas):
     else:
         #print(linhas[2])
         #print(linhas[2].split(","))
-        publicado= linhas[2].split(",")[0]
+        publicado= linhas[1].split(",")[0]
         #print(publicado)
     #print(publicado)
-    linhaTitulo= linhas[4]
-    linhaAutores= linhas[5]
+    linhaTitulo= linhas[2]
+    print linhaTitulo
+    linhaAutores= linhas[3]
     autores= []
     if linhaAutores.count(", ") > 0:
         autoresQuebrado= linhaAutores.split(", ")
@@ -277,6 +278,7 @@ def montaGrafos(referencias, frequencias):
     #print(referencias)
     #exit()
     for referencia in referencias:
+        #print referencia
         if referencia[0][2] not in publicacoes:
             publicacoes.append(referencia[0][2])
             verticesP.append(referencia[0][2])
@@ -650,7 +652,6 @@ for pdf in pdfs:
             text2+= aux
         text2 += "\n"
     text = text2
-    text 
     quebrado= preProcessamento(text)
     chunks= []
     flag= False
@@ -673,7 +674,6 @@ for pdf in pdfs:
     preLinhas = re.split("REFERENCES",text)
     linhas= preLinhas[0].splitlines()
     temp1= retiraRef(preLinhas[1])
-    #temp2= retiraAutorTitulo(text)
     referencias.append((temp2, temp1))
     #continue
     #print(linhas)
@@ -682,7 +682,7 @@ for pdf in pdfs:
     i= 1
     separadas= [linhaSeparada for linhaSeparada in separadas if len(linhaSeparada) > 0]
     
-        #Juntando palavras quebradas pela mudança de linha
+    #Juntando palavras quebradas pela mudança de linha
     for linhaSeparada in separadas:
         if len(linhaSeparada) > 0 and len(linhaSeparada[-1]) > 0:
             if linhaSeparada[-1][-1] == "-":
@@ -704,7 +704,7 @@ with open("objetivos.txt", "w") as arquivoO:
         [arquivoO.write(leaf[0].encode("utf-8")+" ") for leaf in arvore.leaves()]
         arquivoO.write("\n\n")
 exit()
-#montaGrafos(referencias, frequencias)
+montaGrafos(referencias, frequencias)
 tudoRelevante= [y for x in artigos for y in x]
 tudo= [y for x in artigosFull for y in x]
 frequenciaRelevante= nltk.FreqDist(tudoRelevante)

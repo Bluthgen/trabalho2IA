@@ -1,4 +1,4 @@
-The alternatives we have developed the above ranking approach for are stock exchange traded equities . 
+﻿The alternatives we have developed the above ranking approach for are stock exchange traded equities . 
 
 We have considered application to a developing financial market and are currently extending the application to comparison of performance in developing and developed financial markets . 
 
@@ -36,8 +36,6 @@ C. Objective Function With this model , we will try to develop controllers that 
 
 Our goal is not to model the agent 's behavior by employing cost functions , such as the constant relative risk aversion utility function or other standard isoelastic cost function [ 18 ] ; instead , we seek to minimize a running quadratic cost over a finite horizon with target states x R2 and controls u U g ( x , u ) = |x ( k ) -x |T Q|x ( k ) -x |+|u ( k ) -u|T R|u ( k ) -u| . 
 
-1 ) Formulation : As the PID controller does not explicitly consider the minimization of a cost function in its usual form , we build a reference vector r ( k ) , where the reference trajectories are ramps from the initial condition x0 to the desired values x with given slopes for each state , denoted by the vector S. The goal of the controller will be to drive the error e ( k ) = r ( k ) - x ( k ) to zero , where the reference vector r ( k ) is r ( k ) = min { x0 + k S , x } . 
-
 We define a PID controller as the feedback law correspond- ing to each input ui ( k ) for i { 1 , 2 , 3 } . 
 
 We develop a `` projection algorithm '' to ensure that the control input remains in the feasible set Uk . 
@@ -69,8 +67,6 @@ We first examine the steady state growth phase where the ultimate question to be
 This accumulated collective uncertainty among agents we quantify as the variance of model price , and Fig . 
 
 We also show the average clustering coefficients ( calculated as the mean of local clustering coefficients of all vertices , as proposed by [ 59 ] ) for the supply and demand networks , shown in Fig . 
-
-4 ( a ) ­ ( b ) are in agreement with a complex system phenomenon called critical slowing down [ 11 ] characterized by the increase in the variance as the system approaches criticality , which is , in our case , market collapse . 
 
 5 ( a ) further validates our intrinsic price since we find that the peaks of the market-to-intrinsic ratio follow the peaks of the Shiller P/E indicator widely used to estimate the degree of market overpricing . 
 
@@ -206,11 +202,7 @@ E. Model Building Process We can build a GPRSV model in a four step process simi
 
 We show the flowchart of this process in Fig . 
 
-1 ) Specify Mean Equation : First we need to test the serial dependence in the return series . 
-
 We define T SSR0 = ( at2 - Ż ) 2 , t=m+1 ( 11a ) T SSR1 = c^t2 , t=m+1 ( 11b ) F = ( SSR0 - SSR1 ) /m , SSR1 / ( T-2m - 1 ) ( 11c ) where T Ż = ( 1/T ) a2t ( 12 ) t=1 is the sample mean of at2 ; F is asymptotically distributed as a chi-squared distribution m2 under null hypothesis and m is the degree of freedom . 
-
-4 ) Estimate Model Parameters and Check Model Fitness : After specifying both the mean and volatility equations , and associated hyper-parameters and in Steps 2 and 3 , we can use training data to estimate unknown parameters . 
 
 We can examine the model fitness using the diagnostics of the SV model described by Kim et al . 
 
