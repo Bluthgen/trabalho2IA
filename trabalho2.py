@@ -18,7 +18,10 @@ import plotly
 #import ply.lex as lex
 #import ply.yacc as yacc
 
-#import nltk
+from nltk.stem import WordNetLemmatizer
+#nltk.download('conll2000')
+#nltk.download('punkt')
+#nltk.download('averaged_perceptron_tagger')
 #nltk.download('stopwords')
 
 def retiraRef(preLinhas):
@@ -564,6 +567,7 @@ def temObjetivo(arvore):
     except AttributeError:
         return False
     else:
+        lemmatizer = WordNetLemmatizer()
         label= arvore.label()
         #print(label)
         tupla= arvore[0]
@@ -576,7 +580,8 @@ def temObjetivo(arvore):
             #print("Tipo: " + tipo)
             if tipo.startswith("VB"):
                 #print(palavra)
-                for temp in ["introduce", "demonstrate", "aim", "provide", "propose", "find", "found", "present", "estimate", "show"]:
+                for temp in ["introduce", "demonstrate", "aim", "provide", "propose", "find",
+                             "found", "present", "estimate", "show"]:
                     if palavra.startswith(temp):
                         return True
             elif tipo.startswith("PRP"):
@@ -627,8 +632,25 @@ objetivos= []
 for pdf in pdfs:
     #text = textract.process(pdf)
     text= []
+
     with open(pdf, "r") as arquivo:
-        text= arquivo.read() 
+        text= arquivo.read()
+    text = text.split("\n")
+    text2=""
+    cont = 4
+    for aux in text:
+        if cont < 3:
+            cont+=1
+            continue
+        if len(aux)==1:
+            continue
+        if re.search("\x0c",aux) is not None:
+            cont=0;
+        else:
+            text2+= aux
+        text2 += "\n"
+    text = text2
+    text 
     quebrado= preProcessamento(text)
     chunks= []
     flag= False
@@ -644,6 +666,7 @@ for pdf in pdfs:
                 objetivos.append(arvore)
     arvores.append(chunks)
     print(type(arvore.leaves()[0][0]))
+    print(pdf)
     continue
     temp2= retiraAutorTitulo(text.split("\n")[:10])
     (text, instituicoes)= retiraInstituicao(text)
