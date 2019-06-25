@@ -14,11 +14,11 @@ import igraph
 import nltk
 import numpy
 import plotly
+from nltk.stem import WordNetLemmatizer
 
 #import ply.lex as lex
 #import ply.yacc as yacc
 
-from nltk.stem import WordNetLemmatizer
 #nltk.download('conll2000')
 #nltk.download('punkt')
 #nltk.download('averaged_perceptron_tagger')
@@ -154,7 +154,7 @@ def retiraAutorTitulo(linhas):
         #print(publicado)
     #print(publicado)
     linhaTitulo= linhas[2]
-    print linhaTitulo
+    #print linhaTitulo
     linhaAutores= linhas[3]
     autores= []
     if linhaAutores.count(", ") > 0:
@@ -569,13 +569,13 @@ def temObjetivo(arvore):
     except AttributeError:
         return False
     else:
-        lemmatizer = WordNetLemmatizer()
         label= arvore.label()
         #print(label)
         tupla= arvore[0]
         #print(tupla)
         #print(type(tupla[0]))
-        if type(tupla[0]) == unicode:
+        if len(tupla) <= 2 and type(tupla) == tuple and type(tupla[0]) == unicode and not tupla[1].endswith("NP"):
+            #print(tupla[0])
             palavra= tupla[0].lower()
             tipo= tupla[1]
             #print("Palavra: "+ palavra)
@@ -583,32 +583,31 @@ def temObjetivo(arvore):
             if tipo.startswith("VB"):
                 #print(palavra)
                 for temp in ["introduce", "demonstrate", "aim", "provide", "propose", "find",
-                             "found", "present", "estimate", "show"]:
+                             "found", "present", "estimate", "show", "contribute"]:
                     if palavra.startswith(temp):
                         return True
             elif tipo.startswith("PRP"):
                 for temp in ["we", "our"]:
                     if palavra == temp:
                         return True
-            elif tipo.endswith("NP"):
-                flagT= False
-                for filho in arvore:
-                    if type(filho) == tuple:
-                        if temObjetivo(filho):
+        elif type(tupla) == tuple and tupla[1].endswith("NP"):
+            #print("Entrou")
+            flagT= False
+            for filho in arvore:
+                #print(filho)
+                label= filho[1]
+                palavra= filho[0].lower()
+                #print("Palavra: "+palavra)
+                if label.lower().startswith("this"):
+                    flagT= True
+                if flagT:
+                    print(palavra)
+                    for temp in ["paper", "brief", "article", "study"]:
+                        if palavra.startswith(temp):
                             return True
-                    else:
-                        label= filho.label()
-                        palavra= arvore[0][0]
-                        print("Palavra: "+palavra)
-                        if label.startswith("this"):
-                            flagT= True
-                        if flagT:
-                            print(palavra)
-                            for temp in ["paper", "brief", "article", "study"]:
-                                if palavra.startswith(temp):
-                                    return True
-                            flagT= False
+                    flagT= False
         else:
+            #print("Else")
             for filho in arvore:
                 if temObjetivo(filho):
                     return True
@@ -630,11 +629,12 @@ stopwords= nltk.corpus.stopwords.words('english')
 referencias= []
 frequencias=[]
 arvores= []
-objetivos= []
+objetivosFull= []
+titulos= []
 for pdf in pdfs:
     #text = textract.process(pdf)
     text= []
-
+    objetivos= []
     with open(pdf, "r") as arquivo:
         text= arquivo.read()
     text = text.split("\n")
@@ -666,10 +666,13 @@ for pdf in pdfs:
                 #print(arvore.leaves())
                 objetivos.append(arvore)
     arvores.append(chunks)
-    print(type(arvore.leaves()[0][0]))
-    print(pdf)
-    continue
+    objetivosFull.append(objetivos)
     temp2= retiraAutorTitulo(text.split("\n")[:10])
+    titulos.append(temp2[1])
+    #print(type(arvore.leaves()[0][0]))
+    #print(pdf)
+    continue
+    
     (text, instituicoes)= retiraInstituicao(text)
     preLinhas = re.split("REFERENCES",text)
     linhas= preLinhas[0].splitlines()
@@ -699,9 +702,15 @@ for pdf in pdfs:
     frequencias.append((temp2[1], nltk.FreqDist(relevante).most_common(10)))
     #print(relevante)
     #break
-with open("objetivos.txt", "w") as arquivoO:
-    for arvore in objetivos:
-        [arquivoO.write(leaf[0].encode("utf-8")+" ") for leaf in arvore.leaves()]
+with open("objetivosT.txt", "w") as arquivoO:
+    for i in range(len(titulos)):
+        listaObjetivos= objetivosFull[i]
+        titulo= titulos[i]
+        arquivoO.write(titulo)
+        arquivoO.write("\n\t")
+        for arvore in listaObjetivos:
+            [arquivoO.write(leaf[0].encode("utf-8")+" ") for leaf in arvore.leaves()]
+            arquivoO.write(";;\n\t")
         arquivoO.write("\n\n")
 exit()
 montaGrafos(referencias, frequencias)
