@@ -667,7 +667,7 @@ for pdf in txts:
     artigos.append(relevante)
     frequencias.append((temp2[1], nltk.FreqDist(relevante).most_common(10)))
 
-#montaGrafos(referencias, frequencias)
+montaGrafos(referencias, frequencias)
 tudoRelevante= [y for x in artigos for y in x]
 tudo= [y for x in artigosFull for y in x]
 frequenciaRelevante= nltk.FreqDist(tudoRelevante)
