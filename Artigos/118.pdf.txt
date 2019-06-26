@@ -3671,4 +3671,3 @@ Alexander Gegov (M'15) was born in Sofia, Bulgaria, in 1961. He received the B.S
 Since 2009, he has been a Reader in computational intelligence with the School of Computing, University of Portsmouth, Portsmouth, U.K. He is the author of four research monographs, ten book chapters, and more than 40 journal articles. His current and previous research interests include complex system modeling and simulation, rule-based systems and networks, and computational intelligence. Dr. Gegov is a Fellow of the HEA.
 
 
-

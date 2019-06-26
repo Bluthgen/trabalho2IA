@@ -19,7 +19,7 @@ In the primary financial instrument model proposed in this paper we take into ac
 Within stochastic analysis, application of the martingale theory to pricing derivatives is very important in our considerations. We apply minimal variance equivalent martingale measure (MVEMM), described by Miyahara in [17], as the equivalent martingale measure. MVEMM, similarly as other minimal distance martingale measures, appears when the utility-functionbased martingale measure is studied [17]. Therefore, the applied measure is important for applications. Apart from the martingale measure, Levy characteristic triplets [18] are used to derive the arbitrage-free prices of the European options.
 As we have noted, we also use some elements of fuzzy sets theory [19], especially the extension principle and fuzzy arithmetic. Very often it is unreasonable to choose market parameters as crisp numbers and estimate them with the application of statistical methods, since their future fluctuation is possible [20]. In our approach we take into consideration the mentioned type of uncertainty, transferring experts' opinions into fuzzy numbers and introducing them to the model in the form of fuzzy parameters. Obtaining triangular fuzzy parameters based on experts' opinions was proposed, e.g., in [21], where another financial
 
-1063-6706 Š 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
+1063-6706 © 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
 
 NOWAK AND PAWLOWSKI: OPTION PRICING WITH APPLICATION OF LEVY PROCESSES AND THE MINIMAL VARIANCE
 
@@ -380,7 +380,7 @@ eg(t,x) (ex - 1) - xI|x|1 (x)
 
 (13)
 
-where Wt is a Brownian motion, N (dt, dx) is a Poisson random measure, N^ (dt, dx) = dt ˇ  (dx) is the compensator of N (dt, dx), and N~ (dt, dx) = N (dt, dx) - N^ (dt, dx).
+where Wt is a Brownian motion, N (dt, dx) is a Poisson random measure, N^ (dt, dx) = dt ·  (dx) is the compensator of N (dt, dx), and N~ (dt, dx) = N (dt, dx) - N^ (dt, dx).
 The Poisson random measure N (dt, dx) in the Levy­Ito decomposition is the jump measure of Y and it is defined for each Borel subset B of [0, T ] × R by the equality [38]:
 
 N (B) = # {(t, Yt - Yt-)  B} .
@@ -491,7 +491,7 @@ IV. PRICING WITH CRISP PARAMETERS
 The martingale method of pricing under the assumption of the absence of arbitrage on the market [39] is one of the most commonly used techniques in mathematical finance. To price European options we apply this method, assuming that the equivalent martingale measure is MVEMM.
 We assume that all the stochastic processes and random variables considered below are defined on the filtered probability space (, F , (Ft )t[0,T ], P ), described in the previous section. Let D be a positive integer. We assume that the underlying asset price is driven by the geometric Levy process St described by (11), where the process Yt has the following form:
 
-Yt = t + Wt + k1 Nt1 + k2 Nt2 + ˇ ˇ ˇ
+Yt = t + Wt + k1 Nt1 + k2 Nt2 + · · ·
 
 + kD NtD , t  [0, T ]
 
@@ -507,7 +507,7 @@ k1 , k2 , . . . , kD are the heights of jumps of the process Y .
 
 Let Nt be a Poisson process with the intensity  = 1 +
 
-2 + ˇ ˇ ˇ + D and let {i} i=1,2,... be a sequence of inde-
+2 + · · · + D and let {i} i=1,2,... be a sequence of inde-
 
 pendent random variables taking values kj with probabilities
 
@@ -538,11 +538,11 @@ For the proof we refer the reader to Appendix A.
 
 We denote the set of all nonnegative integers by N0, and for each N > 0 the set of nonnegative integers not greater than N is denoted by N0,N . Additionally, we introduce the following notations:
 
-km = k1 m1 + k2 m2 + ˇ ˇ ˇ + kD mD
+km = k1 m1 + k2 m2 + · · · + kD mD
 
 and
 
-|m| = m1 + m2 + ˇ ˇ ˇ + mD
+|m| = m1 + m2 + · · · + mD
 for each m = (m1 , m2 , . . . , mD )  N0D . We denote the cumulative distribution function of the standard normal distribution by .
 Finally, we denote by CtV , PtV , t  [0, T ], prices of the European call and put option with the strike price K, obtained with application of MVEMM.
 Theorem 3: Let S be a geometric Levy process of the form (11), where the process Y is described by formula (18). Assume that the following equation:
@@ -572,7 +572,7 @@ Then MVEMM for S exists and 1) CtV for 0  t < T has the form
 
 CtV = e-V (T -t)
 
-ˇ
+·
 m = (m 1 ,m 2 ,...,m D )N0D
 
 1V m 1 m1 !
@@ -581,14 +581,14 @@ m = (m 1 ,m 2 ,...,m D )N0D
 
 VD m D mD !
 
-ˇ (T - t)|m | ItV ,m
+· (T - t)|m | ItV ,m
 
 where
 
 2V m 2 m2 !
 (22)
 
-V = V1 + 2V + ˇ ˇ ˇ + VD
+V = V1 + 2V + · · · + VD
 
 ItV ,m
 
@@ -666,7 +666,7 @@ dtV ,m ,+ (s) = dtV ,m ,+ (St ) .
 
 PtV = e-V (T -t)
 
-ˇ
+·
 m = (m 1 ,m 2 ,...,m D )N0D
 
 V1 m 1 m1 !
@@ -675,7 +675,7 @@ V1 m 1 m1 !
 
 DV m D mD !
 
-ˇ (T - t)|m | JtV ,m
+· (T - t)|m | JtV ,m
 
 V2 m 2 m2 !
 (23)
@@ -717,10 +717,10 @@ V 1
 For the proof we refer the reader to Appendix B. In the following sections, using the Taylor expansion of function exp, we will replace the above European options pricing formulas with the following ones:
 
 CtV = e-V (T -t)
-ˇ
+·
 m = (m 1 ,m 2 ,...,m D )N0D, N
 . . . DV m D mD !
-ˇ (T - t)|m | ItV ,m
+· (T - t)|m | ItV ,m
 
 V1 m 1 2V m 2 m1 ! m2 !
 (24)
@@ -729,7 +729,7 @@ and
 
 PtV = e-V (T -t)
 
-ˇ
+·
 
 m = (m 1 ,m 2 ,...,m D )N0D, N
 
@@ -748,7 +748,7 @@ m1 ! m2 !
 
 mD !
 
-ˇ (T - t)|m | JtV ,m
+· (T - t)|m | JtV ,m
 
 (25)
 
@@ -909,7 +909,7 @@ mi !  (T - t)|m |
 
 ~iV = ~i    ek~i 1  1 , i = 1, 2, . . . , D
 
-~V = ~1V  ~2V  ˇ ˇ ˇ  ~VD
+~V = ~1V  ~2V  · · ·  ~VD
 
 408
 
@@ -962,7 +962,7 @@ ek
 such that   (ek~i 1)  1, i = 1, 2, . . . , D, are positive
 fuzzy numbers. Furthermore, for each m = (m1 , m2 , . . . , mD )  N0D ,
 
-k~m = k~1  m1  k~2  m2  ˇ ˇ ˇ  k~D  mD
+k~m = k~1  m1  k~2  m2  · · ·  k~D  mD
 
 ~tV ,m ,- = ln S~t K  ~1V  (T - t)  k~m
 
@@ -1261,7 +1261,7 @@ k~ i
 
 
 
-ˇ
+·
 
 d~Vt ,m ,+
 
@@ -1352,7 +1352,7 @@ k~ i
 
 
 
-ˇ
+·
 
 -
 
@@ -1718,7 +1718,7 @@ We fix t  [0, T ] and   [0, 1] (e.g.,  = 0.95). Similarly as in the previous sec
 3) H is a decision to hold (if X is fairly valued); 4) R is a decision to reduce (if the option is overvalued); 5) S denotes a decision to sell (if the option is significantly
 overvalued). The advice choice function  : R2  2V is given by
 B Xt , X^t  X^t < Xt
- X^t  Xt  Ź X^t  Xt
+ X^t  Xt  ¬ X^t  Xt
 A Xt , X^t  X^t  Xt
 
 TABLE I FUZZY PARAMETERS CHOSEN FOR THE CALL OPTION PRICE ANALYSIS
@@ -1767,7 +1767,7 @@ The -level set ~(X~t , X^t ) can be used by the financial analyst, who can choos
 
 H Xt , X^t  X^t = Xt  X^t  Xt  X^t  Xt
 R Xt , X^t  X^t  Xt S Xt , X^t  X^t > Xt
- X^t  Xt  Ź X^t  Xt . On the basis of the Zadeh extension principle, one can obtain the extended advice choice function ~ : [0, 1]R × R  [0, 1]V . Let us denote the membership function of ~(X~t , X^t ) by ~l. Then,
+ X^t  Xt  ¬ X^t  Xt . On the basis of the Zadeh extension principle, one can obtain the extended advice choice function ~ : [0, 1]R × R  [0, 1]V . Let us denote the membership function of ~(X~t , X^t ) by ~l. Then,
 ~l (B) = min sup X~t (x) : x  X^t , 1 - sup X~t (x) : x  X^t
 = min X~t X^t , 1 - X~t X^t ~l (A) = sup X~t (x) : x  X^t = X~t X^t ~l (H) = min sup X~t (x) : x  X^t ,
 sup X~t (x) : x  X^t = min X~ t X^t , X~t X^t
@@ -1893,7 +1893,7 @@ APPENDIX A PROOF OF LEMMA 1
 
 It suffices to show that the processes
 
-Ut = k1 Nt1 + k2 Nt2 + ˇ ˇ ˇ + kD NtD , t  [0, T ]
+Ut = k1 Nt1 + k2 Nt2 + · · · + kD NtD , t  [0, T ]
 
 and
 
@@ -2188,11 +2188,11 @@ V 2
 
 +
 
-ˇ
+·
 
-ˇ
+·
 
-ˇ
+·
 
 +
 
@@ -2286,7 +2286,7 @@ S et
 
 - e-r(T -t) K
 
-ˇI
+·I
 
 (
 
@@ -2370,7 +2370,7 @@ V i
 
 - e-r(T -t) K
 
-ˇI ( ) ( ) 
+·I ( ) ( ) 
 
 V 1
 
@@ -2455,7 +2455,7 @@ V i -t
 
 s=St
 
-ˇI ( ) 
+·I ( ) 
 
 V 1
 
@@ -2555,7 +2555,7 @@ m
 
 D
 
-ˇ
+·
 
 se(
 
@@ -2587,7 +2587,7 @@ m
 
 - e-r(T -t) K
 
-ˇ
+·
 
 I{(
 
@@ -2622,7 +2622,7 @@ K s
 s=St
 
 
-= e-V (T -t) ˇ
+= e-V (T -t) ·
 
 
 
@@ -2643,9 +2643,9 @@ m2 !
 
 DV m D mD !
 
-ˇ (T - t)|m |
+· (T - t)|m |
 
-ˇ EP V
+· EP V
 
 se(
 
@@ -2679,7 +2679,7 @@ m
 
 - e-r(T -t) K
 
-ˇ
+·
 
 I{(
 
@@ -2758,7 +2758,7 @@ ing equality:
 
 m = (m 1 ,m 2 ,...,m D )N0D
 
-ˇ
+·
 
 2V m 2 m2 !
 
@@ -2770,7 +2770,7 @@ VD m D mD !
 
 - t)|m |
 
-ˇ e-r(T -t) K -dtV ,m ,-
+· e-r(T -t) K -dtV ,m ,-
 
 1V m 1 m1 !
 
@@ -2854,7 +2854,7 @@ m
 
 - e-r(T -t) K
 
-ˇI{(
+·I{(
 
 V 1
 
@@ -2929,7 +2929,7 @@ DV m D mD !
 
 t)|m |
 
-ˇ
+·
 
 e(
 
@@ -2959,11 +2959,11 @@ Applying the put-call parity relationship (see, e.g., [44]), (22) and (56), we o
 
 PtV = CtV - St + e-r(T -t) K
 
-= e-V (T -t) ˇ
+= e-V (T -t) ·
 
 m = (m 1 ,m 2 ,...,m D )N0D
 
-ˇ
+·
 
 V2 m 2 m2 !
 
@@ -2975,7 +2975,7 @@ DV m D mD !
 
 1V m 1 m1 !
 
-ˇ
+·
 
 St
 
@@ -3064,4 +3064,3 @@ Michal Pawlowski received the M.Sc. degree in applied mathematics (probabilistic
 His main research interests include financial engineering, stochastic analysis, probability theory, statistics, econometrics, and machine learning.
 
 
-

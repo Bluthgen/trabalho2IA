@@ -1,0 +1,1078 @@
+FN-TOPSIS: Fuzzy Networks for Ranking Traded Equities
+Nome dos autores do artigo:
+	Abdul Malek Yaakob
+	Antoaneta Serguieva
+	Alexander Gegov ;
+Referências Bibliográficas:
+	 A. Hadi-Vencheh and M. Mirjaberi, "Seclusion-factor method to solve fuzzy-multiple criteria decision-making problems," IEEE Trans. Fuzzy Syst., vol. 19, no. 2, pp. 201Г209, Apr. 2011.
+	 T. T. Nguyen, L. Gordon-Brown, A. Khosravi, D. Creighton, and Saeid Nahavandi, "Fuzzy portfolio allocation models through a new risk measure and fuzzy sharpe ratio," IEEE Trans. Fuzzy Syst., vol. 23, no. 3, pp. 656Г 676, Jun. 2015.
+	 A. Kelemenis, K. Ergazakis, and D. Askounis, "Support managers' selection using an extension of fuzzy TOPSIS," Expert Syst. Appl., vol. 38, no. 3, pp. 2774Г2782, Mar. 2011.
+	 A. Awasthi, S. S. Chauhan, and H. Omrani, "Application of fuzzy TOPSIS in evaluating sustainable transportation systems," Expert Syst. Appl., vol. 38, no. 10, pp. 12270Г12280, Sep. 2011.
+	 H. Shidpour, M. Shahrokhi, and A. Bernard, "A multi-objective programming approach, integrated into the TOPSIS method, in order to optimize product design; in three-dimensional concurrent engineering," Comput. Ind. Eng., vol. 64, no. 4, pp. 875Г885, Apr. 2013.
+	 Y. T. IcИ, "An experimental design approach using TOPSIS method for the selection of computer-integrated manufacturing technologies," Robot. Comput. Integr. Manuf., vol. 28, no. 2, pp. 245Г256, Apr. 2012.
+	 A. Pires, N.-B. Chang, and G. Martinho, "An AHP-based fuzzy interval TOPSIS assessment for sustainable expansion of the solid waste management system in Setu┤bal Peninsula, Portugal," Resources Conservation Recycling, vol. 56, no. 1, pp. 7Г21, Nov. 2011.
+	 M. Saremi, S. F. Mousavi, and A. Sanayei, "TQM consultant selection in SMEs with TOPSIS under fuzzy environment," Expert Syst. Appl., vol. 36, no. 2, pp. 2742Г2749, Mar. 2009.
+	 M. Dagdeviren, S. Yavuz, and N. KilincИ, "Weapon selection using the AHP and TOPSIS methods under fuzzy environment," Expert Syst. Appl., vol. 36, no. 4, pp. 8143Г8151, May 2009.
+	 D. Mohamad and R. M. Jamil, "A preference analysis model for selecting tourist destinations based on motivational factors: A case study in Kedah, Malaysia," Procedia, Soc. Behav. Sci., vol. 65, pp. 20Г25, Dec. 2012.
+	 E. Ansarifar, F. Shahidi, M. Mohebbi, S. M. Razavi, and J. Ansarifar, "A new technique to evaluate the effect of chitosan on properties of deep-fried Kurdish cheese nuggets by TOPSIS," LWT-Food Sci. Technol., vol. 62, no. 2, pp. 1211Г1219, Jul. 2015.
+	 S.-Y. Chou, Y.-H. Chang, and C.-Y. Shen, "A fuzzy simple additive weighting system under group decision-making for facility location selection with objective/subjective attributes," Eur. J. Oper. Res., vol. 189, no. 1, pp. 132Г145, Aug. 2008.
+	 K. Hwang and C. L. Yoon, Multiple Attribute Decision Making: Methods and Applications. New York, NY, USA: Springer-Verlag, 1981.
+	 J.-W. Wang, C.-H. Cheng, and K.-C. Huang, "Fuzzy hierarchical TOPSIS for supplier selection," Appl. Soft Comput., vol. 9, pp. 377Г386, 2009.
+	 C.-T. Chen, "Extensions of the TOPSIS for group decision-making under fuzzy environment," Fuzzy Sets Syst., vol. 114, no. 1, pp. 1Г9, Aug. 2000.
+	 T.-Y. Chen, "A linear assignment method for multiple-criteria decision analysis with interval type-2 fuzzy sets," Appl. Soft Comput., vol. 13, no. 5, pp. 2735Г2748, 2013.
+	 A. A. Bazzazi, M. Osanloo, and B. Karimi, "Deriving preference order of open pit mines equipment through MADM methods: Application of modified VIKOR method," Expert Syst. Appl., vol. 38, pp. 2550Г2556, 2011.
+	 S.-M. Chen and L.-W. Lee, "Fuzzy multiple attributes group decisionmaking based on the interval type-2 TOPSIS method," Expert Syst. Appl., vol. 37, no. 4, pp. 2790Г2798, Apr. 2010.
+	 J. M. Mendel, R. I. John, and F. L. Liu, "Interval type 2 fuzzy logical system made simple," IEEE Trans. Fuzzy Syst., vol. 6, no. 14, pp. 808Г 821, Dec. 2006.
+	 L. A. Zadeh, "The concept of a linguistic variable and its application to approximate reasoning," J. Inf. Sci., vol. 1, no. 8, pp. 199Г249, 1975.
+	 J. M. Mendel, Uncertain Rule-Based Fuzzy Logic Systems: Introduction and New Directions. Upper Saddle River, NJ, USA: Prentice-Hall, 2001.
+	 M. H. Fazel Zarandi, I. B. Turksen, and O. Torabi Kasbi, "Type-2 fuzzy modeling for desulphurization of steel process," Expert Syst. Appl., vol. 32, pp. 157Г171, 2007.
+	  L. A. Zadeh, "Fuzzy sets," J. Inf. Control, vol. 8, pp. 338Г353, 1965.  J. Mendel and Q. Liang, "Equalization of nonlinear time-varying chan- nels using type-2 fuzzy adaptive filters," IEEE Trans. Fuzzy Syst., vol. 5, no. 8, pp. 551Г563, Oct. 2000.  J. Hu, Y. Zhang, X. Chen, and Y. Liu, "Multi-criteria decision making method based on possibility degree of interval type-2 fuzzy number," Knowl.-Based Syst., no. 463, pp. 21Г29, 2013.  J. M. Mendel and D. R. Wu, Perceptual Computing: Aiding People in Making Subjective Judgments. New York, NY, USA: Wiley/IEEE Press, 2010.  J. M. Mendel et al., "What computing with words means to me," IEEE Comput. Intell. Mag., vol. 5, no. 1, pp. 20Г26, Feb. 2010.  H. Hagras, F. Doctor, V. Callaghan, and A. Lopez, "An incremental adaptive lifelong learning approach for type-2 fuzzy embedded agents in ambient intelligent environments," IEEE Trans. Fuzzy Syst., vol. 15, no. 1, pp. 41Г55, Feb. 2007.  E. A. Jammeh, M. Fleury, C. Wagner, H. Hagras, and M. Ghanbari, "Interval type-2 fuzzy logic congestion control for video streaming across IP networks," IEEE Trans. Fuzzy Syst., vol. 17, no. 5, pp. 1123Г1142, Oct. 2009.  C. Wagner and H. Hagras, "Toward general type-2 fuzzy logic systems based on z-slices," IEEE Trans. Fuzzy Syst., vol. 18, no. 4, pp. 637Г660, Aug. 2010.  D. R. Wu and J. M. Mendel, "On the continuity of type-1 and interval type-2 fuzzy logic systems," IEEE Trans. Fuzzy Syst., vol. 19, no. 1, pp. 179Г192, Feb. 2011.  L. A. Zadeh, "A note on Z-numbers," Inf. Sci., vol. 181, no. 14, pp. 2923Г 2932, Jul. 2011.  B. Kang, D. Wei, Y. Li, and Y. Deng, "A method of converting Z-number to," J. Inf. Comput. Sci., vol. 3, pp. 703Г709, Mar. 2012.  A. Sotoudeh-Anvari and S. Sadi-Nezhad, "A new approach based on the level of reliability of information to determine the relative weights of criteria in fuzzy TOPSIS," Int. J. Appl. Decis. Sci., vol. 8, pp. 164Г178, 2015.  R. A. Aliev and O. H. Huseynov, Decision Theory with Imperfect Information. Hackensack, NJ, USA: World Scientific, 2014.  A. Gegov, Fuzzy Networks for Complex System: A Modular Rule Base Approach. Berlin, Germany: Springer-Verlag, 2011.  A. Gegov, N. Petrov, and B. Vatchova, "Advanced modelling of complex processes by rule based networks," in Proc. IEEE Int. Conf. Intell. Syst., 2010, pp. 197Г202.  F. J. J. Santos and H. A. Camargo, "Decision support systems in multicriteria groups: An approach based on fuzzy rules," in Proc. IEEE Int. Conf. Fuzzy Syst., Jul. 2010, pp. 1Г8.  A. Gegov, N. Petrov, and E. Gegov, "Rule base identification in fuzzy networks by Boolean matrix equations," J. Intell. Fuzzy Syst., vol. 1, no. 26, pp. 405Г419, 2014.  A. Gegov, F. Arabikhan, and N. Petrov, "Linguistic composition based modelling by fuzzy networks with modular rule bases," Fuzzy Sets Syst., vol. 269, pp. 1Г29, Jun. 2015.  M. Yaakob and A. Gegov, "Interactive TOPSIS based group decision making methodology using z-numbers," Int. J. Comput. Intell. Syst., vol. 9, pp. 311Г324, 2016.  R. W. Chen, D. Navin-Chandra, and Fritz B. Prinz, "A cost-benefit analysis model of product design for recyclability and its application," IEEE Trans. Compon. Packag. Manuf. Technol., vol. 17, no. 4, pp. 502Г507, Dec. 1994.  T. Clark, Why Track Actual Costs and Resource Usage on Projects?. New York, NY, USA: ACM, Mar. 2008.  P. Grzegorzewski and E. Mro┤wka, "Trapezoidal approximations of fuzzy numbers--revisited," Fuzzy Sets Syst., vol. 158, no. 7, pp. 757Г768, Apr. 2007.  A. M. Yaakob and A. Gegov, "Fuzzy rule based approach with z-numbers for selection of alternatives using TOPSIS," in Proc. IEEE Int. Conf. Fuzzy Syst., 2015, pp. 1Г8.
+	 F. Tiryaki and M. Ahlatcioglu, "Fuzzy stock selection using a new fuzzy ranking and weighting algorithm," Appl. Math. Comput., vol. 170, no. 1, pp. 144Г157, Nov. 2005.
+	 J. Lukeman, The Market Maker's Edge: Day Trading Tactics from a Wall Street Insider. Toronto, ON, Canada: McGraw-Hill, 2003.
+	 A. Roshayani, U. Laily, and M. A. Siti Maznah, Financial Accounting An Introduction, 2nd ed. Selangor, Malaysia: McGraw-Hill, 2007.
+	 J. J. Weygandt, D. E. Kieso, and P. D. Kimmel, Accounting Principles, 6th ed. Hoboken, NJ, USA: Wiley, 2002.
+	 V. G. Hansen, "Detection performance of some nonparametric rank tests and an application to radar," IEEE Trans. Inf. Theory, vol. IT-16, no. 3, pp. 309Г318, May 1970.
+	 A. Serguieva and J. Hunter, "Fuzzy interval methods in investment risk appraisal," Int. J. Inf. Sci. Fuzzy Sets Syst., vol. 142, no. 3, pp. 443Г466, 2004.
+	 A. Serguieva, Computational Intelligence in Asset Risk Analysis. Uxbridge, U.K.: Brunel Univ., 2004.
+	 A. Serguieva, T. Khan, and T. Kalganova, "An intelligent system for risk classification of equity investment projects," J. Appl. Syst. Stud. , vol. 4, no. 2, pp. 236Г261, 2003.
+	 A. Serguieva and T. Kalganova, "A neuro-fuzzy-evolutionary classifier of risky investments," in Proc. 11th IEEE Int. Conf. Fuzzy Syst., 2002, pp. 997Г1002. ;
+Objetivo, Problema, Método ou Metodologia e Contribuições:
+	The alternatives we have developed the above ranking approach for are stock exchange traded equities . ;;
+	We have considered application to a developing financial market and are currently extending the application to comparison of performance in developing and developed financial markets . ;;
+	B. Interval Type-2 Fuzzy Number Implementation In this implementation of FN-TOPSIS , we use interval type-2 fuzzy number , as detailed in Tables IVГVI , for rating of alternatives and weighting the importance of criteria . ;;
+	RANKING OF TRADED EQUITY We study the problem of ranking traded equity in developing financial markets within a crisis period , in order to illustrate the applicability and validity of the proposed FN methodology in a realistic scenario . ;;
+	Rule 1 : If BL is VG and CL is VG , then EL is VG Rule 2 : If BL is VG and CL is VG , then EL is VG ... ... ... Rule 25 : If BL is G and CL is G , then EL is G. Step 8 : Having list of rules for three systems -- BS , CS , ES -- we now present these rules in the Boolean matrix form . ;;
+	We have successfully applied FN-TOPSIS to the problem of ranking equities traded in a developing financial market during a crisis period . ;;
+	
+
+Sequential Detection of Market Shocks With Risk-Averse CVaR Social Sensors
+Nome dos autores do artigo:
+	Vikram Krishnamurthy
+	Sujay Bhatt ;
+Referências Bibliográficas:
+	 B. LeBaron, "Agent-based computational finance," in Handbook of Computational Eeconomics, 2006, vol. 2, pp. 1187­1233.
+	 B. LeBaron, "Agent-based computational finance: Suggested readings and early research," J. Econ. Dyn. Control, vol. 24, no. 5, pp. 679­702, 2000.
+	 E. Samanidou, E. Zschischang, D. Stauffer, and T. Lux, "Agent-based models of financial markets," Rep. Prog. Phys., vol. 70, no. 3, p. 409, 2007.
+	 V. Alfi, M. Cristelli, L. Pietronero, and A. Zaccaria, "Minimal agent based model for financial markets I," Eur. Phys. J. B, vol. 67, no. 3, pp. 385­397, 2009.
+	 L. Tesfatsion and K. L. Judd, Handbook of Computational Economics: Agent-Based Computational Economics. Amsterdam, The Netherlands: Elsevier, 2006, vol. 2.
+	 R. Cont and J.-P. Bouchaud, "Herd behavior and aggregate fluctuations in financial markets," Macroeconomic Dyn., vol. 4, no. 2, pp. 170­196, 2000.
+	 C. Avery and P. Zemsky, "Multidimensional uncertainty and herd behavior in financial markets," Amer. Econ. Rev., vol. 88, no. 4, pp. 724­748, Sep., 1998.
+	 A. Park and H. Sabourian, "Herding and contrarian behavior in financial markets," Econometrica, vol. 79, no. 4, pp. 973­1026, 2011.
+	 C. Chamley, Rational Herds: Economic Models of Social Learning. Cambridge, U.K.: Cambridge Univ. Press, 2004.
+	 R. Cont, "Volatility clustering in financial markets: Empirical facts and agent-based models," in Long Memory in Economics. New York, NY, USA: Springer, 2007, pp. 289­309.
+	 T. Lux and M. Marchesi, "Volatility clustering in financial markets: A microsimulation of interacting agents," Int. J. Theor. Appl. Finance, vol. 3, no. 4, pp. 675­702, 2000.
+	 D. Challet et al., Minority Games: Interacting Agents in Financial Markets. London, U.K.: Oxford Univ. Press, 2013.
+	 M. Cristelli, L. Pietronero, and A. Zaccaria, "Critical overview of agentbased models for economics," arXiv preprint arXiv:1101.1847, 2011.
+	 N. Apergis and S. M. Miller, "Do structural oil-market shocks affect stock prices?" Energy Econ., vol. 31, no. 4, pp. 569­575, 2009.
+	 S. Gilchrist, V. Yankov, and E. Zakrajs^ek, "Credit market shocks and economic fluctuations: Evidence from corporate bond and stock markets," J. Monetary Econ., vol. 56, no. 4, pp. 471­493, 2009.
+	 S. Das and M. Magdon-Ismail, "Adapting to a market shock: Optimal sequential market-making," in Proc. Adv. Neural Inf. Process. Syst., 2009, pp. 361­368.
+	 V. Krishnamurthy, "Quickest detection POMDPs with social learning: Interaction of local and global decision makers," IEEE Trans. Inf. Theory, vol. 58, no. 8, pp. 5563­5587, Aug. 2012.
+	 P. Artzner, F. Delbaen, J.-M. Eber, and D. Heath, "Coherent measures of risk," Math. Finance, vol. 9, no. 3, pp. 203­228, 1999.
+	 S. Bikhchandani, D. Hirshleifer, and I. Welch, "A theory of fads, fashion, custom, and cultural change as informational cascades," J. Political Economy, vol. 100, no. 5, pp. 992­1026, Oct. 1992.
+	 I. Welch, "Sequential sales, learning, and cascades," J. Finance, vol. 47, no. 2, pp. 695­732, Jun. 1992.
+	 A. V. Banerjee, "A simple model of herd behavior," Quart. J. Econ., vol. 107, no. 3, pp. 797­817, Aug. 1992.
+	 L. R. Glosten, "Insider trading, liquidity, and the role of the monopolist specialist," J. Business, vol. 62, no. 2, pp. 211­235, Apr. 1989.
+	 A. N. Shiryaev and A. Aries, Optimal Stopping Rules. New York, NY, USA: Springer, 2007, vol. 8.
+	 H. V. Poor and O. Hadjiliadis, Quickest Detection. Cambridge, U.K.: Cambridge Univ. Press, 2009, vol. 40.
+	 M. Frisén, "Optimal sequential surveillance for finance, public health, and other areas," Sequential Anal., vol. 28, no. 3, pp. 310­337, 2009.
+	 R. A. Cohn, W. G. Lewellen, R. C. Lease, and G. G. Schlarbaum, "Individual investor risk aversion and investment portfolio composition," J. Finance, vol. 30, no. 2, pp. 605­620, May 1975.
+	 B. Donkers and A. V. Soest, "Subjective measures of household preferences and financial decisions," J. Econ. Psychol., vol. 20, no. 6, pp. 613­642, 1999.
+	 S. Mitra and T. Ji, "Risk measures in quantitative finance," Int. J. Bus. Continuity Risk Manage., vol. 1, no. 2, pp. 125­135, 2010.
+	 R. T. Rockafellar and S. Uryasev, "Optimization of conditional value-atrisk," J. Risk, vol. 2, pp. 21­41, 2000.
+	 P. Krokhmal, J. Palmquist, and S. Uryasev, "Portfolio optimization with conditional value-at-risk objective and constraints," J. Risk, vol. 4, no. 2, pp. 43­68, 2002.
+	 C. Lim, H. D. Sherali, and S. Uryasev, "Portfolio optimization by minimizing conditional value-at-risk via nondifferentiable optimization," Comput. Optim. Appl., vol. 46, no. 3, pp. 391­415, 2010.
+	 F. Andersson, H. Mausser, D. Rosen, and S. Uryasev, "Credit risk optimization with conditional value-at-risk criterion," Math. Program., vol. 89, no. 2, pp. 273­291, 2001.
+	 Y. Feng, F. Rubio, and D. Palomar, "Optimal order execution for algorithmic trading: A CVaR approach," in Proc. IEEE 13th Int. Workshop Signal Process. Adv. Wireless Commun. , Jun. 2012, pp. 480­484.
+	 R. Forsythe, T. A. Rietz, and T. W. Ross, "Wishes, expectations and actions: a survey on price formation in election stock markets," Journal of Economic Behavior & Organization, vol. 39, no. 1, pp. 83­110, 1999.
+	 C. R. Plott and K. Y. Chen, "Information aggregation mechanisms: Concept, design and implementation for a sales forecasting problem," California Inst. Technol., Division of the Humanities and Social Sciences, Working Papers 1131, 2002.
+	 R. H. Thaler and W. T. Ziemba, "Parimutuel betting markets: Racetracks and lotteries," J. Econ. Perspect., vol. 2, no. 2, pp. 161­174, 1988.
+	 J. M. Gandar, W. H. Dare, C. R. Brown, and R. A. Zuber, "Informed traders and price variations in the betting market for professional basketball games," J. Finance, vol. 53, no. 1, pp. 385­401, Feb. 1998.
+	 A. Cartea and S. Jaimungal, "Modelling asset prices for algorithmic and high-frequency trading," Applied Mathematical Finance, vol. 20, no. 6, pp. 512­547, 2013.
+	 A. N. Akansu and M. U. Torun, A Primer for Financial Engineering: Financial Signal Processing and Electronic Trading. New York, NY, USA: Academic, 2015.
+	 M. Avellaneda and S. Stoikov, "High-frequency trading in a limit order book," Quant. Finance, vol. 8, no. 3, pp. 217­224, 2008.
+	 V. Krishnamurthy and A. Aryan, "Quickest detection of market shocks in agent based models of the order book," in Proc. IEEE 51st Conf. Decision Control , Dec. 2012, pp. 1480­1485.
+	 M. F. Neuts, Structured Stochastic Matrices of MG-1 Type and Their Applications. New York, NY, USA: Marcel Dekker, 1989.
+	 V. Krishnamurthy, "Bayesian sequential detection with phase-distributed change time and nonlinear penalty--A POMDP lattice programming approach," IEEE Trans. Inf. Theory, vol. 57, no. 10, pp. 7096­7124, Oct. 2011.
+	 S. Karlin and Y. Rinott, "Classes of orderings of measures and related correlation inequalities: I. Multivariate totally positive distributions," J. Multivariate Anal., vol. 10, no. 4, pp. 467­498, 1980.
+	 W. S. Lovejoy, "Some monotonicity results for partially observed Markov decision processes," Oper. Res., vol. 35, no. 5, pp. 736­743, 1987.
+	 D. M. Topkis, Supermodularity and Complementarity. Princeton, NJ, USA: Princeton Univ. Press, 1998.
+	 D. P. Bertsekas, Dynamic Programming and Optimal Control. Belmont, MA, USA: Athena Scientific, 1995, vol. 1.
+	 D. M. Pennock, "A dynamic pari-mutuel market for hedging, wagering, and information aggregation," in Proc. 5th ACM Conf. Electron. Commerce, 2004, pp. 170­179.
+	 Y. Chen, D. M. Pennock, and T. Kasturi, "An empirical study of dynamic pari-mutuel markets: Evidence from the tech buzz game," in Proc. Web Mining Web Usage Anal. Workshop , Las Vegas, NV, USA, 2008.
+	 L. Bursztyn, F. Ederer, B. Ferman, and N. Yuchtman, "Understanding mechanisms underlying peer effects: Evidence from a field experiment on financial decisions," Econometrica, vol. 82, pp. 1273­1301, 2014.
+	 D. A. Graham, "Estimating the state dependent utility function," Nat. Resources J., vol. 23, p. 649, 1983.
+	 W. N. Evans and W. K. Viscusi, "Estimation of state-dependent utility functions using survey data," Rev. Econ. Statist., vol. 73, no. 1, pp. 94­ 104, 1991.
+	 S. N. Afriat, "The construction of utility functions from expenditure data," Int. Econ. Rev., vol. 8, no. 1, pp. 67­77, 1967.
+	 H. R. Varian, Intermediate Microeconomics: A Modern Approach. New York, NY, USA: Norton, 2014.
+	 G. Charness, U. Gneezy, and A. Imas, "Experimental methods: Eliciting risk preferences," J. Econ. Beh. Organ., vol. 87, pp. 43­51, 2013.
+	 A. Müller and D. Stoyan, Comparison Methods for Stochastic Models and Risks. Hoboken, NJ, USA: Wiley, 2002, vol. 389.
+	 R. T. Rockafellar and S. Uryasev, "Conditional value-at-risk for general loss distributions," J. Banking Finance, vol. 26, no. 7, pp. 1443­1471, 2002. ;
+Objetivo, Problema, Método ou Metodologia e Contribuições:
+	We are interested in the following : 1 ) modelling the dynamics of these risk averse agents and 2 ) sequential detection of a market shock based on the behaviour of these agents . ;;
+	Digital Object Identifier 10.1109/JSTSP.2016.2548995 In this paper , we are interested in developing agent based models for studying global events in financial markets where the underlying value of the stock experiences a jump change ( shock ) . ;;
+	This paper considers a similar model , but , in order to incorporate property 3 above ( risk averse behaviour ) , we will replace the classical social learning model of expected cost minimizers with that of risk averse minimizers . ;;
+	We consider social learning under CVaR risk measure . ;;
+	We show that , under reasonable assumptions on the costs , the trading decisions taken by socially aware and risk-averse agents are ordinal functions of their private observations and monotone in the prior information . ;;
+	We show that the stopping region for the sequential detection problem is non-convex ; this is in contrast to standard signal processing quickest detection problems where the stopping set is convex . ;;
+	We use a data set from Tech Buzz Game which is a stock 1A risk measure : L R is a mapping from the space of measurable functions to the real line which satisfies the following properties : ( i ) ( 0 ) = 0 . ;;
+	We assume that the price is the same during the period in which the value changes . ;;
+	
+
+Feedback Controllers as Financial Advisors for Low-Income Individuals
+Nome dos autores do artigo:
+	Hugo Gonzalez Villasanti
+	Kevin M. Passino ;
+Referências Bibliográficas:
+	 K. M. Passino, Humanitarian Engineering: Advancing Technologies for Sustainable Development, 3nd ed. Columbus, OH, USA: Bede Publishing, 2016.
+	 A. Pawasutipaisit and R. M. Townsend, "Wealth accumulation and factors accounting for success," J. Econ., vol. 161, no. 1, pp. 56­81, 2011.
+	 S. Rutherford, The Poor and Their Money. Oxford, U.K.: Oxford Univ. Press, 2001.
+	 R. C. Merton, "Optimum consumption and portfolio rules in a continuous-time model," J. Econ. Theory, vol. 3, no. 4, pp. 373­413, 1971.
+	 J. Y. Campbell and L. M. Viceira, "Consumption and portfolio decisions when expected returns are time varying," Nat. Bureau Econ. Res., Tech. Rep. 5857, vol. 114, pp. 433­495, 1999.
+	 F. J. Zimmerman and M. R. Carter, "Asset smoothing, consumption smoothing and the reproduction of inequality under risk and subsistence constraints," J. Develop. Econ., vol. 71, no. 2, pp. 233­260, 2003.
+	 D. Collins, J. Morduch, S. Rutherford, and O. Ruthven, Portfolios of the Poor: How the World's Poor Live on Two Dollars a Day. Princeton, NJ, USA: Princeton Univ. Press, 2009.
+	 D. Hulme and P. Mosley, Finance Against Poverty. Evanston, IL, USA: Routledge, 1996.
+	 J. Zollmann, "Kenya financial diaries: shilingi KWA shilingi--The financial lives of the poor," FSD Kenya, Nairobi, Kenya, Tech. Rep., 2014.
+	 D. A. Kendrick, Stochastic Control for Economic Models. New York, NY, USA: McGraw-Hill, 1981.
+	 J. Segupta and P. Fanchon, Control Theory Methods in Economics. Norwell, MA, USA: Springer, 1997.
+	 T. F. Cosimano, "Optimal experimentation and the perturbation method in the neighborhood of the augmented linear regulator problem," J. Econ. Dyn. Control, vol. 32, no. 6, pp. 1857­1894, 2008.
+	 F. Herzog, G. Dondi, and H. P. Geering, "Stochastic model predictive control and portfolio optimization," Int. J. Theor. Appl. Finance, vol. 10, no. 2, pp. 203­233, 2007.
+	 V. V. Dombrovskii, D. V. Dombrovskii, and E. A. Lyashenko, "Predictive control of random-parameter systems with multiplicative noise. Application to investment portfolio optimization," Autom. Remote Control, vol. 66, no. 4, pp. 583­595, 2005.
+	 D. Karlan, A. L. Ratan, and J. Zinman, "Savings by and for the poor: A research review and agenda," Rev. Income Wealth, vol. 60, no. 1, pp. 36­78, 2014.
+	 J. E. Taylor and I. Adelman, "Agricultural household models: Genesis, evolution, and extensions," Rev. Econ. Household, vol. 1, no. 1, pp. 33­58, 2003.
+	 P. A. Samuelson, "Lifetime portfolio selection by dynamic stochastic programming," Rev. Econ. Statist., vol. 51, no. 3, pp. 239­246, 1969.
+	 A. Mas-Colell, M. D. Whinston, and J. R. Green, Microeconomic Theory. New York, NY, USA: Oxford Univ. Press, 1995.
+	 D. P. Bertsekas, Dynamic Programming and Optimal Control, vol. 1. Belmont, MA, USA: Athena Scientific, 1995.
+	 D. P. Bertsekas and J. N. Tsitsiklis, Neuro-Dynamic Programming. Belmont, MA, USA: Athena Scientific, 1996.
+	 H. J. Kushner and P. G. Dupuis, Numerical Methods for Stochastic Control Problems in Continuous Time. Hamburg, Germany: Springer-Verlag, 2001.
+	 K. Passino, Biomimicry for Optimization, Control, and Automation. London, U.K.: Springer-Verlag, 2005.
+	 S. J. Qin and T. A. Badgwell, "A survey of industrial model predictive control technology," Control Eng. Pract., vol. 11, no. 7, pp. 733­764, 2003.
+	 C. B. Barrett, M. R. Carter, and M. Ikegami, "Poverty traps and social protection," World Bank, Social Protection, Washington, DC, USA, Tech. Rep. 0804, 2008.
+	 P. M. R. Carter and C. B. Barrett, "The economics of poverty traps and persistent poverty: An asset-based approach," J. Develop. Studies, vol. 42, no. 2, pp. 178­199, 2006. ;
+Objetivo, Problema, Método ou Metodologia e Contribuições:
+	We introduce a model predictive controller ( MPC ) and a proportional-integralderivative ( PID ) controller , and compare them with a benchmark method employed in finance and economics , stochastic dynamic programming ( DP ) . ;;
+	models of financial resource allocation between risky and risk-less assets of Merton [ 4 ] and Samuelson [ 17 ] , and their subsequent improvements that introduced various constraints , we propose a discrete time multiple input multiple output stochastic model with state-dependent constraints that reflect income uncertainties , investments , risks , liquidity , and credit constraints for underprivileged households . ;;
+	We also consider that the current assets are employed to fund consumption and all transactions that require cash , and that the sale of fixed assets is done without cost or time delay . ;;
+	C. Objective Function With this model , we will try to develop controllers that help the agent to build savings that will make him/her more resilient to shocks and uncertainty . ;;
+	Our goal is not to model the agent 's behavior by employing cost functions , such as the constant relative risk aversion utility function or other standard isoelastic cost function [ 18 ] ; instead , we seek to minimize a running quadratic cost over a finite horizon with target states x R2 and controls u U g ( x , u ) = |x ( k ) -x |T Q|x ( k ) -x |+|u ( k ) -u|T R|u ( k ) -u| . ;;
+	1 ) Formulation : As the PID controller does not explicitly consider the minimization of a cost function in its usual form , we build a reference vector r ( k ) , where the reference trajectories are ramps from the initial condition x0 to the desired values x with given slopes for each state , denoted by the vector S. The goal of the controller will be to drive the error e ( k ) = r ( k ) - x ( k ) to zero , where the reference vector r ( k ) is r ( k ) = min { x0 + k S , x } . ;;
+	We define a PID controller as the feedback law correspond- ing to each input ui ( k ) for i { 1 , 2 , 3 } . ;;
+	We develop a `` projection algorithm '' to ensure that the control input remains in the feasible set Uk . ;;
+	
+
+Estimating Tipping Points in Feedback-Driven Financial Networks
+Nome dos autores do artigo:
+	Zvonko Kostanjcar
+	Stjepan Begusic´
+	Harry Eugene Stanley
+	Boris Podobnik ;
+Referências Bibliográficas:
+	 R. Albert and A.-L. Baraba´si, "Statistical mechanics of complex networks," Rev. Mod. Phys., vol. 74, pp. 47­97, 2002.
+	 D. Brockmann and D. Helbing, "The hidden geometry of complex, network-driven contagion phenomena," Science, vol. 342, pp. 1337­42, 2013.
+	 S. B. Rosenthal, C. R. Twomey, A. T. Hartnett, H. S. Wu, and I. D. Couzin, "Revealing the hidden networks of interaction in mobile animal groups allows prediction of complex behavioral contagion," Proc. Nat. Acad. Sci., vol. 112, pp. 4690­4695, 2015.
+	 M. Bogun~a´, D. Krioukov, and K. C. Claffy, "Navigability of complex networks," Nature Phys., vol. 5, pp. 74­80, 2008.
+	 I. Dobson, B. A. Carreras, V. E. Lynch, and D. E. Newman, "Complex systems analysis of series of blackouts: Cascading failure, critical points, and self-organization," Chaos, vol. 17, 2007 Art. no. 026103.
+	 P.-A. Noe¨l, C. D. Brummitt, and R. M. DSouza, "Controlling selforganizing dynamics on networks using models that self-organize," Phys. Rev. Lett., vol. 111, 2013, Art. no. 078701.
+	 M. Scheffer, S. Carpenter, J. A. Foley, C. Folke, and B. Walker, "Catastrophic shifts in ecosystems," Nature, vol. 413, pp. 591­596, 2001.
+	 R. M. May, S. A. Levin, and G. Sugihara, "Complex systems: Ecology for bankers," Nature, vol. 451, pp. 893­895, 2008.
+	 J. M. Drake and B. D. Griffen, "Early warning signals of extinction in deteriorating environments," Nature, vol. 467, pp. 456­459, 2010.
+	 M. Scheffer, "Complex systems: Foreseeing tipping points," Nature, vol. 467, pp. 411­412, 2010.
+	 M. Scheffer et al., "Anticipating critical transitions," Science, vol. 338, pp. 344­348, 2012.
+	 C. Boettiger and A. Hastings, " Tipping points: From patterns to predictions," Nature, vol. 493, pp. 157­158, 2013.
+	 T. S. Lontzek, Y. Cai, K. L. Judd, and T. M. Lenton, " Stochastic integrated assessment of climate tipping points indicates the need for strict climate policy," Nature Climate Change, vol. 5, pp. 441­444, 2015.
+	 M. Scheffer et al., "Early-warning signals for critical transitions," Nature, vol. 461, pp. 53­59, 2009.
+	 D. J. Watts, "A simple model of global cascades on random networks," Proc. Nat. Acad. Sci., vol. 99, pp. 5766­5771, 2002.
+	 P. Crucitti, V. Latora, and M. Marchiori, "Model for cascading failures in complex networks," Phys. Rev. E, vol. 69, 2004, Art. no. 045104.
+	 D. S. Scharfstein and J. C. Stein, "Herd behavior and investment," Amer. Econ. Rev., vol. 80, pp. 465­479, 1990.
+	 E. Samanidou, E. Zschischang, D. Stauffer, and T. Lux, "Agent-based models of financial markets," Rep. Progress Phys., vol. 70, pp. 409­450, 2007.
+	 D. Sornette, Why Stock Markets Crash: Critical Events in Complex Financial Systems. Princeton, NJ, USA: Princeton Univ. Press, 2009.
+	 T. Lux, "Herd behaviour, bubbles and crashes," Econ. J., vol. 105, pp. 881­96, 1995.
+	 T. Lux and M. Marchesi, "Scaling and criticality in a stochastic multi-agent model of a financial market," Nature, vol. 397, pp. 498­500, 1999.
+	 T. Lux and M. Marchesi, "Volatility clustering in financial markets: A microsimulation of interacting agents," Int. J. Theor. Appl. Finance, vol. 3, pp. 675­702, 2000.
+	 R. Cont and J. P. Bouchaud, "Herd behavior and aggregate fluctuations in financial markets," Macroecon. Dyn., vol. 4, pp. 170­196, 2000.
+	 D. Sornette, "Critical market crashes," Phys. Rep., vol. 378, pp. 1­98, 2003.
+	 D. Abreu and M. K. Brunnermeier, "Bubbles and crashes," Econometrica, vol. 71, pp. 173­204, 2003.
+	 W. Yan, R. Woodard, and D. Sornette, "Diagnosis and prediction of tipping points in financial markets: Crashes and rebounds," Phys. Procedia, vol. 3, pp. 1641­1657, 2010.
+	 A. Majdandzic, B. Podobnik, S. V. Buldyrev, D. Y. Kenett, S. Havlin, and H. Eugene Stanley, "Spontaneous recovery in dynamical networks," Nature Phys., vol. 10, pp. 34­38, 2013.
+	 B. Podobnik, T. Lipic, D. Horvatic, A. Majdandzic, S. R. Bishop, and H. E. Stanley, "Predicting the lifetime of dynamic networks experiencing persistent random attacks," Sci. Rep., vol. 5, 2015, Art. no. 14286.
+	 L. Feng, B. Li, B. Podobnik, T. Preis, and H. E. Stanley, "Linking agentbased models and stochastic models of financial markets," Proc. Nat. Acad. Sci. United States Amer., vol. 109, pp. 8388­8393, 2012.
+	 A. Johansen, "Characterization of large price variations in financial markets," Phys. A: Stat. Mech. Appl., vol. 324, pp. 157­166, 2003.
+	 D. Sornette, "Dragon-kings, black swans, and the prediction of crises," Int. J. Terraspace Sci. Eng., vol. 2, pp. 1­18, 2009.
+	 H. Zhang, T. Leung, and O. Hadjiliadis, "Stochastic modeling and fair valuation of drawdown insurance," Insurance: Math. Econ., vol. 53, pp. 840­850, 2013.
+	 D. Johnston and P. Djuric´, "The science behind risk management," IEEE Signal Process. Mag., vol. 28, no. 5, pp. 26­36, Sep. 2011.
+	 F. Schweitzer, G. Fagiolo, D. Sornette, F. Vega-Redondo, A. Vespignani, and D. R. White, "Economic networks: The new challenges," Science, vol. 325, pp. 422­425, 2009.
+	 J. F. Nash, "The bargaining problem," Econometrica, vol. 18, pp. 155­162, 1950.
+	 A. Rubinstein, "Perfect equilibrium in a bargaining model," Econometrica, vol. 50, pp. 97­109, 1982.
+	 D. Gale, "Bargaining and competition part I: Characterization," Econometrica, vol. 54, 1986, Art. no. 785.
+	 D. Gale, "Limit theorems for markets with sequential bargaining," J. Econ. Theory, vol. 43, pp. 20­54, 1987.
+	 M. Manea, "Bargaining in stationary networks," Amer. Econ. Rev., vol. 101, pp. 2042­2080, 2011.
+	 S. A. West, I. Pen, and A. S. Griffin, "Cooperation and competition between relatives," Science, vol. 296, pp. 72­75, 2002.
+	 J. Aguirre, D. Papo, and J. M. Buldu´, "Successful strategies for competing networks," Nature Phys., vol. 9, pp. 230­234, 2013.
+	 S. A. Levin, "Public goods in relation to competition, cooperation, and spite," Proc. Nat. Acad. Sci. United States Amer., vol. 111, pp. 10 838­10 845, 2014.
+	 K. Binmore, A. Rubinstein, and A. Wolinsky, "The NASH bargaining solution in economic modelling," RAND J. Econ., vol. 17, pp. 176­188, 1986.
+	 R. J. Shiller, Irrational Exuberance. Princeton, NJ, USA: Princeton Univ. Press, 2000.
+	 F. Allen, S. Morris, and A. Postlewaite, "Finite bubbles with short sale constraints and asymmetric information," J. Econ. Theory, vol. 61, pp. 206­229, 1993.
+	 J. B. De Long, A. Shleifer, L. H. Summers, and R. J. Waldmann, "Noise trader risk in financial markets," J. Political Economy, vol. 98, pp. 703­738, 1990.
+	 H. L. Vogel, Financial Market Bubbles and Crashes. Cambridge, U.K.: Cambridge Univ. Press, 2009.
+	 J. S. Rosenschein and G. Zlotkin, Rules of Encounter: Designing Conventions for Automated Negotiation Among Computers. Cambridge, MA, USA: MIT Press, 1994.
+	 J. von Neumann and O. Morgenstern, Theory of Games and Economic Behavior. Princeton, NJ, USA: Princeton Univ. Press, 1944.
+	 M. Elliott, B. Golub, and M. O. Jackson, "Financial networks and contagion," Amer. Econ. Rev., vol. 104, pp. 3115­3153, 2014.
+	 S. Maslov, "Simple model of a limit order-driven market," Phys. A: Stat. Mech. Appl., vol. 278, pp. 571­578, 2000.
+	 J. Scheinkman and W. Xiong, "Overconfidence and speculative bubbles," J. Political Economy, vol. 111, pp. 1183­1220, 2003.
+	 W. C. Brainard and J. Tobin, "Pitfalls in financial model-building," Cowles Foundation Discussion Papers, 1968.
+	 O. Blanchard, C. Rhee, and L. Summers, " The stock market, profit, and investment," Quart. J. Econ., vol. 108, pp. 115­136, 1993.
+	 M. J. Gordon, "Dividends, earnings, and stock prices," Rev. Econ. Statist., vol. 41, pp. 99­105, 1959.
+	 Z. Bodie, A. Kane, and A. J. Marcus, Essentials of Investments. New York, NY, USA: McGraw Hill, 2003.
+	 J. Y. Campbell and R. J. Shiller, "Stock prices, earnings, and expected dividends," J. Finance, vol. 43, pp. 661­676, 1988.
+	 R. J. Shiller, [Online]. Available: http://www.econ.yale.edu/ shiller/data.htm.
+	 D. J. Watts and S. H. Strogatz, "Collective dynamics of `small-world' networks," Nature, vol. 393, pp. 440­442, 1998.
+	 T. Koller, M. Goedhart, and D. Wessels, Valuation: Measuring and Managing the Value of Companies. Hoboken, NJ, USA: Wiley, 2005.
+	 F. Ding, N. V. Dokholyan, S. V. Buldyrev, H. E. Stanley, and E. I. Shakhnovich, "Direct molecular dynamics observation of protein folding transition state ensemble," Biophys. J., vol. 83, pp. 3525­3532, 2002.
+	 J. Y. Campbell and R. J. Shiller, "Cointegration and tests of present value models," J. Political Economy, vol. 95, pp. 1062­1088, 1987.
+	 R. F. Engle and C. W. J. Granger, "Co-integration and error correction: Representation, estimation, and testing," Econometrica, vol. 55, pp. 251­276, 1987.
+	 J. D. Hamilton, Time Series Analysis. Princeton, NJ, USA: Princeton Univ. Press, 1994.
+	 S.-J. Kim, K. Koh, S. Boyd, and D. Gorinevsky, "L1 trend filtering," SIAM Rev., vol. 51, pp. 339­360, 2009.
+	 S.-J. Kim, K. Koh, M. Lustig, S. Boyd, and D. Gorinevsky, "An interiorpoint method for large-scale 1 -regularized least squares," IEEE J. Sel. Topics Signal Process., vol. 1, no. 4, pp. 606­617, Dec. 2007.
+	 E. F. Fama and K. R. French, "The cross-section of expected stock returns," J. Finance, vol. 47, pp. 427­465, 1992.
+	 P. Balduzzi, "Transaction costs and predictability: Some utility cost calculations," J. Financial Econ., vol. 52, pp. 47­78, 1999. ;
+Objetivo, Problema, Método ou Metodologia e Contribuições:
+	We report a cointegration between the returns of the S & P 500 index and its intrinsic value . ;;
+	We propose a network of bargaining agents [ 35 ] ­ [ 39 ] along with the competition and cooperation mechanisms between them [ 40 ] ­ [ 43 ] . ;;
+	We demonstrate how the degree of market overpricing through a feedback mechanism between trading and price dynamics induces further market overpricing , market bubbles , and ultimately market collapse [ 25 ] , [ 44 ] ­ [ 47 ] . ;;
+	We find that a well-known US financial index , the S & P 500 index , exhibits a hysteresis behavior , as well as market-collapse tipping points and recovery tipping points that confirm the predictions of our network model . ;;
+	We report that the model , with only the change in the S & P 500 intrinsic value as input , consistently generates prices which exhibit appropriate heavy-tailed drawdown and drawup distributions . ;;
+	We propose a coupled network model composed of equally sized demand ( buyer ) and supply ( seller ) networks , where agents represented as network nodes , cooperate with agents on the opposite side of the market [ 43 ] , but compete with agents on the same side of the market , as depicted in Fig . ;;
+	The first two are the trivial cases of the network model , and the last case is representative of the networks in our model , since the values of p are non-trivial and vary as defined in equation ( 3 ) . ;;
+	We define this ratio R = S ( t ) SI ( t ) between the market price S and and the intrinsic value SI as the Market-to-Intrinsic ratio . ;;
+	Our model for determining the intrinsic value is based on the widely used free cash flow model ( FCFM ) [ 55 ] , [ 56 ] , in which the stock of a company is worth the sum of all of SI ( t ) = j=1 F CFt+j j k=1 ( 1 + W AC Ct + k ) ( 8 ) and the discount rate is the future weighted average cost of capital ( WACC ) . ;;
+	The SI value is approximate because for the t - T time period we know only those FCF and WACC values from t - T up to time t and thus the FCF and WACC values for times longer than t must be estimated . ;;
+	Our model model has two stages , a volatile growth phase that lasts T years followed by a stable `` steady state '' growth phase . ;;
+	We first examine the steady state growth phase where the ultimate question to be answered is : what are the dynamics that control cash flow ? ;;
+	This accumulated collective uncertainty among agents we quantify as the variance of model price , and Fig . ;;
+	We also show the average clustering coefficients ( calculated as the mean of local clustering coefficients of all vertices , as proposed by [ 59 ] ) for the supply and demand networks , shown in Fig . ;;
+	4 ( a ) ­ ( b ) are in agreement with a complex system phenomenon called critical slowing down [ 11 ] characterized by the increase in the variance as the system approaches criticality , which is , in our case , market collapse . ;;
+	5 ( a ) further validates our intrinsic price since we find that the peaks of the market-to-intrinsic ratio follow the peaks of the Shiller P/E indicator widely used to estimate the degree of market overpricing . ;;
+	This fact affirms that our SI represents a reasonable estimation of the intrinsic value of the S & P 500 index . ;;
+	We confirm the intriguing possibility that two distinct underpriced and overpriced modes are present in the financial complex system . ;;
+	We apply a statistical mixture model to reveal the presence of a substructure in the ratio and show that the probability distribution function of the ratio fits the Gaussian mixture model , which resembles the bimodal shape characteristic for small nonlinear systems near a tipping point [ 61 ] . ;;
+	Note that we can locate this substructure of the financial system with the underpriced and overpriced modes because we have a model that can estimate the intrinsic price . ;;
+	We quantify this assumption by investigating the long-term relationship [ 62 ] between the S & P 500 index , SM ( t ) , and the intrinsic value of the S & P 500 index , SI ( t ) , i.e . ;;
+	
+
+Financial Stress Through Complexity Science
+Nome dos autores do artigo:
+	Apit Hemakom
+	Theerasak Chanwimalueang
+	Alicia Carrio´n
+	Lisa Aufegger
+	Anthony G. Constantinides
+	Danilo P. Mandic ;
+Referências Bibliográficas:
+	 W. Er and D. P. Mandic, "Dynamical complexity analysis of multivariate financial data," in Proc. IEEE Int. Conf. Acoust., Speech, Signal Process., 2013, pp. 8732­8736.
+	 N. Amenc, F. Goltz, and V. Le Sourd, Assessing the quality of stock market indices. Nice, France, EDHEC Risk & Asset Management Research Centre Publication, 2007.
+	 G. Fontanills and T. Gentile, Start Market Course. Hoboken, NJ, USA: Wiley, 2001.
+	 H. S. Dent Jr., The Next Great Bubble Boom: How to Profit from the Greatest Boom in History: 2006­2010. New York, NY, USA: Free Press, 2006.
+	 R. Stuteley, Numbers Guide: The Essentials of Business Numeracy, 5th ed. Hoboken, NJ, USA: Wiley, 2003.
+	 R. D. Edwards, J. Magee, and W. Bassetti, Technical Analysis of Stock Trends, 9th ed. Boca Raton, FL, USA: CRC, 2007.
+	 E. F. Fama, "Efficient capital markets: A review of theory and empirical work," J. Finance, vol. 25, no. 2, pp. 383­417, 1970.
+	 M. Malik, "Heart rate variability: Standards of measurement, physiological interpretation, and clinical use," Eur. Heart J., vol. 17, no. 3, pp. 354­381, 1996.
+	 H. Selye, "Stress and the general adaptation syndrome," Brit. Med. J., vol. 1, no. 4667, pp. 1383­1392, 1950.
+	 P. Lequeux and M. Menon, "An eigenvalue approach to risk regimes in currency markets," J. Derivatives Hedge Funds, vol. 16, no. 2, pp. 123­ 135, 2009.
+	 M. U. Ahmed and D. P. Mandic, "Multivariate multiscale entropy: A tool for complexity analysis of multichannel data," Phys. Rev. E, vol. 84, no. 6, pp. 061918­1­061918­10, 2011.
+	 P. M. Addo, M. Billio, and D. Gue´gan, "Understanding exchange rates dynamics," CES Working Papers halshs-00803447, ver. 1, pp. 1­14, 2013.
+	 R. Cardarelli, S. Elekdag, and S. Lall, "Financial stress and economic contractions," J. Financial Stability, vol. 7, no. 2, pp. 78­97, 2011.
+	 R. Balakrishnan, S. Danninger, S. Elekdag, and I. Tytell, "The transmission of financial stress from advanced to emerging economics," IMF Working Paper WP/09/133, pp. 1­52, 2009.
+	 R. Cardarelli, S. Elekdag, and S. Lall, "Financial stress, downturns, and recoveries," IMF Working Paper WP/09/100, pp. 1­58, 2009.
+	 K. J. Forbes, "Are trade linkages important determinants of country vulnerability to crises?," NBER Working Paper 8194, pp. 1­66, 2001.
+	 G. L. Kaminsky and C. M. Reinhart, "The twin crises: The causes of banking and balance-of-payments problems," Amer. Econ. Rev., vol. 89, no. 3, pp. 473­500, 1999.
+	 C. S. Hakkio and W. R. Keeton, "Financial stress: What is it, how can it be measured, and why does it matter?" Federal Reserve Bank of Kansas City, no. Q II, pp. 5­50, 2009.
+	 M. Billio, M. Getmansky, A. W. Lo, and L. Pelizzon, "Measuring systemic risk in the finance and insurance sectors," MIT Sloan School Working Paper 4474­10, pp. 1­66, 2010.
+	 M. Kritzman, Y. Li, S. Page, and R. Rigobon, "Principal components as a measure of systemic risk," J. Portfolio Manage., vol. 37, no. 4, pp. 1­16, 2011.
+	 D. Duffie, "A 10-by-10-by-10 approach," NBER Working Paper 17281, pp. 1­10, 2011.
+	 E. C. Zeeman, "Catastrophe theory," Scientific Amer., pp. 65­70, 75­83, 1976.
+	 M. U. Ahmed and D. P. Mandic, "Multivariate multiscale entropy analysis," IEEE Signal Process. Lett., vol. 19, no. 2, pp. 91­94, Feb. 2012.
+	 J.-P. Eckmann, S. O. Kamphorst, and D. Ruelle, "Recurrence plots of dynamical systems," Europhysics Lett., vol. 4, no. 9. pp. 973­977, 1987.
+	 D. P. Mandic, M. Chen, T. Gautama, M. M. Van Hulle, and A. Constantinides, "On the characterization of the deterministic/stochastic and linear/nonlinear nature of time series," in Proc. Roy. Soc. A, 2008, vol. 464, no. 2093, pp. 1141­1160.
+	 P. M. Addo, M. Billio, and D. Gue´gan, "Nonlinear dynamics and recurrence plots for detecting financial crisis," North Amer. J. Econ. Finance, vol. 26, pp. 416­435, 2013
+	 D. Looney, A. Hemakom, and D. P. Mandic, "Intrinsic multiscale analysis: A multivariate EMD framework," Proc. Roy. Soc. A, vol. 471, no. 2173, pp. 20140709-1­20140709-28, 2015.
+	 A. L. Goldberger, L. A. N. Amaral, J. M. Hausdorff, P. Ch. Ivanov, C.-K. Peng, and H. E. Stanley, "Fractal dynamics in physiology: Alterations with disease and aging," Proc. Nat. Acad. Sci. USA, vol. 99, pp. 2466­2472, 2002.
+	 R. Hornero, D. Aba´solo, J. Escudero, and C. Go´mez, "Nonlinear analysis of electroencephalogram and magnetoencephalogram recordings in patients with Alzheimer's disease," Philosophical Trans. Roy. Soc. A, vol. 367, no. 1887, pp. 317­336, 2009.
+	 T. Takahashi et al., "Age-related variation in EEG complexity to photic stimulation: A multiscale entropy analysis," Clin. Neurophysiology, vol. 120, no. 3, pp. 476­83, 2009.
+	 J. S. Richman and J. R. Moorman, "Physiological time-series analysis using approximate entropy and sample entropy," Amer. J. Physiology Heart Circulatory Physiology, vol. 278, no. 6, pp. H2039­H2049, 2000.
+	 M. Costa, A. L. Goldberger, and C. K. Peng, "Multiscale entropy analysis of complex physiologic time series," Phys. Rev. Lett., vol. 89, no. 6, pp. 068102-1­069102-4, 2002.
+	 S.-D. Wu, C.-W. Wu, K.-Y. Lee, and S.-G. Lin, "Modified multiscale entropy for short-term time series," Physica A, vol. 392, no. 2013, pp. 5865­5873, 2013.
+	 D. A. Rand and L. S. Young, "Dynamical Systems and Turbulence," New York, NY, USA: Springer-Verlag, 1981.
+	 A. Fraser and H. Swinney, "Independent coordinates for strange attractors from mutual information," Phys. Rev. A, vol. 33, no. 2, pp. 1134­1140, 1986.
+	 L. Cao, "Practical method for determining the minimum embedding dimension of a scalar time series," Physica D: Nonlinear Phenomena, vol. 110, no. 1­2, pp. 43­50, 1997.
+	 T. Gautama, D. P. Mandic, and M. M. Van Hulle, "A differential entropy based method for determining the optimal embedding parameters of a signal," in Proc. IEEE Int. Conf. Acous. Speech Signal Process., 2003, vol. 6, pp. 29­32.
+	 L. L. Trulla, A. Giuliani, J. P. Zbilut, and C. L. Webber Jr, "Recurrence quantification analysis of the logistic equation with transients," Phys. Lett. A, vol. 223, no. 4, pp. 255­260, 1996.
+	 T. Schreiber and A. Schmitz, "Surrogate time series," Physica D, vol. 142, no. 3­4, pp. 346­382, 2000.
+	 T. Schreiber and A. Schmitz, "Improved surrogate data for nonlinearity tests," Phys. Rev. Lett., vol. 77, no. 4, pp. 635­638, 1996.
+	 C. J. Keylock, "Improved preservation of autocorrelation structure in surrogate data using an initial wavelet step," Nonlinear Processes Geophysics, vol. 15, no. 3, pp. 435­444, 2008.
+	 N. Rehman and D. P. Mandic, "Multivariate empirical mode decomposition," in Proc. Roy. Soc. A, 2010, vol. 466, no. 2117, pp. 1291­1302.
+	 A. Hemakom, V. Goverdovsky, D. Looney, and D. P. Mandic, "Adaptiveprojection intrinsically transformed multivariate empirical mode decomposition in cooperative brain-computer interface applications," Phil. Trans. Roy. Soc. A, vol. 374, no. 2065, pp. 20150199-1­20150199-15, 2016.
+	 P. Tass et al., "Detection of n:m phase locking from noisy data: Application to magnetoencephalography," Phys. Rev. Lett., vol. 81, no. 15, pp. 3291­ 3294, 1998.
+	 S. M. Pincus and A. L. Goldberger, "Physiological time-series analysis: What does regularity quantify?," Amer. Physiological Soc., vol. 266, no. 4, pp. H1643­H1656, 1994.
+	 F. Kaffashi, R. Foglyano, C. G. Wilson, and K. A. Loparo, "The effect of time delay on approximate & sample entropy calculations," Physica D, vol. 237, no. 23, pp. 3069­3074, 2008.
+	 CBOE Execute Success, "White paper--the CBOE volatility index-- VIX R : The powerful and flexible trading and risk management tool from the Chicago Board Options Exchange," pp. 1­23, 2014. ;
+Objetivo, Problema, Método ou Metodologia e Contribuições:
+	The multiscale sample entropy and our proposed Assessment of Latent Index of Stress methods have successfully assessed financial stress , and have served as a measure to establish an analogy between transitions from ` normal ' ( relaxed ) to ` abnormal ' ( stressed ) financial periods with the sympatho-vagal balance in humans . ;;
+	Our findings support the EMH theory and reveal high stress for both the periods of Internet bubble burst and sub-prime mortgage crisis . ;;
+	It is therefore natural to ask whether a general health of the economy , seen through the lens of stock indices , can be assessed in a way analogous to the way we examine health of living organisms . ;;
+	Our analysis falls under this general umbrella , but is finance-specific and employs nonparametric analyses of the determinism ( via predictability ) , nonlinearity , multiscale entropy , and synchrony , within an intrinsic multivariate analysis framework . ;;
+	Our approach falls between these two categories -- it is composite in the sense that it simultaneously analyses several individual market indices , while being specific enough to examine the balance/imbalance aspect of markets . ;;
+	Our rationale is that low-frequency changes ( LF band ) , which correspond to time spans of over 1 year , are driven by global factors ( monetary policies ) , whereas the more rapid changes ( HF band ) , over spans of 5 days to 3 months , signify abrupt events , such as the 9/11 crisis and the Internet bubble burst . ;;
+	SUMMARY OF MOTIVATION AND CONTRIBUTION Inspired by the catastrophe theory [ 22 ] and the EMH theory , we propose the ALIS index as an indicator of financial stress during episodes of financial crises in different individual stock indices . ;;
+	We also introduce the moving-average multivariate sample entropy ( MA-MSE ) algorithm to quantify different degrees of such complexity . ;;
+	We also consider four financial markets outside the US in order to assess the performance of the ALIS : ( i ) Financial Times Stock Exchange 100 ( FTSE 100 ) , ( ii ) Cotation Assiste´e en Continu 40 ( CAC 40 ) , ( iii and iv ) foreign exchange ( Forex ) markets for the EUR/GBP and GBP/JPY . ;;
+	ALGORITHM AND BACKGROUND We shall first briefly describe the algorithms used in this study . ;;
+	We here introduce its variate , termed MA-MSE , to quantify multivariate complexity of both the trend and the detrended data , a procedure referred to as the MA-MSE , outlined in Algorithm 1 . ;;
+	Financial time series contain different degrees of volatility , or in other words power imbalances among the signal channels ; therefore in the intrinsic multiscale analysis we use the noiseassisted adaptive-projection intrinsically-transformed MEMD ( NA-APIT-MEMD ) which accounts for the different dynamics in multivariate data ( see [ 43 ] for more detail ) . ;;
+	F. Assessment of Latent Index of Stress ( ALIS ) We shall now introduce the ALIS to quantify ` stress level of a financial organism ' by considering the detrended data , zk , j , as the input , followed by aggregating the normalised financial time series of the low ( 0­0.0042 Hz , LF ) and high ( 0.0167­ 0.2 Hz , HF ) frequency bands . ;;
+	
+
+Multiobjective Evolutionary Optimization of Type-2 Fuzzy Rule-Based Systems for Financial Data Classification
+Nome dos autores do artigo:
+	Michela Antonelli
+	Dario Bernardo
+	Hani Hagras
+	Francesco Marcelloni ;
+Referências Bibliográficas:
+	 "The Regulatory Opportunity in Financial Services," , [Online]. Available: http://butleranalytics.com/regulatory-opportunityfinancial-services/
+	 "Predictive Models - Risks and Benefits," , [Online]. Available: http://butleranalytics.com/predictive-models-risks-benefits/
+	 "Predictive Model Management Strategy," , [Online]. Available: http://butleranalytics.com/financial-regulation-predictive-models/
+	 A. Garcia-Almanza and E. Tsang, "Forecasting stock prices using genetic programming and chance discovery," presented at the 12th Int. Conf. Comput. Econ. Finance, Limassol, Cyprus, Jun. 22­24, 2006.
+	 A. Garcia-Almanza and E. Tsang, "Evolving decision rules to predict investment opportunities," Int. J. Autom. Comput., vol. 5, no. 1, pp. 22­ 31, 2008.
+	 A. Garcia-Almanza, "New classification methods for gathering patterns in the context of genetic programming," Ph.D. dissertation, Dept. Comput. Electron. Syst., Univ. Essex, Colchester, U.K., 2008.
+	 L. Breiman, "Random Forests," Mach. Learn., vol. 45, no. 1, pp. 5­32, 2001.
+	 J. Casillas, O. Cordon, F. Herrera, L. Magdalena, Eds., Interpretability Issues in Fuzzy Modelling. New York, NY, USA: Springer, 2003.
+	 M. Setnes and H. Roubos, "GA-fuzzy modelling and classification: Complexity and performance," IEEE Trans. Fuzzy Syst., vol. 8, no. 5, pp. 509­ 522, Oct. 2000.
+	 H. Ishibuchi and T. Yamamoto, "Interpretability issues in fuzzy geneticbased machine learning for linguistic modelling," in Modelling with Words , vol. 2873. Berlin, Germany: Springer-Verlag, 2003, pp. 209­228.
+	 H. Ishibuchi, T. Nakashima, and M. Nii, Classification and Modeling with Linguistic Information Granules: Advanced Approaches to Linguistic Data Mining. Berlin, Germany: Springer-Verlag, 2004.
+	 P. Ducange and F. Marcelloni, "Multi-objective evolutionary fuzzy systems," in Proc. 9th Int. Workshop Fuzzy Logic Appl., 2011, pp. 83­90.
+	 M. Fazzolari, R. Alcala´, Y. Nojima, H. Ishibuchi, and F. Herrera, "A review of the application of multiobjective evolutionary fuzzy systems: Current status and further directions," IEEE Trans. Fuzzy Syst., vol. 21, no. 1, pp. 45­65, Feb. 2013.
+	 P. Melin and O. Castillo, "A review on type-2 fuzzy logic applications in clustering, classification and pattern recognition," Appl. Soft Comput., vol. 21, pp. 568­577, 2014.
+	 C. Glackin, L. Maguire, R. McIvor, P. Humphreys, and P. Herman, "A comparison of fuzzy strategies for corporate acquisition analysis," Fuzzy Sets Syst., vol. 159, no. 18, pp. 2039­2056, 2007.
+	 D. Bernardo, H. Hagras, and E. Tsang, "A genetic type-2 fuzzy logic based system for the generation of summarised linguistic predictive models for financial applications," Soft Comput., vol. 17, no. 12, pp. 2185­2201, 2013.
+	 J.A Sanz, D. Bernardo, F. Herrera, H. Bustince, and H. Hagras, "A compact evolutionary interval-valued fuzzy rule-based classification system for the modeling and prediction of real-world financial applications with imbalanced data," IEEE Trans. Fuzzy Syst., vol. 23, no. 4, pp. 973­990, Aug. 2015.
+	 D. Wu and W. Tan, "Genetic learning and performance evaluation of interval type-2 fuzzy logic controllers," Eng. Appl. Artif. Intell., vol. 19, no. 8, pp. 819­841, 2006.
+	 R. Mart´inez-Soto, O. Castillo, L. T. Aguilar, and A. R. D´iaz, "A hybrid optimization method with PSO and GA to automatically design type-1 and type-2 fuzzy logic controllers," Int. J. Mach. Learn. Cybern., vol. 6, no. 2, pp. 175­196, 2015.
+	 O. Linda and M. Manic, "Uncertainity-robust design of interval type-2 fuzzy logic controller for delta parallel robot," IEEE Trans. Ind. Informat., vol. 7, no. 4, pp. 661­670, Nov. 2011.
+	 M. Almaraahi, R. John, and S. Ahmadi, "Learning of type-2 fuzzy logic systems by simulated annealing with adaptive step size," in Electrical Engineering and Intelligent Systems , vol. 130. Berlin, Germany: Springer-Verlag, 2013, pp. 53­64.
+	 T. Kumbasar and H. Hagras, "Big bang-big crunch optimization based Interval type-2 fuzzy PID cascade controller design strategy," Inf. Sci., vol. 282, pp. 277­295, 2014.
+	 J. Mendel, H. Hagras, W-W. Tan, W. Melek, and H. Ying, Introduction to Type-2 Fuzzy Logic Control: Theory and Applications. New York, NY, USA: Wiley/IEEE Press, 2014.
+	 G. G. Sundarkumar and V. Ravi, "A novel hybrid undersampling method for mining unbalanced datasets in banking and insurance," Eng. Appl. Artif. Intell., vol. 36, pp. 368­377, 2015.
+	 M. Antonelli, P. Ducange, and F. Marcelloni, "Multi-objective evolutionary rule and condition selection for designing fuzzy rule-based classifiers," in Proc. IEEE Int. Conf. Fuzzy Syst., Brisbane, Australia, Jun. 10­15, 2012, pp. 794­800.
+	 M. Antonelli, P. Ducange, and F. Marcelloni, "A fast and efficient multiobjective evolutionary learning scheme for fuzzy rule-based classifiers," Inf. Sci., vol. 283, pp. 36­54, 2014.
+	 M. Antonelli, P. Ducange, and F. Marcelloni, "An experimental study on evolutionary fuzzy classifiers designed for managing imbalanced datasets," Neurocomput., vol. 146, pp. 125­136, 2014.
+	 J. Alcala-Fdez, R. Alcala, and F. Herrera, "A fuzzy association rulebased classification model for high-dimensional problems with genetic rule selection and lateral tuning," IEEE Trans. Fuzzy Syst., vol. 19, no. 5, pp. 857­872, Oct. 2011.
+	 J. Huhn and E. Hullermeier, "FURIA: An algorithm for unordered fuzzy rule induction," Data Mining Knowl. Discovery, vol. 19, no. 3, pp. 293­ 319, 2009.
+	 J. Quinlan, C4.5: Programs for Machine Learning. San Mateo, CA, USA: Morgan Kauffman, 1993.
+	 K. M. Ting, "An instance-weighting method to induce cost-sensitive trees," IEEE Trans. Knowl. Data Eng., vol. 14, no. 3, pp. 659­665, May/Jun. 2002.
+	 Q. Liang and J. M. Mendel, "Interval type-2 fuzzy logic systems: Theory and design," IEEE Trans. Fuzzy Syst., vol. 8, no. 5, pp. 535­550, Oct. 2000.
+	 D. Bernardo, H. Hagras, and E. Tsang, "An interval type-2 fuzzy logic system for the modelling and prediction of financial applications," presented at the Int. Conf. Auton. Intell. Syst., Aveiro, Portugal, Jun. 25­27, 2012.
+	 D. Bernardo, H. Hagras, and E. Tsang, "An interval type-2 fuzzy logic based system for model generation and summarization of arbitrage opportunities in stock markets," presented at the U.K. Workshop Comput. Intell., Edinburgh, U.K., Sep. 5­7, 2012.
+	 D. Bernardo, H. Hagras, and E. Tsang, "A genetic type-2 fuzzy logic based system for financial applications modelling and prediction," presented at the Proc. IEEE Int. Conf. Fuzzy Syst., Hyderabad, India, Jul. 7­10, 2013.
+	 A. Zhou, B-Y. Qu, H. Li, S-Z. Zhao, P. N. Suganthan, and Q. Zhang, "Multiobjective evolutionary algorithms: A survey of the state of the art," Swarm Evol. Comput., vol. 1, no. 1, pp. 32­49, 2011.
+	 P. Ducange, B. Lazzerini, and F. Marcelloni, "Multi-objective genetic fuzzy classifiers for imbalanced and cost-sensitive datasets," Soft Comput., vol. 14, no. 10, pp. 713­728, 2010.
+	 F. Herrera, "Genetic fuzzy systems: Taxonomy, current research trends and prospects," Evol. Intell., vol. 1, no. 1, pp. 27­46, 2008.
+	 J. M. Alonso and L. Magdalena, "Editorial: Special issue on interpretable fuzzy systems," Inf. Sci., vol. 181, no. 20, pp. 4331­4339, 2011.
+	 M. J. Gacto, R. Alcala´, and F. Herrera, "Interpretability of linguistic fuzzy rule-based systems: An overview of interpretability measures," Inf. Sci., vol. 128, no. 20, pp. 4340­4360, 2011.
+	 M. Cococcioni, P. Ducange, B. Lazzerini, and F. Marcelloni, "A Paretobased multi-objective evolutionary approach to the identification of mamdani fuzzy systems," Soft Comput., vol. 11, no. 11, pp. 1013­1031, 2007.
+	 A. Botta, B. Lazzerini, F. Marcelloni, and D. Stefanescu, "Context adaptation of fuzzy systems through a multi-objective evolutionary approach based on a novel interpretability index," Soft Comput., vol. 13, no. 5, pp. 437­449, 2009.
+	 R. Alcala´, P. Ducange, F. Herrera, B. Lazzerini, and F. Marcelloni, "A multi-objective evolutionary approach to concurrently learn rule and data bases of linguistic fuzzy rule-based systems," IEEE Trans. Fuzzy Syst., vol. 17, no. 5, pp. 1106­1122, Oct. 2009.
+	 M. Antonelli, P. Ducange, B. Lazzerini, and F. Marcelloni, "Multi-objective evolutionary learning of granularity, membership function parameters and rules of Mamdani fuzzy systems," Evol. Intell., vol. 2, no. 1­2, pp. 21­37, 2009.
+	 J. Casillas, P. Martinez, and A. D. Benitez, "Learning consistent, complete and compact sets of fuzzy rules in conjunctive normal form for regression problems," Soft Comput., vol. 13, no. 5, pp. 451­465, 2009.
+	 P. Pulkkinen and H. Koivisto, "A dynamically constrained multiobjective genetic fuzzy system for regression problems," IEEE Trans. Fuzzy Syst., vol. 18, no. 1, pp. 161­177, Feb. 2010.
+	 M. Antonelli, P. Ducange, B. Lazzerini, and F. Marcelloni, "Learning concurrently data and rule bases of Mamdani fuzzy rule-based systems by exploiting a novel interpretability index," Soft Comput., vol. 15, no. 10, pp. 1981­1998, 2011.
+	 M. Antonelli, P. Ducange, B. Lazzerini, and F. Marcelloni, "Learning knowledge bases of multi-objective evolutionary fuzzy systems by simultaneously optimizing accuracy, complexity and partition integrity," Soft Comput., vol. 15, no. 12, pp. 2335­2354, 2011.
+	 M. J. Gacto, R. Alcala, and F. Herrera, "Integration of an index to preserve the semantic interpretability in the multi-objective evolutionary rule selection and tuning of linguistic fuzzy systems," IEEE Trans. Fuzzy Syst., vol. 18, no. 3, pp. 515­531, Jun. 2010.
+	 R. Alcala´, M. J. Gacto, and F. Herrera, "A fast and scalable multiobjective genetic fuzzy system for linguistic fuzzy modeling in high-dimensional regression problems," IEEE Trans. Fuzzy Syst., vol. 19, no. 4, pp. 666­681, Aug. 2011.
+	 M. Antonelli, P. Ducange, and F. Marcelloni, "Genetic training instance selection in multi-objective evolutionary fuzzy systems: A co-evolutionary approach," IEEE Trans. Fuzzy Syst., vol. 20, no. 2, pp. 276­290, Apr. 2012.
+	 H. Ishibuchi, T. Murata, and I. B. Turksen, "Single-objective and two objective genetic algorithms for selecting linguistic rules for pattern classification problems," Fuzzy Sets Syst., vol. 89, no. 2, pp. 135­150, 1997.
+	 O. Cordon, M. J. del Jesus, J. Casillas, F. Herrera, L. Magdalena, and P. Villar, "A multiobjective genetic learning process for joint feature selection and granularity and context learning in fuzzy rule-based classification systems," in Interpretability Issues in Fuzzy Modeling, J. Casillas, F. Herrera, O. Cordoon, and L. Magdalena, Eds. Secaucus, NJ, USA: Springer-Verlag, 2003, pp. 79­99.
+	 H. Ishibuchi and T. Yamamoto, "Fuzzy rule selection by multi-objective genetic local search algorithms and rule evaluation measures in data mining," Fuzzy Sets Syst., vol. 141, pp. 59­88, 2004.
+	 H. Ishibuchi and Y. Nojima, "Analysis of interpretability-accuracy tradeoff of fuzzy systems by multiobjective fuzzy genetics-based machine learning," Int. J. Approx. Reason., vol. 44, no. 1, pp. 4­31, 2007.
+	 R. Alcala´, Y. Nojima, F. Herrera, and H. Ishibuchi, "Multiobjective genetic fuzzy rule selection of single granularity-based fuzzy classification rules and its interaction with the lateral tuning of membership functions," Soft Comput., vol. 15, no. 12, pp. 2303­2318, 2011.
+	 P. Pulkkinen and H. Koivisto, "Fuzzy classifier identification using decision tree and multiobjective evolutionary algorithms," Int. J. Approx. Reason., vol. 48, pp. 526­543, 2008.
+	 K. Trawinski, O. Cordon, and A. Quirin, "A Study on the use of multiobjective genetic algorithms for classifier selection in FURIA-based fuzzy multiclassifiers," Int. J. Comput. Intell. Syst., vol. 5, no. 2, pp. 231­253, 2012.
+	 O. Cordon, M. J. del Jesus, and F. Herrera, "A proposal on reasoning methods in fuzzy rule-based classification systems," Int. J. Approx. Reason., vol. 20, no. 1, pp. 21­45, 1999.
+	 W. W. Cohen, "Fast effective rule induction," in Proc. 12th Int. Conf. Mach. Learning, 1995, pp. 115­123.
+	 J. R. Quinlan, "Boosting, bagging, and C4.5," in Proc. 13th Nat. Conf. Artif. Intell., 1996, vol. 1, pp. 725­730.
+	 N. V. Chawla, K. W. Bowyer, L. O. Hall, and W. P. Kegelmeyer, "Smote: Synthetic minority over-sampling technique," J. Artif. Intell. Res., vol. 16, pp. 321­357, 2002.
+	 J. Alcala-Fdez, A. Fernandez, J. Luengo, J. Derrac, and S. Garcia, "KEEL data-mining software tool: Data set repository, integration of algorithms and experimental analysis framework," Multiple-Valued Log. Soft Comput., vols. 2/3, pp. 255­287, 2011.
+	 T. Fawcett, "An introduction to ROC analysis," Pattern Recog. Lett., vol. 27, no. 8, pp. 861­874, 2006.
+	 M. Friedman, "The use of ranks to avoid the assumption of normality implicit in the analysis of variance," J. Amer. Stat. Assoc., vol. 32, pp. 675­ 701, 1937.
+	 R. L. Iman and J. H. Davenport, "Approximations of the critical region of the Friedman statistic," Commun. Statist. A, Theory Methods, vol. 9, pp. 571­595, 1980.
+	 S. Holm, "A simple sequentially rejective multiple test procedure," Scand. J. Statist., vol. 6, pp. 65­70, 1979.
+	 D. J. Sheskin, Handbook of Parametric and Nonparametric Statistical Procedures, 4th ed. London, U.K.: Chapman & Hall/CRC Press, 2007. ;
+Objetivo, Problema, Método ou Metodologia e Contribuições:
+	We tested our approach , named IT2-PAES-RCS , on 11 financial datasets and compared our results with the ones obtained by the original PAES-RCS with three objectives and with and without scaled dominance , the FRBCs , fuzzy association rule-based Manuscript received June 26 , 2015 ; revised September 18 , 2015 and January 21 , 2016 ; accepted April 20 , 2016 . ;;
+	Another reason why it is important that we can understand models is trust . ;;
+	We denote this extension as IT2-PAES-RCS in the following . ;;
+	We modified both the inference mechanism and the evolutionary process for coping with the IT2 fuzzy sets . ;;
+	We tested IT2-PAES-RCS on 11 financial datasets and compared the results with the ones obtained by the original PAES-RCS , employing FPR and TPR as objectives , with ( PAES-RCS-SD ) and without scaled dominance , the FRBCs fuzzy association rule-based classification model for highdimensional dataset ( FARC-HD ) [ 28 ] and fuzzy unordered rules induction algorithm ( FURIA ) [ 29 ] , the classical C4.5 decision tree algorithm [ 30 ] , and its cost-sensitive version ( C4.5-CS ) [ 31 ] . ;;
+	We recall that an IT2 fuzzy set A~ is characterized by a fuzzy membership function A~ ( x ) , that is , the membership value for each element of this set is a fuzzy set [ 32 ] . ;;
+	We build the IT2 fuzzy sets by using the following procedure . ;;
+	First of all , we employ IT2 fuzzy sets rather than type-1 fuzzy sets . ;;
+	Second , in order to cope with unbalanced datasets , we split the accuracy into two objectives , namely TPR and FPR . ;;
+	We recall that TPR and FPR coincide , respectively , with the sensitivity and the complement to 1 of the specificity . ;;
+	Third , we use an approach denoted as scaled dominance , which was introduced in [ 33 ] ­ [ 35 ] , to handle unbalanced data by trying to give minority classes a fair chance when competing with a majority class . ;;
+	Initial Rule Base Generation We generate the initial rule base by first transforming each continuous variable into a categorical and ordered variable . ;;
+	We extract the initial rule base from the decision tree generated by the C4.5 algorithm . ;;
+	We observe that only three out of the six original input variables are included in the decision tree . ;;
+	We note that the rule base consists of 13 rules , which correspond to the 13 possible paths from the root to the leaf nodes . ;;
+	We note that , even though Mmax = 3 , only two rules have been selected in the final rule base . ;;
+	
+
+Multiobjective Investment Policy for a Nonlinear Stochastic Financial System: A Fuzzy Approach
+Nome dos autores do artigo:
+	Chien-Feng Wu
+	Bor-Sen Chen
+	Weihai Zhang ;
+Referências Bibliográficas:
+	 J. H. Ma and Y. S. Chen, "Study for the bifurcation topological structure and the global complicated character of a kind of nonlinear finance system ," Appl. Math. Mech., vol. 22, no. 11, pp. 1240­1251, 2001.
+	 J. H. Ma and Y. S. Chen, "Study for the bifurcation topological structure and the global complicated character of a kind of nonlinear finance system ," Appl. Math. Mech., vol. 22, no. 11, pp. 1240­1251, 2001.
+	 S. H. Strogatz, Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering. Reading, MA, USA: Addison-Wesley, 1994.
+	 H. W. Lorenz, Nonlinear Economic Dynamics and Chaotic Motion. New York, NY, USA: Springer, 1993.
+	 W. C. Chen, "Nonlinear dynamics and chaos in a fractional-order financial system," Chaos, Solitons Fractals, vol. 36, no. 5, pp. 1305­1314, 2008.
+	 B. Øksendal and A. Sulem, Applied Stochastic Control of Jump Diffusions, 2nd ed. Berlin, Germany: Springer, 2007.
+	 F. Hanson, Applied Stochastic Processes and Control for Jump-Diffusions: Modeling, Analysis and Computation, 2nd ed. Philadelphia, PA, USA: SIAM, 2007.
+	 N. C. Framstad, B. Øksendal, and A. Sulem, "Optimal consumption and portfolio in a jump diffusion market with proportional transaction costs," J. Math. Econ., vol. 35, pp. 233­257, Apr. 2001.
+	 R. Cont and P. Tankov, Financial Modelling with Jump Processes. Boca Raton, FL, USA: CRC Press, 2004.
+	 I. Pan, S. Das, and S. Das, "Multi-objective active control policy design for commensurate and incommensurate fractional order chaotic financial systems," Appl. Math. Model., vol. 39, no. 2, pp. 500­514, 2015.
+	 B. S. Chen, C. S. Tseng, and H. J. Uang, "Robustness design of nonlinear dynamic systems via fuzzy linear control," IEEE Trans. Fuzzy Syst., vol. 7, no. 5, pp. 571­585, Oct. 1999.
+	 C. S. Tseng, B. S. Chen, and H. J. Uang, "Fuzzy tracking control design for nonlinear dynamic systems via T-S fuzzy model," IEEE Trans. Fuzzy Syst., vol. 9, no. 3, pp. 381­392, Jun. 2001.
+	 F. L. Lewis, L. Xie, and D. Popa, Optimal and Robust Estimation: With an Introduction to Stochastic Control Theory. Boca Raton, FL, USA: CRC Press, 2008.
+	 D. P. Bertsekas and S. E. Shreve, Stochastic Optimal Control: The Discrete Time Case, vol. 139. New York, NY, USA: Academic, 1978.
+	 R. F. Stengel, Stochastic Optimal Control: Theory and Application. Hoboken, NJ, USA: Wiley, 1986.
+	 R. L. Haupt and S. E. Haupt, Practical Genetic Algorithms, 2nd ed. New York, NY, USA: Wiley, 2004.
+	 S. H. Zak, System and Control. New York, NY, USA: Oxford Univ. Press, 2003
+	 K. Tanaka and H. O. Wang, Fuzzy Control Systems Design and Analysis: A Linear Matrix Inequality Approach. New York, NY, USA: Wiley, 2001.
+	 H. C. Sung, D. W. Kim, J. B. Park, and Y. H. Joo, "Robust digital control of fuzzy systems with parametric uncertainties: LMI-based digital redesign approach," Fuzzy Sets Sys., vol. 161, pp. 919­933, 2010.
+	 C. S. Tseng and C. K. Hwang, "Fuzzy observer-based fuzzy control design for nonlinear systems with persistent bounded disturbances," Fuzzy Sets Syst., vol. 158, no. 2, pp. 164­179, Jan. 2007.
+	 R. Khasminskii and G. N. Milstein, Stochastic Stability of Differential Equations, 2nd ed. Berlin, Germany: Springer, 2011.
+	 S. Boyd, L. El Ghaoui, E. Feron, and V. Balakrishnan, Linear Matrix Inequalities in System and Control Theory. Philadelphia, PA, USA: SIAM, 1994.
+	 B. S. Chen and W. Zhang, "Stochastic H2 /H control with state dependent noise," IEEE Trans. Automat. Control, vol. 49, no. 1, pp. 45­57, Jan. 2004.
+	 D. Hinrichsen and A. Pritchard, "Stochastic H," SIAM J. Control Optim., vol. 36, pp. 1504­1538, 1998
+	 X. Lin and R. Zhang, "H control for stochastic systems with Poisson jumps," J. Syst. Sci. Complexity, vol. 24, no. 4, pp. 683­700, 2011.
+	 G. Chen, G. Chen, and S. H. Hsu, Linear Stochastic Control Systems. Boca Raton, FL, USA: CRC Press, 1995.
+	 G. P. Liu, J. B. Yang, and J. F. Whidborne, Multiobjective Optimisation & Control. Hertfordshire, U.K.: RSP Ltd, 2002
+	 L. Rachmawati and D. Srinivasan,"Multiobjective evolutionary algorithm with controllable focus on the knees of the Pareto front," IEEE Trans. Evol. Comput., vol. 13, no. 4, pp. 810­824, Aug. 2009.
+	 K. Deb, Multi-Objective Optimization Using Evolutionary Algorithms, 1st ed. Chichester, U.K.: Wiley, 2001.
+	 K. Deb, A. Pratap, S. Agarwal, and T. Meyarivan, "A fast and elitist multiobjective genetic algorithm: NSGA-II," IEEE Trans. Evol. Comput., vol. 6, no. 2, pp. 182­197, Apr. 2002.
+	 A. Abraham, L. C. Jain, and R. Goldberg, Evolutionary Multiobjective Optimization: Theoretical Advances and Applications. New York, NY, USA: Springer, 2005.
+	 E. Branke, K. Deb, H. Dierolf, and M. Osswald, "Finding knees in multi-objective optimization," Parallel Problem Solving Nature, vol. 3242, pp. 722­731, 2004.
+	 W. H. Zhang and G. Feng, "Nonlinear stochastic H2 /H control with ,dependent noise: Infinite horizon case," IEEE Trans. Autom. Control, vol. 53, no. 5, pp. 1323­1328, Jun. 2008.
+	 B. S. Chen, C. S. Tseng, and H. J. Uang, "Mixed H2 /H fuzzy output feedback control for nonlinear dynamic systems: An LMI approach," IEEE Trans. Fuzzy Syst., vol. 8, no. 3, pp. 249­265, Jun. 2000.
+	 B. S. Chen, H. C. Lee, and C. F. Wu, "Pareto optimal filter design for nonlinear stochastic fuzzy systems via multiobjective optimization," IEEE Trans. Fuzzy Syst., vol. 23, no. 2, pp. 387­399, Apr. 2015.
+	 A. Gulisashvili, Analytically Tractable Stochastic Stock Price Models. New York, NY, USA: Springer, 2012.
+	 E. M. Stein and J. C. Stein, "Stock price distributions with stochastic volatility: An analytic approach," Rev. Financial Stud., 4.4, pp. 727­752, 1991.
+	 J. Stoyanov, "Stochastic Financial Models," J. Roy. Statist. Soc.: Ser. A ,vol. 174, no. 2, pp. 510­511, 2011.
+	 H. Zhang, H. Yan, F. Yang, and Q. Chen, "Quantized control design for impulsive fuzzy networked systems," IEEE Trans. Fuzzy Syst., vol. 19, no. 6, pp. 1153­1162, Dec. 2011.
+	 H. K. Lam, "LMI-based stability analysis for fuzzy-model-based control systems using artificial T­S fuzzy model," IEEE Trans. Fuzzy Syst., vol. 19, no. 3, pp. 505­513, Jun. 2011.
+	 D. Hasan, N. Gu¨zel, and M. Sivri, "A fuzzy set-based approach to multi-objective multi-item solid transportation problem under uncertainty," Int. J. Fuzzy Syst., pp. 1­14, 2015. [Online]. Available: http://link.springer.com/article/10.1007/s40815-015-0081-9 ;
+Objetivo, Problema, Método ou Metodologia e Contribuições:
+	It is necessary to note that in this paper , we assume all the emer- gencial incidents are mutually exclusive event ( i.e. , when the jump occurs at time instant t , there is only one mark k to be assigned ) . ;;
+	1 , we want to design a multiobjective H2 /H robust investment policy for system state x ( t ) to achieve a desired state xd from the perspective of minimum H2 regulation error with minimum investment effort u ( t ) in ( 6 ) and minimum H investment risk in ( 7 ) under intrinsic fluctuations and external disturbance . ;;
+	Lemma 4 ( see [ 18 ] ) : For any matrix Mi with appropriate di- mension and the scheduling functions hi ( z ) with 0 hi ( z ) 1 , for i N+ , 1 i m , P > 0 , and m i=1 hi ( z ) = 1 , we have T l hj ( z ) Mj P j=1 l hi ( z ) Mi i=1 l hi ( z ) MiT P Mi . ;;
+	We will show this by contradiction . ;;
+	We derive the sufficient condition for J2 ( u ( t ) ) of the MOP in ( 18 ) first . ;;
+	Proof : Since the given Lyapunov function V ( x~ ( t ) ) = x~T ( t ) P x~ ( t ) is satisfied with the following two inequalities : m1 x~ ( t ) 2 2 V ( x~ ( t ) ) m2 x~ ( t ) 2 2 ( 37 ) where m1 > 0 and m2 > 0 , by the Ito^­Le´vy formula of V ( x~ ( t ) ) in ( 9 ) and the fact that u ( t ) is a feasible solution of the LMI- constrained MOP in ( 19 ) , we obtain dE { V ( x~ ( t ) ) } = E { dV ( x~ ( t ) ) } = E { ( 2x~T ( t ) P f ( x~ ( t ) ) m + 2x~T ( t ) P Bu ( t ) + T ( x~ ( t ) ) P ( x~ ( t ) ) + k k=1 [ V ( x~ ( t ) + ( x~ ( t ) , k ) ) - V ( x~ ( t ) ) ] ) dt } E -x~T ( t ) Q1 x~ ( t ) dt E -m3 x~ ( t ) 2 2 dt -m3 E { V ( x~ ( t ) ) } dt < 0 ( 38 ) m2 where m3 is the smallest eigenvalue value of positive-definite matrix Q1 > 0 . ;;
+	m1 m1 m2 ( 40 ) It is obvious that lim E t - x~ ( t ) 2 2 =0 and we obtain lim x~ ( t ) = 0 exponentially in the mean square sense . ;;
+	H2/H investment policy problem of nonlinear stochastic jump Remark 2 : In this study , we use the 3-D nonlinear stochas- diffusion financial system , the MOP in Theorems 1 and 3 with tic financial system to illustrate the proposed multiobjective LMI constraints to guarantee the robust stability of nonlinear H2/H investment theories . ;;
+	V. SIMULATION RESULTS To illustrate the design procedure and to confirm the performance of the proposed optimal investment policy for nonlinear stochastic jump diffusion financial system , we introduce a nonlinear stochastic jump diffusion financial system to mimic an emerging market in ( 2 ) . ;;
+	
+
+Fuzzy Dynamical System Scenario Simulation-Based Cross-Border Financial Contagion Analysis: A Perspective From International Capital Flows
+Nome dos autores do artigo:
+	Xinxin Xu
+	Ziqiang Zeng
+	Jiuping Xu
+	Mengxiang Zhang ;
+Referências Bibliográficas:
+	 F. Schweitzer, G. Fagiolo, D. Sornette, F. Vega-Redondo, A. Vespignani, and D. R. White, "Economic networks: The new challenges," Science, vol. 325, no. 5939, pp. 422­425, 2009.
+	 Y. Leitner, "Financial networks: Contagion, commitment, and private sector bailouts," J. Finance, vol. 60, no. 6, pp. 2925­2953, 2005.
+	 P. Glasserman and B. P. Young, "How likely is contagion in financial networks?" J. Banking Finance, vol. 50, pp. 383­399, 2015.
+	 G. Castellacci and Y. Choi, "Financial instability contagion: A dynamical systems approach," Quant. Finance, vol. 14, no. 7, pp. 1243­1255, 2014.
+	 F. Allen and D. Gale, "Financial contagion," J. Political Econ., vol. 108, no. 1, pp. 1­33, 2000.
+	 S. Claessens and K. J. Forbes, Eds, International Financial Contagion. New York, NY, USA: Springer-Verlag, 2001.
+	 K. J. Forbes and R. Rigobon, "Measuring contagion: Conceptual and empirical issues," International Financial Contagion, S. Claessens and K. J. Forbes. New York, NY, USA: Springer-Verlag, 2001.
+	 S. Claessens, R. Dornbusch, and Y. C. Park, "Contagion: Why crises spread and how this can be stopped?" in International Financial Contagion, S. Claessens and K. J. Forbes, Eds. New York, NY, USA: Springer-Verlag, 2001.
+	 M. Pritsker, "The channels for financial contagion," in International Financial Contagion, S. Claessens and K. J. Forbes, Eds. New York, NY, USA: Springer-Verlag, 2001.
+	 M. Elliott, B. Golub, and M. O. Jackson, "Financial networks and contagion," Amer. Econ. Rev., vol. 104, no. 10, pp. 3115­3153, 2014.
+	 K. J. Forbes and F. E. Warnock, "Capital flow waves: Surges, stops, flight, and retrenchment," J. Int. Econ., vol. 88, no. 2, pp. 235­251, 2012.
+	 M. Bordo and A. Murshid, "Are financial crises becoming more contagious? What is the Historical Evidence on Contagion?" in International Financial Contagion, S. Claessens and K. J. Forbes, Eds. New York, NY, USA: Springer-Verlag, 2001.
+	 M. Dungey, R. A. Fry, B. Gonza´lez-Hermosillo, and V. Martin, Transmission of Financial Crises and Contagion: A Latent Factor Approach. New York, NY, USA: Oxford Univ. Press, 2010.
+	 N. Boyson, C. Stahel, and R. Stulz, "Hedge fund contagion and liquidity shocks," J. Finance, vol. 65, no. 5, pp. 1789­1816, 2010.
+	 K. H. Bae, G. A. Karolyi, and R. M. Stulz, "A new approach to measuring financial contagion," Rev. Financial Stud., vol. 16, no. 3, pp. 717­763, 2003.
+	 D. Collins and S. Gavron, "Channels of financial market contagion," Appl. Econ., vol. 36, no. 21, pp. 2461­2469, 2004.
+	 R. Dornbusch, Y. C. Park, and S. Claessens, "Contagion: Understanding how it spreads," World Bank Res. Obs., vol. 15, no. 2, pp. 177­197, 2000.
+	 C. Raddatz and S. L. Schmulder, "On the international transmission of shocks: Micro-evidence from mutual fund portfolios," J. Int. Econ., vol. 88, no. 2, pp. 357­374, 2012.
+	 M. Melvin and B. P. Melvin, "The global transmission of volatility in the foreign exchange market," Rev. Econ. Statist., vol. 85, no. 3, pp. 670­679, 2003.
+	 N. Nomikos and E. Salvador, "The role of volatility regimes on volatility transmission patterns," Quant. Finance, vol. 14, no. 1, pp. 1­13, 2014.
+	 H. H. Lee, C. Y. Park, and H. S. Byun, "Do contagion effects exist in capital flow volatility?" J. Jpn. Int. Econ., vol. 30, pp. 76­95, 2013.
+	 R. D. Vilag, G. H. Ionescu, M. D. Ungureanu, and I. Vasile, "Contagion causes-rational or irrational behavior," in Proc. Ind. Revolutions Globalization Post-Globalization Perspect. Vol IV: Bank. Account. Financial Syst. 21st Century Perspect., 2009, pp. 669­678.
+	 S. Griffith-Jones, "Stabilising capital flows to developing countries," IDS Bull., vol. 30, no. 1, pp. 33­49, 1999.
+	 E. G. Mendoza and M. E. Terrones, "An anatomy of credit booms: Evidence from macro aggregates and micro data," Nat. Bureau Econom. Res., Working Paper 14049, 2008.
+	 C. M. Reinhart and V. R. Reinhart, "Capital flow bonanzas: An encompassing view of the past and present," Nat. Bureau Econom. Res., Working Paper 14321, 2008.
+	 R. J. Hodrick and E. C. Prescott, "Postwar U.S. business cycles: An empirical investigation," J. Money Credit Banking, vol. 29, no. 1, pp. 1­16, 1997.
+	 M. O. Ravn and H. Uhlig, "On adjusting the Hodrick-Prescott filter for the frequency of observations," Rev. Econ. Statist., vol. 84, no. 2, pp. 371­376, 2002.
+	 R. Weron and M. Zator, "A note on using the Hodrick-Prescott filter in electricity markets," Energy Econ., vol. 48, pp. 1­6, 2015.
+	 L. Laeven and F. Valencia, "Systemic banking crises database: An update," IMF Working Paper 12/163, 2012.
+	 M. Fratzscher, "Capital flows, push versus pull factors and the global financial crisis," J. Int. Econ., vol. 88, no. 2, pp. 341­356, 2012.
+	 G. Fazio, "Extreme interdependence and extreme contagion between emerging markets," J. Int. Money Finance, vol. 26, no. 8, pp. 1261­1291, 2007.
+	 E. T. Whittaker, "On a new method of graduation," Proc. Edinburgh Math. Soc., vol. 41, pp. 63­75, 1922.
+	 L. A. Zadeh, "The concept of a linguistic variable and its application to approximate reasoning-1," Inf. Sci., vol. 8, pp. 199­249, 1975.
+	 J. M. Mendel and X. W. Liu, "Simplified interval type-2 fuzzy logic systems," IEEE Trans. Fuzzy Syst., vol. 21, no. 6, pp. 1056­1069, Dec. 2013.
+	 J. M. Mendel and R. I. John, "Type-2 fuzzy sets made simple," IEEE Trans. Fuzzy Syst., vol. 10, no. 2, pp. 117­127, Apr. 2002.
+	 R. R. Yager, "Fuzzy Subsets of Type II in Decisions," J. Cybern., vol. 10, nos. 1­3, pp. 137­159, 1980.
+	 J. M. Mendel, R. I. John, and F. Liu, "Interval type-2 fuzzy logic systems made simple," IEEE Trans. Fuzzy Syst., vol. 14, no. 6, pp. 808­821, Dec. 2006.
+	 E. A. Jammeh, M. Fleury, C. Wagner, H. Hagras, and M. Ghanbari, "Interval type-2 fuzzy logic congestion control for video streaming across IP networks," IEEE Trans. Fuzzy Syst., vol. 17, no. 5, pp. 1123­1142, Oct. 2009.
+	 J. M. Mendel and H. W. Wu, "Type-2 fuzzistics for symmetric interval type-2 fuzzy sets: Part 1, forward problems," IEEE Trans. Fuzzy Syst., vol. 14, no. 6, pp. 781­792, Dec. 2006.
+	 J. M. Mendel and H. W. Wu, "Type-2 fuzzistics for symmetric interval type-2 fuzzy sets: Part 2, inverse problems," IEEE Trans. Fuzzy Syst., vol. 15, no. 2, pp. 301­308, Apr. 2007.
+	 Y. Choi and R. Douady, "Financial crisis dynamics: Attempt to define a market instability indicator," Quant. Finance, vol. 12, no. 9, pp. 1351­ 1365, 2012.
+	 G. Castellacci and Y. Choi, "Modeling contagion in the Eurozone crisis via dynamical systems," J. Banking Finance, vol. 50, pp. 400­410, 2015.
+	 W. S. Son and Y. J. Park, "Delayed feedback on the dynamical model of a financial system," Chaos Solitons Fractals, vol. 44, nos. 4/5, pp. 208­217, 2011.
+	 Z. H. Hu and W. Chen, "Modeling of macroeconomics by a novel discrete nonlinear fractional dynamical system," Discrete Dyn. Nature Soc., vol. 2013, p. 9, 2013, Art. no. 275134.
+	 B. Bede, I. J. Rudas, and A. L. Bencsik, "First order linear fuzzy differential equations under generalized differentiability," Inf. Sci., vol. 177, pp. 1648­ 1662, 2007.
+	 M. Chen, Y. Fu, X. Xue, and C. Wu, "Two-point boundary value problems of undamped uncertain dynamical systems," Fuzzy Sets Syst., vol. 159, pp. 2077­2089, 2008.
+	 B. Chen and X. Liu, "Reliable control design of fuzzy dynamical systems with time-varying delay," Fuzzy Sets Syst., vol. 146, pp. 349­374, 2004.
+	 L. Hong and J. Sun, "Bifurcations of fuzzy nonlinear dynamical systems," Commun. Nonlinear Sci. Numer. Simul., vol. 11, no. 1, pp. 1­12, 2006.
+	 J. P. Xu, Z. G. Liao, and Z. N. Hu, "A class of linear differential dynamical systems with fuzzy initial condition," Fuzzy Sets Syst., vol. 158, no. 21, pp. 2339­2358, 2007.
+	 J. P. Xu, Z. G. Liao, and J. J. Nieto, "A class of linear differential dynamical systems with fuzzy matrices," J. Math. Anal. Appl., vol. 368, no. 1, pp. 54­68, 2010.
+	 S. Arora and B. Barak, Computational Complexity: A Modern Approach. London, U.K.: Cambridge Univ. Press, 2009.
+	 D. K. Backus and P. J. Kehoe, "International evidence on the historical properties of business cycles," Amer. Econ. Rev., vol. 88, no. 4, pp. 864­ 888, 1992.
+	 I. H. Correia, J. L. Neves, and S. T. Rebelo, "Business cycles from 1850C1950: New facts about old data," Eur. Econ. Rev., vol. 36, nos. 2/3, pp. 459­467, 1992.
+	 T. J. Cooley and L. E. Ohanian, "The cyclical behavior of prices," J. Monetary Econ., vol. 28, no. 1, pp. 25­60, 1991.
+	 M. Baxter and R. King, "Measuring business cycles: Approximate bandpass filters for economic time series," Rev. Econ. Statist., vol. 81, no. 4, pp. 575­593, 1999.
+	 A. Iacobucci and A. Noullez, "A frequency selective filter for short-length time series," Comput. Econ., vol. 25, nos. 1/2, pp. 75­102, 2005.
+	 R. F. Engle and C. W. J. Granger, "Co-integration and error correction: Representation, estimation, and testing," Econometrica, vol. 55, no. 2, pp. 251­276, 1987.
+	 A. C. Stockman and L. L. Tesar, "Tastes and technology in a 2-country model of the business cycle: Explainning international comovements," Amer. Econ. Rev., vol. 85, no. 1, pp. 168­185, 1995.
+	 R. M. Neumann, R. Penl, and A. Tanku, "Volatility of capital flows and financial liberalization: Do specific flows respond differently?" Int. Rev. Econ. Finance, vol. 18, no. 3, pp. 488­501, 2009.
+	 H. W. Wu and J. M. Mendel, "Uncertainty bounds and their use in the design of interval type-2 fuzzy logic systems," IEEE Trans. Fuzzy Syst., vol. 10, no. 5, pp. 622­639, Oct. 2002.
+	 D. R. Wu and J. M. Mendel, "Enhanced Karnik­Mendel algorithms," IEEE Trans. Fuzzy Syst., vol. 17, no. 4, pp. 923­934, Aug. 2009.
+	 D. Kenourgios and D. Dimitriou, "Contagion of the global financial crisis and the real economy: A regional analysis," Econ. Model., vol. 44, pp. 283­293, 2015.
+	 F. Brauer and C. Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology. New York, NY, USA: Springer-Verlag, 2001.
+	 T. Bendixson, "Sus les courbes de´finies par des e´quations differentielles," Acta Math., vol. 24, pp. 1­88, 1901.
+	 CEIC, Global Database, 2015. [Online]. Available: http:/www. ceicdata.com/en/products/global ;
+Objetivo, Problema, Método ou Metodologia e Contribuições:
+	
+
+Gaussian Process Regression Stochastic Volatility Model for Financial Time Series
+Nome dos autores do artigo:
+	Jianan Han
+	Xiao-Ping Zhang
+	Fang Wang ;
+Referências Bibliográficas:
+	 Z. Ghahramani, "An introduction to hidden Markov models and Bayesian networks," Int. J. Pattern Recog. Artif. Intell., vol. 15, no. 01, pp. 9­42, 2001.
+	 T. Rajbhandary, X.-P. Zhang, and F. Wang, "Piecewise constant modeling and Kalman filter tracking of systematic market risk," in Proc. IEEE Glob. Conf. Signal. Inf. Process., Dec. 2013, pp. 1144­1144.
+	 L. Vo, X.-P. Zhang, and F. Wang, "Multifactor systematic risk analysis based on piecewise mean reverting model," in Proc. IEEE Glob. Conf. Signal. Inf. Process., Dec. 2013, pp. 1142­1142.
+	 C. E. Rasmussen, Gaussian Processes for Machine Learning. Cambridge, MA, USA: MIT Press, 2006.
+	 A. Wilson and Z. Ghahramani, "Copula processes," in Proc. Adv. Neural Inf. Process. Syst., 2010, pp. 2460­2468.
+	 C. Brownlees, R. Engle, and B. Kelly, "A practical guide to volatility forecasting through calm and storm," J. Risk, vol. 14, no. 2, pp. 1­20, 2011.
+	 R. Tsay, Analysis of Financial Time Series. New York, NY, USA: Wiley, 2010.
+	 R. F. Engle, "Autoregressive conditional heteroscedasticity with estimates of the variance of United Kingdom inflation," Econometrica, J. Econometric Soc., vol. 50, pp. 987­1007, 1982.
+	 T. Bollerslev, "Generalized autoregressive conditional heteroskedasticity," J. Econometrics, vol. 31, pp. 307­327, 1986.
+	 L. R. Glosten, R. Jagannathan, and D. E. Runkle, "On the relation between the expected value and the volatility of the nominal excess return on stocks," J. Finance, vol. 48, no. 5, pp. 1779­1801, 1993.
+	 S. Taylor, Modelling Financial Time Series. Chichester, Chichester, U.K.: Wiley, 1986.
+	 M. Fridman and L. Harris, "A maximum likelihood approach for nonGaussian stochastic volatility models," J. Bus. Econ. Stat., pp. 284­291, 1998.
+	 E. Jacquier, N. G. Polson, and P. Rossi, "Bayesian analysis of stochastic volatility models," J. Bus. Econ. Statist., vol. 12, no. 4, pp. 371­89, 1994.
+	 E. Jacquier, N. G. Polson, and P. E. Rossi, "Bayesian analysis of stochastic volatility models with fat-tails and correlated errors," J. Econometrics, vol. 122, no. 1, pp. 185­212, 2004.
+	 A. C. Harvey and N. Shephard, "Estimation of an asymmetric stochastic volatility model for asset returns," J. Bus. Econ. Statist., vol. 14, no. 4, pp. 429­434, 1996.
+	 N. Shephard, "Statistical aspects of arch and stochastic volatility," Monogr. Statist. Appl. Probability, vol. 65, pp. 1­68, 1996.
+	 S. Neil and T. Andersen, "Stochastic volatility: Origins and overview," Univ. Oxford, Dept. Economics, Oxford, U.K., Economics Series Working Papers 389, 2008.
+	 R. Frigola, Y. Chen, and C. Rasmussen, "Variational Gaussian process state-space models," in Proc. Adv. Neural Inf. Process. Syst.,2014, pp. 3680­3688.
+	 R. Frigola, F. Lindsten, T. B. Scho¨n, and C. E. Rasmussen, "Bayesian inference and learning in Gaussian process state-space models with particle MCMC," in Proc. Adv. Neural Inf. Process. Syst., 2013, pp. 3156­3164.
+	 N. Lawrence, "Probabilistic non-linear principal component analysis with Gaussian process latent variable models," J. Mach. Learn. Res., vol. 6, pp. 1783­1816, 2005.
+	 J. Ko and D. Fox, "GP-BayesFilters: Bayesian filtering using Gaussian process prediction and observation models," Auton. Robots, vol. 27, no. 1, pp. 75­90, 2009.
+	 J. Wang, A. Hertzmann, and D. Blei, "Gaussian process dynamical models," in Proc. Adv. Neural Inf. Process. Syst., 2005, pp. 1441­1448.
+	 A. Doucet, S. Godsill, and C. Andrieu, "On sequential Monte Carlo sampling methods for Bayesian filtering," Stat. Comput., vol. 10, no. 3, pp. 197­208, 2000.
+	 J. S. Liu and R. Chen, "Sequential Monte Carlo methods for dynamic systems," J. Amer. Stat. Assoc., vol. 93, no. 443, pp. 1032­1044, 1998.
+	 C. Andrieu, A. Doucet, and R. Holenstein, "Particle Markov chain Monte Carlo methods," J. Roy. Statist. Soc. B, vol. 72, no. 3, pp. 269­342, 2010.
+	 F. Lindsten, M. Jordan, and T. Scho¨n, "Particle Gibbs with ancestor sampling," J. Mach. Learn. Res., vol. 15, pp. 2145­2184, 2014.
+	 S. Kim, N. Shephard, and S. Chib, "Stochastic volatility: Likelihood inference and comparison with ARCH models," Rev. Econ. Stud., vol. 65, no. 3, pp. 361­393, 1998.
+	 Y. Wu, J. M. Herna´ndez-Lobato, and Z. Ghahramani, "Gaussian process volatility model," in Proc. Adv. Neural Inf. Process. Syst., 2014, pp. 1044­ 1052.
+	 J. Campbell, A. W.-C. Lo, and A. C. MacKinlay, The Econometrics of Financial Markets. Princeton, Princeton, NJ, USA: Princeton Univ. Press, 1997.
+	 S.-H. Poon and C. W. Granger, "Forecasting volatility in financial markets: A review," J. Econ. Literature, vol. 41, no. 2, pp. 478­539, 2003.
+	 A. A. Christie, "The stochastic behavior of common stock variances: Value, leverage and interest rate effects," J. Financial Econ., vol. 10, no. 4, pp. 407­432, 1982.
+	 G. Wu, "The determinants of asymmetric volatility," Rev. Financial Stud., vol. 14, no. 3, pp. 837­59, 2001.
+	 J. Yu, "On leverage in a stochastic volatility model," J. Econometrics, vol. 127, no. 2, pp. 165­178, 2005.
+	 Y. Omori, S. Chib, N. Shephard, and J. Nakajima, "Stochastic volatility with leverage: Fast and efficient likelihood inference," J. Econometrics, vol. 140, no. 2, pp. 425­449, 2007.
+	 T. Bollerslev, R. Chou, and K. F. Kroner, "Arch modeling in finance: A review of the theory and empirical evidence," J. Econometrics, vol. 52, nos. 1/2, pp. 5­59, 1992.
+	 D. Nelson, "Conditional heteroskedasticity in asset returns: A new approach," Econometrica, vol. 59, no. 2, pp. 347­70, Mar. 1991.
+	 J. D. Hamilton, Time Series Analysis. Princeton, Princeton, NJ, USA: Princeton Univ. Press, 1994.
+	 A. McLeod and W. Li, "Diagnostic checking ARMA time series models using squared-residual autocorrelations," J. Time Series Anal., vol. 4, no. 4, pp. 269­273, 1983.
+	 R. E. Kalman, "A new approach to linear filtering and prediction problems," Trans. ASME J. Basic Eng., vol. 82, no. 1, pp. 35­45, 1960.
+	 C. Andrieu, N. De Freitas, A. Doucet, and M. Jordan, "An introduction to MCMC for machine learning," Mach. Learn., vol. 50, nos. 1/2, pp. 5­43, 2003.
+	 N. Gordon, D. Salmond, and A. Smith, "Novel approach to nonlinear/nonGaussian Bayesian state estimation," IEE Proc. Radar Signal Process., vol. 140, no. 2, pp. 107­113, Apr. 1993.
+	 R. M. Neal, "Slice sampling," Ann. Statist., vol. 31, no. 3, pp. 705­767, 2003.
+	 A. J. Patton, "Volatility forecast comparison using imperfect volatility proxies," J. Econometrics, vol. 160, no. 1, pp. 246­256, 2011.
+	 S. J. Koopman, B. Jungbacker, and E. Hol, "Forecasting daily variability of the S&P 100 stock index using historical, realised and implied volatility measurements," J. Empirical Finance, vol. 12, no. 3, pp. 445­475, 2005.
+	 A. Torben, T. Bollerslev, F. Diebold, and P. Labys, "Modeling and forecasting realized volatility," Econometrica, vol. 71, no. 2, pp. 579­625, 2003.
+	 F. Diebold and R. Mariano, "Comparing predictive accuracy," J. Bus. Econ. Stat., vol. 13, pp. 253­263, 1995.
+	 M. Takahashi, T. Watanabeb, and Y. Omoric, "Volatility and quantile forecasts by realized stochastic volatility models with generalized hyperbolic distribution," Int. J. Forecasting, vol. 32, no. 2, pp. 437­457, Apr. 2016.
+	 T. G. Andersen, T. Bollerslev, F. X. Diebold, and P. Labys, "Modeling and forecasting realized volatility," Econometrica, vol. 71, no. 2, pp. 579­625, Mar. 2003.
+	 T. G. Andersen, T. Bollerslev, and F. X. Diebold, "Roughing it up: Including jump components in the measurement, modeling, and forecasting of return volatility," Rev. Econ. Statist., vol. 89, no. 4, pp. 701­720, Nov. 2007.
+	 F. Corsi, "A simple approximate long-memory model of realized volatility," J. Financial Econometrics, vol. 7, no. 2, p. pp. 174­196, 2009.
+	 M. Takahashi, Y. Omoric, and T. Watanabeb, "Estimating stochastic volatility models using daily returns and realized volatility simultaneously," Comput. Statist. Data Anal., vol. 53, no. 6, pp. 2404­2426, Apr. 2009.
+	 J. Nakajima and Y. Omori, "Stochastic volatility model with leverage and asymmetrically heavy-tailed error using GH skew students t-distribution," Comput. Stat. Data Anal., vol. 56, pp. 3690­3704, 2012. ;
+Objetivo, Problema, Método ou Metodologia e Contribuições:
+	We also present the model estimation methods for the GPRSV model . ;;
+	We demonstrate the superior volatility prediction performance of our model with both simulated and empirical financial data . ;;
+	propose the Gaussian process dynamical model ( GPDM ) in [ 22 ] . ;;
+	propose the PGAS algorithm . ;;
+	propose a GP based GARCH model and a regularized auxiliary particle chain filter ( RAPCF ) algorithm to estimate the model . ;;
+	We apply the recent development of Bayesian nonparametric methods to improve the prediction performance of volatility models . ;;
+	We estimate the hidden states or system variable distribution by taking a full Bayesian nonparametric approach . ;;
+	We can use two estimation methods for the new model . ;;
+	We demonstrate the superior volatility prediction performance of the new GPRSV model and inference methods with both simulated and empirical financial data . ;;
+	Our main contribution is to introduce a novel nonparametric model -- GPRSV model to solve the problem of modeling and predicting time-varying variance of financial time series data . ;;
+	The second contribution of work is that we provided a solution to learn the proposed model . ;;
+	We demonstrate that both SMC algorithms such as RAPCF [ 28 ] and MCMC algorithms such as PGAS [ 19 ] can be adjusted to estimate the GPRSV models . ;;
+	We also demonstrated through experiments that the new GPRSV model performs better than corresponding GARCH and SV models . ;;
+	Volatility is a forward-looking concept , we often model the financial time series return variance conditioned on all the relevant information It-1 , defined as t2 = var ( rt |It-1 ) = E ( ( rt - t ) 2 |It-1 ) ( 3 ) where t is expected value of the asset return rt . ;;
+	GPRSV MODEL We introduce a new GPRSV model to solve the problem of financial time series volatility modeling and predicting . ;;
+	Similar to GARCH models and basic SV models , we model the financial asset return and volatility in state-space modeling framework . ;;
+	The logarithm of variance is modeled as the unobserved latent variable of the system in our model . ;;
+	We use GP to sample unknown hidden states transition function . ;;
+	3 ) GP-SSM : We can now combine the GP and the SSM together . ;;
+	We assume the hidden state transition function f is sampled from a GP . ;;
+	We can take advantage of this tool to more accurately predict time-varying volatilities . ;;
+	We assume that the hidden system state process is governed by a stationary stochastic process . ;;
+	We can put all hyper-parameters in a vector . ;;
+	We use logarithm of variance instead of standard deviation directly in our model . ;;
+	E. Model Building Process We can build a GPRSV model in a four step process similar to Tsay 's procedures in [ 7 ] of building a traditional conditional volatility model . ;;
+	We show the flowchart of this process in Fig . ;;
+	1 ) Specify Mean Equation : First we need to test the serial dependence in the return series . ;;
+	We define T SSR0 = ( at2 - ¯ ) 2 , t=m+1 ( 11a ) T SSR1 = c^t2 , t=m+1 ( 11b ) F = ( SSR0 - SSR1 ) /m , SSR1 / ( T-2m - 1 ) ( 11c ) where T ¯ = ( 1/T ) a2t ( 12 ) t=1 is the sample mean of at2 ; F is asymptotically distributed as a chi-squared distribution m2 under null hypothesis and m is the degree of freedom . ;;
+	4 ) Estimate Model Parameters and Check Model Fitness : After specifying both the mean and volatility equations , and associated hyper-parameters and in Steps 2 and 3 , we can use training data to estimate unknown parameters . ;;
+	We can examine the model fitness using the diagnostics of the SV model described by Kim et al . ;;
+	
+
+Detecting Wash Trade in Financial Market Using Digraphs and Dynamic Programming
+Nome dos autores do artigo:
+	Yi Cao
+	Yuhua Li
+	Sonya Coleman
+	Ammar Belatreche
+	Thomas Martin McGinnity ;
+Referências Bibliográficas:
+	 F. Allen and D. Gale, "Stock-price manipulation," Rev. Financial Stud., vol. 5, no. 3, pp. 503­529, Jul. 1992.
+	 Y. Cao, Y. Li, S. Coleman, A. Belatreche, and T. M. McGinnity, "Adaptive hidden Markov model with anomaly states for price manipulation detection," IEEE Trans. Neural Netw. Learn. Syst., vol. 26, no. 2, pp. 318­330, Feb. 2015.
+	 Y. Cao, Y. Li, S. Coleman, A. Belatreche, and T. M. McGinnity, "A hidden Markov model with abnormal states for detecting stock price manipulation," in Proc. IEEE Int. Conf. Syst., Man, Cybern. , Manchester, U.K., Oct. 2013, pp. 3014­3019.
+	 Y. Cao, Y. Li, S. Coleman, A. Belatreche, and T. M. McGinnity, "Detecting price manipulation in the financial market," in Proc. IEEE Conf. Comput. Intell. Financial Eng. Econ. , London, U.K., Mar. 2014, pp. 77­84.
+	 Y. Cao, Y. Li, S. Coleman, A. Belatreche, and T. M. McGinnity, "Detecting wash trade in the financial market," in Proc. IEEE Conf. Comput. Intell. Financial Eng. Econ. , London, U.K., Mar. 2014, pp. 85­91.
+	 J. Zhai and Y. Cao, "On the calibration of stochastic volatility models: A comparison study," in Proc. IEEE Conf. Comput. Intell. Financial Eng. Econ. , London, U.K., Mar. 2014, pp. 303­309.
+	 F. Allen, L. Litov, and J. Mei, "Large investors, price manipulation, and limits to arbitrage: An anatomy of market corners," Rev. Finance, vol. 10, no. 4, pp. 645­693, Oct. 2006.
+	 D. Cumming, F. Zhan, and M. J. Aitken. , High Frequency Trading and End-of-Day Price Dislocation. [Online]. Available: http://dx.doi.org/10.2139/ssrn.2145565
+	  SEC. , Limit Orders. [Online]. Available: http://www.sec.gov/answers/limit.htm
+	  K. Menyah and K. Paudyal, "The components of bid­ask spreads on the London stock exchange," J. Banking Finance, vol. 24, no. 11, pp. 1767­1785, Nov. 2000.
+	  FSA. , The Code of Market Conduct. [Online]. Available: http://www.fsa.gov.uk/pubs/hb-releases/rel52/rel52mar.pdf
+	  EU. , European Commission. [Online]. Available: http://ec. europa.eu/finance/securities/abuse/index_en.htm
+	  CME. , U.S. Commodity Futures Trading Commission. [Online]. Available: http://www.cftc.gov/filings/orgrules/ rule082814cmedcm001.pdf
+	  CME Group. , Market Regulation Advisory Notice: Wash Trades Prohibited--Rule 534. [Online]. Available: http://www. cftc.gov/stellent/groups/public/@rulesandproducts/documents/ifdocs/ rul070913cmecbotnymexcomandkc1.pdf
+	  M. Franke, B. Hoser, and J. Schröder, "On the analysis of irregular stock market trading behavior," in Proc. Data Anal., Mach. Learn. Appl., Freiburg im Breisgau, Germany, 2007, pp. 355­362.
+	  G. K. Palshikar and M. M. Apte, "Collusion set detection using graph clustering," Data Mining Knowl. Discovery, vol. 16, no. 2, pp. 135­164, Apr. 2008.
+	  J. Wang, S. Zhou, and J. Guan, "Detecting potential collusive cliques in futures markets based on trading behaviors from real data," Neurocomputing, vol. 92, pp. 44­53, Sep. 2012.
+	  N. Hautsch and R. Huang, "The market impact of a limit order," J. Econ. Dyn. Control, vol. 36, no. 4, pp. 501­522, Apr. 2012.
+	  ITG. , Global Cost Review Q1/2013. [Online]. Available: http://www.itg.com/marketing/ITG_GlobalCostReview _Q12013_20130725.pdf
+	  S. Patterson, J. Strasburg, and J. Trindle. , The Wall Street Journal. [Online]. Available: http://online.wsj.com/article/ SB10001424127887323639604578366491497070204.html
+	  N. Jamal. , LSE Broker Fined for 'Wash Trade'. [Online]. Available: http://dawn.com/news/771335/lse-broker-fined-for- wash-trade
+	  T. Loh and G. Cumming. , Market Manipulation: Safe Har- bour for Wash Trades and Matched Orders Upheld. [Online]. Available: http://www.timothyloh.com/publications/120606_market_manipulation_ cfa.html
+	  EU. , European Commission. [Online]. Available: http://ec.europa.eu/finance/securities/prospectus/index_en.htm
+	  E. Tsang, R. Olsen, and S. Masry, "A formalization of double auc- tion market dynamics," Quant. Finance, vol. 13, no. 7, pp. 981­988, Jul. 2013.
+	  NANEX. , Chicago PMI. [Online]. Available: http://www.nanex.net/aqck2/4304.html
+	  M. J. Aitken, F. H. Harris, and S. Ji, "Trade-based manipulation and market efficiency: A cross-market comparison," in Proc. 22nd Austral. Finance Banking Conf., Sydney, NSW, Australia, Nov. 2009, p. 18.
+	  R. Andonov, V. Poirriez, and S. Rajopadhye, "Unbounded knapsack problem: Dynamic programming revisited," Eur. J. Oper. Res., vol. 123, no. 2, pp. 394­407, Jun. 2000.
+	  V. Poirriez, N. Yanev, and R. Andonov, "A hybrid algorithm for the unbounded knapsack problem," Discrete Optim., vol. 6, no. 1, pp. 110­124, Feb. 2009.
+	  M. Zukerman, L. Jia, T. Neame, and G. J. Woeginger, "A polynomially solvable special case of the unbounded knapsack problem," Oper. Res. Lett., vol. 29, no. 1, pp. 13­16, Aug. 2001.
+	  J. Kleinberg and É. Tardos, Algorithm Design, 1st ed. London, U.K.: Pearson, 2005.
+	  Z. Ni, H. He, J. Wen, and X. Xu, "Goal representation heuristic dynamic programming on maze navigation," IEEE Trans. Neural Netw. Learn. Syst., vol. 24, no. 12, pp. 2038­2050, Dec. 2013.
+	  Y. Jiang and Z.-P. Jiang, "Robust adaptive dynamic programming and feedback stabilization of nonlinear systems," IEEE Trans. Neural Netw. Learn. Syst., vol. 25, no. 5, pp. 882­893, May 2014.
+	  NANEX. , Exploratory Trading in the eMini. [Online]. Available: http://www.nanex.net/aqck2/4136.html
+	  Y. Ou, L. Cao, C. Luo, and C. Zhang, "Domain-driven local exceptional pattern mining for detecting stock price manipulation," in Proc. PRICAI, Trends Artif. Intell., Hanoi, Vietnam, Dec. 2008, pp. 849­858.
+	  E. J. Lee, K.-S. Eom, and K. S. Park, "Microstructure-based manip- ulation: Strategic behavior and performance of spoofing traders," J. Financial Markets, vol. 16, no. 2, pp. 227­252, May 2013.
+	 N. Hautsch and R. Huang. , Limit Order Flow, Market Impact and Optimal Order Sizes: Evidence From NASDAQ TotalViewITCH Data. [Online]. Available: http://dx.doi.org/10.2139/ssrn.1914293
+	 L. Cao, Y. Ou, and P. S. Yu, "Coupled behavior analysis with applications," IEEE Trans. Knowl. Data Eng., vol. 24, no. 8, pp. 1378­1392, Aug. 2012. ;
+Objetivo, Problema, Método ou Metodologia e Contribuições:
+	This paper follows on from our previous work on the trade-based manipulation [ 2 ] and proposes a detection approach that considers a complete spectrum of the wash trade detection . ;;
+	The 125 and 125.5 are the execution prices of the two possible transactions ; we refer to such prices as transaction prices . ;;
+	B. Wash Trade Detection To the best of our knowledge , there is no related work on the detection of wash trade activities in capital markets . ;;
+	We merge the potential transactions who price margins are overlapped , i.e. , 125 + 0.8 and 125.5 + 0.5 are overlapped . ;;
+	We utilize this idea in [ 25 ] and represent submitted limit orders ( from a number of traders ) by a graph , where vertices represent traders , and the short arrows affixed to the vertex represent the orders submitted by the trader ( buying and the selling orders are represented by arrows pointing inward and outward , respectively ) and the dotted arrow lines represent the possible executed orders according to the matching rule discussed in Section II-A . ;;
+	The main principles of dynamic programming are that we have to come up with a number of subproblems so that each subproblem can be solved easily from smaller subproblems , and the solution of the original problem can be obtained easily once we know the solutions to all the subproblems [ 30 ] . ;;
+	The recursion can then be summarized as follows : if L N is not one of the orders in the final subset SN , we can ignore the order N and determine OPT ( N - 1 , Vk ) ; however , if L N is one of the orders , we need to seek an optimal solution for the remaining orders , 1 , . ;;
+	
+
+A Genetic Bankrupt Ratio Analysis Tool Using a Genetic Algorithm to Identify Influencing Financial Ratios
+Nome dos autores do artigo:
+	Travis Miranda Lakshmi
+	Aruldoss Martin
+	Venkatasamy Prasanna Venkatesan ;
+Referências Bibliográficas:
+	 M. D. Fethi and F. Pasiouras, "Assessing bank efficiency and performance with operational research and artificial intelligence techniques: A survey," Eur. J. Oper. Res., vol. 204, no. 2, pp. 189­198, 2010.
+	 H. Huang, M. Pasquier, and C. Quek, "Financial market trading system with a hierarchical coevolutionary fuzzy predictive model," IEEE Trans. Evol. Comput., vol. 13, no. 1, pp. 56­70, Feb. 2009.
+	 A. Mochón, D. Quintana, Y. Sáez, and P. Isasi, "Soft computing techniques applied to finance," Appl. Intell., vol. 29, no. 2, pp. 111­115, 2007.
+	 A. Tsakonas, G. Dounias, M. Doumpos, and C. Zopounidis, "Bankruptcy prediction with neural logic networks by means of grammar-guided genetic programming," Expert Syst. Appl., vol. 30, no. 3, pp. 449­461, 2006.
+	 W.-S. Chen and Y.-K. Du, "Using neural networks and data mining techniques for the financial distress prediction model," Expert Syst. Appl., vol. 36, no. 2, pp. 4075­4086, 2009.
+	 C.-H. Wu, G.-H. Tzeng, Y.-J. Goo, and W.-C. Fang, "A realvalued genetic algorithm to optimize the parameters of support vector machine for predicting bankruptcy," Expert Syst. Appl., vol. 32, no. 2, pp. 397­408, 2007.
+	 H.-L. Chen et al., "A novel bankruptcy prediction model based on an adaptive fuzzy k-nearest neighbour method," Knowl.-Based Syst., vol. 24, no. 8, pp. 1348­1359, 2011.
+	 C. Lin, H. Khan, R. Chang, and Y. Wang, "A new approach to modelling early warning systems for currency crises: Can a machine-learning fuzzy expert system predict the currency crises effectively?" J. Int. Money Financ., vol. 27, no. 7, pp. 1098­1121, 2008.
+	 Y.-C. Tang, "An approach to budget allocation for an aerospace company--Fuzzy analytic hierarchy process and artificial neural network," Neurocomputing, vol. 72, nos. 16­18, pp. 3477­3489, 2009.
+	 H. A. Abdou, "Genetic programming for credit scoring: The case of Egyptian public sector banks," Expert Syst. Appl., vol. 36, no. 9, pp. 11402­11417, 2009.
+	 V. Ravi, H. Kurniawan, P. N. K. Thai, and P. R. Kumar, "Soft computing system for bank performance prediction," Appl. Soft Comput., vol. 8, no. 1, pp. 305­315, 2008.
+	 H.-J. Kim and K.-S. Shin, "A hybrid approach based on neural networks and genetic algorithms for detecting temporal patterns in stock markets," Appl. Soft Comput., vol. 7, no. 2, pp. 569­576, 2007.
+	 J. G. Fulmer, J. E. Moon, T. A. Gavin, and M. J. Erwin, "A bankruptcy classification model for small firms," J. Commer. Bank Lend., vol. 24, no. 2, pp. 25­37, 1984.
+	 W.-Y. Lin, Y.-H. Hu, and C.-F. Tsai, "Machine learning in financial crisis prediction: A survey," IEEE Trans. Syst., Man, Cybern. C, Appl. Rev., vol. 42, no. 4, pp. 421­436, Jul. 2012.
+	 J. C. Van Horne, Financial Management Policy, 12th ed. Prentice-Hall, Upper Saddle River, NJ, USA, 2001.
+	 G. Zhang, M. Y. Hu, B. E. Patuwo, and D. C. Indro, "Artificial neural networks in bankruptcy prediction: General framework and crossvalidation analysis," Eur. J. Oper. Res., vol. 116, no. 1, pp. 16­32, 1999.
+	 P. du Jardin, "Predicting bankruptcy using neural networks and other classification methods: The influence of variable selection techniques on model accuracy," Neurocomputing, vol. 73, nos. 10­12, pp. 2047­2060, 2010.
+	 P. R. Kumar and V. Ravi, "Bankruptcy prediction in banks and firms via statistical and intelligent techniques--A review," Eur. J. Oper. Res., vol. 180, no. 1, pp. 1­28, 2007.
+	 A. Martin, T. M. Lakshmi, and V. P. Venkatesan, "An analysis on qualitative bankruptcy prediction rules using ant-miner," Int. J. Intell. Syst. Appl., vol. 6, no. 1, pp. 36­44, Dec. 2013.
+	 A. Martin, M. Manjula, and V. P. Venkatesan, "A business intelligence model to predict bankruptcy using financial domain ontology with association rule mining algorithm," Int. J. Comput. Sci., vol. 8, no. 3, pp. 211­218, 2011.
+	 M. Anandarajan, P. Lee, and A. Anandarajan, "Bankruptcy prediction of financially stressed firms: An examination of the predictive accuracy of artificial neural networks," Intell. Syst. Account. Financ. Manage., vol. 10, no. 2, pp. 69­81, 2001.
+	 X. Xu and Y. Wang, "Financial failure prediction using efficiency as a predictor," Expert Syst. Appl., vol. 36, no. 1, pp. 366­373, 2009.
+	 S. Cho, H. Hong, and B.-C. Ha, "A hybrid approach based on the combination of variable selection using decision trees and case-based reasoning using the Mahalanobis distance: For bankruptcy prediction," Expert Syst. Appl., vol. 37, no. 4, pp. 3482­3488, 2010.
+	 B. Hoogs, T. Kiehl, C. Lacomb, and D. Senturk, "A genetic algorithm approach to detecting temporal patterns indicative of financial statement fraud," Intell. Syst. Account. Financ. Manage., vol. 15, nos. 1­2, pp. 41­56, 2007.
+	 S.-H. Mina, J. Leeb, and I. Hanb, "Hybrid genetic algorithms and support vector machines for bankruptcy prediction," Expert Syst. Appl., vol. 31, no. 3, pp. 652­660, 2006.
+	 Z. Huimin, A. P. Sinha, and W. Ge, "Effects of feature construction on classification performance: An empirical study in bank failure prediction," Expert Syst. Appl., vol. 36, no. 2, pp. 2633­2644, 2009.
+	 A. F. Atiya, "Bankruptcy prediction for credit risk using neural networks: A survey and new results," IEEE Trans. Neural Netw., vol. 12, no. 4, pp. 929­935, Jul. 2001.
+	 V. K. Koumousis and C. P. Katsaras, "A saw-tooth genetic algorithm combining the effects of variable population size and reinitialization to enhance performance," IEEE Trans. Evol. Comput., vol. 10, no. 1, pp. 19­28, Feb. 2006.
+	 T. E. McKee and T. Lensberg, "Genetic programming and rough sets: A hybrid approach to bankruptcy classification," Eur. J. Oper. Res., vol. 138, no. 2, pp. 436­451, 2002.
+	 M.-J. Kim and D.-K. Kang, "Ensemble with neural networks for bankruptcy prediction," Expert Syst. Appl., vol. 37, no. 4, pp. 3373­3379, 2010.
+	 H.-J. Chen, S. Y. Huang, and C.-S. Lin, "Alternative diagnosis of corporate bankruptcy: A neuro fuzzy approach," Expert Syst. Appl., vol. 36, no. 4, pp. 7710­7720, 2009.
+	 H. Ahn and K.-J. Kim, "Bankruptcy prediction modeling with hybrid case-based reasoning and genetic algorithms approach," Appl. Soft Comput., vol. 9, no. 2, pp. 599­607, 2009.
+	 K.-S. Shin and Y.-J. Lee, "A genetic algorithm application in bankruptcy prediction modelling," Expert Syst. Appl., vol. 23, no. 3, pp. 321­328, 2002.
+	 A. Martin, V. Gayathri, G. Saranya, P. Gayathri, and V. P. Venkatesan, "A hybrid model for bankruptcy prediction using genetic algorithm, fuzzy c-means and MARS," Int. J. Soft Comput., vol. 2, no. 1, pp. 12­24, 2011.
+	 A. Martin, T. M. Lakshmi, and V. P. Venkatesan, "To find most impact financial features on bankruptcy models using genetic algorithm," in Proc. Int. Conf. Adv. Eng. Technol., Nagapattinam, India, 2011, pp. 174­179.
+	 N. Chen, B. Ribeiro, A. S. Vieira, J. Duarte, and J. C. Neves, "A genetic algorithm-based approach to cost-sensitive bankruptcy prediction," Expert Syst. Appl., vol. 38, no. 10, pp. 12939­12945, 2011.
+	 A. Martin, R. Uthra, A. Kavitha, B. Divya, and V. P. Venkatesan, "A business intelligence model for predicting bankruptcy using CBR with essential features," Int. J. Inf. Technol. Eng., vol. 3, no. 1­2, pp. 91­97, 2012.
+	 P. Ravisankar, V. Ravi, and I. Bose, "Failure prediction of dotcom companies using neural network­genetic programming hybrids," Inf. Sci., vol. 180, no. 8, pp. 1257­1267, 2010.
+	 P. G. Espejo, S. Ventura, and F. Herrera, "A survey on the application of genetic programming to classification," IEEE Trans. Syst., Man, Cybern. C, Appl. Rev., vol. 40, no. 2, pp. 121­144, Mar. 2010.
+	 H. Li, J. Sun, and B.-L. Sun, "Financial distress prediction based on OR-CBR in the principle of k-nearest neighbours," Expert Syst. Appl., vol. 36, no. 1, pp. 643­659, 2009.
+	 H. Li, H.-B. Huang, J. Sun, and C. Lin, "On sensitivity of case-based reasoning to optimal feature subsets in business failure prediction," Expert Syst. Appl., vol. 37, no. 7, pp. 4811­4821, 2010.
+	 H. Li and J. Sun, "Case-based reasoning ensemble for business failure prediction: A computational approach from multiple case representations," Expert Syst. Appl., vol. 39, no. 3, pp. 3298­3310, 2012.
+	 Z. Yang, W. You, and G. Ji, "Using partial least squares and support vector machines for bankruptcy prediction," Expert Syst. Appl., vol. 38, no. 7, pp. 8336­8342, 2011.
+	 U. Shetty, T. P. M. Pakkala, and T. Mallikarjunappa, "A modified directional distance formulation of DEA to assess bankruptcy: An application to IT/ITES companies in India," Expert Syst. Appl., vol. 39, no. 2, pp. 1988­1997, 2012.
+	 H. Li and J. Sun, "Principal component case-based reasoning ensemble for business failure prediction," Inf. Manage., vol. 48, no. 6, pp. 220­227, 2011.
+	 Y.-C. Hu and C.-J. Chen, "A PROMETHEE-based classification method using concordance and discordance relations and its application to bankruptcy prediction," Inf. Sci., vol. 181, no. 22, pp. 4959­4968, 2011.
+	 H. Li and J. Sun, "Empirical research of hybridizing principal component analysis with multivariate discriminant analysis and logistic regression for business failure prediction," Expert Syst. Appl., vol. 38, no. 5, pp. 6244­6253, 2011.
+	 Z. Xiao, X. L. Yang, Y. Pang, and X. Dang, "The prediction for listed companies' financial distress by using multiple prediction methods with rough set and Dempster­Shafer evidence theory," Knowl.-Based Syst., vol. 26, pp. 196­206, Feb. 2011.
+	 H. Li and J. Sun, "On performance of case-based reasoning in Chinese business failure prediction from sensitivity, specificity, positive and negative values," Appl. Soft Comput., vol. 11, no. 1, pp. 460­467, 2011.
+	 C.-F. Tsai, "Feature selection in bankruptcy prediction," Knowl.-Based Syst., vol. 22, no. 2, pp. 120­127, 2009.
+	 H. Li and J. Sun, "Hybridizing principles of the Electre method with case-based reasoning for data mining: Electre-CBR-I and Electre-CBR-II," Eur. J. Oper. Res., vol. 197, no. 1, pp. 214­224, 2009.
+	 S.-W. Lin, Y.-R. Shiue, S.-C. Chen, and H.-M. Cheng, "Applying enhanced data mining approaches in predicting bank performance: A case of Taiwanese commercial banks," Expert Syst. Appl., vol. 36, no. 9, pp. 11543­11551, 2009.
+	 H. J. Min and C. Jeong, "A binary classification method for bankruptcy prediction," Expert Syst. Appl., vol. 36, no. 3, pp. 5256­5263, 2009.
+	 K.-S. Shin, T. S. Lee, and H.-J. Kim, "An application of support vector machines in bankruptcy prediction model," Expert Syst. Appl., vol. 28, no. 1, pp. 127­135, 2005.
+	 E. I. Altman, "Financial ratios discriminant analysis and the prediction of corporate bankruptcy," J. Financ., vol. 23, no. 4, pp. 589­609, 1968.
+	 E. B. Deakin, "A discriminant analysis of predictors of business failure," J. Account. Res., vol. 10, no. 1, pp. 167­179, 1972.
+	 R. O. Edmister, "An empirical test of financial ratio analysis for small business failure prediction," J. Financ. Quant. Anal., vol. 7, no. 2, pp. 1477­1493, 1972.
+	 L. V. G. Springate, "Predicting the possibility of failure in a Canadian firm," M.B.A. Res. Project, Simon Fraser Univ., Burnaby, BC, Canada, 1978. ;
+Objetivo, Problema, Método ou Metodologia e Contribuições:
+	
+
+Purchase Bidding Strategy for a Retailer With Flexible Demands in Day-Ahead Electricity Market
+Nome dos autores do artigo:
+	Meng Song
+	Mikael Amelin ;
+Referências Bibliográficas:
+	 R. H. Boroumand and G. Zachmann, "`Retailers' risk management and vertical arrangements in electricity markets," Energy Policy, vol. 40, pp. 465­472, 2012.
+	 E. A. Feinberg and D. Genethliou, "Load forecasting," in Mathematics for Restructured Electric Power Systems: Optimization Control, and Computational Intelligence. New York, NY, USA: Springer, 2005, pp. 269­285.
+	 A. Faruqui and S. Sergici, "Household response to dynamic pricing of electricity: A survey of 15 experiments," J. Regul. Econ., vol. 38, no. 2, pp. 193­225, 2010.
+	 D. Hammerstrom, "Pacific Northwest Gridwise Testbed Demonstration Projects," Pacific Northwest Nat. Lab., Richland, WA, USA, Tech. Rep. PNNL-17167, 2007.
+	 IBM, "Ontario Energy board smart price pilot--Final report," Ontario Energy Board, Toronto, ON, Canada, Tech. Rep., 2007.
+	 D. Violette, J. Erickson, and M. Klos, "Final report for the mypower pricing segments evaluation," Public Service Elect. Gas Company, Newark, NJ, USA, Tech. Rep., 2007.
+	 C. Bartusch, F. Wallin, M. Odlare, I. Vassileva, and L. Wester, "Introducing a demand-based electricity distribution tariff in the residential sector: Demand response and customer perception," Energy Policy, vol. 39, no. 9, pp. 5008­5025, 2011.
+	 SEDC, "Mapping demand response in Europe today," Smart Energy Demand Coalition, Brussels, Belgium, Tech. Rep. SEDC-Mapping-DR-InEurope-2014 0411, Apr. 2014.
+	 D. S. Kirschen and S. Member, "Demand-side view of electricity markets," IEEE Trans. Power Syst., vol. 18, no. 2, pp. 520­527, May 2003.
+	 C. Triki and A. Violi, "Dynamic pricing of electricity in retail markets," 4OR--Quart. J. Oper. Res., vol. 7, no. 1, pp. 21­36, Oct. 2007.
+	 A. Hatami, H. Seifi, and M. K. Sheikh-El-Eslami, "A stochastic-based decision-making framework for an electricity retailer: Time-of-use pricing and electricity portfolio optimization," IEEE Trans. Power Syst., vol. 26, no. 4, pp. 1808­1816, Nov. 2011.
+	 S. E. Fleten and E. Pettersen, "Constructing bidding curves for a pricetaking retailer in the Norwegian electricity market," IEEE Trans. Power Syst., vol. 20, no. 2, pp. 701­708, May 2005.
+	 A. Badri and H. Kashefi, "Optimal bidding strategy of retailers in a mixed pool-bilateral market considering demand response programs," in Proc. IEEE Smart Grid Conf., 2013, pp. 131­137.
+	 H. A. Aalami, M. P. Moghaddam, and G. R. Yousefi, "Modeling and prioritizing demand response programs in power markets," Elect. Power Syst. Res., vol. 80, pp. 426­435, 2010.
+	 N. Mahmoudi, M. Eghbal, and T. K. Saha, "Employing demand response in energy procurement plans of electricity retailers," Int. J. Elect. Power Energy Syst., vol. 63, pp. 455­460, 2014.
+	 C. Gorria, J. Jimeno, I. Laresgoiti, M. Lezaun, and N. Ruiz, "Forecasting flexibility in electricity demand with price/consumption volume signals," Elect. Power Syst. Res., vol. 95, pp. 200­205, 2013.
+	 M. Skillba¨ck and H. Ibrahim, "Evaluation methods for market models used in smart grids: An application for the Stockholm royal seaport," M.S. thesis, Dept. Elect. Power Syst., KTH, Stockholm, Sweden, 2012.
+	 J. G. Kassakian et al., "The impact of distributed generation and electric vehicles," in The Future of the Electric Grid: An Interdisciplinary MIT Study, MIT, Cambridge, MA, USA, 2011, ch. 5, pp. 109­126.
+	 S. Gottwalt, W. Ketter, C. Block, J. Collins, and C. Weinhardt, "Demand side management: A simulation of household behavior under variable prices," Energy Policy, vol. 39, no. 12, pp. 8163­8174, 2011.
+	 P. Grahn, J. Rosenlind, P. Hilber, K. Alvehag, and L. So¨der, "A method for evaluating the impact of electric vehicle charging on transformer hotspot temperature," in Proc. IEEE PES Int. Conf. Exhib. Innov. Smart Grid Technol., 2011, pp. 1­8.
+	 N. Jewell, L. Bai, J. Naber, and M. L. McIntyre, "Analysis of electric vehicle charge scheduling and effects on electricity demand costs," Energy Syst., vol. 5, pp. 767­786, 2014.
+	 J. Lujano-Rojas, C. Monteiro, R. Dufo-Lopez, and J. Bernal-Agustin, "Optimum residential load management strategy for real time pricing demand response programs," Energy Policy, vol. 45, pp. 671­679, 2012.
+	 C. Roe, S. Meliopoulos, R. Entriken, and S. Chhaya, "Simulated demand response of a residential energy management system," in Proc. IEEE Conf. Energytech, 2011, pp. 1­6.
+	 H. Wu, M. Shahidehpour, A. Alabdulwahab, and A. Abusorrah, "A game theoretic approach to risk-based optimal bidding strategies for electric vehicle aggregators in electricity markets with variable wind energy resources," IEEE Trans. Sustain. Energy, vol. 7, no. 1, pp. 374­385, Jan. 2016.
+	 M. G. Vaya´ and G. Andersson, "Optimal bidding strategy of a plug-in electric vehicle aggregator in day-ahead electricity market under uncertainty," IEEE Trans. Power Syst., vol. 30, no. 5, pp. 2375­2385, Sep. 2015.
+	 S. I. Vagropoulos and A. G. Bakirtzis, "Optimal bidding strategy for electric vehicle aggregators in electricity markets," IEEE Trans. Power Syst., vol. 28, no. 4, pp. 4031­4041, Nov. 2013.
+	 A. J. Conejo, M. Carrion, and J. M. Morales, "Risk management," in Decision Making Under Uncertainty in Electricity Markets. New York, NY, USA, Springer, 2010, ch. 4, pp. 121­152.
+	 C. Bang, F. Fock, and M. Togeby, "The existing Nordic regulating power market," Energy Analysis, Copenhagen, Denmark, Tech. Rep. FlexPower WP1-Report 1, 2012.
+	 B. Biegel, L. H. Hansen, J. Stoustrup, P. Andersen, and S. Harbo, "Value of flexible consumption in the electricity markets," Energy, vol. 66, pp. 354­362, 2014.
+	 K. C. Sou, J. Weimer, H. Sandberg, and K. H. Johansson, "Scheduling smart home appliances using mixed integer linear programming," in Proc. IEEE Conf. Decision Control Eur. Control Conf., 2011, pp. 5144­5149.
+	 K. C. Sou, K. Mikael, J. Wu, H. Sandberg, and K. H. Johansson, "Energy and CO2 efficient scheduling of smart home appliances," in Proc. IEEE Eur. Control Conf., 2013, pp. 4051­4058.
+	 R. Stamminger, "Synergy potential of smart appliances," Univ. Bonn, Bonn, Germany, Tech. Rep. EIE/06/185/SI2.447477, 2008.
+	 M. Olsson and L. So¨der, "Modeling real-time balancing power market prices using combined Sarima and Markov processes," IEEE Trans. Power Syst., vol. 23, no. 2, pp. 443­450, May 2008.
+	 J. Zimmermann, "End-use metering campaign in 400 households in Sweden assessment of the potential electricity savings," Flines-Rimandoule, Enertech, Tech. Rep. 17-05-2743, vol. 17, 2009.
+	 M. Song, K. Alvehag, J. Wide´n, and A. Parisio, "Estimating the impacts of demand response by simulating household behaviours under price and CO2 signals," Elect. Power Syst. Res., vol. 111, pp. 103­114, 2014.
+	 L. Abramowski and A. Holmstro¨m, "Res 2005­2006 den nationella resvaneunderso¨kningen," Statens Institut Kommunikationsanalys, Stockholm, Sweden, Tech. Rep. TK1101BR0601, 2007.
+	 J. Dupacoa´, N. Gro¨we-Kuska, and W. Ro¨misch, "Scenario reduction in stochastic programming: An approach using probability metrics," Math. Program. Ser. A, vol. 95, pp. 493­511, 2003.
+	 H. Heitsch and W. Ro¨misch, "Scenario reduction algorithms in stochastic programming," Comput. Optim. Appl., vol. 24, pp. 187­206, 2003. ;
+Objetivo, Problema, Método ou Metodologia e Contribuições:
+	
+
+An Environment for Rapid Derivatives Design and Experimentation
+Nome dos autores do artigo:
+	Danny Crookes
+	Sean Trainor
+	Richard Jiang ;
+Referências Bibliográficas:
+	 S. M. Bartram, G. W. Brown, and F. R. Fehle, "International evidence on financial derivatives usage," Financial Manage., vol. 38, no. 1, pp. 185­206, 2009.
+	 A. Devenow and I. Welch, "Rational herding in financial economics," Eur. Econ. Rev., vol. 40, pp. 603­615, 1996.
+	 F. Black and M. Scholes, "The pricing of options and corporate liabilities," J. Political Economy, vol. 81, pp. 637­654, 1973.
+	 L. H. Ederington and W. Guan, "Why are those options smiling?" J. Derivatives, vol. 10, no. 2, pp. 9­34, 2002.
+	 O. A. Vasicek, "An equilibrium characterization of the term structure," J. Financial Econ., vol. 5, pp. 177­188, 1977.
+	 J. C. Cox, J. E. Ingersoll, and S. A. Ross, "A theory of the term structure of interest rates," Econometrica, vol. 53, pp. 129­151, 1985.
+	 J. C. Hull, Options, Futures and Other Derivatives, 8th ed. Boston, MA, USA: Prentice-Hall, 2012.
+	 P. Glasserman, Monte Carlo Methods in Financial Engineering. New York, NY, USA: Springer-Verlag, 2004, p. 548.
+	 S. I. Heston, "A closed-form solution for options with stochastic volatility with applications to bond and currency options," Rev. Financial Stud., vol. 6, pp. 327­343, 1993.
+	 D. Duffie and R. Kan, "A yield-factor model of interest rates," Math. Finance, vol. 6, no. 4, pp. 379­406, 1996.
+	 B. Oksendal, "The Ito formula and the martingale representation theorem," in Stochastic Differential Equations. New York, NY, USA: SpringerVerlag, 2005, pp. 43­49.
+	 L. A. Abbas-Turki and B. Lapeyre, "American options pricing on multicore graphic cards," in Proc. Int. Conf. Bus. Intell. Financial Eng., Beijing, China, 2009, pp. 307­311.
+	 M. S. Joshi, "Graphical Asian options," Wilmott J., vol. 2, no. 2, pp. 97­107, 2010.
+	 S. Solomon, R. K. Thulasiram, and P. Thulasiraman, "Option pricing on the GPU," in Proc. 12th IEEE Int. Conf. High Perform. Comput. Commun., Melbourne, Vic., Australia, 2010, pp. 289­296.
+	 D. Egloff, "High performance finite difference PDE solvers on GPUs," QuantAlea Gmbh, Tech. Rep., Zurich, Switzerland, , [Online]. Available: http://download.quantalea.net/ fdm-gpu.pdf
+	 D. Egloff, "Pricing financial derivatives with high performance finite difference solvers on GPUs," in GPU Computing Gems Jade Edition, W. Hwu, Ed. Burlington, MA, USA: Morgan Kaufmann, 2011.
+	 M. Fatica and E. Phillips, "Pricing American options with least squares Monte Carlo on GPUs," Proc. 6th Workshop High Perform. Comput. Finance, Denver, 2013.
+	 C. de Schryver et al., "An energy efficient FPGA accelerator for Monte Carlo option pricing with the Heston model," in Proc. Int. Conf. Reconfigurable Comput. FPGAs, Cancun, Mexico, 2011, pp. 468­474.
+	 N. A. Woods and T. VanCourt, "FPGA acceleration of quasi-Monte Carlo in finance," in Proc. Int. Conf. Field Program. Logic Appl., Heidelberg, Germany, 2008, pp. 335­340.
+	 A. Kaganov, P. Chow, and A. Lakhany, "FPGA acceleration of MonteCarlo based credit derivative pricing," in Proc. Int. Conf. Field Program. Logic Appl., Heidelberg, Germany, 2008, pp. 329­334.
+	 A. H. T. Tse, D. B. Thomas, K. H. Tsoi, and W. Luk, "Reconfigurable control variate Monte-Carlo designs for pricing exotic options," in Proc. Int. Conf. Field Program. Logic Appl., Milano, Italy, 2010, pp. 364­367.
+	 A. H. T. Tse, D. B. Thomas, K. H. Tsoi, and W. Luk, "Efficient reconfigurable design for pricing Asian options," ACM SIGARCH Computer Archit. News, vol. 38, no. 4, pp. 14­20, 2011.
+	 B. Betkaoui, D. B. Thomas, and W. Luk, "Comparing performance and energy efficiency of FPGAs and GPUs for high productivity computing," in Proc. Int. Conf. Field-Program. Technol., Beijing, China, 2010, pp. 94­101.
+	 D. Manners, "Altera goes for the data centre," Electron. Weekly, Oct. 8, 2014. [Online]. Available: http://www.electronicsweekly.com/ news/business/altera-goes-data-centre-2014-10/. [Accessed on: Oct. 14, 2014].
+	 Y. Hu, Q. Li, Z. Cao, and J. Wang, "Parallel simulation of high-dimensional American option pricing based on CPU versus MIC," Concurrency Comput., Practice Experience, vol. 27, pp. 1110­1121, 2014.
+	 M. Manssen, M. Weigel, and A. K. Hartmann, "Random number generators for massively parallel simulations on GPU," Eur. Phys. J. Special Topics, vol. 210, pp. 53­72, 2012.
+	 S. Trainor, "Towards a portable accelerated asset path simulator for derivatives pricing," Ph.D. dissertation, Queen's University Belfast, Belfast, U.K., 2015. ;
+Objetivo, Problema, Método ou Metodologia e Contribuições:
+	We consider the case of constant interest rates ri and constant volatilities i . ;;
+	Section II presents the basis for our generic model and the schemes for its ( approximate ) simulation . ;;
+	Section III then presents our GPE and the various inputs ( user-defined formulae , etc . ) ;;
+	Section IV discusses a range of stochastic processes where our GPE can give an exact simulation . ;;
+	We use Eq . ;;
+	A GENERIC PRICING ENGINE We use Glasserman 's equation , Eq . ;;
+	
+
+Data-Driven Stochastic Pricing and Application to Electricity Market
+Nome dos autores do artigo:
+	Saahil Shenoy
+	Dimitry Gorinevsky ;
+Referências Bibliográficas:
+	 K. Varshney and A. Mojsilovic, "Business analytics based on financial time series," IEEE Signal Process. Mag., vol. 28, no. 5, pp. 83­93, Sep. 2011.
+	 F. Black and M. Scholes, "The pricing of options and corporate liabilities," J. Political Economy, vol. 81, no. 3, pp. 637­654, 1973.
+	 M. Carrio´n, A. B. Philpott, A. J. Conejo, and J. M. Arroyo, "A stochastic programming approach to electric energy procurement for large consumers," IEEE Trans. Power Syst., vol. 22, no. 2, pp. 744­754, May 2007.
+	 N. Secomandi and S. Kekre, "Optimal energy procurement in spot and forward markets," Manuf. Serv. Oper. Manag., vol. 16, no. 2, pp. 270­282, 2014.
+	 F. E. Benth, J. S. Benth, and S. Koekebakker, Stochastic Modelling of Electricity and Related Markets, vol. 11. Singapore: World Scientific, 2008.
+	 M. Stutzer, "A simple nonparametric approach to derivative security valuation," J. Finance, vol. 51, no. 5, pp. 1633­1652, 1996.
+	 Y. A¨it-Sahalia and A. W. Lo, "Nonparametric estimation of state-price densities implicit in financial asset prices," J. Finance, vol. 53, no. 2, pp. 499­547, 1998.
+	 P. Diko, S. Lawford, and V. Limpens, "Risk premia in electricity forward prices," Stud. Nonlinear Dyn. Econometrics, vol. 10, no. 3, 2006, Art. no. 7.
+	 E. Hjalmarsson, "Does the Black­Scholes formula work for electricity markets? A nonparametric approach," Univ. Gothenburg, Dept. Economics, Gothenburg, Sweden, Working papers in Economics, no. 101, 2003.
+	 L. Meligkotsidou, I. D. Vrontos, and S. D. Vrontos, "Quantile regression analysis of hedge fund strategies," J. Empir. Finance, vol. 16, no. 2, pp. 264­279, 2009.
+	 M. L. Barnes and A. T. W. Hughes, "A quantile regression analysis of the cross section of stock market returns," Federal Reserve Bank Boston, Boston, MA, USA, Working paper, no. 02-2, 2002.
+	 I.-C. Tsai, "The relationship between stock price index and exchange rate in Asian markets: A quantile regression approach," J. Int. Financ. Markets, Inst. Money, vol. 22, no. 3, pp. 609­621, 2012.
+	 K. Yu, Z. Lu, and J. Stander, "Quantile regression: Applications and current research areas," J. Royal Stat. Soc. D , vol. 52, no. 3, pp. 331­350, 2003.
+	 I. Takeuchi, K. Nomura, and T. Kanamori, "Nonparametric conditional density estimation using piecewise-linear solution path of kernel quantile regression," Neural Comput., vol. 21, no. 2, pp. 533­559, 2009.
+	 J. W. Taylor, "A quantile regression neural network approach to estimating the conditional density of multiperiod returns," Journal of Forecasting, vol. 19, no. 4, pp. 299­311, 2000.
+	 F. Asnicar, "Optimization of electricity reserved capacity," Ph.D. dissertation, Tech. Univ. Denmark, Kongens Lyngby, Denmark, 2006.
+	 S. Arora and J. W. Taylor, "Forecasting electricity smart meter data using conditional kernel density estimation," Omega, vol. 59, pp. 47­59, 2016.
+	 S. BenTaieb, R. Huser, R. J. Hyndman, and M. G. Genton, "Forecasting uncertainty in electricity smart meter data by boosting additive quantile regression," IEEE Trans. Smart Grid, to be published.
+	 S.-K. Chao, W. K. Ha¨rdle, and W. Wang, "Quantile regression in risk calibration," in Handbook of Financial Econometrics and Statistics. New York, NY, USA: Springer, 2015, pp. 1467­1489.
+	 Y. Fan, W. K. Ha¨rdle, W. Wang, and L. Zhu, "Composite quantile regression for the single-index model", Humboldt-Universita¨t zu Berlin, Wirtschaftswissenschaftliche Fakulta¨t, Tech. Rep., 2013.
+	 M. Bernardi et al., "Bayesian tail risk interdependence using quantile regression," Bayesian Anal., vol. 10, no. 3, pp. 553­603, 2015.
+	 V. A. Epanechnikov, "Non-parametric estimation of a multivariate probability density," Theory Probab. Appl., vol. 14, no. 1, pp. 153­158, 1969.
+	 R. Koenker, P. Ng, and S. Portnoy, "Quantile smoothing splines," Biometrika, vol. 81, no. 4, pp. 673­680, 1994.
+	 I. Takeuchi, Q. V. Le, T. D. Sears, and A. J. Smola, "Nonparametric quantile estimation," J. Mach. Learn. Res., vol. 7, pp. 1231­1264, 2006.
+	 X. He, "Quantile curves without crossing," Amer. Statist., vol. 51, no. 2, pp. 186­192, 1997.
+	 J. Zhuang, I. W. Tsang, and S. C. Hoi, "A family of simple non-parametric kernel learning algorithms," J. Mach. Learn. Res., vol. 12, pp. 1313­1347, 2011.
+	 J. V. Rosenberg, "Nonparametric pricing of multivariate contingent claims," J. Derivatives, vol. 10, pp. 9­26, 2003.
+	 E. Jondeau, S.-H. Poon, and M. Rockinger, Financial Modeling Under Non-Gaussian Distributions. New York, NY, USA: Springer, 2007.
+	 P. Embrechts and H. Schmidli, "Modelling of extremal events in insurance and finance," Zeitschrift fu¨r Oper. Res., vol. 39, no. 1, pp. 1­34, 1994.
+	 A. J. McNeil, "Estimating the tails of loss severity distributions using extreme value theory," Astin Bull., vol. 27, no. 01, pp. 117­137, 1997.
+	 L. K. Hotta, E. C. Lucas, and H. P. Palaro, "Estimation of VaR using copula and extreme value theory," Multinat. Finance J., vol. 12, nos. 3/4, pp. 205­218, 2008.
+	 A. J. McNeil, "Extreme value theory for risk managers," Departement Mathematik, ETH Zentrum, Zurich, Switzerland, 1999.
+	 S. Shenoy and D. Gorinevsky, "Estimating long tail models for risk trends," IEEE Signal Process. Lett., vol. 22, no. 7, pp. 968­972, Jul. 2015.
+	 H. N. Bystro¨m, "Extreme value theory and extremely large electricity price changes," Int. Rev. Econ. Finance, vol. 14, no. 1, pp. 41­55, 2005.
+	 S. Shenoy, D. Gorinevsky, and S. Boyd, "Non-parametric regression modeling for stochastic optimization of power market forecast," presented at the American Control Conf., Chicago, IL, USA, Jul. 2015.
+	 S. Shenoy and D. Gorinevsky, "Stochastic optimization of power market forecast using non-parametric regression models," in Proc. IEEE Power Energy Syst., 2015, pp. 1­5.
+	 R. Carmona and V. Durrleman, "Pricing and hedging spread options," SIAM Rev., vol. 45, no. 4, pp. 627­685, 2003.
+	 R. Koenker, Quantile Regression , Cambridge, U.K.: Cambridge Univ. Press, 2005.
+	 N. Parikh and S. Boyd, "Block splitting for distributed optimization," Math. Program. Comput., vol. 6, no. 1, pp. 77­102, 2014.
+	 L. de Haan and A. Ferreira, Extreme Value Theory: An Introduction. New York, NY, USA: Springer, 2006.
+	 Metered load data, PJM, Norristown, PA, USA. [Online]. Available: http://www.pjm.com/markets-and-operations/ops-analysis/historicalload- data.aspx
+	 Energy pricing, PJM, Norristown, PA, USA. [Online]. Available: https://dataminer.pjm.com/dataminerui/pages/public/energypricing.jsf
+	 M. Rosenblatt, "Remarks on a multivariate transformation," Annals Math. Stat., vol. 23, no. 3, pp. 470­472, 1952.
+	 J. Geweke and G. Amisano, "Comparing and evaluating Bayesian predictive distributions of asset returns," Int. J. Forecast., vol. 26, no. 2, pp. 216­230, 2010.
+	 S. Shenoy and D. Gorinevsky, "Risk adjusted forecasting of electric power load," in Proc. Amer. Control Conf., Portland, OR, USA, 2014, pp. 914­919.
+	 NERC, "2013 Summer Reliability Assessment," Tech. Rep., May 2013. ;
+Objetivo, Problema, Método ou Metodologia e Contribuições:
+	We consider a load serving entity ( LSE ) , such as an electrical distribution utility , that holds a service obligation to supply electricity at the predetermined hour without restriction on volume ( a load following contract ) . ;;
+	PROBLEM FORMULATION We consider the dataset D = { yP , i , y , i , Zi } iN=1 , ( 1 ) where scalars yP , i and y , i are response variables , vectors Zi n are explanatory variables ( regressors ) , i is the sample number , and N is the number of the samples . ;;
+	We are trying to estimate the probability density p ( y|Zi ) from data ( 6 ) . ;;
+	We assume that the distribution p ( y|Z ) for ( 6 ) is described by the following QR model P ( y y ( q ) |Z ) = q , ( 7 ) y ( q ) = Z ( q ) + ( q ) , ( 8 ) where q ( 0 , 1 ) is the quantile level ; n and are the QR hyperplane parameters . ;;
+	Multiple Quantile Regression We need a model of the form ( 7 ) , where = ( q ) and = ( q ) are smooth functions that can be differentiated to compute the probability density . ;;
+	A scalable approach to solving problem ( 11 ) is discussed in our paper [ 35 ] , where more detail can be found . ;;
+	We assume the tail probability distributions to be Z1 + 1 - y|y < Z1 + 1 Exp ( L ) , ( 18 ) y - Zm - m |y > Zm + m Exp ( R ) . ;;
+	We extended this model to the entire ( 0 , 1 ) quantile interval as m y ( s|Z ) = ( Zj + j ) Kj ( s ) , ( 22 ) j=1 where kernel functions Kj ( s ) are such that Kj ( qj ) = 1 , and Kj ( qk ) = 0 for k = j . ;;
+	We use Kj ( s ) = Bj,2 ( s ) for qL s qR , ( 23 ) K1 ( s ) = L-1 log s qL for 0 < s < qL , ( 24 ) Km ( s ) = -R-1 log 1-s 1 - qR for qR < s < 1 , ( 25 ) where Bj,2 ( s ) are the second-order ( triangular ) B-spline kernels with knots ( 10 ) . ;;
+	Similar to quantile model ( 27 ) , we have m y ( r|Z , yP ) = ( Z , j + , j yP + , j ) Kj ( r ) . ;;
+	The tail integrals for the eight edge blocks can be expressed through the following auxiliary functions qL L ( r , q ) = ( r , q ) · ( q ) dq , ( 38 ) min ( q , qL ) 1 R ( r , q ) = ( r , q ) · ( q ) dq , ( 39 ) max ( q , qR ) rL gL ( q ) = ( r , q ) dr , ( 40 ) 0 1 gR ( q ) = ( r , q ) dr. ( 41 ) rR Using notation ( 38 ) ­ ( 41 ) we have rL FL , L ( q ) = L ( r , q ) dr , ( 42 ) 0 rL FL , R ( q ) = R ( r , q ) dr , ( 43 ) 0 1 FR , L ( q ) = L ( r , q ) dr , ( 44 ) rR 1 FR , R ( q ) = R ( r , q ) dr , ( 45 ) rR m L ( q ) = q wi ( 1 ) L ( ri , q ) , ( 46 ) i=1 m R ( q ) = q wi ( 1 ) R ( ri , q ) , ( 47 ) i=1 m L ( q ) = q wj ( j ) gL ( qj ) ( qj ) , ( 48 ) j=j m R ( q ) = q wj ( j ) gR ( qj ) ( qj ) . ;;
+	This means in ( 32 ) , ( 33 ) we have ( y ) = exp ( · y ) , ( 50 ) ( yP ) = exp ( · yP ) , ( 51 ) where and are fixed exponent parameters . ;;
+	We consider the following stylized problem . ;;
+	We split up the dataset into two parts , the training and test set . ;;
+	We consider the day-ahead forward contract entered at the midnight for the electricity delivery at given hour t of the next day . ;;
+	We then used formulas ( 4 ) and ( 5 ) . ;;
+	We compute the actual realized cost Ut for the procured log power y¯P , t = yP ( so ( t ) ) , where so ( t ) minimizes the total cost Tt ( s ) in ( 72 ) . ;;
+	We compare it with the results for the baseline advance procurement policy y¯P , t = y^P , t that is based on the OLS forecast ( 68 ) , ( 69 ) . ;;
+	We backtest the optimized procurement policy y¯P , t = yP ( so ( t ) ) and the baseline OLS forecast procurement policy y¯P , t = y^P , t . ;;
+	
+
+Filtering of a Discrete-Time HMM-Driven Multivariate Ornstein-Uhlenbeck Model With Application to Forecasting Market Liquidity Regimes
+Nome dos autores do artigo:
+	Anton Tenyakov
+	Rogemar Mamon
+	Matt Davison ;
+Referências Bibliográficas:
+	 A. Abiad, "Early warning systems for currency crises: A regimeswitching approach," in Hidden Markov Models in Finance, R. Mamon and R. Elliott, Eds. New York, NY, USA: Springer, 2007, pp. 155­184.
+	 H. Akaike, "A new look at the statistical model identification," IEEE Trans. Autom. Control, vol. AC-19, no. 6, pp. 716­723, Dec. 1974.
+	 Bank of International Settlement. , Group of Governors and Heads of Supervision Announces Higher Global Minimum Capital Standards [Online]. Available: http://www.bis.org/press/p100912.pdf
+	 R. Bianchi, M. Drew, and T. Wijeratne, "Systemic risk, the TED spread and hedge fund returns," Int. J. Bus. Econ., vol. 1, no. 1, pp. 59­78, 2009.
+	 N. Bloom and M. Floetotto, "Good news at last? The recession will be over sooner than you think," Centre for Economic Policy Research, London, U.K., 2009 [Online]. Available: http://www.voxeu.org/article/ good-news-last-recession-will-be-over-sooner-you-think
+	 K. Boudt, E. Paulus, and R. Rosenthal, "Funding liquidity, market liquidity and TED spread: A two-regime model," Working Paper, 2010 [Online]. Available: http://dx.doi.org/10.2139/ssrn.1668635
+	 M. Brunnermeier, "Deciphering the liquidity and credit crunch 2007­ 2008," J. Econ. Perspect., vol. 23, no. 1, pp. 77­100, 2009.
+	 M. Brunnermeier and L. Pedersen, "Market liquidity and funding liquidity," Rev. Financial Stud., vol. 22, no. 6, pp. 2201­2238, 2008.
+	 K. Bulteel, T. Wilderjans, F. Tuerlinckx, and E. Ceulemans, "CHull as an alternative to AIC and BIC in the context of mixtures of factor analyzers," Behav. Res. Methods, vol. 45, pp. 782­791, 2013.
+	 R. Campbell, K. Koedijk, and P. Kofman, "Increased correlation in bear markets," Financial Anal. J., vol. 58, no. 1, pp. 87­94, 2002.
+	 E. Ceulemans and H. Kiers, "Selecting among three-mode principal component models of different types and complexities: A numerical convex hull based method," Brit. J. Math. Stat. Psychol., vol. 59, pp. 133­150, 2006.
+	 P. Date and K. Ponomareva, "Linear and nonlinear filtering in mathematical finance: A review," IMA J. Manage. Math., vol. 22, pp. 195­211, 2011.
+	 P. Date, R. Mamon, and A. Tenyakov, "Filtering and forecasting commodity futures prices under an HMM framework," Energy Econ., vol. 40, pp. 1001­1013, 2013.
+	 A. Dempster, N. Laird, and D. Rubin, "Maximum likelihood from incomplete data via the EM algorithm," J. Roy. Stat. Soc. B, Methodol., vol. 39, no. 1, pp. 1­38, 1977.
+	 G. Dionne and O. M. Chun, "Default and liquidity regimes in the bond market during the 2002-2012 period," Can. J. Econ., vol. 46, no. 4, pp. 1160­1195, 2013.
+	 R. Elliott, L. Aggoun, and J. Moore, Hidden Markov Models: Estimation and Control. New York, NY, USA: Springer, 1995.
+	 R. Elliott, W. Hunter, and B. Jamieson, "Financial signal processing: A self-calibrating model," Int. J. Theor. Appl. Finance, vol. 4, pp. 567­584, 2001.
+	 R. Elliott and C. Wilson, "The term structure of interest rates in a hidden Markov setting," in Hidden Markov Models in Finance, R. Mamon and R. Elliott, Eds. New York, NY, USA: Springer, 2007.
+	 C. Erlwein and R. Mamon, "An online estimation scheme for Hull-White model with HMM-driven parameters," Stat. Methods Appl., vol. 18, no. 1, pp. 87­107, 2009.
+	 C. Erlwein, F. Benth, and R. Mamon, "HMM filtering and parameter estimation of an electricity spot price model," Energy Econ., vol. 32, no. 5, pp. 1034­1043, 2010.
+	 C. Erlwein, R. Mamon, and M. Davison, "An examination of HMMbased investment strategies for asset allocation," Appl. Stochastic Models Bus. Ind., vol. 27, pp. 204­221, 2011.
+	 G. Gorton, Misunderstanding Financial Crises: Why We Don't See Them Coming. London, U.K.: Oxford Univ. Press, 2012.
+	 R. Goyenko. , Treasury Liquidity and Funding Liquidity: Evidence From Mutual Fund Returns [Online]. Available: http://dx.doi.org/10.2139/ssrn.2023187
+	 J. Hamilton, Time Series Analysis. Princeton, NJ, USA: Princeton Univ. Press, 1994.
+	 M. Hardy, "A regime-switching model of long-term stock returns," North Amer. Actuarial J., vol. 6, no. 1, pp. 171­173, 2002.
+	 N. Hughes. , A Trade War With China. Foreign Affairs [Online]. Available: http://www.foreignaffairs.com/articles/60825/neil-c-hughes/atrade-war-with-china
+	 J. James and N. Webber, Interest Rate Modelling. Hoboken, NJ, USA: Wiley, 2000.
+	 P. Krugman, "The coincidence of a liberal--Mission not accomplished, not yet anyway," New York Times, Mar. 12, 2008 [Online]. Available: http://krugman.blogs.nytimes.com/2008/03/12/mission-notaccomplished-not-yet-anyway/
+	 F. Longin and B. Solnik, "Extreme correlation of international equity markets," J. Finance, vol. 56, no. 2, pp. 649­676, 2001.
+	 L. Mancini, A. Ranaldo, and J. Wrampelmeyer. , The Foreign Exchange Market: Not as Liquid as You May Think [Online]. Available: http://www.voxeu.org/article/foreign-exchange-market-not-liquid-youmay-think
+	 G. Schwarz, "Estimating the dimension of a model," Ann. Statist., vol. 6, no. 2, pp. 461­464, 1978.
+	 S. Shreve, Stochastic Calculus for Finance II: Continuous Time Models. New York, NY, USA: Springer, 2004.
+	 R. Sipley, Market Indicators: The Best-Kept Secret to More Effective Trading and Investing. New York, NY, USA: Bloomberg Press, 2009.
+	 J. W. van der End and M. Tabbae, "When liquidity risk becomes a systemic issue: Empirical evidence of bank behaviour," J. Financial Stab., vol. 8, pp. 107­120, 2012.
+	 D. Vayanos and J. Wand, "Market liquidity--Theory and empirical evidence," in Handbook of the Economics of Finance: Financial Markets and Asset Pricing, G. Constantinides, R. Stulz, and M. Harris. Amsterdam, The Netherlands: Elsevier, 2013, pp. 1289­1361.
+	 X. Xi and R. Mamon, "Parameter estimation of an asset price model driven by a weak hidden Markov chain," Econ. Modell., vol. 28, pp. 36­ 46, 2011.
+	 X. Xi and R. Mamon, "Yield curve modelling using a multivariate higherorder HMM," in State-Space Models and Applications in Economics and Finance, Y. Zeng and S. Wu, Eds. New York, NY, USA: Springer, 2013, pp. 185­202.
+	 N. Zhou and R. Mamon, "An accessible implementation of interest rate models with Markov-switching," Expert Syst. Appl., vol. 39, pp. 4679­ 4689, 2012. ;
+Objetivo, Problema, Método ou Metodologia e Contribuições:
+	We propose a two-regime mean-reverting model for explaining the behaviour of three time series , which mirror liquidity levels for financial markets . ;;
+	We use three 1932-4553 © 2016 IEEE . ;;
+	Each of these indices measures , as well as the liquidity of the market , something else , which is why we use all three to infer the underlying market state . ;;
+	We made contributions in terms of methodology in modelling the regime switches in a multivariate OU model and understanding the dynamics of liquidity . ;;
+	We provide economic and econometric motivations throughout this work by explicating the relevance of chosen data for market illiquidity , and the proposed model captures the joint effects of the 3 state processes . ;;
+	We aim to use hidden Markov models ( HMMs ) driving a mean-reverting process in the analysis of the joint movements of important economic indicators to forecast liquidity and illiquidity states of the financial market . ;;
+	The HMM filtering in this paper uses the measure-change approach , which avoids the forward-backward algorithm usually embedded in several filtering techniques , and hence our approach requires much less memory during computation . ;;
+	The second indicator for liquidity levels that we consider is the VIX . ;;
+	The third indicator we consider is a metric based on the evolution of the S & P 500 . ;;
+	Our work is based on similar assumptions , but instead of finding correlation between the major indicators of illiquidity , we incorporate as much information as possible into our model by simultaneously using the three market variables integrated by a set of multidimensional dynamic filters . ;;
+	Our main contribution is the development of an HMM-driven model tailored for capturing and predicting liquidity risk levels . ;;
+	Our numerical results demonstrate that the proposed model has satisfactory capacity in identifying periods of liquidity crises . ;;
+	We specify in section III the data used for the numerical estimation and prediction experiments . ;;
+	We regard the state of the underlying Markov chain as the regime of an economy ( e.g. , see Zhou and Mamon [ 38 ] ) , or more specifically a liquidity regime dependent on major factors causing economic turbulence . ;;
+	We consider d OU processes ; each process is denoted by rt ( g ) with component g { 1 , , . ;;
+	We shall make the parameters of equation ( 4 ) regimeswitching so that each component of the d-dimensional observation process can be written as rk ( g+ ) 1 = rk ( g ) e- ( g ) ( xk ) t + ( 1 - e- ( g ) ( xk ) t ) ( g ) ( xk ) + ( g ) ( xk ) 1 - e-2 ( g ) ( xk 2 ( g ) ( xk ) ) t k ( g+ ) 1 , ( 6 ) where ( g ) = ( ( 1g ) , 2 ( g ) , . ;;
+	The quantity Tkj+1 ( f ) is an auxiliary process that depends on the function f of the observation process ; in our case , f takes the form f ( r ) = r , f ( r ) = r2 or f ( r ) = rk+1rk . ;;
+	Other than generalising the framework in Erlwein and Mamon [ 19 ] , our contribution includes expressing recursive fil- tering equations compactly though matrix notation . ;;
+	We provide recursive filters for ck , ( J j , ix ) k , ( Oix ) k and ( T i ( f ) ( g ) x ) k. Theorem 1 : Let D be the matrix defined in ( 17 ) . ;;
+	DESCRIPTION OF DATA FOR IMPLEMENTATION To model the levels of liquidity , we use three monthly time series data covering the period of 30 April 1998­30 April Fig . ;;
+	The choice of the end-of-month time series data sets in our analysis is mainly due to convenience as they are readily available from all data sources . ;;
+	Figure 1 shows the dynamics of the TED spread for the data collected on the last day of the month ( TED-30 ) and on the 11th of each month ( TED-11 ) ; if the 11th is not a trading day we utilise the value of the previous trading day . ;;
+	The important consideration is to select a discretisation grid ( monthly in our case ) just fine enough to capture all the major economic breaks and instabilities , and without creating distortions or introducing extra noise in the data . ;;
+	The general behaviour of the data remains the same , and therefore monthly observations are appropriate for our intended application given the correct number of calculations involved in the window processing of data points . ;;
+	The data set for our filtering applications is formed by constructing a matrix with a dimension of 181 × 3 over the period 30 April 1998 ­ 30 April 2013 with the TED , VIX and MktIll in the first , second and third columns , respectively . ;;
+	Note that we use MktIll × 100 to scale the magnitude of MktIll and make it comparable to that of the TED and VIX . ;;
+	
+
+Option Pricing With Application of Levy Processes and the Minimal Variance Equivalent Martingale Measure Under Uncertainty
+Nome dos autores do artigo:
+	Piotr Nowak
+	Michal Pawlowski ;
+Referências Bibliográficas:
+	 F. Black and M. Scholes, "The pricing of options and corporate liabilities," J. Political Econ., vol. 81, pp. 637­659, 1973.
+	 J. C. Hull, Options, Futures and Other Derivatives. New York, NY, USA: Prentice Hall, 1997.
+	 M. Davis, "Mathematics of financial markets," in Mathematics Unlimited 2001 and Beyond, B. Engquist and W. Schmid, Eds. Berlin, Germany: Springer-Verlag, 2001, pp. 361­380.
+	 G. Bakshi, C. Cao, and Z. Chen, "Empirical performance of alternative option pricing models," J. Finance, vol. 52, no. 5, pp. 2003­2049, 1997.
+	 D. S. Bates, "Jumps and stochastic volatility: Exchange rate processes implicit in Deutschemark options," Rev. Finance Stud., vol. 9, no. 1, pp. 69­107, 1996.
+	 R. Merton, "Option pricing when underlying stock returns are discontinuous," J. Finance Econ., vol. 3, pp. 125­144, 1976.
+	 S. G. Kou, "A jump-diffusion model for option pricing," Manage. Sci., vol. 48, no. 8, pp. 1086­1101, 2002.
+	 S. G. Kou and H. Wang, "Option pricing under a double exponential jump diffusion model," Manage. Sci., vol. 50, no. 9, pp. 1178­1192, 2004.
+	 S. Asmussen, F. Avram, and M. Pistorius, "Russian and American put options under exponential phase-type Levy models," Stoch. Process. Appl., vol. 109, no. 1, pp. 79­111, 2004.
+	 M. Boyarchenko and S. Boyarchenko, "User's guide to pricing double barrier options. Part I: Kou's model and generalizations," 2008, Available at SSRN: http://dx.doi.org/10.2139/ssrn.1272081
+	 N. Cai, N. Chen, and X. Wan, "Pricing double-barrier options under a flexible jump diffusion model," Oper. Res. Lett., vol. 37, no. 3, pp. 163­ 167, 2009.
+	 N. Cai and S. Kou, "Option pricing under a mixed-exponential jump diffusion model," Manage. Sci., vol. 57, pp. 2067­2081, 2011.
+	 J. Crosby, N. L. Saux, and A. Mijatovic, "Approximating Levy processes with a view to option pricing," Int. J. Theor. Appl. Finance, vol. 13, no. 1, pp. 63­91, 2010.
+	 M. Jeannin and M. R. Pistorius, "A transform approach to calculate prices and greeks of barrier options driven by a class of Levy processes," Quantitative Finance, vol. 10, no. 6, pp. 629­644, 2010.
+	 O. E. Barndorff-Nielsen, "Processes of normal inverse Gaussian type," Finance Stoch., vol. 2, pp. 41­68, 1997.
+	 D. B. Madan and E. Seneta, "The variance gamma ,model for share market returns," J. Bus., vol. 63, no. 4, pp. 511­524, 1990.
+	 Y. Miyahara, Option Pricing in Incomplete Markets: Modeling Based on Geometric Levy Processes and Minimal Entropy Martingale Measures , London, U.K.: Imperial College Press, 2012.
+	 A. N. Shiryaev, Essentials of Stochastic Finance, Facts, Models, Theory. Singapore: World Scientific, 1999.
+	 L. A. Zadeh, "Fuzzy sets," Inf. Control, vol. 8, pp. 338­353, 1965.
+	 H. C. Wu, "Pricing European options based on the fuzzy pattern of BlackScholes formula," Comput. Oper. Res., vol. 31, pp. 1069­1081, 2004.
+	 A. M. Gil-Lafuente, Fuzzy Logic in Financial Analysis. Berlin, Germany: Springer-Verlag, 2005.
+	 H. C. Wu, "Using fuzzy sets theory and Black-Scholes formula to generate pricing boundaries of European options," Appl. Math. Comput., vol. 185, no. 1, pp. 136­146, 2007.
+	 Y. Yoshida, "The valuation of European options in uncertain environment," Eur. J. Oper. Res., vol. 145, no. 1, pp. 221­229, 2003.
+	 W. Xu, X. Peng, and W. Xiao, "The fuzzy jump-diffusion model to pricing European vulnerable options," Int. J. Fuzzy Syst., vol. 15, no. 3, pp. 317­ 325, 2013.
+	 W. Xian-Dong and H. Jian-Min, "Reload option pricing in fuzzy framework," in Proc. Int. Conf. Manage. Sci. Eng., 2014, pp. 147­152.
+	 K. A. Chrysafis and B. K. Papadopoulos, "On theoretical pricing of options with fuzzy estimators," J. Comput. Appl. Math., vol. 223, no. 2, pp. 552­ 566, 2009.
+	 K. Thiagarajah, S. S. Appadoo, and A. Thavaneswaran, "Option valuation model with adaptive fuzzy numbers," Comput. Math. Appl., vol. 53, pp. 831­841, 2007.
+	 Z. Zmeskal, "Generalised soft binomial American real option pricing model ," Eur. J. Oper. Res., vol. 207, no. 2, pp. 1096­1103, 2010.
+	 W. Q. Liu and S. H. Li, "European option pricing model in a stochastic and fuzzy environment," Appl. Math.-J. Chin. Univ., vol. 28, no. 3, pp. 321­334, 2013.
+	 L. H. Zhang, W. G. Zhang, W. J. Xu, and W. L. Xiao, "The double exponential jump diffusion model for pricing European options under fuzzy environments," Econ. Model., vol. 29, no. 3, pp. 780­786, 2012.
+	 P. Nowak, "Option pricing with Levy process in a fuzzy framework," in Recent Advances in Fuzzy Sets, Intuitionistic Fuzzy Sets, Generalized Nets and Related Topics, K. T. Atanassov, W. Homenda, O. Hryniewicz, J. Kacprzyk, M. Krawczak, Z. Nahorski, E. Szmidt, and S. Zadrozny, Eds. Warsaw, Poland: Systems Research Institute Polish Academy of Sciences, 2011, pp. 155­167.
+	 P. Nowak and M. Romaniuk, "Application of Levy processes and Esscher transformed martingale measures for option pricing in fuzzy framework," J. Comput. Appl. Math., vol. 263, pp. 129­151, 2014.
+	 H. C. Wu, "Optimality conditions for linear programming problems with fuzzy coefficients," Comput. Math. Appl., vol. 55, no. 12, pp. 2807­2822, 2008.
+	 M. L. Puri and D. A. Ralescu, "Fuzzy random variables," J. Math. Anal. Appl., vol. 114, pp. 409­422, 1986.
+	 L. A. Zadeh, "The concept of linguistic variable and its application to approximate reasoning I, II and III," Inf. Sci., vol. 8, 8, 9, pp. 199­249, 301­357, 43­80, 1975.
+	 J. Jacod and A. N. Shiryaev, Limit Theorems for Stochastic Processes. Berlin, Germany: Springer-Verlag, 1987.
+	 P. Nowak, "On Jacod-Grigelionis characteristics for Hilbert space valued semimartingales," Stoch. Anal. Appl., vol. 20, no. 5, pp. 963­998, 2002.
+	 R. Cont and P. Tankov, Financial Modelling With Jump Processes. London, U.K.: Chapman & Hall, 2004.
+	 F. Delbaen and W. Schachermayer, "A general version of the fundamental theorem of asset pricing," Math. Ann., vol. 300, no. 1, pp. 463­520, 1994.
+	 J. J. Buckley and E. Eslami, "Pricing stock options using fuzzy sets," Iranian J. Fuzzy. Syst., vol. 4, no. 2, pp. 1­14, 2007.
+	 P. Nowak and M. Romaniuk, "Catastrophe bond pricing for the two-factor Vasicek interest rate model with automatized fuzzy decision making," Soft Comput., pp. 1­23, 2015 doi: 10.1007/s00500-015-1957-1.
+	 K. Piasecki, "On imprecise investment recommendations," Stud. Logic, GrammarRhetoric, vol. 37, no. 1, pp. 179­194, 2014.
+	 M. Pawlowski and P. Nowak, "Modelling spot prices on the Polish energy market," in Intelligent Systems'2014, vol. 323 , D. Filev, J. Jablkowski, J. Kacprzyk, M. Krawczak, I. Popchev, L. Rutkowski, V. Sgurev, E. Sotirova, P. Szynkarczyk, and S. Zadrozny, Eds. Berlin, Germany: Springer-Verlag, 2015, pp. 781­792.
+	 M. Musiela and M. Rutkowski, Martingale Methods in Financial Modelling. Berlin, Germany: Springer-Verlag, 1997. ;
+Objetivo, Problema, Método ou Metodologia e Contribuições:
+	We obtain analytical option valuation expressions in crisp case . ;;
+	We also propose a method of automatized decision making , which utilizes the fuzzy valuation formulas . ;;
+	Our log-price model Y is a Levy process , which is a sum of a drifted Brownian motion and a linear combination of Poisson processes modeling jumps in the financial instrument prices . ;;
+	We apply minimal variance equivalent martingale measure ( MVEMM ) , described by Miyahara in [ 17 ] , as the equivalent martingale measure . ;;
+	This leads to a new form of the European option pricing formulas in the crisp case which , to the best of our knowledge , were not published yet . ;;
+	FUZZY ARITHMETIC -- BASIC DEFINITIONS AND FACTS For a fuzzy subset A~ of the set of real numbers R , we use the symbol A~ to denote its membership function A~ : R [ 0 , 1 ] and the symbol A~ = { x : A~ } to denote the -level set of A~ for ( 0 , 1 ] . ;;
+	We denote the -field of Borel subsets of R by B ( R ) and the set of all fuzzy numbers by F ( R ) . ;;
+	We call a fuzzy-number-valued map X~ : F ( R ) , where ( , F ) is a measurable space , a fuzzy random variable if ( , x ) : X~ ( ) ( x ) F × B ( R ) for every [ 0 , 1 ] ( see [ 34 ] for further details ) . ;;
+	We recall basic facts concerning the arithmetic of fuzzy numbers . ;;
+	We denote the binary operators between fuzzy numbers , corresponding to standard operators + , - , × , / of addition , subtraction , multiplication , and division between crisp real numbers by the symbols , , , and , respectively . ;;
+	We denote a binary operator int , int , int or int between closed intervals [ a , b ] and [ c , d ] by the symbol int . ;;
+	The following proposition , quoted from [ 20 ] , will be very useful in our pricing method . ;;
+	We apply triangular fuzzy numbers in our numerical anal- ysis of fuzzy pricing formula for the European option ( see Section VII-C ) . ;;
+	We introduce some notations and recall necessary definitions and facts concerning stochastic analysis in continuous time , including the martingale method of pricing . ;;
+	We assume that the risk-free spot interest rate is constant and we denote it by r. We use a cadlag stochastic process St , adapted to the filtration ( Ft ) , as the underlying asset 's price process . ;;
+	We also refer the reader to [ 37 ] , where characteristic triplet ( Bt , Ct , t ) was defined for quasi-left continuous semimartingales in the Hilbert space-valued case . ;;
+	We introduce the set CF = { ( f , g ) C and F ( Lt ( f , g ) ) is integrable } . ;;
+	We define the class of minimal distance martingale measures , considered in [ 17 ] . ;;
+	We will denote this measure by the symbol P ( M V E M M ) . ;;
+	
+

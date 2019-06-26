@@ -47,7 +47,7 @@ max {0, K - S (T )}
 K is the strike price, which is a guaranteed price at which the asset can be bought (for a call option) or sold (for a put option) at time T . Eq. (2) and Eq. (3) make clear that the option will expire worthless if the option holder would lose money by trading in the underlying asset, i.e. buying the asset at the strike price and selling it in the market, in the call option case, and vice versa in the put option case.
 To obtain the present value of the payoff, the final payoff value is discounted at a continuously compounded rate by multiplying by the discount factor e-rT . The price S(t) is a random variable
 
-1932-4553 Š 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
+1932-4553 © 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
 
 1074
 
@@ -285,7 +285,7 @@ The Euler Scheme and its refinements and extensions, detailed above, can be used
 A. Brownian Motion
 A multi-dimensional stochastic process {W (t), 0  t  T } is called a standard Brownian motion on Rn if:
 1) W (0) = 0 2) The mapping t  W (t) is continuous on [0, T ] 3) The increments W (t0 ), W (t1 ) - W (t0 ), . . . , W (tk ) -
-W (tk-1 ) are independent for all 0  t0 < t1 < ˇ ˇ ˇ < tk  T 4) W (t) - W (s)  N (0, (t - s)In ) for all 0  s < t  T , and In is the n × n identity matrix. The paths of standard Brownian motion can be simulated by setting W (0) = 0, sampling Z1, Z2 , . . . , Zm independently from N (0, In ) and using the following algorithm:
+W (tk-1 ) are independent for all 0  t0 < t1 < · · · < tk  T 4) W (t) - W (s)  N (0, (t - s)In ) for all 0  s < t  T , and In is the n × n identity matrix. The paths of standard Brownian motion can be simulated by setting W (0) = 0, sampling Z1, Z2 , . . . , Zm independently from N (0, In ) and using the following algorithm:
 
 W (ti+1 ) = W (ti ) + ti+1 - ti Zi+1 .
 
@@ -333,7 +333,7 @@ where C and D are n × n matrices, and b, W(t), X(t)  Rn , and where the coeffic
 When C is non-singular and diagonalisable, a multidimensional simulation can be reduced to multiple independent scalar simulations, linked only through the correlation matrix from the dW (t) term. It can also be reduced to scalar simulations when C is not diagonalisable, but all coefficients are deterministically time-varying.
 This model encompasses other Gaussian short-rate models such as the Vasicek, Ho-Lee and Hull-White models. This can be modelled in the GPE as follows:
 1) Set the X(t0 ) values 2) Select additive steps 3) Set each ` a ' function to be: (N EW × X[0] + N EW ×
-X[1] + ˇ ˇ ˇ + N EW × X[n - 1] + N EW ) × D 4) Set the constant (or time dependent) values for the `N EW '
+X[1] + · · · + N EW × X[n - 1] + N EW ) × D 4) Set the constant (or time dependent) values for the `N EW '
 variables when prompted by the UI.  5) Set each ` b ' function to be `N EW × D' (and set the
 constant or time dependent values (or functions) for the `N EW ' variables when prompted).
 
@@ -387,7 +387,7 @@ vn (Xt )
 
 (21)
 
-where a  Rn×n , b  Rn ,   Rn×n , and vi(Xt ) = i + i ˇ Xt such that i, i  R and i  Rn . (Any affine map can be
+where a  Rn×n , b  Rn ,   Rn×n , and vi(Xt ) = i + i · Xt such that i, i  R and i  Rn . (Any affine map can be
 represented by a matrix multiplication followed by a vector ad-
 
 dition.) This model unifies and strictly extends previous affine
@@ -418,13 +418,13 @@ This can be modelled in the GPE as follows:
 
 3) Set each `a' function to be: (N EW × X[0] + N EW ×
 
-X[1] + ˇ ˇ ˇ + N EW × X[n - 1] + N EW ) × D
+X[1] + · · · + N EW × X[n - 1] + N EW ) × D
 
 4) and enter the values for the `N EW ' variables
 
 5) Set each `b' function (the diffusion term) to be either
 
-N EW × X[0] + N EW × X[1] + ˇ ˇ ˇ
+N EW × X[0] + N EW × X[1] + · · ·
 
 6) N EW ×
 
@@ -781,4 +781,3 @@ Richard Jiang received the Ph.D. degree in computer science from Queen's Univers
 After the Ph.D. study, he was with Brunel University, Loughborough University, Swansea University, the University of Bath, and the University of Sheffield. He joined Northumbria University, Newcastle upon Tyne, U.K., in May 2013, where he is currently a Lecturer in the Department of Computer Science and Digital Technologies. His research interests mainly reside in the fields of artificial intelligence, man­machine interaction, hardware acceleration, visual forensics, and biomedical image analysis. His research has been funded by EPSRC, BBSRC, TSB, EU FP, and industry, and he has authored some 50 publications.
 
 
-

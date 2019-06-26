@@ -22,7 +22,7 @@ SV models are powerful alternatives of widely used GARCH family [10]­[17]. They
 Both GARCH and SV models can be viewed as instances of state-space models (SSMs), which are widely used models for effective modeling of time series data and dynamical systems [1]. The essential idea is that for an observed time series yt there is an underlying process xt which itself is evolving through time in a way that reflects the structure of the system. The model consists of two parts: a hidden state xt and an observation variable yt. For volatility modeling, the observation variable is return of asset time series, and the volatility can be modeled as the hidden system state.
 For above traditional econometric volatility models, model prediction performance is limited by the rigid linear state transition function form because in the financial market, the parameters of a function themselves may change over time. One possible solution to solve this problem is to take a dynamic stochastic function form for the state transition, which can be achieved by using Bayesian nonparametric tools. Nonparametric models are more natural to describe financial time series dynamic behaviors.
 
-1932-4553 Š 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
+1932-4553 © 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
 
 1016
 
@@ -219,7 +219,7 @@ Note that in a GP-SSM framework, the hidden state transition function is unknown
 
 (LM) test [8]. The null hypothesis of Ljung-Box test is that the first m lags of autocorrelation function (ACF) of the testing series are zero. For the Lagrange multiplier test, we assume in the linear regression form:
 
-a2t = 0 + 1 a2t-1 + ˇ ˇ ˇ + m at2-m + ct ,
+a2t = 0 + 1 a2t-1 + · · · + m at2-m + ct ,
 
 (10)
 
@@ -229,7 +229,7 @@ T
 
 SSR0 =
 
-(at2 - Ż)2 ,
+(at2 - ¯)2 ,
 
 t=m+1
 
@@ -253,13 +253,13 @@ where
 
 T
 
-Ż = (1/T ) a2t
+¯ = (1/T ) a2t
 
 (12)
 
 t=1
 
-is the sample mean of at2 ; F is asymptotically distributed as a chi-squared distribution m2 under null hypothesis and m is the degree of freedom. The null hypothesis H0 is 1 = ˇ ˇ ˇ = m = 0. The decision rule is to reject H0 if F > m2 ()( here m2 () is the upper 100(1 - )th percentile of 2m ), or type-I error: the p value of F is less than  (see [7] for details).
+is the sample mean of at2 ; F is asymptotically distributed as a chi-squared distribution m2 under null hypothesis and m is the degree of freedom. The null hypothesis H0 is 1 = · · · = m = 0. The decision rule is to reject H0 if F > m2 ()( here m2 () is the upper 100(1 - )th percentile of 2m ), or type-I error: the p value of F is less than  (see [7] for details).
 Also we can use sample autocorrelation function (ACF) and sample partial autocorrelation function (PACF) to see the ARCH effect of financial time series data. If both ACF and PACF are not significant but the squared returns are significantly autocorrelated, we can model the data using a conditional volatility model. If we do not observe the autocorrelation of the squared returns, there is no need to use a conditional volatility model, i.e., all such time-varying conditional volatility models, including ARCH and our model, are not applicable.
 3) Specify Volatility Equation: The key of volatility modeling is to specify how the hidden volatility or logarithm of variance evolves over time. In GPRSV models, this part is modeled using the flexible Bayesian nonparametric tool, GP regression. For GARCH and SV models this part is modeled with a linear regression approach. Once we estimate the model parameters, those parametric models are determined. When the hidden variable is modeled using GP regression, we need to specify both the mean and covariance functions. Besides these functions forms, the initial value of hyper-parameters (the parameters in mean and covariance functions are called hyper-parameters) associated with them need to be specified as well. Note that with the same hyper-parameters, the function form is not constant and is a random function sampled from a GP determined by the hyper-parameters.
 4) Estimate Model Parameters and Check Model Fitness: After specifying both the mean and volatility equations, and associated hyper-parameters and in Steps 2 and 3, we can use training data to estimate unknown parameters. Once we obtain estimated parameters, we can use testing data to test the esti-
@@ -317,13 +317,13 @@ We put all unknown GP mean and covariance equation hyperparameters and  and  in 
 1) Remove linear dependence from r1:T , and obtain residuals a1:T , which is the observation variable in the SSM point of view.
 2) The mean of N particles is calculated by
 
-Żt-1 = iN=1 Wti-1 it-1 ,
+¯t-1 = iN=1 Wti-1 it-1 ,
 
 (15)
 
 and then parameter particles are shrunk towards their empirical means based on
 
-~ti = ti-1 + (1 - )Żt-1 ,
+~ti = ti-1 + (1 - )¯t-1 ,
 
 (16)
 
@@ -351,9 +351,9 @@ at  N (0, t2 ).
 
 (18)
 
-As we defined vt = log(t2 ), we can compute p(at |it , Żit )
+As we defined vt = log(t2 ), we can compute p(at |it , ¯it )
 
-p at |it , Żti
+p at |it , ¯ti
 
 N
 
@@ -369,7 +369,7 @@ i t
 
 The importance weights gti are calculated as
 
-gti  Wti-1 p(at |it , Żit ).
+gti  Wti-1 p(at |it , ¯it ).
 
 (20)
 
@@ -851,4 +851,3 @@ Since Fall 2000, he has been with the Department of Electrical and Computer Engi
 Fang Wang received the Ph.D. degree in Management Information Systems and the MBA degree in finance. He is currently an Associate Professor of Marketing in the Lazaridis School of Business & Economics, Wilfrid Laurier University, Canada. Her research interests include data mining, e-commerce, firm strategy, and long-term firm productivity. Her work has appeared in Information & Management, Journal of Marketing, International Journal of Research in Marketing, Journal of the Academy of Marketing Science, among others.
 
 
-

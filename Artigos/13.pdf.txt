@@ -22,7 +22,7 @@ Building on this brief, our goal is to model the financial life of low-income in
 II. MODEL OF ECONOMIC AGENT'S DYNAMICS
 "Households" in development economics are often portrayed as both consumption and production units, either wage earners or small entrepreneurs [16]. Building on the classical
 
-1063-6536 Š 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications_standards/publications/rights/index.html for more information.
+1063-6536 © 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications_standards/publications/rights/index.html for more information.
 
 GONZALEZ VILLASANTI AND PASSINO: FEEDBACK CONTROLLERS AS FINANCIAL ADVISORS FOR LOW-INCOME INDIVIDUALS
 
@@ -394,4 +394,3 @@ REFERENCES
 [26] F. Borrelli, A. Bemporad, and M. Morari. (2015). Predictive Control for Linear and Hybrid Systems, 2015. [Online]. Available: http://www.mpc.berkeley.edu/mpc-course-material
 
 
-

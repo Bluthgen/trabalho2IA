@@ -18,7 +18,7 @@ I. INTRODUCTION
 T HE financial crisis of 2008 demonstrated that lack of good information can lead to disasters. Financial services organizations, customers, and particularly regulators quickly came to understand that clear and relevant information was key to risk reduction. Therefore, we are now witnessing ongoing efforts by regulators to ensure that firms operating in financial services generate comprehensive and comprehensible information. Superficially, the demands of regulators look burdensome. In reality, however, they provide an opportunity for organizations to improve their strategic and operational activities through risk reduction based on well-managed information [1].
 Machine learning in financial applications differs from other domains in how the quality of a model is assessed. Whereas in most applications, "accuracy of prediction" is often the only metric used, in financial applications, interpretability and transparency are also important and sometimes a requirement. Within financial applications, the accuracy of the model is not the only crucial issue. There is a growing interest in having high levels of model transparency, which is the ability to provide a clear and understandable explanation of the output result. If advanced analytical techniques are used, there is now an obligation to manage the whole process of creating and using the resulting models. It is no longer enough to create a model, deploy it into production, and leave it unattended without any oversight. A set of capabilities and processes are required to ensure that every aspect of model creation, deployment, and performance is well understood, managed, and documented. This implies additional technology infrastructure and methods, since in large firms, the
 
-1063-6706 Š 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
+1063-6706 © 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
 
 250
 
@@ -55,11 +55,11 @@ values are equal to 1. More formally, the membership function A~(x) of an IT2 fu
 A~ (x) =
 x X
 
-1/u /x u [A~ (x), Ż A~ (x) ]
+1/u /x u [A~ (x), ¯ A~ (x) ]
 
 (1)
 
-where ŻA~(x) and A~(x) represent, respectively, the upper and lower membership functions of the IT2 fuzzy set A~. In this pa-
+where ¯A~(x) and A~(x) represent, respectively, the upper and lower membership functions of the IT2 fuzzy set A~. In this pa-
 
 per, we use triangular membership functions defined by three
 
@@ -69,11 +69,11 @@ the support and b to the core. We build the IT2 fuzzy sets by
 
 using the following procedure. First, we define the upper tri-
 
-angular (aŻf,j , Żbf
+angular (a¯f,j , ¯bf
 
-membership functions ,j , cŻf,j ). Then, the left
+membership functions ,j , c¯f,j ). Then, the left
 
-ŻA~(x) through endpoints af,j
+¯A~(x) through endpoints af,j
 
 the three points of the supports
 
@@ -81,33 +81,33 @@ of the lower membership functions A~f (x) are computed as
 
 midpoints
 
-aŻ f , j +Żbf , j 2
+a¯ f , j +¯bf , j 2
 
-between the left endpoints aŻf,j
+between the left endpoints a¯f,j
 
 of the
 
-supports of the upper membership functions ŻA~f (x) and their
+supports of the upper membership functions ¯A~f (x) and their
 
-cores Żbf,j . Similarly, the right endpoints cf,j of the supports
+cores ¯bf,j . Similarly, the right endpoints cf,j of the supports
 
 of the lower membership functions A~f (x) correspond to the
 
 mid-points
 
-Żbf , j
+¯bf , j
 
-+ cŻf , j 2
++ c¯f , j 2
 
-between the right endpoints cŻf,j
+between the right endpoints c¯f,j
 
 of the sup-
 
-ports of the upper membership functions ŻA~f (x) and the cores
+ports of the upper membership functions ¯A~f (x) and the cores
 
-Żbf,j . It follows that af,j = cf,j-1 , for j = 2, . . . , Tf . The
+¯bf,j . It follows that af,j = cf,j-1 , for j = 2, . . . , Tf . The
 
-cores bf,j coincide with the cores Żbf,j . Fig. 1 shows an example
+cores bf,j coincide with the cores ¯bf,j . Fig. 1 shows an example
 
 of IT2 fuzzy partition with Tf = 5. Here, the upper member-
 
@@ -148,7 +148,7 @@ wm
 
 + 2
 
-wŻm
+w¯m
 
 (xt )
 
@@ -166,13 +166,13 @@ A~f
 
 and
 
-wŻm (xt )
+w¯m (xt )
 
 =
 
 F f =1
 
-ŻA~f
+¯A~f
 
 (xt,f ) are the lower and upper bounds of the strength of acti-
 
@@ -211,13 +211,13 @@ rule-based systems, are extended by using fuzzy strength instead
 
 of crisp counting of the item sets. The confidence and support extensions used in this paper exploit a scaled version wms of the matching degree. For a given rule Rm , having a consequent
 class Cjm , we scale the matching degree of the rule by dividing the upper and lower bounds of the strengths of activation by the
-sum of, respectively, the upper wŻl (xt ) and lower wl(xt ) bounds of the strengths of activation of all the rules Rl, which have Cjm as the consequent class. The scaled upper and lower bounds are,
+sum of, respectively, the upper w¯l (xt ) and lower wl(xt ) bounds of the strengths of activation of all the rules Rl, which have Cjm as the consequent class. The scaled upper and lower bounds are,
 
 therefore, computed as follows:
 
-wŻms (xt ) =
+w¯ms (xt ) =
 
-wŻm (xt ) l,out= Cj m wŻl (xt )
+w¯m (xt ) l,out= Cj m w¯l (xt )
 
 (4)
 
@@ -235,13 +235,13 @@ l
 
 In IT2 fuzzy rule-based systems, confidence and support of a rule are determined from the strength of activation and, therefore, defined by upper and lower bounds. From (4) and (5), we derive the following scaled upper and lower bounds of the confidence:
 
-cŻms (Antm  Cjm ) =
+c¯ms (Antm  Cjm ) =
 
-xt Cj m wŻms (xt )
+xt Cj m w¯ms (xt )
 
 M m=1
 
-wŻms
+w¯ms
 
 (xt )
 
@@ -262,9 +262,9 @@ wsm
 where M is the number of rules in the rule base, and Antm is the antecedent of Rm . The confidence can be viewed as a numerical approximation of the conditional probability P (Cjm |Antm ). The scaled upper and lower bounds of the support are defined
 as
 
-sŻsm (Antm  Cjm ) =
+s¯sm (Antm  Cjm ) =
 
-xt Cj m wŻms (xt ) M
+xt Cj m w¯ms (xt ) M
 
 (8)
 
@@ -284,17 +284,17 @@ The support can be viewed as a measure of the coverage of
 training patterns performed by Rm . The rule weight is then calculated as product of the scaled
 confidence and support. It follows that the rule weight RWm in (2) becomes a closed interval bounded by the upper RW m and RW m endpoints, calculated as
 
-RW m = cŻsm ˇ sŻsm
+RW m = c¯sm · s¯sm
 
 (10)
 
-RW m = csm ˇ ssm
+RW m = csm · ssm
 
 (11)
 
 The turn, a
 
-calsossoecdiaitnitoenrvdalegbroeuendweidthbythtehecluapspseCr hŻjmm
+calsossoecdiaitnitoenrvdalegbroeuendweidthbythtehecluapspseCr h¯jmm
 
 will (xt )
 
@@ -304,38 +304,38 @@ in its lower
 
 h m (xt ) endpoints, which are computed as follows:
 
-hŻm (xt ) = wŻms (xt ) ˇ RW m
+h¯m (xt ) = w¯ms (xt ) · RW m
 
-= wŻms (xt ) ˇ
+= w¯ms (xt ) ·
 
-x t C j m wŻms (xt )
+x t C j m w¯ms (xt )
 
 M m=1
 
-wŻms
+w¯ms
 
 (xt )
 
-ˇ
+·
 
-x t C j m wŻms (xt ) = wŻms (xt ) ˇ
+x t C j m w¯ms (xt ) = w¯ms (xt ) ·
 
 M
 
 M
 
 2
-x t C j m wŻms (xt )
+x t C j m w¯ms (xt )
 
 M m=1
 
-wŻms
+w¯ms
 
 (xt )
 
-h m (xt ) = wms (xt ) ˇ RW m
+h m (xt ) = wms (xt ) · RW m
 
-= wsm (xt ) ˇ
+= wsm (xt ) ·
 
 x t C j m
 
@@ -351,7 +351,7 @@ wsm
 
 (xt )
 
-ˇ
+·
 
 x t C j m
 
@@ -363,7 +363,7 @@ s m
 
 =
 
-wms (xt ) ˇ
+wms (xt ) ·
 
 M
 
@@ -393,7 +393,7 @@ hm
 
 =
 
-hŻ m
+h¯ m
 
 (xt )
 
@@ -421,7 +421,7 @@ In this paper, we extend PAES-RCS along three directions. First of all, we emplo
 In the following subsections, we will discuss the method to generate the initial rule base and summarize the RCS approach and the membership function parameter learning used in IT2PAES-RCS.
 A. Initial Rule Base Generation
 We generate the initial rule base by first transforming each continuous variable into a categorical and ordered variable. Then, we apply the well-known C4.5 algorithm to the transformed dataset for generating a decision tree. Finally, we extract the initial rule base from the decision tree.
-More precisely, for each continuous variable Xf , first, we generate an IT2 fuzzy partition P~f = {A~f,1 , , . . . , A~f,Tf } of Tf IT2 fuzzy sets, as shown in Fig. 1. The number Tf of IT2 fuzzy sets can be different from an input variable to another. For the sake of simplicity, in our experiments, we have used the same number of IT2 fuzzy sets for all the variables Xf . Then, we compute the -cut, with  = 0.5, of the fuzzy sets defined by the upper membership functions ŻA~f,j of the IT2 fuzzy sets A~f,j , j = 1, . . . , Tf . The corresponding contiguous intervals, shown in Fig. 2, are used to discretize the universe Uf of each variable Xf before applying the C4.5 algorithm. For simplicity, we will denote the intervals with the index of the corresponding IT2 fuzzy set, which the -cut is applied to. For instance, interval 1 denotes the interval corresponding to the -cut of the fuzzy set defined by ŻA~f,1 . Then, each input value of the input­output pairs in the training set is replaced by the interval, which contains it. Thus, the overall training set is transformed so as to contain exclusively categorical values. Finally, we apply the classical C4.5 algorithm to the transformed training set. We extract the initial rule base from the decision tree generated by the C4.5 algorithm. Rules are extracted from each path from the root to a leaf node. Each splitting criterion along a given path is logically ANDed to form the rule antecedent ("IF" part). The leaf node holds the class prediction, forming the rule
+More precisely, for each continuous variable Xf , first, we generate an IT2 fuzzy partition P~f = {A~f,1 , , . . . , A~f,Tf } of Tf IT2 fuzzy sets, as shown in Fig. 1. The number Tf of IT2 fuzzy sets can be different from an input variable to another. For the sake of simplicity, in our experiments, we have used the same number of IT2 fuzzy sets for all the variables Xf . Then, we compute the -cut, with  = 0.5, of the fuzzy sets defined by the upper membership functions ¯A~f,j of the IT2 fuzzy sets A~f,j , j = 1, . . . , Tf . The corresponding contiguous intervals, shown in Fig. 2, are used to discretize the universe Uf of each variable Xf before applying the C4.5 algorithm. For simplicity, we will denote the intervals with the index of the corresponding IT2 fuzzy set, which the -cut is applied to. For instance, interval 1 denotes the interval corresponding to the -cut of the fuzzy set defined by ¯A~f,1 . Then, each input value of the input­output pairs in the training set is replaced by the interval, which contains it. Thus, the overall training set is transformed so as to contain exclusively categorical values. Finally, we apply the classical C4.5 algorithm to the transformed training set. We extract the initial rule base from the decision tree generated by the C4.5 algorithm. Rules are extracted from each path from the root to a leaf node. Each splitting criterion along a given path is logically ANDed to form the rule antecedent ("IF" part). The leaf node holds the class prediction, forming the rule
 
 254
 
@@ -481,26 +481,26 @@ The CDB part of the chromosome codifies the upper membership functions of each v
 
 the upper membership functions, the CDB part codifies exclusively these functions. Since we adopt strong fuzzy parti-
 
-tions for defining the upper membership functions with, for j = 2, . . . , Tf - 1, Żbf,j = cŻf,j-1 and Żbf,j = aŻf,j+1 , each triangular fuzzy set (aŻf,j , Żbf,j , cŻf,j ) of the partition is completely defined by fixing the positions of the cores Żbf,j along the universe Uf of the f th variable (we normalize each variable in [0,1]). Since Żbf,1 and Żbf,Tf coincide with the lower and upper extremes of universe Uf , the partition of each linguistic variable Xf is completely defined by Tf - 2 parameters {Żbf,2 , . . . , Żbf,Tf -1 },
+tions for defining the upper membership functions with, for j = 2, . . . , Tf - 1, ¯bf,j = c¯f,j-1 and ¯bf,j = a¯f,j+1 , each triangular fuzzy set (a¯f,j , ¯bf,j , c¯f,j ) of the partition is completely defined by fixing the positions of the cores ¯bf,j along the universe Uf of the f th variable (we normalize each variable in [0,1]). Since ¯bf,1 and ¯bf,Tf coincide with the lower and upper extremes of universe Uf , the partition of each linguistic variable Xf is completely defined by Tf - 2 parameters {¯bf,2 , . . . , ¯bf,Tf -1 },
 which define the positions of the cores of the upper member-
 
 ship functions defined on Xf . As shown in Fig. 6, the CDB chromosome part, therefore, consists of F vectors of Tf - 2 real numbers. A good level of integrity, in terms of order, cov-
 
 erage, and distinguishability, of the partitions is ensured by,
 
-j  [2, Tf - 1], forcing Żbf,j to vary in the definition interval
+j  [2, Tf - 1], forcing ¯bf,j to vary in the definition interval
 
-[Żbf , j
+[¯bf , j
 
 -
 
-Żbf , j -Żbf , j -1 2
+¯bf , j -¯bf , j -1 2
 
-, Żbf,j
+, ¯bf,j
 
 +
 
-Żbf , j + 1 -Żbf , j 2
+¯bf , j + 1 -¯bf , j 2
 
 ].
 
@@ -515,7 +515,7 @@ pm with another rule by setting km to an integer value randomly generated in [1,
 The second operator modifies the rule in pm by complementing each gene vm,f with a probability equal to Pcond (Pcond = 2/f in the experiments).
 
 Fig. 7. Application scheme of the genetic operators.
-The mutation operator applied to CDB , first, randomly chooses an input variable Xf , f  [1, F ], and a fuzzy set j  [2, Tf - 1] and then replaces the value of Żbf,j with a value randomly chosen within the definition interval of Żbf,j .
+The mutation operator applied to CDB , first, randomly chooses an input variable Xf , f  [1, F ], and a fuzzy set j  [2, Tf - 1] and then replaces the value of ¯bf,j with a value randomly chosen within the definition interval of ¯bf,j .
 If, after applying the crossover, the rule base contains one or more pairs of equal rules, we simply eliminate one of the rules from each pair setting the corresponding km to zero.
 D. Multiobjective Evolutionary Algorithm
 The MOEA used in this paper is the (2 + 2)M-PAES algorithm proposed in [41] and adopted in [26]. The application scheme of the crossover and mutation operators employed in (2 + 2)M-PAES for generating the offspring solutions o1 and o2 from the current solutions s1 and s2 is shown in Fig. 7. Here, PCRB , PCDB , PMRB 1 , and PMRB 2 represent the probabilities of applying the crossover operators to CRB and CDB parts and the first and the second mutation operators to CRB , respectively. PMDB represents the probability of applying the mutation operator to CDB . Unlike classical (2 + 2)PAES, which maintains the current solutions s1 and s2 until they are not replaced by solutions with particular characteristics, we observe that in (2 + 2)M-PAES s1 and s2 are randomly extracted at each iteration.
@@ -1078,4 +1078,3 @@ Francesco Marcelloni (M'06) received the Laurea degree in electronics engineerin
 He is currently a Full Professor with the Department of Information Engineering, University of Pisa. He has co-founded the Computational Intelligence Group in 2002 and is the Founder and Head of the Competence Centre on MObile Value Added Services (MOVAS), both with the Department of Information Engineering, University of Pisa. His main research interests include fuzzy classifiers for big data, multiobjective evolutionary algorithms, genetic fuzzy systems, fuzzy clustering algorithms, pattern recognition, signal analysis, neural networks, mobile information systems, and data compression and aggregation in wireless sensor networks. He has coedited three volumes, four journal special issues, and is (co)author of a book and of more than 200 papers in international journals, books, and conference proceedings. He has been TPC co-chair, general co-chair, and tutorial chair of some international conferences and has held invited talks in a number of events. Dr. Marcelloni is an Associate Editor of Information Sciences (Elsevier) and Soft Computing (Springer). He is on the Editorial Board of a number of other international journals.
 
 
-

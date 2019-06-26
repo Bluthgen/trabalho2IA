@@ -98,9 +98,9 @@ The buy/sell orders having matched prices can be merged as
 
 Position = {(A - B, 125, 500 - 450 = 50) (B - A, 125.5, 450 - 500 = -50)}.
 
-As discussed in Section II-A, prices 125 and 125.5 are represented as transaction prices. The difference between the executable limit prices is calculated as the margins of the transaction prices. In this case, the transaction price 125 has the margin 125 - 124.2 = 0.8, and the transaction price 125.5 has the margin 125.5 - 125 = 0.5. We merge the potential transactions who price margins are overlapped, i.e., 125 + 0.8 and 125.5 + 0.5 are overlapped. After the merge, we rerepresent the positions, i.e., the margin between 124.2 and 125.5 is represented as: 124.85 ą 0.65
+As discussed in Section II-A, prices 125 and 125.5 are represented as transaction prices. The difference between the executable limit prices is calculated as the margins of the transaction prices. In this case, the transaction price 125 has the margin 125 - 124.2 = 0.8, and the transaction price 125.5 has the margin 125.5 - 125 = 0.5. We merge the potential transactions who price margins are overlapped, i.e., 125 + 0.8 and 125.5 + 0.5 are overlapped. After the merge, we rerepresent the positions, i.e., the margin between 124.2 and 125.5 is represented as: 124.85 ± 0.65
 
-Position = {A - B + B - A, 124.85 ą 0.65, 50 - 50} = {"0," 124.85 ą 0.65, 0}
+Position = {A - B + B - A, 124.85 ± 0.65, 50 - 50} = {"0," 124.85 ± 0.65, 0}
 
 where the Trader_ID calculation is carried out as a symbolic operation, and 0.65 is represented as the transaction margin T and 124.85 is the transaction price PT . The zero-valued signed trader ID implies that each collusive trader transacts at both sides (buy and sell) of the market and the zero signed volume indicates the total amounts of the transactions in both sides are zero. No equity is really bought or sold. Therefore, the unchanged position, represented through zero-valued signed trader ID and signed volume, indicates the wash trade activities in certain collusion.
 B. Wash Trade Among Multiple Traders
@@ -134,7 +134,7 @@ Position = {(-A, 125.00, -1450), (B, 125.01, 1500) (-B, 124.95, -1500), (C, 125.
 
 124.95 + 0.06, 50 - 50 + 50 + 0}
 
-= {`0', 125.005 ą 0.005, +50}.
+= {`0', 125.005 ± 0.005, +50}.
 
 (2)
 
@@ -150,7 +150,7 @@ Feature 1: Matched orders--as the first step of wash trade manipulation, traders
 Feature 2: Closed transaction cycle--any single execution of the matched orders does not refer to a wash trade manipulation unless those executions constitute a closed cycle as illustrated in the examples shown in Figs. 1 and 2; this feature refers to closed cycle of dotted arrows among the traders in Figs. 1 and 2.
 Considering the example in Table V, the manipulators set up the matched orders from the #01 order at time 9:00:000, but the wash trade is not completely constructed until the submission of the #12 order at time 10:50:001, which closes the transaction cycle. Therefore, a wash trade can be detected through detecting the matched orders and closed cycle in two steps.
 Step 1: Detect the suspiciously matched order pairs S according to the matching rule and wash trade features, tight submission intervals, executable prices, and mostly matched volumes
-Order Pair = Orders = + Tm - Tn, PT ąTp , ąv
+Order Pair = Orders = + Tm - Tn, PT ±Tp , ±v
 where +Tm - Tn represents trader Tn selling shares of equity to Tm and v and Tp represent the matching margin of volume and transaction price PT.
 Step 2: Among S, find the order pairs whose transaction price margins are overlapped, in those pairs, if some pairs
 
@@ -162,16 +162,16 @@ fulfill the condition
 
 Position =
 
-OrderPairk = "0," PT ąTp , ąv
+OrderPairk = "0," PT ±Tp , ±v
 
 kS
 
 a wash trade alert is triggered. To further formulate those features, we define the #k order L
 submitted by trader Tn at time tk as
 
-Lk = (tk , ąTn, Pk , ąVk )
+Lk = (tk , ±Tn, Pk , ±Vk )
 
-where Pk and Vk are the #k order price and volume, respectively, and the positive and negative signs ą represent buy and sell operation. The matching margin  is defined as a vector  = [p, t , v ] with three small positive values for price, time, and volume, respectively. If buy order #K is matched with K-1 sell orders from #1 to #K-1, their features have the
+where Pk and Vk are the #k order price and volume, respectively, and the positive and negative signs ± represent buy and sell operation. The matching margin  is defined as a vector  = [p, t , v ] with three small positive values for price, time, and volume, respectively. If buy order #K is matched with K-1 sell orders from #1 to #K-1, their features have the
 following.
 1) Tiny time interval
 
@@ -203,11 +203,11 @@ N
 
 Position =
 
-rnk T n, PT ąTp , ąv
+rnk T n, PT ±Tp , ±v
 
 n=1
 
-= "0," PT ąTp , ąv .
+= "0," PT ±Tp , ±v .
 
 (6)
 
@@ -761,7 +761,6 @@ Yuhua Li (SM'11) received the Ph.D. degree in general engineering from the Unive
 He was a Senior Research Fellow with Manchester Metropolitan University, Manchester, U.K., and a Research Associate with the University of Manchester, Manchester, from 2000 to 2005. He was a Lecturer with the School of Computing and Intelligent Systems, University of Ulster, Londonderry, U.K., from 2005 to 2014. He is currently a Lecturer with the School of Computing, Science and Engineering, University of Salford, Salford, U.K. His current research interests include pattern recognition, machine learning, data science, knowledge-based systems, and condition monitoring and fault diagnosis.
 
 Thomas Martin McGinnity (SM'09) received the B.Sc. (Hons.) degree in physics and the Ph.D. degree from the University of Durham, Durham, U.K., in 1975 and 1979, respectively.
-He was a Professor of Intelligent Systems Engineering and the Director of the Intelligent Systems Research Centre with the Faculty of Computing and Engineering, University of Ulster, Ulster, U.K. He was the Director with the University of Ulster's Technology Transfer Company, Innovation Ulster, and a spin out company, Flex Language Services. He is currently a Dean of Science and Technology with Nottingham Trent University, Nottingham, U.K. He has authored or co-authored approximately 300 research papers and has attracted over Ł24 million in research funding. Prof. McGinnity is a fellow of the Institution of Engineering and Technology and a Chartered Engineer.
+He was a Professor of Intelligent Systems Engineering and the Director of the Intelligent Systems Research Centre with the Faculty of Computing and Engineering, University of Ulster, Ulster, U.K. He was the Director with the University of Ulster's Technology Transfer Company, Innovation Ulster, and a spin out company, Flex Language Services. He is currently a Dean of Science and Technology with Nottingham Trent University, Nottingham, U.K. He has authored or co-authored approximately 300 research papers and has attracted over £24 million in research funding. Prof. McGinnity is a fellow of the Institution of Engineering and Technology and a Chartered Engineer.
 
 
-

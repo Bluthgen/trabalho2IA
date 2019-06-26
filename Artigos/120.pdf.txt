@@ -22,7 +22,7 @@ Properties 1 and 2 above are captured by social learning models. Such social lea
 A. Main Results and Organization
 Section II presents the social learning agent based model and the market observer's objective for detecting shocks. The formulation involves the interaction of local and global decision makers. Individual agents perform social learning and the market observer seeks to determine if the underlying asset value has changed based on the agent behaviour. The shock in the asset value changes at a phase distributed time (which generalizes
 
-1932-4553 Š 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications_standards/publications/rights/index.html for more information.
+1932-4553 © 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications_standards/publications/rights/index.html for more information.
 
 1062
 
@@ -52,7 +52,7 @@ P=
 
 0
 
-P (X-1)×1 PŻ(X-1)×(X-1)
+P (X-1)×1 P¯(X-1)×(X-1)
 
 (1)
 
@@ -61,8 +61,8 @@ P (X-1)×1 PŻ(X-1)×(X-1)
 1063
 
 The distribution of the absorption time to state 1 is
-0 = 0(1), k = Ż0PŻk-1P , k  1, (2)
-where Ż0 = [0(2), . . . , 0(X)] . The key idea is that by appropriately choosing the pair (0, P ) and the associated state space dimension X, one can approximate any given discrete distribution on [0, ) by the distribution {k, k  0}; see [42, pp. 240­243]. The event {xk = 1} means the change point has occurred before time k according to PH-distribution (2). In the special case when x is a 2-state Markov chain, the change time  0 is geometrically distributed. 2. Agent's Private Observation: Agent k's private (local) observation denoted by yk is a noisy measurement of the true value of the asset. It is obtained from the observation likelihood distribution as,
+0 = 0(1), k = ¯0P¯k-1P , k  1, (2)
+where ¯0 = [0(2), . . . , 0(X)] . The key idea is that by appropriately choosing the pair (0, P ) and the associated state space dimension X, one can approximate any given discrete distribution on [0, ) by the distribution {k, k  0}; see [42, pp. 240­243]. The event {xk = 1} means the change point has occurred before time k according to PH-distribution (2). In the special case when x is a 2-state Markov chain, the change time  0 is geometrically distributed. 2. Agent's Private Observation: Agent k's private (local) observation denoted by yk is a noisy measurement of the true value of the asset. It is obtained from the observation likelihood distribution as,
 
 Bxy = P(yk = y|xk = x)
 
@@ -222,7 +222,7 @@ Given the cost, the market observer's objective is to determine  0 with minimum 
 
 Fig. 1. Sequential detection with risk-averse social sensors. Each social sensor receives a noisy observation on the state and chooses an action to minimize its CVaR measure of trading. The social sensors communicate their actions to subsequent sensors. The market observer seeks to determine if there is a change in the value of the underlying asset from the actions of the sensors.
 
-J (0) = infľJ(0)
+J (0) = infµJ(0)
 
 (16)
 
@@ -600,13 +600,13 @@ Lemma 4: [56] 2 s 1 iff for all v  V, v 2  v 1, where V denotes the space of X- 
 IEEE JOURNAL OF SELECTED TOPICS IN SIGNAL PROCESSING, VOL. 10, NO. 6, SEPTEMBER 2016
 
 Let (X)={  RX : 1X  = 1, 0  (i)1 for all i  X } Definition 3 Submodular function [46]: A function f :
-(X) × {1, 2}  R is submodular if f (, u) - f (, uŻ) 
-f (Ż, u) - f (Ż, uŻ), for uŻ  u,  r Ż. Definition 4 Single Crossing Condition [46]: A function g :
+(X) × {1, 2}  R is submodular if f (, u) - f (, u¯) 
+f (¯, u) - f (¯, u¯), for u¯  u,  r ¯. Definition 4 Single Crossing Condition [46]: A function g :
 Y × A  R satisfies a single crossing condition in (y, a) if
 
-g(y, a) - g(y, aŻ)  0  g(yŻ, a) - g(yŻ, aŻ)  0
+g(y, a) - g(y, a¯)  0  g(y¯, a) - g(y¯, a¯)  0
 
-for aŻ > a and yŻ > y. For any such function g,
+for a¯ > a and y¯ > y. For any such function g,
 
 a(y) = argmin g(y, a) is increasing in y.
 
@@ -616,7 +616,7 @@ a
 
 Theorem 5 [46] If f : (X) × {1, 2}  R is sub-modular, then there exists a u() = argminf (, u) satisfying,
 u{1,2}
-Ż r   u()  u(Ż)
+¯ r   u()  u(¯)
 
 APPENDIX B PROOFS
 
@@ -1170,7 +1170,7 @@ states satisfy the following property
 (27)
 
 Equation (27) says that the curves { : H(y, 1) - H(y, 2) = 0} for all y  Y do not intersect. Also from (18)
-and (27), it is easily verified that there are at most Y + 1 local decision likelihood matrices R (can be less than Y + 1 when H(yŻ, 1) - H(yŻ, 2) > 0 for some yŻ  Y, for all ). The matrices R from (18) and Theorem 1 are constant on each
+and (27), it is easily verified that there are at most Y + 1 local decision likelihood matrices R (can be less than Y + 1 when H(y¯, 1) - H(y¯, 2) > 0 for some y¯  Y, for all ). The matrices R from (18) and Theorem 1 are constant on each
 of the Y + 1 polytopes.
 
 REFERENCES
@@ -1241,4 +1241,3 @@ Vikram Krishnamurthy (F'05) received the Ph.D. degree from the Australian Nation
 Sujay Bhatt received the M.Tech. degree from Indian Institute of Technology Bombay, Mumbai, India. He is currently working with Vikram Krishnamurthy at the University of British Columbia, Vancouver, BC, Canada. His research interests include social learning, Bayesian learning over networks, and game theory.
 
 
-

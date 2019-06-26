@@ -21,7 +21,7 @@ Extensive research developments exist on the topic of collapses in real-world ne
 Ideas of herd behavior and contagion and their application in agent-based models are in the foundations of explaining critical events in financial markets [17]­[19]. Lux [20] explains the emergence of bubbles as an infection process among traders which leads to equilibrium prices deviating from fundamental values. Eventually, Lux and Marchesi [21], [22] challenge the "efficient market hypothesis" and present a model of interacting agents switching between "fundamentalist" and "noisy trader" strategies, based on the fundamental price as the input. Although their fundamental prices have Gaussian relative changes, the interaction of agents generates power-law scaling properties and temporal dependence in volatility. The Cont­Bouchaud model [23] accounts for heavy tails in stock market returns through agent interaction which induces herd behavior. They illustrate the fact that a market model without such agent interaction would give rise to normally distributed aggregate fluctuations, whereas agent interaction accounts for known stylized facts on market returns.
 Sornette [24] identifies risk-driven and price-driven approaches to modelling financial bubbles and crashes--in the risk-driven model the crash hazard comes from herding which drives the bubble price, whereas in the price-driven model the price itself creates the crash hazard through feedback
 
-1932-4553 Š 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
+1932-4553 © 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
 
 KOSTANJC AR et al.: ESTIMATING TIPPING POINTS IN FEEDBACK-DRIVEN FINANCIAL NETWORKS
 
@@ -90,7 +90,7 @@ k
 where k runs over all of vi's neighbors and the size of vi's neighborhood is ni = nj + 1. 2) With a probability 1 - p a new node vi connects to node e in the current network, which has the highest/lowest price
 Se in the buyer/seller network, and sets its market price Si as a percentage increase/decrease  from Se
 
-Si = Se ˇ (1 + ).
+Si = Se · (1 + ).
 
 (2)
 
@@ -242,7 +242,7 @@ n
 
 )
 
-1 ˇ e- r I (t)
+1 · e- r I (t)
 
 j(d)
 
@@ -252,7 +252,7 @@ j(d)
 
 1
 
-ˇ e n
+· e n
 
 ( j
 
@@ -454,7 +454,7 @@ tc = {t : z (t - 1)  0, z (t + 1) < 0}
 tr = {t : z (t - 1)  0, z (t + 1) > 0} . (13)
 
 The values of R we consider for the estimation of the crash tipping points and recovery tipping points are therefore {R(t) : t  tc } for crash tipping points and {R(t) : t  tr } for recovery tipping points.
-Fig. 6(a) demonstrates the estimated financial trends and the identified crash and recovery tipping moments in the S&P 500 log-prices, with the smoothing parameter  = 10 chosen to identify major financial trends (and consequently--crashes) in the considered period (1920­2015). Fig. 6(b) shows the values of the Market-to-Intrinsic ratio of the S&P 500 with highlighted tipping points identified from the log-prices. The tipping points vary between different realizations--as one would expect for tipping points in the social sciences, and we report the mean values of the identified crash and recovery tipping points, together with their respective standard deviations. The S&P 500 market crashes as it reaches the crash tipping point 1.64 ą 0.41, and rebounds as it reaches the subsequent recovery tipping point 0.72 ą 0.32. Our network model outputs (none of the model outputs were discarded) follow the exact same pattern with the values of its tipping points being 1.66 ą 0.22, and 0.85 ą 0.28. Evidently, the network model generates trajectories which not only exhibit crashes and rebounds at appropriate moments in time [as demonstrated earlier in Fig. 3(c)], but also at corresponding values of the variable R.
+Fig. 6(a) demonstrates the estimated financial trends and the identified crash and recovery tipping moments in the S&P 500 log-prices, with the smoothing parameter  = 10 chosen to identify major financial trends (and consequently--crashes) in the considered period (1920­2015). Fig. 6(b) shows the values of the Market-to-Intrinsic ratio of the S&P 500 with highlighted tipping points identified from the log-prices. The tipping points vary between different realizations--as one would expect for tipping points in the social sciences, and we report the mean values of the identified crash and recovery tipping points, together with their respective standard deviations. The S&P 500 market crashes as it reaches the crash tipping point 1.64 ± 0.41, and rebounds as it reaches the subsequent recovery tipping point 0.72 ± 0.32. Our network model outputs (none of the model outputs were discarded) follow the exact same pattern with the values of its tipping points being 1.66 ± 0.22, and 0.85 ± 0.28. Evidently, the network model generates trajectories which not only exhibit crashes and rebounds at appropriate moments in time [as demonstrated earlier in Fig. 3(c)], but also at corresponding values of the variable R.
 To further inspect the properties of the market and the network model, we take on the approach proposed by Sornette [24] and look into the distribution of drawdowns. A drawdown is defined as a persistent decrease in the price over consecutive
 
 Fig. 6. (a) S&P 500 log-prices from 1920 to 2015, with 1 trend estimates and the identified tipping points. (b) S&P 500 Market-to-Intrinsic ratio and the estimated tipping points.
@@ -551,13 +551,13 @@ SI (t) - SI (t - SI (t - 1)
 The network parameters used in this study are:  = 0.2,  = 0.3 and  = 90. These values were empirically chosen to produce reasonable model outputs.
 We use a version of the monotonic concession protocol to simulate agent price movement during the bargaining process [48]. Agents from the supply and demand sides alternate in making their moves. A move can either be accepting the current offer from the other side or proposing a new price. If the offer is accepted and a trade in completed the trading agents are removed from their networks and the agreed-upon price becomes the trading price. An agent accepts the current offer if the expected advantage of accepting it is greater than or equal to the expected advantage of risking that a more attractive price will be agreed upon in the next step. This condition can be expressed using equations (15) and (16) for supply and demand agents
 
-E Ui(s) S0(d) , 0  E Ui(s) Si(s) ˇ 1 + i(s) , 1
+E Ui(s) S0(d) , 0  E Ui(s) Si(s) · 1 + i(s) , 1
 
 E Uj(d) S0(s) , 0
 
- E Uj(d) Sj(d) ˇ 1 + d(j) , 1 . (18)
+ E Uj(d) Sj(d) · 1 + d(j) , 1 . (18)
 
-If the condition is not met, the agent proposes a new price, Si(s)  Si(s) ˇ 1 + i(s) . The multiplicative concession steps i(s) for supply and demand agents are defined
+If the condition is not met, the agent proposes a new price, Si(s)  Si(s) · 1 + i(s) . The multiplicative concession steps i(s) for supply and demand agents are defined
 
 i(s) = (s) 1 - (is) , j(d) = (d) 1 - (jd)
 
@@ -730,7 +730,7 @@ ROIC =
 Invested Capital
 
 Growth (g) is usually defined as the rate at which the company's earnings grows each year [60].
-Note that FCF = E(1- IR) and from [60]: g = ROIC ˇ IR. Finally,
+Note that FCF = E(1- IR) and from [60]: g = ROIC · IR. Finally,
 
 FCF = E
 
@@ -957,4 +957,3 @@ Stjepan Begusic´ received the B.S. and M.S. degrees in information and communic
 Boris Podobnik received the B.S.E., M.S., and Ph.D. degrees in physics from the University of Zagreb, Zagreb, Crotia. In 2014, he became a Professor with the University of Rijeka. He is also a Professor with Zagreb School of Economics and Management. His research interests include theories regarding data analysis, complex systems, and economics.
 
 
-

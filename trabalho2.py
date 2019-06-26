@@ -3,31 +3,27 @@
 
 from __future__ import division
 
-#import textract
+import textract
 import glob
 import os
-import random
 import re
-from StringIO import StringIO
 
 import igraph
 import nltk
-import numpy
 import plotly
 from nltk.stem import WordNetLemmatizer
-
-#import ply.lex as lex
-#import ply.yacc as yacc
 
 #nltk.download('conll2000')
 #nltk.download('punkt')
 #nltk.download('averaged_perceptron_tagger')
 #nltk.download('stopwords')
 
+autoresGlob = []
+referenciaGlob= []
+
 def retiraRef(preLinhas):
     linhasP = re.sub(r"\. \(.*\d*\)." and r"\(.*\d*\).", "," ,preLinhas)
     linhasP = re.split("\n|\r", linhasP)
-    
     linhassP = []
     i=0
     firstTime=0
@@ -60,7 +56,7 @@ def retiraRef(preLinhas):
     linhas.extend(re.split("\"",linha) for linha in linhasP)
     autor = []
     titulo = []
-
+    referenciaGlob.append(linhasP)
     for linha in linhas:
         if len(linha)>1:
             titulo.append(linha[1])
@@ -138,23 +134,12 @@ def retiraRef(preLinhas):
         
 def retiraAutorTitulo(linhas):
     autorStopWords= ["IEEE", "Fellow", "Member", "Student", "Senior"]
-    #print(linhas[0:3])
-    #print(texto.split("\n")[0:3])
-    #linhas= re.split("\n", text)
     publicado= ""
     if linhas[0].startswith("IEEE"):
-        #print(linhas[0])
-        #print(linhas[0].split(","))
         publicado= linhas[0].split(",")[0]
-        #print(publicado)
     else:
-        #print(linhas[2])
-        #print(linhas[2].split(","))
         publicado= linhas[1].split(",")[0]
-        #print(publicado)
-    #print(publicado)
     linhaTitulo= linhas[2]
-    #print linhaTitulo
     linhaAutores= linhas[3]
     autores= []
     if linhaAutores.count(", ") > 0:
@@ -192,8 +177,7 @@ def retiraAutorTitulo(linhas):
         if autor.endswith("\r"):
             autor= autor[:-1]
         autoresFinal.append(autor)
-    #print(autoresFinal)
-    #print(linhaTitulo)
+    autoresGlob.append(autoresFinal)
     return (autoresFinal, linhaTitulo, publicado)
 
 def printaGrafos(grafo, vertices, edges, titulo, arquivo):
@@ -265,7 +249,6 @@ def printaGrafos(grafo, vertices, edges, titulo, arquivo):
     plotly.offline.plot(fig3d, filename= arquivo + "3d.html")
 
 def montaGrafos(referencias, frequencias):
-    #exit()
     trabalhos= []
     autores= []
     autores2= []
@@ -275,10 +258,7 @@ def montaGrafos(referencias, frequencias):
     verticesAR1= []
     verticesP= []
     edgesP= []
-    #print(referencias)
-    #exit()
     for referencia in referencias:
-        #print referencia
         if referencia[0][2] not in publicacoes:
             publicacoes.append(referencia[0][2])
             verticesP.append(referencia[0][2])
@@ -478,8 +458,6 @@ def retiraInstituicao(texto):
 
     for linha in rodape:
         temp= linha.split(" with the ")
-        #print(temp)
-        #print(temp)
         quem= temp[0]
         if quem.endswith(" are"):
             quem= quem[:-4]
@@ -491,7 +469,6 @@ def retiraInstituicao(texto):
         if onde.endswith("\r") or onde.endswith(" ") or onde.endswith(","):
             onde= onde[:-1]
         instituicoes.append((quem, onde))
-    #print(novoTexto.split("\n")[0:3])
     return (texto, instituicoes)
 
 def preProcessamento(texto):
@@ -570,18 +547,11 @@ def temObjetivo(arvore):
         return False
     else:
         label= arvore.label()
-        #print(label)
         tupla= arvore[0]
-        #print(tupla)
-        #print(type(tupla[0]))
         if len(tupla) <= 2 and type(tupla) == tuple and type(tupla[0]) == unicode and not tupla[1].endswith("NP"):
-            #print(tupla[0])
             palavra= tupla[0].lower()
             tipo= tupla[1]
-            #print("Palavra: "+ palavra)
-            #print("Tipo: " + tipo)
             if tipo.startswith("VB"):
-                #print(palavra)
                 for temp in ["introduce", "demonstrate", "aim", "provide", "propose", "find",
                              "found", "present", "estimate", "show", "contribute"]:
                     if palavra.startswith(temp):
@@ -591,13 +561,10 @@ def temObjetivo(arvore):
                     if palavra == temp:
                         return True
         elif type(tupla) == tuple and tupla[1].endswith("NP"):
-            #print("Entrou")
             flagT= False
             for filho in arvore:
-                #print(filho)
                 label= filho[1]
                 palavra= filho[0].lower()
-                #print("Palavra: "+palavra)
                 if label.lower().startswith("this"):
                     flagT= True
                 if flagT:
@@ -607,7 +574,6 @@ def temObjetivo(arvore):
                             return True
                     flagT= False
         else:
-            #print("Else")
             for filho in arvore:
                 if temObjetivo(filho):
                     return True
@@ -620,7 +586,8 @@ chunker = ConsecutiveNPChunker(train_sents)
 print("Terminou de treinar!")
 
 path= os.path.realpath(__file__)[:-12] + "Artigos\\"
-pdfs= [arq for arq in glob.glob(path + "*.txt")]
+pdfs= [arq for arq in glob.glob(path + "*.pdf")]
+txts= [arq for arq in glob.glob(path + "*.txt")]
 artigos= []
 artigosFull= []
 referencias= []
@@ -631,8 +598,14 @@ frequencias=[]
 arvores= []
 objetivosFull= []
 titulos= []
+
 for pdf in pdfs:
-    #text = textract.process(pdf)
+    text = textract.process(pdf)
+    with open(pdf+".txt", "w") as arquivoO:
+        for linha in text:
+            arquivoO.write(linha)
+for pdf in txts:
+    print("Lendo o pdf " + pdf)
     text= []
     objetivos= []
     with open(pdf, "r") as arquivo:
@@ -663,23 +636,17 @@ for pdf in pdfs:
                 flag= True
                 continue
             if temObjetivo(arvore):
-                #print(arvore.leaves())
                 objetivos.append(arvore)
     arvores.append(chunks)
     objetivosFull.append(objetivos)
     temp2= retiraAutorTitulo(text.split("\n")[:10])
     titulos.append(temp2[1])
-    #print(type(arvore.leaves()[0][0]))
-    #print(pdf)
-    continue
     
     (text, instituicoes)= retiraInstituicao(text)
     preLinhas = re.split("REFERENCES",text)
     linhas= preLinhas[0].splitlines()
     temp1= retiraRef(preLinhas[1])
     referencias.append((temp2, temp1))
-    #continue
-    #print(linhas)
     separadas= []
     separadas.extend(re.split("\s|,|;|\.|\(|\)",linha) for linha in linhas)
     i= 1
@@ -694,27 +661,44 @@ for pdf in pdfs:
                 linhaSeparada.append(temp + separadas[i][0])
                 separadas[i].remove(separadas[i][0])
         i= i+1
-    #separadas= word_tokenize(buffer.getvalue())
     atual= [y for x in separadas for y in x]
     artigosFull.append(atual)
     relevante= [x.lower() for x in atual if x not in stopwords and len(x) > 3 and x.isalpha()]
     artigos.append(relevante)
     frequencias.append((temp2[1], nltk.FreqDist(relevante).most_common(10)))
-    #print(relevante)
-    #break
-with open("objetivosT.txt", "w") as arquivoO:
-    for i in range(len(titulos)):
-        listaObjetivos= objetivosFull[i]
-        titulo= titulos[i]
-        arquivoO.write(titulo)
-        arquivoO.write("\n\t")
-        for arvore in listaObjetivos:
-            [arquivoO.write(leaf[0].encode("utf-8")+" ") for leaf in arvore.leaves()]
-            arquivoO.write(";;\n\t")
-        arquivoO.write("\n\n")
-exit()
+
 montaGrafos(referencias, frequencias)
 tudoRelevante= [y for x in artigos for y in x]
 tudo= [y for x in artigosFull for y in x]
 frequenciaRelevante= nltk.FreqDist(tudoRelevante)
-print(frequenciaRelevante.most_common(10))
+
+with open("Resultados.txt", "w") as arquivoO:
+    for i in range(len(titulos)):
+        listaObjetivos= objetivosFull[i]
+        titulo= titulos[i]
+        autor = autoresGlob[i]
+        ref = referenciaGlob[i]
+        arquivoO.write(titulo)
+        arquivoO.write("\n")
+        arquivoO.write("Nome dos autores do artigo:\n\t")
+        for re in autor:
+            if re == autor[-1]:
+                arquivoO.write(re+" ;\n")
+            else:
+                arquivoO.write(re+"\n\t")
+        arquivoO.write("Referências Bibliográficas:\n\t")
+        for re in ref:
+            if re == ref[-1]:
+                arquivoO.write(re+" ;\n")
+            else:
+                arquivoO.write(re+"\n\t")
+
+        arquivoO.write("Objetivo, Problema, Método ou Metodologia e Contribuições:\n\t")
+        for arvore in listaObjetivos:
+            [arquivoO.write(leaf[0].encode("utf-8")+" ") for leaf in arvore.leaves()]
+            arquivoO.write(";;\n\t")
+        arquivoO.write("\n\n")
+        
+        if i == len(titulos):
+            arquivoO.write("Os dez termos mais citados:\n\t")
+            arquivoO.write(frequenciaRelevante.most_common(10))

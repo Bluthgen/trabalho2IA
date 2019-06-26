@@ -21,7 +21,7 @@ T HE current economic crisis illustrates a critical need for a new and fundament
 The term "financial contagion" [5] was rarely used before 1995, and then only occasionally appeared in articles discussing the impact of the Mexican Peso crisis on other countries in Latin America. The events of the Thailand's 1997 devaluation, the Russia's 1998 devaluation, and the global financial crisis in 2008 have prompted a number of academic papers, which have attempted to measure, understand, predict, and prevent international financial contagion [6].
 Most financial contagion research has focused on studying the following three critical aspects [7]­[9]: 1) Why the contagion spreads and how it can be stopped? 2) How contagion can be measured? 3) What financial contagion channels there are? Studies focused on the first aspect have concentrated on the theory and empirics of contagion including the definitions and effects of contagion, how contagion arises, and the statistical evidence assessing the existence of contagion [10]. Research addressing the second aspect has focused on developing general strategies to measure contagion including probability analysis [11], cross-market correlations [12], VAR models, latent factor/GARCH models [13], and extreme value analysis [14]. Bae et al.'s measurement of financial contagion captured the coincidence of extreme return shocks across countries within a region and across regions [15]. Research on the third aspect has modeled and tested various contagion channels including real sector linkages (i.e., trade), financial market linkages, financial institu-
 
-1063-6706 Š 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
+1063-6706 © 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
 
 440
 
@@ -2327,4 +2327,3 @@ He has published several peer-reviewed papers in international journals. His are
 Mr. Zhang is a Member of the IEEE Control Systems Society and a Student Member of the American Society of Civil Engineers.
 
 
-

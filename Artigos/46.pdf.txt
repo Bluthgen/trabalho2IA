@@ -94,7 +94,7 @@ SPi,h,z ,
 E. Parameters Number of time slots in the planning horizon. Number of trading periods in the planning horizon. Number of households in the customer group. Number of scenarios. Length of a time slot. Length of a trading period. Probability of scenario . DR participation rate in scenario .
 Number of washing/ drying/ dish washing/ charging cycles of household h in scenario . Number of time slots during the operation of load cycle i of household h in scenario . Power demand of load cycle i at time slot j of household h in scenario . Reference start time of load cycle i of household h in scenario . The beginning of preferred start time interval of load cycle i of household h in scenario . The end of preferred start time interval of load cycle i in household h in scenario . Start preference of load cycle i of household h at time slot z in scenario .
 
-0885-8950 Š 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
+0885-8950 © 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
 
 1840
 
@@ -793,8 +793,8 @@ C
  St ,  [EUR/MWh] tA,  [EUR/MWh] tR,  [EUR/MWh] tP,  [EUR/MWh] 
 
 24 60 13
-1 prob.(At ,  ) ˇ prob.(tR,  )
-150%ˇtA,  Estimated from SARIMA
+1 prob.(At ,  ) · prob.(tR,  )
+150%·tA,  Estimated from SARIMA
 Estimated from SARIMA and Markov
 15
 95%
@@ -934,7 +934,7 @@ effectiveness of the method. Examples of scenario reduction algorithms are descr
 
 Fig. 7. The relationship between demand response participation rate d and peak/off-peak price ratio.
 10% of the households are supposed to own an EV. The parameters of EV charging are also listed in Table II. Each vehicle is charged once a day. Slow charging at 10 A and 230 V is used concerning the availability of charging infrastructures. Accordingly the required charging time is 3.5 hours based on the average driving distance and average energy consumption of EV in Sweden [20]. A charging cycle iV takes place when the car returns home and is connected to power until the battery is fully charged. The reference connecting time STiRV ,h, is determined by the sum of leaving time LiV ,h, and the away time AiV ,h, . LiV ,h, stands for the time when the car leaves home. AiV ,h, stands for the period during which the car stays away from home. They are subject to normal distributions, LiV ,h,  N (28, 8) and AiV ,h,  N (36, 8), according to a Swedish study about the driving habits of Swedes [36].
-The aggregate load in reference condition PzR,ef is estimated based on a measurement of a residential area in Stockholm which is 4561.4 kWh/householdˇ year on average. PzR,ef is obtained by adding the reference EV charging load to the data. The responsiveness to the dynamic tariff is assumed positively correlated to the peak/off-peak price ratio. Such a relationship is designed as Fig. 7, showing that a larger percentage of the group would like to participate in demand response when the peak/off-peak price ratio is higher. In this study, 10000d households are randomly selected to reschedule the flexible loads in each spot price scenario according to the peak/off-peak price ratio. To simulate the most probable situation, each responding household would delay appliances and EV charging by up to 3 hours to get a lower cost.
+The aggregate load in reference condition PzR,ef is estimated based on a measurement of a residential area in Stockholm which is 4561.4 kWh/household· year on average. PzR,ef is obtained by adding the reference EV charging load to the data. The responsiveness to the dynamic tariff is assumed positively correlated to the peak/off-peak price ratio. Such a relationship is designed as Fig. 7, showing that a larger percentage of the group would like to participate in demand response when the peak/off-peak price ratio is higher. In this study, 10000d households are randomly selected to reschedule the flexible loads in each spot price scenario according to the peak/off-peak price ratio. To simulate the most probable situation, each responding household would delay appliances and EV charging by up to 3 hours to get a lower cost.
 The optimizations are addressed in GAMs on an Intel i72600K CPU @ 3.40GHz. Cplex is used to solve the linear and integer linear programs. Load forecasting is the most time consuming step in the decision process. In the case 3650 households need to be rescheduled on average in one spot price scenario. The average CPU time of a scenario is 283 s for the 24-hour planning horizon. The execution time of the whole process depends on the number of scenarios. For an implementation with a large number of scenarios, parallel computing can speed up the process by distributing the optimizations in different scenarios among multiple processors or cores. Furthermore, it is important to construct a scenario tree which can capture the stochastic properties with relatively few scenarios in order to improve the
 
 B. Results
@@ -1042,4 +1042,3 @@ Meng Song (S'14) was born in China in 1982. She received the B.Eng. degree from 
 Mikael Amelin (M'07) received the Master's, Licentiate, and Ph.D. degrees from the Royal Institute of Technology (KTH), Stockholm, Sweden, in 1997, 2000, and 2004, respectively. He is an Associate Professor in the School of Electrical Engineering, KTH. His research interests include Monte Carlo techniques, analysis and modeling of electricity markets, and rural electrification in developing countries.
 
 
-

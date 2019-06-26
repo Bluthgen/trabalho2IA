@@ -25,7 +25,7 @@ Most of the related prior QR work uses kernel regressors, e.g., see [22]­[27]. 
 Long tail models have been long used in the actuarial science approaches to insurance, see [28]­[30]. The use of the long tail model in finance has increased in the recent years, e.g., see [31]­[34]. With the proliferation of variable wind and solar generation, the probability distributions in the electricity market are increasingly non-Gaussian. However, the only prior work using QR models with long tails in electricity market applications known to the authors is [16].
 The contributions of this paper are as follows. First, it develops QR non-parametric models of the probability distributions based on historical data and including long tails. Second, these models are extended to two interdependent variables: the electrical load and the spot price. Third, the paper shows how to use the developed models for numerical computation of stochastic integrals in the derivative pricing. Finally, it demonstrates applications of the methodology to the motivating example of the load following contracts in the electricity market.
 
-1932-4553 Š 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
+1932-4553 © 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
 
 1030
 
@@ -53,20 +53,20 @@ f (yP , y )p(yP , y |Z)dyP dy . (2)
 
 We consider the class of probability integrals (2) for the functions of the form
 
-f (yP , y ) = (y ) ˇ (A(yP ) - B)+ ,
+f (yP , y ) = (y ) · (A(yP ) - B)+ ,
 
 (3)
 
-where the notation (ˇ)+ = max(ˇ, 0) is used; (ˇ) and (ˇ) are two monotonically increasing functions; (ˇ) is unbounded. Such integrals are often encountered in derivative pricing, e.g.,
+where the notation (·)+ = max(·, 0) is used; (·) and (·) are two monotonically increasing functions; (·) is unbounded. Such integrals are often encountered in derivative pricing, e.g.,
 for spread options, see [37].
 Let y be the solution to (y) = B/A; for the unbounded monotonically increasing function , the solution always exists.
 The full stochastic integral (2), (3) is now approximated as
 
-E[f (yP , y )] = A ˇ (y|, ) - B ˇ (y|, 1), (4)
+E[f (yP , y )] = A · (y|, ) - B · (y|, 1), (4)
 
 
 
-(y; (ˇ), (ˇ)) =
+(y; (·), (·)) =
 
 (y )(yP )
 
@@ -77,7 +77,7 @@ p(yP , y |Z)dyP dy ,
 (5)
 
 where the dependence on the definite integral  on the integrand functions  and  has been made explicit. The term (y|, 1) in (4) means that the integral is computed for (yP ) = 1. The computation of integral (5) for specific functions  and  is discussed in Section IV-B.
-For special case of (ˇ) = 1, integral (2), (3) is encountered in the stochastic calculus of pricing options. If we take , (ˇ) = 1, A = 1, and (ˇ) = exp(ˇ) in (3), then f (yP , y ) = (eyP - B)+ gives pricing of a European call option for the log-price variable yP and strike price B. If, further, yP follows a Gaussian distribution, we get the celebrated Black­Scholes model [2]. Most of the existing work related to derivatives pricing assumes Gaussian distributions of the prices.
+For special case of (·) = 1, integral (2), (3) is encountered in the stochastic calculus of pricing options. If we take , (·) = 1, A = 1, and (·) = exp(·) in (3), then f (yP , y ) = (eyP - B)+ gives pricing of a European call option for the log-price variable yP and strike price B. If, further, yP follows a Gaussian distribution, we get the celebrated Black­Scholes model [2]. Most of the existing work related to derivatives pricing assumes Gaussian distributions of the prices.
 This paper extends the stochastic integral (2) to a general non-parametric probability distribution model. Such model of the joint probability distribution for the amount and the price
 
 Fig. 1. Overview of the data-driven stochastic pricing approach.
@@ -267,7 +267,7 @@ We will use an equivalent form of (12)
 
 - ZM -1
 
-ˇ d (M (q)) ˇ
+· d (M (q)) ·
 
 d(q) -1  1,
 
@@ -289,7 +289,7 @@ d(q) d(q) -1 -1
 
  = max M
 
-ˇ
+·
 
 , (15)
 
@@ -389,7 +389,7 @@ where Bj,2 (s) are the second-order (triangular) B-spline kernels with knots (10
 G. Bivariate Distribution in Quantile Variables
 The bivariate distribution p(yP , y |Z) in (2) can be expressed using the conditional probability formula
 
-p(yP , y |Z) = p(y |Z, yP ) ˇ p(yP |Z).
+p(yP , y |Z) = p(y |Z, yP ) · p(yP |Z).
 
 (26)
 
@@ -503,7 +503,7 @@ r
 
 The integration variable change formula requires to include an additional transformation determinant multiplier
 
-det (yP , y ) = yP ˇ y .
+det (yP , y ) = yP · y .
 
 (q, r)
 
@@ -516,11 +516,11 @@ unity. Thus, integral (5) can be computed as
 
 (yP (q); , ) =
 
-(r, q) ˇ (q) dqdr, (34)
+(r, q) · (q) dqdr, (34)
 
 0 q
 
-where q solves yP (q) = y with y from (5), (ˇ) is given by (27), (32) and (ˇ) by (27), (28), and (33).
+where q solves yP (q) = y with y from (5), (·) is given by (27), (32) and (·) by (27), (28), and (33).
 
 B. Numerical Integration Approach
 The evaluation of (q) in (5) is illustrated in Table I that shows partitioning of the 2-D [0, 1] × [0, 1] integration domain into nine subdomains. The double integral (q) is a sum of the integrals over these subdomains, which are annotated in Table I.
@@ -572,7 +572,7 @@ qL
 
 L (r, q) =
 
-(r, q) ˇ (q)dq,
+(r, q) · (q)dq,
 
 (38)
 
@@ -582,7 +582,7 @@ min(q,qL )
 
 R (r, q) =
 
-(r, q) ˇ (q)dq, (39)
+(r, q) · (q)dq, (39)
 
 max(q,qR )
 
@@ -691,11 +691,11 @@ Integrals (38)­(45) can be evaluated for specific functions (r, q) and (q). Thi
 C. Tail Integrals for Exponential Function
 In the motivating example of Section V, logarithms of the variables yP and y are used in the estimated model. Computing the expectation of the forward contract price in (3) requires the inverse, exponential, transformations. This means in (32), (33) we have
 
-(y ) = exp( ˇ y ),
+(y ) = exp( · y ),
 
 (50)
 
-(yP ) = exp( ˇ yP ),
+(yP ) = exp( · yP ),
 
 (51)
 
@@ -725,11 +725,11 @@ R = ( (r) + )/P R ,
 
 (57)
 
-e (r, q, q, a, ) = (r, q) ˇ (q)
+e (r, q, q, a, ) = (r, q) · (q)
 
 (58)
 
-ˇ m(q)- ˇ |m(a) + 1 - m(q) + 1 |/( + 1),
+· m(q)- · |m(a) + 1 - m(q) + 1 |/( + 1),
 
 h(r, ) = r/ (1 + /) ,
 
@@ -743,7 +743,7 @@ and  (r) in (56), (57) is defined through (23), (25) as
 
 m
 
- (r) =  ,j ˇ Kj (r).
+ (r) =  ,j · Kj (r).
 
 (61)
 
@@ -751,17 +751,17 @@ j=1
 
 The tail integrals (42)­(45) in Table I are
 
-FL,L (q) = L (rL , q) ˇ h(rL ,  L ),
+FL,L (q) = L (rL , q) · h(rL ,  L ),
 
 (62)
 
-FL,R (q) = L (rL , q) ˇ h(1 - rR , - R ), (63)
+FL,R (q) = L (rL , q) · h(1 - rR , - R ), (63)
 
-FR,L (q) = R (rL , q) ˇ h(rL ,  L ),
+FR,L (q) = R (rL , q) · h(rL ,  L ),
 
 (64)
 
-FR,R (q) = R (rL , q) ˇ h(1 - rR , - R ). (65)
+FR,R (q) = R (rL , q) · h(1 - rR , - R ). (65)
 
 Integrals (46)­(49) in Table I are expressed through L in (52) and R in (53). To evaluate (q; , 1) in the case of  = 1 one can set  = 0 in (51), (56), and (57).
 
@@ -795,7 +795,7 @@ Fig. 3. Plot of quantile regression load forecast.
 
 2013, which contains 8760 time samples, is used for validating the model Section V-B and the model-based policies in Sections V-C and V-E.
 The data-driven methods of Section III were applied to estimate two probabilistic models from the data: the model of the form (27) for the log load yP,t (66) and the model (28) for the log price y,t (67). The models use quantile grid (10) with m = 99 and spacing q = 0.01 spanning from qL = rL = 0.01 to qR = rR = 0.99.
-Selection of smoothing parameters  and  is discussed in Section III-D. More detail on parameter tuning for a closely related application example can be found in [35]. In both data fit problems (11), for (66) and (67), the smoothing parameters were set to  = 5 ˇ 105 ,  = 5 ˇ 105 for 2, 3, and 6-hour ahead forecasts and  = 106 ,  = 5 ˇ 105 for all other hours. Cross validation of these parameters based on Pearson's chi square test statistics is discussed in Section V-B.
+Selection of smoothing parameters  and  is discussed in Section III-D. More detail on parameter tuning for a closely related application example can be found in [35]. In both data fit problems (11), for (66) and (67), the smoothing parameters were set to  = 5 · 105 ,  = 5 · 105 for 2, 3, and 6-hour ahead forecasts and  = 106 ,  = 5 · 105 for all other hours. Cross validation of these parameters based on Pearson's chi square test statistics is discussed in Section V-B.
 Fig. 2 illustrates overall modeling logic. The model training is based on Data Set (6), which is the input into the optimal fit of smoothed QR procedure (11). The output is distribution model on quantile grid (10) described by quantile regression parameters {j , j }mj=1 in (11), and tail rate parameters (20) and (21).
 The fit of the estimated models (27), (28) is illustrated by using them for forecasting the data in the training dataset. Overall, 24 models of the form (27) for the log loads at each of the 24 hours of the next day were estimated along with the 24 models of the form (28) for the log prices. At each midnight point, forecasts for the next 24 hours were computed and then compared to the actually realized values.
 Fig. 3 illustrates the load forecasts for a 101 hour segment (just over 4 days) computed for quantile levels q = 0.1, 0.5, 0.9 in the models of the form (27), (66). The 24 hourly forecasts for the 24 trained models are stitched together in the figure. The actual load demand curve is plotted along with the quantile level forecasts.
@@ -836,7 +836,7 @@ y^P,t = Zt OLS + OLS ,
 (68)
 
 The ISO ensures that the generation capacity for the power procured by the utility is available with a 10% operating reserve margin. If the actual demand exceeds the operating reserve, it cannot be fully satisfied, no matter the price. This means some hard load must be shed, which is called a loss of load (LOL) event. The risk of the LOL events is controlled by the regulator, NERC. The LOL expectation is required to be less than of 1 day in 10 years, which corresponds to LOL probability (LOLP) of less than 0.00027.
-In accordance with (66), the reserved capacity is Pt = 1.1 ˇ P0 exp(y^P,t ). The risk of the LOL event is Rt = P(yP,t > log 1.1 + y^P,t |Zt ). It can be estimated using formula (4) and stochastic integral (5), where (r, q) = 1, (q) = 1, A = 1, B = 0, and y = log 1.1 + y^P,t . The parts of integral (34) shown in Table I can be computed in accordance with (35), (42)­(45), and (46)­(49), (52), (53), where  = 1 is obtained by setting  = 0 in (50) and  = 1 for  = 0 in (51). Alternatively, the risk Rt can be obtained from the numerical quantile model yP (s|Z) (27); Rt = 1 - st , where st is a solution to yP (st |Zt ) = log 1.1 + y^P,t .
+In accordance with (66), the reserved capacity is Pt = 1.1 · P0 exp(y^P,t ). The risk of the LOL event is Rt = P(yP,t > log 1.1 + y^P,t |Zt ). It can be estimated using formula (4) and stochastic integral (5), where (r, q) = 1, (q) = 1, A = 1, B = 0, and y = log 1.1 + y^P,t . The parts of integral (34) shown in Table I can be computed in accordance with (35), (42)­(45), and (46)­(49), (52), (53), where  = 1 is obtained by setting  = 0 in (50) and  = 1 for  = 0 in (51). Alternatively, the risk Rt can be obtained from the numerical quantile model yP (s|Z) (27); Rt = 1 - st , where st is a solution to yP (st |Zt ) = log 1.1 + y^P,t .
 To illustrate the risk estimation, 24 risk values are computed at each midnight for the 24 OLS forecasts for each hour of the next day. Forecast for each hour is using its own OLS model (68), (69) for the log loads yP . The model is trained based on the data set described in Section V-A. The risk estimates for 24 hours of each day in the training dataset have been stitched together to provide coverage for each hour of the data. Fig. 8 shows risk Rt computed for a 101 hour (about 4-day) segment of the data. The minimum of the risk estimate is less than 10-5 and mostly less than 0.01. This means evaluation of the risk relies on the tail part of the data-driven probabilistic model of Section V-A. The horizontal dashed line in Fig. 8 is the LOLP = 0.00027 mandated by NERC. One can see that the common approach of using the OLS forecast plus 10% margin does not provide the required LOLP at all times. Fig. 8 shows that using the OLS forecast provides average log-risk that looks reasonable; however the average risk is much higher than the required LOLP.
 
 SHENOY AND GORINEVSKY: DATA-DRIVEN STOCHASTIC PRICING AND APPLICATION TO ELECTRICITY MARKET
@@ -890,14 +890,14 @@ Fig. 10. Backtesting logic.
 the spot cost that minimizes total cost Tt(s) (72) can be found numerically by computing Tt (s) on a grid of quantile levels s  (0, 1).
 Fig. 9 illustrates the total cost Tt(s) for 12 pm on July 19, 2013 computed from E[Ct (s)] (70), At(s) (71), and (72) on the grid of the quantile levels s. Its minimum is achieved near so = 0.81. For s < so , Tt (s) is dominated by E[Ct (s)] and for s > s, by At (s).
 In backtesting, the historical data ahead in time of the contract
-allows computing the actual realized cost for an advance logpower procurement yŻP,t as
+allows computing the actual realized cost for an advance logpower procurement y¯P,t as
 
-Ut (yŻP ,t ) = adv,t P0 eyŻP , t + t P0 eyP , t - eyŻP , t +
+Ut (y¯P ,t ) = adv,t P0 ey¯P , t + t P0 eyP , t - ey¯P , t +
 
 (73)
 
-where yP,t is the actual log power load that realized at the contract exercise time. We compute the actual realized cost Ut for the procured log power yŻP,t = yP (so (t)), where so (t) minimizes the total cost Tt (s) in (72). We compare it with the results for the baseline advance procurement policy yŻP,t = y^P,t that is based on the OLS forecast (68), (69). The comparison of these two actual realized costs is summarized in Table II. The optimized actual realized cost Ut (yP (so )) shows 1.11% savings, which is $153,000 for the chosen hour.
-We backtest the optimized procurement policy yŻP,t = yP (so (t)) and the baseline OLS forecast procurement policy yŻP,t = y^P,t . The two actual realized costs (73) are computed for each hour of the test set (the year of 2013). Fig. 10 illustrates the backtesting logic.
+where yP,t is the actual log power load that realized at the contract exercise time. We compute the actual realized cost Ut for the procured log power y¯P,t = yP (so (t)), where so (t) minimizes the total cost Tt (s) in (72). We compare it with the results for the baseline advance procurement policy y¯P,t = y^P,t that is based on the OLS forecast (68), (69). The comparison of these two actual realized costs is summarized in Table II. The optimized actual realized cost Ut (yP (so )) shows 1.11% savings, which is $153,000 for the chosen hour.
+We backtest the optimized procurement policy y¯P,t = yP (so (t)) and the baseline OLS forecast procurement policy y¯P,t = y^P,t . The two actual realized costs (73) are computed for each hour of the test set (the year of 2013). Fig. 10 illustrates the backtesting logic.
 
 1038
 
@@ -981,4 +981,3 @@ Saahil Shenoy (SM'14) is working toward the Ph.D. degree in physics at Stanford 
 Dimitry Gorinevsky (M'91­SM'98­F'06) received the Ph.D. degree from the Department of Mechanics and Mathematics, Moscow (Lomonosov) University, Moscow, Russia, and the M.Sc. degree from Moscow Institute of Physics and Technology (Phystech), Dolgoprudny, Russia, in 1986 and 1982, respectively. He is currently a Consulting Professor in electrical engineering at Stanford University and a Founder of Mitek Analytics, an Industrial IoT Analytics Company, Palo Alto, CA, USA. In the past, he spent 10 years with Honeywell. He worked on many analytics applications across several industries. He was an Associate Editor of the IEEE TRANSACTIONS ON CONTROL SYSTEMS TECHNOLOGY, in 2001­2008. He received the Control Systems Technology Award, 2002, and Transactions on Control Systems Technology Outstanding Paper Award, 2004, of the IEEE Control Systems Society. He received the Best Paper Award (Senior Award), 2013, of the IEEE Signal Processing Society.
 
 
-

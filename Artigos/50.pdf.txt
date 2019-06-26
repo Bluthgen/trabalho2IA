@@ -22,7 +22,7 @@ Businesses, and in particular financial institutions, are also said to possess s
 In 2007, the world was deemed to have experienced the worst financial crisis since the 1930s. This crisis originated in the United States and spread across the global financial markets within less than a year. Some big financial organisations and banks declared bankruptcy. The downfall of Lehman Brothers was the most calamitous high-profile default of this crisis; see Gorton [22]. Whilst many financial market events in 2007­2008 were considered to be a direct consequence of improper credit risk management, it is also believed that the main trigger of economic turmoil was the inability to predict liquidity in the markets. In 2008, AIG had a huge portfolio of CDS and CDO that was originally rated AAA but backed by subprime loans. As a result of financial instability, the AIG products were downgraded and the company had to post additional collateral for its positions. These events are believed to be the main trigger of the liquidity crisis that began in September 2008, essentially bringing AIG to a level of bankruptcy but eventually bailed out by the US government.
 In this paper, we propose a method of quantifying and forecasting illiquidity in the financial market. As financial turbulence cannot be avoided, warning systems that aid the prediction of economic crunches are necessary to prepare market participants to deal with future instability. We use three
 
-1932-4553 Š 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications_standards/publications/rights/index.html for more information.
+1932-4553 © 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications_standards/publications/rights/index.html for more information.
 
 TENYAKOV et al.: FILTERING OF DISCRETE-TIME HMM-DRIVEN MULTIVARIATE ORNSTEIN-UHLENBECK MODEL
 
@@ -54,12 +54,12 @@ drt = ( - rt)dt + dWt,
 
 (1)
 
-where Wt is a standard Brownian motion defined on some probability space (, F, P ), and ,  and  are positive constants. The parameter  is the mean level to which the process tends to move to over time, whilst  is the speed of mean reversion, and  is the volatility. Assuming that ,  and  are constants, the solution of (1) by ItŻo's lemma is given by
+where Wt is a standard Brownian motion defined on some probability space (, F, P ), and ,  and  are positive constants. The parameter  is the mean level to which the process tends to move to over time, whilst  is the speed of mean reversion, and  is the volatility. Assuming that ,  and  are constants, the solution of (1) by It¯o's lemma is given by
 t
 rt = r0e-t + (1 - e-t) + e-t esdWs, (2)
 0
 
-where r0 is the initial value at time t = 0. Applying the property of a Gaussian distribution and the ItŻo's isometry to find the
+where r0 is the initial value at time t = 0. Applying the property of a Gaussian distribution and the It¯o's isometry to find the
 variance of rt in (2), we find that
 
 Var[rt]
@@ -127,7 +127,7 @@ k(g+)1,
 
 (6)
 
-where (g) = ((1g), 2(g), . . . , (Ng)) , (g) = (1(g), 2(g), . . . , N(g)) and (g) = (1(g), 2(g), . . . , N(g)) are all in IRN . Thus, given the state-space representation, we have in equation (6), (g)(xk) = k(g), xk , (g)(xk) = k(g), xk and (g)(xk) = k(g), xk , where ˇ, ˇ is the usual scalar product and denotes the transpose of a vector.
+where (g) = ((1g), 2(g), . . . , (Ng)) , (g) = (1(g), 2(g), . . . , N(g)) and (g) = (1(g), 2(g), . . . , N(g)) are all in IRN . Thus, given the state-space representation, we have in equation (6), (g)(xk) = k(g), xk , (g)(xk) = k(g), xk and (g)(xk) = k(g), xk , where ·, · is the usual scalar product and denotes the transpose of a vector.
 Equation (6) can be re-expressed as
 
 rk(g+)1 = (g)(xk)rk(g) + (g)(xk) + (g)(xk)k(g+)1,
@@ -152,13 +152,13 @@ where k(1), k(2), . . . , k(d) are independent standard Gaussian random variable
 
 (10)
 
-The succeeding calculations are inspired by the approach described in Elliott et al. [16], where filters are derived under some equivalent probability measure PŻ. Under this ideal measure, the observations are independent and identically distributed random variables making the calculations of conditional expectations easy. The filters, which are conditional expectations, are then related back to the real-world by the use of Bayes' theorem for conditional expectation. Following Elliott et al. ([16] chapter 3.4, page 62), the ideal measure PŻ is equivalent to the real-world measure P via the Radon-Nikodym derivative constructed as
+The succeeding calculations are inspired by the approach described in Elliott et al. [16], where filters are derived under some equivalent probability measure P¯. Under this ideal measure, the observations are independent and identically distributed random variables making the calculations of conditional expectations easy. The filters, which are conditional expectations, are then related back to the real-world by the use of Bayes' theorem for conditional expectation. Following Elliott et al. ([16] chapter 3.4, page 62), the ideal measure P¯ is equivalent to the real-world measure P via the Radon-Nikodym derivative constructed as
 
 K
 
 =
 
-dP dPŻ
+dP dP¯
 
 CK =
 
@@ -215,11 +215,11 @@ E [xk |Ck ]
 
 =
 
-EŻ [k xk |Ck ] EŻ [k |Ck ]
+E¯ [k xk |Ck ] E¯ [k |Ck ]
 
 by the Bayes' theorem for conditional expectation. Let ck =
 N
-EŻ[kxk|Ck] and note that xk, eh = 1. Thus,
+E¯[kxk|Ck] and note that xk, eh = 1. Thus,
 
 N
 
@@ -229,14 +229,14 @@ i=1
 
 ck, ei =
 
-EŻ[kxk|Ck], ei
+E¯[kxk|Ck], ei
 
 i=1
 
 i=1
 
 N
-= EŻ k xk, ei Ck = EŻ[k|Ck]. (13)
+= E¯ k xk, ei Ck = E¯[k|Ck]. (13)
 
 i=1
 
@@ -338,7 +338,7 @@ for i = j
 
 (17)
 
-For any process Gk, we denote the conditional expectation, under PŻ, of kGk by (G)k := EŻ[kGk|Ck]. We provide recursive filters for ck, (J j,ix)k, (Oix)k and (T i(f )(g)x)k.
+For any process Gk, we denote the conditional expectation, under P¯, of kGk by (G)k := E¯[kGk|Ck]. We provide recursive filters for ck, (J j,ix)k, (Oix)k and (T i(f )(g)x)k.
 Theorem 1: Let D be the matrix defined in (17). Then
 
 ck = Dck-1
@@ -705,4 +705,3 @@ Rogemar Mamon (M'16) is a Professor with the Department of Statistical and Actua
 Matt Davison received the degrees in engineering and maths. He was previously a Front Office Desk Quant with Deutsche Bank Canada. He is a Professor with the Department of Statistical and Actuarial Sciences and the Department of Applied Mathematics, University of Western Ontario, London, ON, Canada. He has held the Canada Research Chair in Quantitative Finance and is a Fellow of the Fields Institute for Research in Mathematical Sciences, Toronto, ON, Canada. His research interests include computational finance, incomplete market theory, and energy finance. He continues to consult with industry and serves as the Director and an Advisor to several Toronto-area financial companies.
 
 
-

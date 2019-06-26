@@ -69,7 +69,7 @@ In the mutation process, according to the parent X, the financial variables and 
 41
 
 its range is selected and this process is repeated until the maximum number of offspring is generated. In this process, each offspring is generated with threshold value  from (2).
-The offspring, which are generated using mutation and crossover, are selected and discarded using the fitness function f (x) represented in (4). The generated threshold value  of each offspring is compared with the original threshold value . The difference between  and  should be in between the precision of (ą1). The precision (ą1) indicates the maximum difference between the original threshold value  and the generated threshold value . Those offspring which stand within the precision from (4) are assumed to be the members of the set P and other offspring are discarded. The parents of the selected offspring from set P are considered to be the most influencing ratios. The above said process is repeated for other parents X available in the bankruptcy model to find the most influencing ratios.
+The offspring, which are generated using mutation and crossover, are selected and discarded using the fitness function f (x) represented in (4). The generated threshold value  of each offspring is compared with the original threshold value . The difference between  and  should be in between the precision of (±1). The precision (±1) indicates the maximum difference between the original threshold value  and the generated threshold value . Those offspring which stand within the precision from (4) are assumed to be the members of the set P and other offspring are discarded. The parents of the selected offspring from set P are considered to be the most influencing ratios. The above said process is repeated for other parents X available in the bankruptcy model to find the most influencing ratios.
 In this genetic process, simple pair crossover (a type of crossover) is applied. In the process of crossover, the characteristics of two parents are taken. For example, financial variables with their values within m and n from parents X1 and X2 are taken and offspring  is generated from (3) using the same steps. This process is applied for all the parents with simple pair. The working model of GBRAT is described by the pseudo code explained in the next section.
 
 whereas the values of the other parents are kept fixed (this value is maintained until the completion of the respective trial conducted for each parent) between m and n and this process is repeated until all the parents have undergone mutation
@@ -78,7 +78,7 @@ whereas the values of the other parents are kept fixed (this value is maintained
 
 + [c2X2(Am...n/Bm...n)]
 
-+ [c3X3(Am...n/Bm...n)] + ˇ ˇ ˇ
++ [c3X3(Am...n/Bm...n)] + · · ·
 
 + [cNXN(Am...n/Bm...n)]
 
@@ -88,7 +88,7 @@ where, X1, . . . , XN ­ parents of bankruptcy equation, A and B ­ financial va
 
  = c1X1 Am..n/Bm..n + c2X2 Am..n/Bm..n
 
-+ c3X3 Am..n/Bm..n + ˇ ˇ ˇ
++ c3X3 Am..n/Bm..n + · · ·
 
 + cNXN Am..n/Bm..n .
 
@@ -105,12 +105,12 @@ Step 1: Step 2: Step 3: Step 4: Step 5:
 Step 6:
 
 Search space ­ the top five bankruptcy models with accuracy levels of more than 80% are chosen for genetic operation. Each financial ratio has its specific range between m and n (m ­ starting selection range, n ­ ending selection range). The value of a ratio is taken between its specific range. Each bankruptcy model has a bankrupt value, which is considered as the original threshold value "." Each financial ratio X in the bankruptcy model is considered as a parent. In this genetic process, a bankruptcy equation is a collection of parents (X1, X2, X3, . . . , XN). Formation of bankruptcy equation
- = c1X1 + c2X2 + c3X3 + ˇ ˇ ˇ + cNXN (1)
+ = c1X1 + c2X2 + c3X3 + · · · + cNXN (1)
 where,  ­ original threshold value of the respective bankruptcy model, c1, c2, c3, . . . , cN ­ constants applied for each ratio from the bankruptcy equation offspring are generated and each offspring is generated with threshold value called as . Offspring Generation: Operators Applied ­ Mutation and Crossover Mutation: In a bankruptcy equation, one of the parents (X1, X2, X3, . . . , XN) is mutated between m and n
 
-Fitness function: f (x) =  -  <= (ą1) (4)
-where, x ­ generated offspring, (ą1) ­ precision range. Step 8: P is a selected offspring set and x1, x2, x3, . . . , xn are the members of the set P when precision range of x stands between (ą1). Step 9: The parent (X) of the selected offspring (x) present in the set P is considered as most influencing ratio. Step 10: Repeat this process until all the parents have undergone mutation and crossover.
-The pseudo code explains the working principle of the genetic process. In this process, selection range and precision are defined on the basis of relative error with selection range. Selection range of an offspring  is defined between m and n. It makes the generated offspring fall within the range of m and n. The precision for offspring is defined between ą1. It minimizes the error rate of offspring selection and discard. The next section explains the experimentation details of the genetic process.
+Fitness function: f (x) =  -  <= (±1) (4)
+where, x ­ generated offspring, (±1) ­ precision range. Step 8: P is a selected offspring set and x1, x2, x3, . . . , xn are the members of the set P when precision range of x stands between (±1). Step 9: The parent (X) of the selected offspring (x) present in the set P is considered as most influencing ratio. Step 10: Repeat this process until all the parents have undergone mutation and crossover.
+The pseudo code explains the working principle of the genetic process. In this process, selection range and precision are defined on the basis of relative error with selection range. Selection range of an offspring  is defined between m and n. It makes the generated offspring fall within the range of m and n. The precision for offspring is defined between ±1. It minimizes the error rate of offspring selection and discard. The next section explains the experimentation details of the genetic process.
 VI. EXPERIMENTATION DETAILS
 GBRAT is coded using Java to conduct the experiments. It takes bankruptcy model, prediction accuracy, applied ratios, and their specified range as parameters to identify the influencing ratios.
 
@@ -135,7 +135,7 @@ The performance of any business is assessed based on the value of Z. That is, wh
 The WC and TA are assigned initial values within their specified ranges as described in Table III. The remaining ratios X2, X3, X4, and X5 are assigned fixed values within their specified ranges. During mutation one of the parents is mutated and the other parents are not changed. The parents who are not mutated have been assigned fixed values within the specific ranges of their financial ratios. These values are maintained throughout the experiment until the completion of all the trials conducted for the mutated parent. Now GBRAT generates offspring with threshold value 1 by substituting X1,X2, X3, X4, and X5 in (5). The generated threshold value 1 is compared with the original threshold value 1. Table IV describes the generated offspring with their threshold values.
 In Table IV, different colors are used to differentiate the mutated parents and their offspring from the other parents. From iteration 848 to 918, the offspring TA and WC of X1 is mutated which is indicated by lighter red. The result of parent X1 after mutation is indicated by darker orange. Likewise, from iteration 748 to 841, parent X2 is mutated which is indicated by olive green. The output of X2 after mutation is indicated by darker orange. Similarly different colors are used to denote the mutated parent and its offspring. While performing mutation on parent X4, the value of X4 is changed whereas the values of the other parents X1, X2, X3, and X5 are not changed, which are indicated by light blue color.
 In the real-genetic mutation process, 1000 offspring are generated with threshold value for each parent. The following section explains the identification of influencing ratios from the generated offspring (refer to Table IV).
-2) Identification of Influencing Ratios: When we change the characteristics of X1 (WC to TA), the offspring 848 reaches a threshold value of 2.92 with TA = 0.40, WC = 1.30, retained earnings = 1.10, earnings before interest and taxes = 1.10, market value of equity = 1.10, book value of total liabilities = 1.10, and sales = 1.10. The difference between this threshold value and that of Altman bankruptcy model stands within the specified precision (ą1). As such, the ratio X1 is considered as the influencing ratio. In Table IV, the ratio X1 (WC and TA) is mutated while the values of the remaining ratios X2, X3, X4, and X5 are not changed. The parents who are not mutated are assigned fixed values within the specific ranges of the ratios and these values will be maintained until the completion all the trials conducted for X1.
+2) Identification of Influencing Ratios: When we change the characteristics of X1 (WC to TA), the offspring 848 reaches a threshold value of 2.92 with TA = 0.40, WC = 1.30, retained earnings = 1.10, earnings before interest and taxes = 1.10, market value of equity = 1.10, book value of total liabilities = 1.10, and sales = 1.10. The difference between this threshold value and that of Altman bankruptcy model stands within the specified precision (±1). As such, the ratio X1 is considered as the influencing ratio. In Table IV, the ratio X1 (WC and TA) is mutated while the values of the remaining ratios X2, X3, X4, and X5 are not changed. The parents who are not mutated are assigned fixed values within the specific ranges of the ratios and these values will be maintained until the completion all the trials conducted for X1.
 
 LAKSHMI et al.: GBRAT USING A GENETIC ALGORITHM TO IDENTIFY INFLUENCING FINANCIAL RATIOS
 
@@ -403,4 +403,3 @@ Venkatasamy Prasanna Venkatesan received the B.Sc. degree in physics from Madras
 He is an Associate Professor of Banking Technology with Pondicherry University, Puducherry, India. He has over 20 years of teaching and research experience in the field of computer science and engineering and banking technology. He has developed an architectural reference model for multilingual software. His research interests include software engineering, service oriented architecture, pervasive computing, bankruptcy prediction methods, and business intelligence.
 
 
-

@@ -19,7 +19,7 @@ boom' in the 1990s, the 9/11 terrorist attack in 2001 and the sub-prime mortgage
 In technical terms, stock indices exhibit trends--local and global `first order' characteristics [3]--together with economic and non-economic cyclical influences (e.g., the four-year presidential cycle in the US) and effects of our habits, such as the Sell in May stock trading strategy and the Christmas sales effect [4]. Trends in financial indices are perhaps their most examined characteristics, with both numerical and graphical methods used for their detection. Stock market volatility, on the other hand, reflects the degree of uncertainty in stock indices. Financial analysts are therefore interested in patterns in historical data in order to predict financial crashes--an often disputed practice called `technical analysis' [5], [6]. A very popular numerical technical analysis method is the class of moving-average (MA) algorithms which yield indicators of general movements of stock prices such as: (i) price MA for raw data with trend, and (ii) rate of change at different scales, for detrended data. The price MAs allow investors to compare fluctuations in stocks to the trends over time, while the rates of change are relatively faithful indicators of the momentum of stocks. For example, a positive value of the rate of change suggests enough market support to continue driving prices in the direction of the current trend, while its negative value indicates lack of market support and tendency for stock values to become stagnant or to reverse.
 The efficient market hypothesis (EMH) is a cornerstone of modern financial theory and states that current security prices (the underlying value of the asset) incorporate and reflect all relevant information that could be gathered, so that stocks always trade at fair value [7]. This implies that in `normal' situations markets cannot be consistently beaten over long time; in other words, the security prices tend to exhibit a random walk type of behaviour, characterised by poor predictability from their historical values and high uncertainty in the rate of change of stock prices. However, when speculative economic bubbles--`abnormal' situations--occur, the markets are often driven by buyers who are prone to sentiment or irrational ex-
 
-1932-4553 Š 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
+1932-4553 © 2016 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission. See http://www.ieee.org/publications standards/publications/rights/index.html for more information.
 
 HEMAKOM et al.: FINANCIAL STRESS THROUGH COMPLEXITY SCIENCE
 
@@ -239,7 +239,7 @@ RPi,j =   - ||X(i) - X(j)|| , i, j = 1, . . . , Ns ,
 
 (7)
 
-where Ns is the number of considered states in X,  a threshold distance (60% of the mean Euclidean distance of the DVs), || ˇ || the Euclidean distance, and (ˇ) the Heaviside function. 3) The percentage of recurrence points which form diagonal lines measures the degree of predictability, and is computed as:
+where Ns is the number of considered states in X,  a threshold distance (60% of the mean Euclidean distance of the DVs), || · || the Euclidean distance, and (·) the Heaviside function. 3) The percentage of recurrence points which form diagonal lines measures the degree of predictability, and is computed as:
 
 DET =
 
@@ -249,9 +249,9 @@ Ns j=1
 n
 j
 
-j ˇ
+j ·
 
-ˇ P (j) P (j)
+· P (j) P (j)
 
 ,
 
@@ -746,4 +746,3 @@ Anthony G. Constantinides (S'68­M'74­SM'78­ F'98) is a Professor of Communica
 Danilo P. Mandic (M'99­SM'03­F'12) received the Ph.D. degree in nonlinear adaptive signal processing from Imperial College London, London, U.K., in 1999. He is a Professor of signal processing at Imperial College London, London, U.K., where he has been involved in nonlinear adaptive signal processing and nonlinear dynamics. He is a Deputy Director of the Financial Signal Processing Laboratory at Imperial College London. He has been a Guest Professor with Katholieke Universiteit Leuven, Leuven, Belgium, the Tokyo University of Agriculture and Technology, Tokyo, Japan, and Westminster University, London, U.K., and a Frontier Researcher with RIKEN, Wako, Japan. He has two research monographs titled Recurrent Neural Networks for Prediction: Learning Algorithms, Architectures and Stability (West Sussex, U.K.: Wiley, 2001) and Complex Valued Nonlinear Adaptive Filters: Noncircularity, Widely Linear and Neural Models (West Sussex, U.K.: Wiley, 2009), an edited book titled Signal Processing Techniques for Knowledge Extraction and Information Fusion (New York, NY, USA: Springer, 2008), and more than 200 publications on signal and image processing. He has been a member of the IEEE Technical Committee on Signal Processing Theory and Methods, and an Associate Editor of the IEEE Signal Processing Magazine, the IEEE TRANSACTIONS ON CIRCUITS AND SYSTEMS II, the IEEE TRANSACTIONS ON SIGNAL PROCESSING, and the IEEE TRANSACTIONS ON NEURAL NETWORKS. He has produced award winning papers and products resulting from his collaboration with the industry.
 
 
-
