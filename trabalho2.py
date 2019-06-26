@@ -667,7 +667,7 @@ for pdf in txts:
     artigos.append(relevante)
     frequencias.append((temp2[1], nltk.FreqDist(relevante).most_common(10)))
 
-montaGrafos(referencias, frequencias)
+#montaGrafos(referencias, frequencias)
 tudoRelevante= [y for x in artigos for y in x]
 tudo= [y for x in artigosFull for y in x]
 frequenciaRelevante= nltk.FreqDist(tudoRelevante)
@@ -695,10 +695,12 @@ with open("Resultados.txt", "w") as arquivoO:
 
         arquivoO.write("Objetivo, Problema, Método ou Metodologia e Contribuições:\n\t")
         for arvore in listaObjetivos:
-            [arquivoO.write(leaf[0].encode("utf-8")+" ") for leaf in arvore.leaves()]
-            arquivoO.write(";;\n\t")
+            if len(arvore.leaves()) > 0:
+                [arquivoO.write(leaf[0].encode("utf-8")+" ") for leaf in arvore.leaves()]
+                arquivoO.write(";;\n\t")
         arquivoO.write("\n\n")
         
-        if i == len(titulos):
+        if titulos[i] == titulos[-1]:
             arquivoO.write("Os dez termos mais citados:\n\t")
-            arquivoO.write(frequenciaRelevante.most_common(10))
+            for tupla in frequenciaRelevante.most_common(10):
+                arquivoO.write("O termo "+tupla[0]+" aparece "+str(tupla[1])+" vezes\n\t")

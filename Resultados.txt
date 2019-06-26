@@ -1076,3 +1076,14 @@ Objetivo, Problema, Método ou Metodologia e Contribuições:
 	We will denote this measure by the symbol P ( M V E M M ) . ;;
 	
 
+Os dez termos mais citados:
+	O termo financial aparece 845 vezes
+O termo model aparece 722 vezes
+O termo fuzzy aparece 458 vezes
+O termo market aparece 431 vezes
+O termo price aparece 418 vezes
+O termo value aparece 410 vezes
+O termo time aparece 408 vezes
+O termo data aparece 391 vezes
+O termo volatility aparece 327 vezes
+O termo system aparece 319 vezes
