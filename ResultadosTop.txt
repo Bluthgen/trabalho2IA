@@ -414,7 +414,6 @@ Objetivo, Problema, Método ou Metodologia e Contribuições:
 	We recall that an IT2 fuzzy set A~ is characterized by a fuzzy membership function A~ ( x ) , that is , the membership value for each element of this set is a fuzzy set [ 32 ] . ;;
 	We build the IT2 fuzzy sets by using the following procedure . ;;
 	First of all , we employ IT2 fuzzy sets rather than type-1 fuzzy sets . ;;
-	Second , in order to cope with unbalanced datasets , we split the accuracy into two objectives , namely TPR and FPR . ;;
 	We recall that TPR and FPR coincide , respectively , with the sensitivity and the complement to 1 of the specificity . ;;
 	Third , we use an approach denoted as scaled dominance , which was introduced in [ 33 ] ­ [ 35 ] , to handle unbalanced data by trying to give minority classes a fair chance when competing with a majority class . ;;
 	Initial Rule Base Generation We generate the initial rule base by first transforming each continuous variable into a categorical and ordered variable . ;;
@@ -632,7 +631,6 @@ Objetivo, Problema, Método ou Metodologia e Contribuições:
 	We also demonstrated through experiments that the new GPRSV model performs better than corresponding GARCH and SV models . ;;
 	Volatility is a forward-looking concept , we often model the financial time series return variance conditioned on all the relevant information It-1 , defined as t2 = var ( rt |It-1 ) = E ( ( rt - t ) 2 |It-1 ) ( 3 ) where t is expected value of the asset return rt . ;;
 	GPRSV MODEL We introduce a new GPRSV model to solve the problem of financial time series volatility modeling and predicting . ;;
-	Similar to GARCH models and basic SV models , we model the financial asset return and volatility in state-space modeling framework . ;;
 	The logarithm of variance is modeled as the unobserved latent variable of the system in our model . ;;
 	We use GP to sample unknown hidden states transition function . ;;
 	3 ) GP-SSM : We can now combine the GP and the SSM together . ;;
@@ -920,7 +918,6 @@ Objetivo, Problema, Método ou Metodologia e Contribuições:
 	We assume the tail probability distributions to be Z1 + 1 - y|y < Z1 + 1 Exp ( L ) , ( 18 ) y - Zm - m |y > Zm + m Exp ( R ) . ;;
 	We extended this model to the entire ( 0 , 1 ) quantile interval as m y ( s|Z ) = ( Zj + j ) Kj ( s ) , ( 22 ) j=1 where kernel functions Kj ( s ) are such that Kj ( qj ) = 1 , and Kj ( qk ) = 0 for k = j . ;;
 	We use Kj ( s ) = Bj,2 ( s ) for qL s qR , ( 23 ) K1 ( s ) = L-1 log s qL for 0 < s < qL , ( 24 ) Km ( s ) = -R-1 log 1-s 1 - qR for qR < s < 1 , ( 25 ) where Bj,2 ( s ) are the second-order ( triangular ) B-spline kernels with knots ( 10 ) . ;;
-	Similar to quantile model ( 27 ) , we have m y ( r|Z , yP ) = ( Z , j + , j yP + , j ) Kj ( r ) . ;;
 	The tail integrals for the eight edge blocks can be expressed through the following auxiliary functions qL L ( r , q ) = ( r , q ) · ( q ) dq , ( 38 ) min ( q , qL ) 1 R ( r , q ) = ( r , q ) · ( q ) dq , ( 39 ) max ( q , qR ) rL gL ( q ) = ( r , q ) dr , ( 40 ) 0 1 gR ( q ) = ( r , q ) dr. ( 41 ) rR Using notation ( 38 ) ­ ( 41 ) we have rL FL , L ( q ) = L ( r , q ) dr , ( 42 ) 0 rL FL , R ( q ) = R ( r , q ) dr , ( 43 ) 0 1 FR , L ( q ) = L ( r , q ) dr , ( 44 ) rR 1 FR , R ( q ) = R ( r , q ) dr , ( 45 ) rR m L ( q ) = q wi ( 1 ) L ( ri , q ) , ( 46 ) i=1 m R ( q ) = q wi ( 1 ) R ( ri , q ) , ( 47 ) i=1 m L ( q ) = q wj ( j ) gL ( qj ) ( qj ) , ( 48 ) j=j m R ( q ) = q wj ( j ) gR ( qj ) ( qj ) . ;;
 	This means in ( 32 ) , ( 33 ) we have ( y ) = exp ( · y ) , ( 50 ) ( yP ) = exp ( · yP ) , ( 51 ) where and are fixed exponent parameters . ;;
 	We consider the following stylized problem . ;;
@@ -1078,12 +1075,13 @@ Objetivo, Problema, Método ou Metodologia e Contribuições:
 
 Os dez termos mais citados:
 	O termo financial aparece 845 vezes
-O termo model aparece 722 vezes
-O termo fuzzy aparece 458 vezes
-O termo market aparece 431 vezes
-O termo price aparece 418 vezes
-O termo value aparece 410 vezes
-O termo time aparece 408 vezes
-O termo data aparece 391 vezes
-O termo volatility aparece 327 vezes
-O termo system aparece 319 vezes
+	O termo model aparece 722 vezes
+	O termo fuzzy aparece 458 vezes
+	O termo market aparece 431 vezes
+	O termo price aparece 418 vezes
+	O termo value aparece 410 vezes
+	O termo time aparece 408 vezes
+	O termo data aparece 391 vezes
+	O termo volatility aparece 327 vezes
+	O termo system aparece 319 vezes
+	
